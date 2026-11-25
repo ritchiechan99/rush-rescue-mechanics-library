@@ -464,11 +464,14 @@ body.dragging,body.dragging *{cursor:grabbing!important;user-select:none}
 .rules5 p{margin:0 0 6px}.rules5 p:last-child{margin-bottom:0}
 .rules5 .chk{font-size:13.5px;color:var(--kit-ink);background:var(--soft);border:1px solid var(--kit);border-radius:10px;padding:5px 10px}
 .rules5 .chk b{font-size:11px;text-transform:uppercase;letter-spacing:.06em;margin-right:6px}
-.doc ol.rules5.brief{grid-template-columns:repeat(auto-fit,minmax(230px,1fr));max-width:none}
-.rules5.brief li{padding:10px 12px;gap:10px}
+/* the short version on the overview: one list, a rule on each row */
+.doc ol.rules5.brief{gap:0;max-width:900px;border:1px solid var(--line);border-radius:14px;background:var(--panel);overflow:hidden}
+.rules5.brief li{border:0;border-radius:0;border-bottom:1px solid var(--line);padding:9px 14px;gap:12px;align-items:center}
+.rules5.brief li:last-child{border-bottom:0}
 .rules5.brief .rn{width:26px;height:26px;line-height:26px;font-size:15px}
-.rules5.brief h4{font-size:15.5px;margin:2px 0 2px}
-.rules5.brief p{font-size:13px;color:var(--muted)}
+.rules5.brief li>div{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 12px;min-width:0}
+.rules5.brief h4{font-size:15.5px;margin:0;flex:0 0 236px}
+.rules5.brief p{font-size:13.5px;color:var(--muted);flex:1 1 300px;margin:0}
 /* a directory entry with a second line: it slides open while the entry is hovered, focused or selected */
 .lvb.exp{flex-wrap:wrap;gap:0 8px}
 .lvb .lvx{flex:0 0 100%;display:grid;grid-template-rows:0fr;overflow:visible;white-space:normal;transition:grid-template-rows .2s ease}
@@ -694,7 +697,9 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
 .lvpane.on{animation:fade .2s ease}
 .lvpanel.on .rules5 li{animation:rise .3s var(--ease) backwards;animation-delay:calc(var(--i)*45ms + 60ms)}
 .rules5 li{transition:border-color var(--quick) ease,box-shadow var(--quick) ease,transform var(--quick) var(--ease)}
-.rules5 li:hover{border-color:#D9A86B;box-shadow:0 6px 14px -10px rgba(36,54,47,.5);transform:translateY(-1px)}
+.rules5:not(.brief) li:hover{border-color:#D9A86B;box-shadow:0 6px 14px -10px rgba(36,54,47,.5);transform:translateY(-1px)}
+.rules5 li{transition:border-color var(--quick) ease,box-shadow var(--quick) ease,transform var(--quick) var(--ease),background-color var(--quick) ease}
+.rules5.brief li:hover{background:#F6FAF4}
 .ctitle.swap>*{animation:rise .2s var(--ease)}
 .ctitle.swap>p{animation-delay:.04s;animation-fill-mode:backwards}
 
