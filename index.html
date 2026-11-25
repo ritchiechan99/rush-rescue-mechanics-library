@@ -633,12 +633,16 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
 .navg[aria-expanded="false"] .chev{transform:rotate(-45deg);margin-bottom:0}
 .navg:hover{background:var(--bg)}
 .navg:focus-visible{outline:3px solid var(--check);outline-offset:2px}
-.navgrp{display:flex;flex-direction:column;gap:6px}
-.navgrp[hidden]{display:none}
+/* a group folds by animating its grid row from 1fr to 0fr, so it works for any number of buttons */
+.navgrp{display:grid;grid-template-rows:1fr;transition:grid-template-rows .26s ease}
+.navgrp.folded{grid-template-rows:0fr}
+.navin{display:flex;flex-direction:column;gap:6px;min-height:0;overflow:hidden;padding:3px;margin:-3px;opacity:1;transition:opacity .2s ease,visibility 0s}
+.navgrp.folded .navin{visibility:hidden;opacity:0;transition:opacity .2s ease,visibility 0s .26s}
+.noanim .navgrp,.noanim .navin,.noanim .chev{transition:none!important}
 .navgrp .navb{border-left:5px solid var(--gc)}
 .navgrp .navb[aria-current="page"]{background:var(--gc);border-color:var(--gc);color:#fff}
-@media (max-width:900px){.navg{display:none}.navgrp,.navgrp[hidden]{display:contents}}
-@media (prefers-reduced-motion:reduce){.navg .chev{transition:none}}
+@media (max-width:900px){.navg{display:none}.navgrp,.navin{display:contents}.navgrp.folded .navin{visibility:visible;opacity:1}}
+@media (prefers-reduced-motion:reduce){.navg .chev,.navgrp,.navin,.navgrp.folded .navin{transition:none}}
 </style>
 </head>
 <body>
@@ -646,33 +650,33 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
   <nav class="lib" aria-label="Mechanics library">
     <div class="brand"><b>Rush Rescue</b><span>Mechanics library</span></div>
     <button type="button" class="navg" data-g="lofi" aria-expanded="true" aria-controls="navg-lofi"><span>Playable lo-fi</span><i class="chev" aria-hidden="true"></i></button>
-    <div class="navgrp" id="navg-lofi" data-g="lofi">
+    <div class="navgrp" id="navg-lofi" data-g="lofi"><div class="navin">
       <button type="button" class="navb" data-view="overall">Overall game lo-fi</button>
       <button type="button" class="navb" data-view="medkit">Medkit</button>
       <button type="button" class="navb" data-view="campaign">Campaign</button>
       <button type="button" class="navb" data-view="shop">Shop</button>
       <button type="button" class="navb" data-view="apocalypse">Apocalypse Mode</button>
-    </div>
+    </div></div>
     <button type="button" class="navg" data-g="map" aria-expanded="true" aria-controls="navg-map"><span>On the map</span><i class="chev" aria-hidden="true"></i></button>
-    <div class="navgrp" id="navg-map" data-g="map">
+    <div class="navgrp" id="navg-map" data-g="map"><div class="navin">
       <button type="button" class="navb" data-view="cat-hazards">Hazards</button>
       <button type="button" class="navb" data-view="cat-items">Items</button>
       <button type="button" class="navb" data-view="cat-npcs">NPCs</button>
       <button type="button" class="navb" data-view="cat-obstacles">Obstacles</button>
-    </div>
+    </div></div>
     <button type="button" class="navg" data-g="mis" aria-expanded="true" aria-controls="navg-mis"><span>Missions</span><i class="chev" aria-hidden="true"></i></button>
-    <div class="navgrp" id="navg-mis" data-g="mis">
+    <div class="navgrp" id="navg-mis" data-g="mis"><div class="navin">
       <button type="button" class="navb" data-view="levels">Levels</button>
       <button type="button" class="navb" data-view="cat-missions">Mission types</button>
       <button type="button" class="navb" data-view="cat-environments">Environments</button>
-    </div>
+    </div></div>
     <button type="button" class="navg" data-g="squad" aria-expanded="true" aria-controls="navg-squad"><span>Squad</span><i class="chev" aria-hidden="true"></i></button>
-    <div class="navgrp" id="navg-squad" data-g="squad">
+    <div class="navgrp" id="navg-squad" data-g="squad"><div class="navin">
       <button type="button" class="navb" data-view="cat-boons">Boons</button>
       <button type="button" class="navb" data-view="cat-droids">Droids</button>
-    </div>
+    </div></div>
     <button type="button" class="navg" data-g="rules" aria-expanded="true" aria-controls="navg-rules"><span>Rules only</span><i class="chev" aria-hidden="true"></i></button>
-    <div class="navgrp" id="navg-rules" data-g="rules">
+    <div class="navgrp" id="navg-rules" data-g="rules"><div class="navin">
       <button type="button" class="navb" data-view="mission-loop">Mission loop</button>
       <button type="button" class="navb" data-view="hazards">Hazard rules</button>
       <button type="button" class="navb" data-view="interactions">Level interactions</button>
@@ -683,7 +687,7 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
       <button type="button" class="navb" data-view="controls">Controls</button>
       <button type="button" class="navb" data-view="cosmetics">Cosmetics</button>
       <button type="button" class="navb" data-view="monetization">Monetization system</button>
-    </div>
+    </div></div>
     <p class="libnote">Lo-fi. All names, prices and numbers are placeholders.</p>
   </nav>
   <div class="content">
@@ -2323,7 +2327,7 @@ function paintShell(setHash){
   const v=VIEWS[view],t=shown();
   document.querySelectorAll(".navb").forEach(b=>{if(b.dataset.view===view)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current")});
   /* the group of the open page is always unfolded, so the page stays visible in the menu */
-  const curNav=document.querySelector('.navb[aria-current="page"]'),curGrp=curNav&&curNav.closest(".navgrp");if(curGrp&&curGrp.hidden)navFold(curGrp.dataset.g,false,false);
+  const curNav=document.querySelector('.navb[aria-current="page"]'),curGrp=curNav&&curNav.closest(".navgrp");if(curGrp&&curGrp.classList.contains("folded"))navFold(curGrp.dataset.g,false,false);
   $("vTitle").textContent=v.t;$("vSum").textContent=v.s;$("vRef").textContent=v.r;
   $("tabLofi").disabled=!v.lofi;$("tabLofi").textContent=v.lofi?"Lo-fi":"No lo-fi yet";
   document.querySelector(".seg").style.display=v.cat?"none":"";
@@ -2398,11 +2402,14 @@ document.querySelectorAll(".navb").forEach(b=>{b.onclick=()=>go(b.dataset.view)}
 const NAVKEY="rr-nav-folded";
 function navFold(g,fold,save){
   const h=document.querySelector('.navg[data-g="'+g+'"]'),p=$("navg-"+g);if(!h||!p)return;
-  h.setAttribute("aria-expanded",fold?"false":"true");p.hidden=fold;
+  h.setAttribute("aria-expanded",fold?"false":"true");p.classList.toggle("folded",fold);
   if(save){try{localStorage.setItem(NAVKEY,JSON.stringify([...document.querySelectorAll('.navg[aria-expanded="false"]')].map(x=>x.dataset.g)))}catch(e){}}
 }
 document.querySelectorAll(".navg").forEach(h=>{h.onclick=()=>navFold(h.dataset.g,h.getAttribute("aria-expanded")==="true",true)});
+/* groups that were left folded come back folded without playing the animation */
+document.querySelector(".lib").classList.add("noanim");
 try{JSON.parse(localStorage.getItem(NAVKEY)||"[]").forEach(g=>navFold(g,true,false))}catch(e){}
+requestAnimationFrame(()=>requestAnimationFrame(()=>document.querySelector(".lib").classList.remove("noanim")));
 $("tabLofi").onclick=()=>setTab("lofi");$("tabRules").onclick=()=>setTab("rules");
 window.addEventListener("hashchange",fromHash);
 
