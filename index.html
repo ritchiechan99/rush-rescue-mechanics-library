@@ -663,6 +663,97 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
 .navgrp .navb[aria-current="page"]{background:var(--gc);border-color:var(--gc);color:#fff}
 @media (max-width:900px){.navg{display:none}.navgrp,.navin{display:contents}.navgrp.folded .navin{visibility:visible;opacity:1}}
 @media (prefers-reduced-motion:reduce){.navg .chev,.navgrp,.navin,.navgrp.folded .navin{transition:none}}
+
+/* ===== Motion and small interaction touches =====
+   Everything here is short and quiet: things ease in when they appear, and controls answer to hover and press.
+   The whole layer is switched off for people who ask their device for reduced motion (see the end of this file). */
+:root{--ease:cubic-bezier(.2,.7,.2,1);--quick:.14s;--calm:.24s}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes popup{from{opacity:0;transform:translateY(8px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes tilepop{0%{transform:scale(.86)}60%{transform:scale(1.04)}100%{transform:none}}
+
+/* ----- pages, entries and tabs ease in when they are opened ----- */
+.pane.on{animation:fade var(--calm) ease}
+.docsec:not(.cat).on{animation:rise var(--calm) var(--ease)}
+.docsec.cat.on .lvdir{animation:fade var(--calm) ease}
+.lvpanel.on{animation:rise var(--calm) var(--ease)}
+.lvpane.on{animation:fade .2s ease}
+.ctitle.swap>*{animation:rise .2s var(--ease)}
+.ctitle.swap>p{animation-delay:.04s;animation-fill-mode:backwards}
+
+/* ----- header: a soft shadow once the page under it is scrolled ----- */
+.chead{position:relative;z-index:3;transition:box-shadow .2s ease}
+.chead.scrolled{box-shadow:0 8px 18px -12px rgba(36,54,47,.45)}
+
+/* ----- menu on the left ----- */
+.navb{transition:background-color var(--quick) ease,border-color var(--quick) ease,color var(--quick) ease,transform var(--quick) var(--ease),box-shadow var(--quick) ease}
+.navgrp .navb[aria-current="page"]{box-shadow:0 2px 6px -3px var(--gc)}
+.navg{transition:background-color var(--quick) ease}
+@media (min-width:901px){
+  .navb:hover{transform:translateX(3px)}
+  .navb:active{transform:translateX(3px) scale(.98)}
+}
+
+/* ----- catalog directory, tabs and buttons ----- */
+.lvb{transition:background-color var(--quick) ease,color var(--quick) ease,transform var(--quick) var(--ease)}
+.lvb:active{transform:scale(.985)}
+.lvb .dprev{transition:transform var(--calm) var(--ease)}
+.lvb:hover .dprev,.lvb[aria-current] .dprev{transform:scale(1.18)}
+.seg button,.lvtabs button,.tabs button{transition:background-color var(--quick) ease,border-color var(--quick) ease,color var(--quick) ease,transform var(--quick) var(--ease)}
+.lvtabs button:not([aria-selected="true"]):hover{background:var(--kit);transform:translateY(-1px)}
+.seg button:not([aria-selected="true"]):not(:disabled):hover{background:var(--kit)}
+.lvtabs button:active,.seg button:not(:disabled):active{transform:scale(.97)}
+.lvchip,.sc,.gref{transition:background-color var(--quick) ease}
+
+/* ----- text, tables and pictures on the rules and catalog pages ----- */
+.doc a{text-decoration-thickness:1px;text-underline-offset:2px;transition:color var(--quick) ease,text-underline-offset var(--quick) ease,text-decoration-thickness var(--quick) ease}
+.doc a:hover{text-underline-offset:4px;text-decoration-thickness:2px}
+.doc .fgl a{transition:background-color var(--quick) ease,transform var(--quick) var(--ease)}
+.doc .fgl a:hover{transform:translateY(-1px)}
+.doc tbody td{transition:background-color var(--quick) ease}
+.doc tbody tr:hover>td{background:#F6FAF4}
+.zoom{transition:box-shadow var(--calm) ease,transform var(--calm) var(--ease)}
+.zoom img{transition:transform .5s var(--ease)}
+.zoom:hover{box-shadow:0 10px 22px -12px rgba(36,54,47,.55);transform:translateY(-2px)}
+.zoom:hover img{transform:scale(1.015)}
+.zoomer.on{animation:fade .18s ease}
+.zoomer.on img{animation:popup .26s var(--ease)}
+.fgr{transition:background-color var(--quick) ease,transform var(--quick) var(--ease)}
+.fgr:not(:disabled):active{transform:scale(.96)}
+
+/* ----- back to the top of a long page ----- */
+.totop{position:fixed;right:22px;bottom:20px;z-index:8;display:inline-flex;align-items:center;gap:6px;font-family:var(--fb);font-size:13px;font-weight:700;border:2px solid var(--kit-edge);border-radius:999px;background:var(--soft);color:var(--kit-ink);padding:7px 15px;cursor:pointer;box-shadow:0 6px 16px -8px rgba(36,54,47,.5);opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .2s ease,transform .2s var(--ease),visibility 0s .2s,background-color var(--quick) ease}
+.totop.show{opacity:1;visibility:visible;transform:none;transition:opacity .2s ease,transform .2s var(--ease),visibility 0s,background-color var(--quick) ease}
+.totop:hover{background:var(--kit)}
+.totop:active{transform:scale(.96)}
+.totop:focus-visible{outline:3px solid var(--check);outline-offset:2px}
+@media (max-width:900px){.totop{right:12px;bottom:12px}}
+
+/* ----- lo-fi: map, cards, Shop and medkit ----- */
+.hbtn,.act,.btns button,.rot-btn,.survey .opts button,.tline button{transition:background-color var(--quick) ease,border-color var(--quick) ease,color var(--quick) ease,transform var(--quick) var(--ease),box-shadow var(--quick) ease}
+.hbtn:not(:disabled):hover,.act:not(:disabled):hover,.btns button:not(:disabled):hover,.rot-btn:hover{transform:translateY(-1px);box-shadow:0 4px 10px -6px rgba(36,54,47,.55)}
+.hbtn:not(:disabled):active,.act:not(:disabled):active,.btns button:not(:disabled):active,.rot-btn:active{transform:scale(.97);box-shadow:none}
+.node{transition:background-color var(--quick) ease,color var(--quick) ease,border-color var(--quick) ease}
+.pop{animation:fade .12s ease}
+.over{animation:fade .18s ease}
+.over .card{animation:popup .26s var(--ease)}
+.prep.open{animation:fade .2s ease}
+.prep .chip{transition:border-color var(--quick) ease,background-color var(--quick) ease,box-shadow var(--quick) ease,transform var(--quick) var(--ease)}
+.prep .chip:not(.packed):not(.sel):hover{border-color:var(--pink);box-shadow:0 4px 10px -6px rgba(36,54,47,.5);transform:translateY(-1px)}
+.prep .chip .r{transition:transform .25s var(--ease),background-color var(--quick) ease}
+.prep .chip .r:hover{transform:rotate(90deg);background:#fff}
+.shaped.justin{animation:tilepop .26s var(--ease)}
+.msg{animation:fade .2s ease}
+.pill{transition:border-color var(--quick) ease}
+
+@media (prefers-reduced-motion:reduce){
+  .pane.on,.docsec:not(.cat).on,.docsec.cat.on .lvdir,.lvpanel.on,.lvpane.on,.ctitle.swap>*,.zoomer.on,.zoomer.on img,.pop,.over,.over .card,.prep.open,.shaped.justin,.msg{animation:none}
+  .navb,.navg,.lvb,.lvb .dprev,.seg button,.lvtabs button,.tabs button,.doc a,.doc .fgl a,.doc tbody td,.zoom,.zoom img,.fgr,.totop,.totop.show,.chead,
+  .hbtn,.act,.btns button,.rot-btn,.survey .opts button,.tline button,.node,.prep .chip,.prep .chip .r,.pill{transition:none}
+  .navb:hover,.navb:active,.lvb:active,.lvb:hover .dprev,.lvb[aria-current] .dprev,.lvtabs button:hover,.lvtabs button:active,.seg button:active,.doc .fgl a:hover,.zoom:hover,.zoom:hover img,
+  .hbtn:hover,.act:hover,.btns button:hover,.rot-btn:hover,.hbtn:active,.act:active,.btns button:active,.rot-btn:active,.prep .chip:hover,.prep .chip .r:hover,.totop:active,.fgr:active{transform:none!important}
+}
 </style>
 </head>
 <body>
@@ -1766,6 +1857,7 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
     </article>
   </div>
 </div>
+<button type="button" class="totop" id="toTop"><span aria-hidden="true">↑</span> Top</button>
 <div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="Enlarged picture"><button type="button" class="zx" id="zoomX">Close ✕</button><img id="zoomImg" alt=""></div>
 
 <script>
@@ -1837,6 +1929,8 @@ let G,mode="camp",hideT=null,justUnlocked=false,prep=null;
 /* library shell state: which mechanic is open, which tab, a checkpoint Shop put aside while another page is open, and whether the Medkit page switched the sandbox on */
 let view="overall",tab="lofi",flowPrep=null,autoSand=false;
 let sel=null,hover=null,drag=null,suppressClick=false;
+/* the boon that was just packed and when, so it can pop in once even if the medkit is drawn again straight after */
+let justPacked=null;const POP_MS=260;
 const $=id=>document.getElementById(id);
 const rnd=n=>Math.floor(Math.random()*n);
 const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=rnd(i+1);[a[i],a[j]]=[a[j],a[i]]}return a};
@@ -2159,7 +2253,7 @@ function openSet(){return new Set(UNLOCK_ORDER.slice(0,OPEN_BY_STAGE[kitStage()-
 function occupancy(except){const m={};for(const id in G.placed){if(id===except)continue;const b=byId[id],[r,c]=G.placed[id];b.cells.forEach(([y,x])=>m[key(r+y,c+x)]=id)}return m}
 const dupKind=b=>!!b.temp&&Object.keys(G.placed).some(id=>id!==b.id&&byId[id]&&byId[id].temp&&byId[id].k===b.k);
 function fits(b,r,c){if(dupKind(b))return false;const open=openSet(),m=occupancy(b.id);return b.cells.every(([y,x])=>{const k=key(r+y,c+x);return r+y<H&&c+x<W&&r+y>=0&&c+x>=0&&open.has(k)&&!m[k]})}
-function say(t,bad){const m=$("msg");m.textContent=t;m.className="msg"+(bad?" bad":"")}
+function say(t,bad){const m=$("msg"),same=m.textContent===t;m.textContent=t;m.className="msg"+(bad?" bad":"");if(t&&!same){m.style.animation="none";void m.offsetWidth;m.style.animation=""}}
 function shapePrev(b,grey){let s='<div class="shape" style="grid-template-columns:repeat('+b.w+',8px)">';for(let y=0;y<b.h;y++)for(let x=0;x<b.w;x++)s+='<span style="background:'+(b.set.has(key(y,x))?(grey?"#C5CEC7":SW[b.t]):"transparent")+'"></span>';return s+"</div>"}
 function buildBoon(b,extra){
   const cs=cellPx(),pw=b.w*cs+(b.w-1)*GAP,ph=b.h*cs+(b.h-1)*GAP,el=document.createElement("div");
@@ -2254,7 +2348,9 @@ function renderKit(){
   }
   const cs=cellPx();
   for(const id in G.placed){
-    const b=byId[id],[r,c]=G.placed[id],el=buildBoon(b,drag&&drag.started&&drag.id===id?"lifted":"");
+    const b=byId[id],[r,c]=G.placed[id],since=justPacked&&justPacked.id===id?performance.now()-justPacked.t:-1,fresh=since>=0&&since<POP_MS,
+      el=buildBoon(b,(drag&&drag.started&&drag.id===id?"lifted":"")+(fresh?" justin":""));
+    if(fresh)el.style.animationDelay=(-since)+"ms";
     el.style.left=(c*(cs+GAP))+"px";el.style.top=(r*(cs+GAP))+"px";
     el.querySelectorAll(".tile").forEach(t=>{t.addEventListener("pointerdown",e=>startDrag(e,id,"kit",el));t.addEventListener("click",()=>{if(suppressClick)return;delete G.placed[id];say(b.n+" returned to the inventory");renderHud();renderKit()})});
     grid.appendChild(el);
@@ -2292,7 +2388,7 @@ function place(r,c,k,open){
   if(!open.has(k)){say("That cell unlocks later in the campaign",true);return}
   if(!sel){if(m[k]){const b=byId[m[k]];delete G.placed[m[k]];say(b.n+" returned to the inventory");renderHud();renderKit()}else say("Drag a boon here, or pick one from the inventory first",true);return}
   const b=byId[sel];
-  if(fits(b,r,c)){G.placed[sel]=[r,c];say(b.n+" packed");sel=null;hover=null;renderHud()}else say(noFit(b,b.n+" doesn't fit with its top-left corner there"),true);
+  if(fits(b,r,c)){G.placed[sel]=[r,c];justPacked={id:sel,t:performance.now()};say(b.n+" packed");sel=null;hover=null;renderHud()}else say(noFit(b,b.n+" doesn't fit with its top-left corner there"),true);
   renderKit();
 }
 function startDrag(e,id,from,el){
@@ -2324,7 +2420,7 @@ function endDrag(e,cancel){
   const b=byId[d.id];
   if(!cancel){
     const t=dragTarget(e.clientX,e.clientY,d);
-    if(t.valid&&fits(b,t.r,t.c)){G.placed[d.id]=[t.r,t.c];say(b.n+(d.from==="kit"?" moved":" packed"))}
+    if(t.valid&&fits(b,t.r,t.c)){G.placed[d.id]=[t.r,t.c];justPacked={id:d.id,t:performance.now()};say(b.n+(d.from==="kit"?" moved":" packed"))}
     else if(d.from==="kit"&&!t.over){delete G.placed[d.id];say(b.n+" returned to the inventory")}
     else if(t.over)say(noFit(b,b.n+" doesn't fit there: every cell of its shape needs to be open and empty"),true);
     else say("");
@@ -2366,13 +2462,17 @@ function paintShell(setHash){
   document.querySelectorAll(".navb").forEach(b=>{if(b.dataset.view===view)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current")});
   /* the group of the open page is always unfolded, so the page stays visible in the menu */
   const curNav=document.querySelector('.navb[aria-current="page"]'),curGrp=curNav&&curNav.closest(".navgrp");if(curGrp&&curGrp.classList.contains("folded"))navFold(curGrp.dataset.g,false,false);
+  const newTitle=$("vTitle").textContent!==v.t;
   $("vTitle").textContent=v.t;$("vSum").textContent=v.s;$("vRef").textContent=v.r;
+  /* the header's text eases in when another page is opened */
+  if(newTitle){const ct=document.querySelector(".ctitle");ct.classList.remove("swap");void ct.offsetWidth;ct.classList.add("swap")}
   $("tabLofi").disabled=!v.lofi;$("tabLofi").textContent=v.lofi?"Lo-fi":"No lo-fi yet";
   document.querySelector(".seg").style.display=v.cat?"none":"";
   $("paneRules").setAttribute("aria-label",v.cat?"Catalog":"Rules for the chosen mechanic");
   $("tabLofi").setAttribute("aria-selected",t==="lofi");$("tabRules").setAttribute("aria-selected",t==="rules");
   $("paneLofi").classList.toggle("on",t==="lofi");$("paneRules").classList.toggle("on",t==="rules");
   document.querySelectorAll(".docsec").forEach(s=>s.classList.toggle("on",s.dataset.doc===view));
+  if(shellScroll)shellScroll();
   if(setHash){const want=DIRS[view]?dirHash(view):"#"+view+(v.lofi&&t==="rules"?"-rules":"");if(location.hash!==want){try{location.hash=want}catch(e){}}}
 }
 /* a checkpoint Shop that was put aside comes back when its mode is showing again; an Apocalypse round that lost its Shop is dealt again */
@@ -2436,6 +2536,15 @@ function fillDocs(){
   $("docUnlock").innerHTML=rows.map(r=>'<tr><td>'+(r.from===r.to?r.from:r.from+" to "+r.to)+'</td><td class="num">'+r.n+' of 20</td></tr>').join("");
 }
 document.querySelectorAll(".navb").forEach(b=>{b.onclick=()=>go(b.dataset.view)});
+/* small touches on long pages: a shadow under the header once the page is scrolled, and a button back to the top */
+var shellScroll=null;
+{
+  const pr=$("paneRules"),head=document.querySelector(".chead"),top=$("toTop");let queued=false;
+  const calm=()=>matchMedia("(prefers-reduced-motion:reduce)").matches;
+  shellScroll=()=>{queued=false;const y=pr.classList.contains("on")?pr.scrollTop:0;head.classList.toggle("scrolled",y>4);top.classList.toggle("show",y>500)};
+  pr.addEventListener("scroll",()=>{if(!queued){queued=true;requestAnimationFrame(shellScroll)}},{passive:true});
+  top.onclick=()=>{pr.scrollTo({top:0,behavior:calm()?"auto":"smooth"})};
+}
 /* menu groups: a header folds or unfolds its group. Which groups are folded is remembered on this device when the browser allows it. */
 const NAVKEY="rr-nav-folded";
 function navFold(g,fold,save){
