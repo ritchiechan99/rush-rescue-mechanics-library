@@ -623,41 +623,67 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
 
 .callout.chg{border-left-color:#2E7D5B;background:#EEF8F1}
 .callout.chg ol{margin:6px 0 0;padding-left:22px}.callout.chg li{margin:4px 0}
+
+/* menu groups: colour-coded, with headers that fold the group */
+[data-g="lofi"]{--gc:#2E7D5B}[data-g="map"]{--gc:#B5651D}[data-g="mis"]{--gc:#2F6DB5}[data-g="squad"]{--gc:#6B4FB3}[data-g="rules"]{--gc:#55645C}
+.navg{display:flex;align-items:center;gap:7px;width:100%;border:0;border-radius:8px;background:transparent;padding:4px 4px;margin:8px 0 0;cursor:pointer;font-family:var(--font);font-weight:700;text-align:left;color:var(--gc)}
+.navg::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--gc);flex:none}
+.navg span{flex:1}
+.navg .chev{width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);transition:transform .15s;margin:0 5px 3px 0;flex:none}
+.navg[aria-expanded="false"] .chev{transform:rotate(-45deg);margin-bottom:0}
+.navg:hover{background:var(--bg)}
+.navg:focus-visible{outline:3px solid var(--check);outline-offset:2px}
+.navgrp{display:flex;flex-direction:column;gap:6px}
+.navgrp[hidden]{display:none}
+.navgrp .navb{border-left:5px solid var(--gc)}
+.navgrp .navb[aria-current="page"]{background:var(--gc);border-color:var(--gc);color:#fff}
+@media (max-width:900px){.navg{display:none}.navgrp,.navgrp[hidden]{display:contents}}
+@media (prefers-reduced-motion:reduce){.navg .chev{transition:none}}
 </style>
 </head>
 <body>
 <div class="shell">
   <nav class="lib" aria-label="Mechanics library">
     <div class="brand"><b>Rush Rescue</b><span>Mechanics library</span></div>
-    <div class="navg">With a playable lo-fi</div>
-    <button type="button" class="navb" data-view="overall">Overall game lo-fi</button>
-    <button type="button" class="navb" data-view="medkit">Medkit</button>
-    <button type="button" class="navb" data-view="campaign">Campaign</button>
-    <button type="button" class="navb" data-view="shop">Shop</button>
-    <button type="button" class="navb" data-view="apocalypse">Apocalypse Mode</button>
-    <div class="navg">Catalog · On the map</div>
-    <button type="button" class="navb" data-view="cat-hazards">Hazards</button>
-    <button type="button" class="navb" data-view="cat-items">Items</button>
-    <button type="button" class="navb" data-view="cat-npcs">NPCs</button>
-    <button type="button" class="navb" data-view="cat-obstacles">Obstacles</button>
-    <div class="navg">Catalog · Missions</div>
-    <button type="button" class="navb" data-view="levels">Levels</button>
-    <button type="button" class="navb" data-view="cat-missions">Mission types</button>
-    <button type="button" class="navb" data-view="cat-environments">Environments</button>
-    <div class="navg">Catalog · Squad</div>
-    <button type="button" class="navb" data-view="cat-boons">Boons</button>
-    <button type="button" class="navb" data-view="cat-droids">Droids</button>
-    <div class="navg">Rules only</div>
-    <button type="button" class="navb" data-view="mission-loop">Mission loop</button>
-    <button type="button" class="navb" data-view="hazards">Hazard rules</button>
-    <button type="button" class="navb" data-view="interactions">Level interactions</button>
-    <button type="button" class="navb" data-view="diagnosis">Diagnosis and treatment</button>
-    <button type="button" class="navb" data-view="failure">Failure</button>
-    <button type="button" class="navb" data-view="scoring">Scoring</button>
-    <button type="button" class="navb" data-view="droids">Droid rules</button>
-    <button type="button" class="navb" data-view="controls">Controls</button>
-    <button type="button" class="navb" data-view="cosmetics">Cosmetics</button>
-    <button type="button" class="navb" data-view="monetization">Monetization system</button>
+    <button type="button" class="navg" data-g="lofi" aria-expanded="true" aria-controls="navg-lofi"><span>Playable lo-fi</span><i class="chev" aria-hidden="true"></i></button>
+    <div class="navgrp" id="navg-lofi" data-g="lofi">
+      <button type="button" class="navb" data-view="overall">Overall game lo-fi</button>
+      <button type="button" class="navb" data-view="medkit">Medkit</button>
+      <button type="button" class="navb" data-view="campaign">Campaign</button>
+      <button type="button" class="navb" data-view="shop">Shop</button>
+      <button type="button" class="navb" data-view="apocalypse">Apocalypse Mode</button>
+    </div>
+    <button type="button" class="navg" data-g="map" aria-expanded="true" aria-controls="navg-map"><span>On the map</span><i class="chev" aria-hidden="true"></i></button>
+    <div class="navgrp" id="navg-map" data-g="map">
+      <button type="button" class="navb" data-view="cat-hazards">Hazards</button>
+      <button type="button" class="navb" data-view="cat-items">Items</button>
+      <button type="button" class="navb" data-view="cat-npcs">NPCs</button>
+      <button type="button" class="navb" data-view="cat-obstacles">Obstacles</button>
+    </div>
+    <button type="button" class="navg" data-g="mis" aria-expanded="true" aria-controls="navg-mis"><span>Missions</span><i class="chev" aria-hidden="true"></i></button>
+    <div class="navgrp" id="navg-mis" data-g="mis">
+      <button type="button" class="navb" data-view="levels">Levels</button>
+      <button type="button" class="navb" data-view="cat-missions">Mission types</button>
+      <button type="button" class="navb" data-view="cat-environments">Environments</button>
+    </div>
+    <button type="button" class="navg" data-g="squad" aria-expanded="true" aria-controls="navg-squad"><span>Squad</span><i class="chev" aria-hidden="true"></i></button>
+    <div class="navgrp" id="navg-squad" data-g="squad">
+      <button type="button" class="navb" data-view="cat-boons">Boons</button>
+      <button type="button" class="navb" data-view="cat-droids">Droids</button>
+    </div>
+    <button type="button" class="navg" data-g="rules" aria-expanded="true" aria-controls="navg-rules"><span>Rules only</span><i class="chev" aria-hidden="true"></i></button>
+    <div class="navgrp" id="navg-rules" data-g="rules">
+      <button type="button" class="navb" data-view="mission-loop">Mission loop</button>
+      <button type="button" class="navb" data-view="hazards">Hazard rules</button>
+      <button type="button" class="navb" data-view="interactions">Level interactions</button>
+      <button type="button" class="navb" data-view="diagnosis">Diagnosis and treatment</button>
+      <button type="button" class="navb" data-view="failure">Failure</button>
+      <button type="button" class="navb" data-view="scoring">Scoring</button>
+      <button type="button" class="navb" data-view="droids">Droid rules</button>
+      <button type="button" class="navb" data-view="controls">Controls</button>
+      <button type="button" class="navb" data-view="cosmetics">Cosmetics</button>
+      <button type="button" class="navb" data-view="monetization">Monetization system</button>
+    </div>
     <p class="libnote">Lo-fi. All names, prices and numbers are placeholders.</p>
   </nav>
   <div class="content">
@@ -2296,6 +2322,8 @@ const shown=()=>VIEWS[view].lofi?tab:"rules";
 function paintShell(setHash){
   const v=VIEWS[view],t=shown();
   document.querySelectorAll(".navb").forEach(b=>{if(b.dataset.view===view)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current")});
+  /* the group of the open page is always unfolded, so the page stays visible in the menu */
+  const curNav=document.querySelector('.navb[aria-current="page"]'),curGrp=curNav&&curNav.closest(".navgrp");if(curGrp&&curGrp.hidden)navFold(curGrp.dataset.g,false,false);
   $("vTitle").textContent=v.t;$("vSum").textContent=v.s;$("vRef").textContent=v.r;
   $("tabLofi").disabled=!v.lofi;$("tabLofi").textContent=v.lofi?"Lo-fi":"No lo-fi yet";
   document.querySelector(".seg").style.display=v.cat?"none":"";
@@ -2366,6 +2394,15 @@ function fillDocs(){
   $("docUnlock").innerHTML=rows.map(r=>'<tr><td>'+(r.from===r.to?r.from:r.from+" to "+r.to)+'</td><td class="num">'+r.n+' of 20</td></tr>').join("");
 }
 document.querySelectorAll(".navb").forEach(b=>{b.onclick=()=>go(b.dataset.view)});
+/* menu groups: a header folds or unfolds its group. Which groups are folded is remembered on this device when the browser allows it. */
+const NAVKEY="rr-nav-folded";
+function navFold(g,fold,save){
+  const h=document.querySelector('.navg[data-g="'+g+'"]'),p=$("navg-"+g);if(!h||!p)return;
+  h.setAttribute("aria-expanded",fold?"false":"true");p.hidden=fold;
+  if(save){try{localStorage.setItem(NAVKEY,JSON.stringify([...document.querySelectorAll('.navg[aria-expanded="false"]')].map(x=>x.dataset.g)))}catch(e){}}
+}
+document.querySelectorAll(".navg").forEach(h=>{h.onclick=()=>navFold(h.dataset.g,h.getAttribute("aria-expanded")==="true",true)});
+try{JSON.parse(localStorage.getItem(NAVKEY)||"[]").forEach(g=>navFold(g,true,false))}catch(e){}
 $("tabLofi").onclick=()=>setTab("lofi");$("tabRules").onclick=()=>setTab("rules");
 window.addEventListener("hashchange",fromHash);
 
