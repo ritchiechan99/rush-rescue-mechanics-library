@@ -4708,10 +4708,12 @@ function protoLine(t,onChange){
         g.save();g.beginPath();g.moveTo(p[0],p[1]);for(let i=2;i<p.length;i+=2)g.lineTo(p[i],p[i+1]);g.closePath();g.clip();
         g.drawImage(stat,0,0);
         for(const th of S.things)if(shown(th))thing(th,th.x,th.y,th.known,false);
-        const sm=g.createRadialGradient(d.x,d.y,0,d.x,d.y,r);
-        const lit=S.here>=0;   // in an explored room the edge of the circle fades into that room's lighter fog, not into the full smoke
-        sm.addColorStop(0,"rgba(175,178,172,.14)");sm.addColorStop(.4,"rgba(170,173,168,"+(lit?Math.min(.2,tune.fog):.2)+")");sm.addColorStop(1,lit?"rgba(128,132,128,"+tune.fog+")":"rgba(120,124,120,.96)");
-        g.fillStyle=sm;g.fillRect(d.x-r,d.y-r,r*2,r*2);
+        // the edge of the circle fades into the full smoke. Over an explored room it fades into that room's lighter fog instead,
+        // so each part of the circle is shaded by the room it lies in. That also holds while Cam stands in a doorway between two rooms
+        const fade=lit=>{const sm=g.createRadialGradient(d.x,d.y,0,d.x,d.y,r);sm.addColorStop(0,"rgba(175,178,172,.14)");sm.addColorStop(.4,"rgba(170,173,168,"+(lit?Math.min(.2,tune.fog):.2)+")");sm.addColorStop(1,lit?"rgba(128,132,128,"+tune.fog+")":"rgba(120,124,120,.96)");g.fillStyle=sm;g.fillRect(d.x-r,d.y-r,r*2,r*2)};
+        fade(false);
+        S.lit.forEach((on,i)=>{if(!on)return;const q=RM[i],o=S.rev[i];g.save();g.beginPath();g.rect(q.x,q.y,q.w,q.h);g.clip();if(o&&!o.full){g.beginPath();g.arc(o.x,o.y,reach(i),0,7);g.clip()}
+          g.drawImage(stat,0,0);for(const th of S.things)if(shown(th)&&inRoom(th,q))thing(th,th.x,th.y,th.known,false);fade(true);g.restore()});
         g.restore();
       }
     }
