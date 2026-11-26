@@ -774,16 +774,19 @@ body.dragging,body.dragging *{cursor:grabbing!important;user-select:none}
 .rproto .cp-tune label.rp-check input{width:auto;flex:none}
 #redProtoTree{--st:#A8301F}
 
-/* Cam's Highlight: playable lo-fi. The rest of its styles are shared with Crab's (.cproto) */
+/* Cam's Highlight: playable lo-fi. The rest of its styles are shared with Crab's (.cproto) and Red's button bar (.rp-btns) */
 .kproto .cp-bar b{background:#3FA796}
 .kproto .cp-stage{background:#262C2A}
-.kproto .cp-grip{background:#3FA796}.kproto .cp-grip.on{background:#23705F;box-shadow:0 0 0 4px rgba(63,167,150,.4)}
+.kproto .rp-btns .cp-grip.kp-hl{background:#3FA796}
+.kproto .rp-btns .cp-grip.kp-hl.on{background:#23705F;box-shadow:0 0 0 4px rgba(63,167,150,.4)}
+.kproto .rp-btns .cp-grip.kp-skill{background:#1F5A4F}
+.kproto .rp-btns .cp-grip.lock{background:#2C3A35;color:#8FA098;border:2px dashed #53645D}
 .kproto .cp-stage canvas:focus-visible{box-shadow:inset 0 0 0 4px #3FA796}
 .kproto .cp-tune input{accent-color:#3FA796}
 .kproto .cp-top{gap:10px 16px}
 .kproto .cp-tune label.kp-check{grid-column:1/-1;display:flex;align-items:center;gap:8px;font-weight:600}
 .kproto .cp-tune label.kp-check input{width:auto;flex:none}
-@media(max-width:560px){.kproto .cp-grip{font-size:12px;padding:9px 12px}}
+#camProtoTree{--st:#23705F}
 
 /* Bee's swarm: playable lo-fi. The rest of its styles are shared with Crab's (.cproto) */
 .bproto .cp-bar b{background:#D9A514}
@@ -2347,13 +2350,13 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
           <div class="dstory" style="--dc:#3FA796"><span class="dlab">Story</span><p>The lovable star of the show, Cam is a reliable friendly face that would never leave anybody behind.</p><p>Relegated to the medical room for a majority of their life, Cam is an X-ray camera. After the disaster at the first responder HQ, Cam took the chance to jump into action, and promptly proved to be more than others said.</p><p>Cam is eager to leap into heroism, to see the wider world and to no longer be trapped in a box.</p><p class="dnote"><span class="tbd">The board’s text for Cam is still a draft, so only its finished lines are shown.</span></p><p class="dnote">Story from the Characters &amp; Lore section of the InnovSpur FigJam board, read on 26 Nov 2026. Picture from the game’s character sprites in the Unity project.</p></div>
           <h3 class="dsub">Details</h3>
           <div class="tw"><table class="camp def"><thead><tr><th scope="col">Field</th><th scope="col">Definition</th></tr></thead><tbody><tr><th scope="row">In Bypass Firewall</th><td><ul><li>The player can walk forward until the <a href="#npc-crowd">crowd</a> is in range, or use Cam’s ability to tag the crowd and everything else in range.</li></ul></td></tr><tr><th scope="row">Clearer view</th><td>In low visibility Cam sees clearer than the other droids, but not fully clear.</td></tr><tr><th scope="row">Victim types</th><td>A highlighted victim shows whether it is unconscious, agitated or normal. See <a href="#cat-victims">Victims</a>.</td></tr><tr><th scope="row">Without Cam</th><td>Things are tagged the usual way, when they come into a droid’s view.</td></tr><tr><th scope="row">Status</th><td><span class="tbd">Decided on 26 Nov 2026, not yet in the GDD, which still has this ability as to be defined.</span> The Figma boards for Bypass Firewall show an earlier version, in which the ability tags everything in range.</td></tr><tr><th scope="row">Still to define</th><td>The radius of the highlight, how fast the bar drains and how much clearer Cam sees.</td></tr><tr><th scope="row">Related</th><td><a href="#hazard-crowd">Escaping crowd</a></td></tr><tr><th scope="row">Skill tree</th><td>To be added later, on the <button type="button" class="tablink" data-lvtab="skill">Skill tree tab</button>.</td></tr><tr><th scope="row">Shared rules</th><td><a href="#droid-party">Party and switching</a>, <a href="#droid-actions">What every droid can do</a>, <a href="#droid-skilltree">Skill tree rules</a></td></tr><tr><th scope="row">Sources</th><td><span class="scs"><span class="sc" title="Game design document">GDD 3.4.1, 3.3</span><span class="sc" title="Figma Level Design page">Figma</span><span class="sc" title="Mission content sheet">Sheet</span></span></td></tr></tbody></table></div></div><div class="lvpane" data-t="skill"><p class="lvempty">Not designed yet. Cam’s skill tree will be added here later.</p>
-          
-          
-          <div class="tw"><table class="camp def"><thead><tr><th scope="col">Field</th><th scope="col">Definition</th></tr></thead><tbody><tr><th scope="row">Skills</th><td><span class="tbd">To be added</span></td></tr><tr><th scope="row">Shape</th><td>Decided on 26 Nov, for now: the tree is linear for the active skill. Each upgrade enhances the droid’s base ability, one after another.</td></tr><tr><th scope="row">Direction</th><td>Decided on 25 Nov: hazards evolve in the later levels, and the skill tree is built around answering their new forms.</td></tr><tr><th scope="row">Bought with</th><td>Bobbles, which are used for the skill tree only. Whether they replace skill points is still open.</td></tr><tr><th scope="row">How it works</th><td>Skill points permanently upgrade the droid and can unlock abilities. See <a href="#droid-skilltree">Skill tree rules</a>.</td></tr></tbody></table></div></div><div class="lvpane" data-t="lofi"><p class="part">Tagging the crowd</p>
+          <h3 class="dsub">Skill tree candidates</h3><p>A linear chain. Each upgrade enhances the Highlight and includes the ones before it.</p><div class="tw"><table><thead><tr><th scope="col">Upgrade</th><th scope="col">What it would do</th><th scope="col">Situation it answers</th><th scope="col">Status</th></tr></thead><tbody><tr><th scope="row">1. Clear lens</th><td>A passive. In low visibility Cam sees further and sharper than its basic level.</td><td>A smoke-filled floor with victims spread out.</td><td>Stated on 27 Nov, not confirmed</td></tr><tr><th scope="row">2. Tag</th><td>A passive. What the highlight shows is tagged: it stays on the map, with each victim’s type, after the highlight goes off.</td><td>The same floor: one sweep of the highlight marks a room.</td><td>Stated on 27 Nov as the passive skill, not confirmed</td></tr><tr><th scope="row">3. Tracker</th><td>Shows the direction of tagged things. Built as a ping: for a few seconds, arrows around Cam point to where each tagged thing was last seen, with what it is and how far. It uses some of the bar.</td><td>Back to the valve: fetch a key card on the far side of the floor and find the way back.</td><td>Stated on 27 Nov, not confirmed. The ping is a suggestion</td></tr><tr><th scope="row">4. Infrared pulse</th><td>Sees things behind walls in infrared. Built as an aimed pulse: hold to aim, release to fire down a wide lane. It passes through walls. Everything in the lane shows as a heat shape for a few seconds and is tagged. Each pulse uses some of the bar.</td><td>Which room?: two victims somewhere on a floor of closed rooms.</td><td>Stated on 27 Nov, not confirmed. The aimed pulse is a suggestion</td></tr><tr><th scope="row">5. Replay</th><td>Plays back where tagged things moved over the last few seconds, as a ghost trail. It uses some of the bar.</td><td>Wanderer: a confused victim who was last seen at a tag and has walked off.</td><td>Picked on 27 Nov, not confirmed</td></tr></tbody></table></div><p class="tbd">Seeing beyond a wall in infrared was part of the basic highlight on 26 Nov. In the playable lo-fi it is moved to the Infrared pulse upgrade, so the basic highlight only shows what is in Cam’s line of sight. Cam’s basic edge in low visibility is kept small, so Clear lens has something to add. Neither move is confirmed. The situations, the wandering victim and the valve that needs a key card are suggestions that go with the upgrades.</p>
+          <p class="tbd">On the playable lo-fi the candidates sit on a slider in one linear order, each level including the ones before it. That order is a placeholder until the tree is designed.</p><p>The candidates can be switched on and tried in the room on the <button type="button" class="tablink" data-lvtab="play">Playable lo-fi tab</button>, from the skill tree panel beside it.</p>
+          <div class="tw"><table class="camp def"><thead><tr><th scope="col">Field</th><th scope="col">Definition</th></tr></thead><tbody><tr><th scope="row">Skills</th><td>Candidates are listed above. None is confirmed as a skill yet.</td></tr><tr><th scope="row">Shape</th><td>Decided on 26 Nov, for now: the tree is linear for the active skill. Each upgrade enhances the droid’s base ability, one after another.</td></tr><tr><th scope="row">Direction</th><td>Decided on 25 Nov: hazards evolve in the later levels, and the skill tree is built around answering their new forms.</td></tr><tr><th scope="row">Bought with</th><td>Bobbles, which are used for the skill tree only. Whether they replace skill points is still open.</td></tr><tr><th scope="row">How it works</th><td>Skill points permanently upgrade the droid and can unlock abilities. See <a href="#droid-skilltree">Skill tree rules</a>.</td></tr></tbody></table></div></div><div class="lvpane" data-t="lofi"><p class="part">Tagging the crowd</p>
           <div class="fge"><button type="button" class="fgr" aria-label="Reload the Figma board: Tagging the crowd"><span aria-hidden="true">↻</span> Reload</button><iframe title="Figma board: Tagging the crowd" src="https://embed.figma.com/design/VxnDDZ0JOWff7Z7uleDt3O/Innovspur-UIUX-Flow?node-id=2583-16510&embed-host=share&page-selector=false&footer=false" loading="lazy" allowfullscreen></iframe></div>
-          <ol><li>The player walks near a window to check the situation indoors.</li><li>The crowd is tagged once it is in range.</li><li><b>With Cam in the party:</b> the player walks forward until the crowd is in range, or uses Cam’s ability to tag the crowd and everything else in range.</li></ol></div><div class="lvpane" data-t="play">
+          <ol><li>The player walks near a window to check the situation indoors.</li><li>The crowd is tagged once it is in range.</li><li><b>With Cam in the party:</b> the player walks forward until the crowd is in range, or uses Cam’s ability to tag the crowd and everything else in range.</li></ol></div><div class="lvpane" data-t="play"><div class="cp-wrap">
 <div class="cproto kproto" id="camProto">
-  <p class="lead">A test floor for Cam’s Highlight, with fog of war. The floor is full of smoke. Find the three victims and the key card. This is a flat sketch to try the rules and the numbers, not the game’s look.</p>
+  <p class="lead">A test floor for Cam’s Highlight, with fog of war and four situations. The floor is full of smoke and is larger than the view, which follows the droid. This is a flat sketch to try the rules and the numbers, not the game’s look.</p>
   <div class="cp-top">
     <div class="cp-seg" role="group" aria-label="Droid">
       <button type="button" data-mode="cam" aria-pressed="true">Cam</button>
@@ -2361,14 +2364,28 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
     </div>
     <div class="cp-bar" aria-hidden="true"><span>Ability bar</span><i><b id="kpBar"></b></i></div>
     <div class="cp-time"><span>Time</span><b id="kpTime">0.0s</b></div>
-    <div class="cp-time"><span>Found</span><b id="kpFound">0/4</b></div>
+    <div class="cp-time"><span>Done</span><b id="kpFound">0/4</b></div>
     <button type="button" class="cp-reset" id="kpReset">Reset floor</button>
   </div>
-  <div class="cp-stage">
-    <canvas id="kpCanvas" width="760" height="460" tabindex="0" role="img" aria-label="Test floor under fog of war. The droid starts at the bottom left. Walls split the floor into five rooms joined by doorways. Three victims, a key card and two interactables are hidden in the smoke."></canvas>
-    <button type="button" class="cp-grip" id="kpBtn">Highlight: off</button>
+  <div class="cp-top cp-rooms">
+    <span class="cp-lab">Situation</span>
+    <div class="cp-seg" role="group" aria-label="Situation">
+      <button type="button" data-room="smoke" aria-pressed="true">Smoke-filled floor</button>
+      <button type="button" data-room="back" aria-pressed="false">Back to the valve</button>
+      <button type="button" data-room="rooms" aria-pressed="false">Which room?</button>
+      <button type="button" data-room="wander" aria-pressed="false">Wanderer</button>
+    </div>
   </div>
-  <p class="cp-msg" id="kpMsg" aria-live="polite">Click the floor, then move with the arrow keys or WASD. Tap Space to switch the highlight on or off.</p>
+  <div class="cp-stage">
+    <canvas id="kpCanvas" width="760" height="460" tabindex="0" role="img" aria-label="Test floor under fog of war. Walls split the floor into six rooms joined by doorways. Victims, a key card and interactables are hidden in the smoke."></canvas>
+    <div class="rp-btns">
+      <button type="button" class="cp-grip kp-hl" id="kpBtn"><kbd>F</kbd><span>Highlight: off</span></button>
+      <button type="button" class="cp-grip kp-skill" id="kpPing"><kbd>T</kbd><span>Tracker</span></button>
+      <button type="button" class="cp-grip kp-skill" id="kpPulse"><kbd>Q</kbd><span>Hold: aim pulse</span></button>
+      <button type="button" class="cp-grip kp-skill" id="kpReplay"><kbd>R</kbd><span>Replay</span></button>
+    </div>
+  </div>
+  <p class="cp-msg" id="kpMsg" aria-live="polite">Click the floor, then move with the arrow keys or WASD. Press F to switch the highlight on or off.</p>
   <div class="cp-legend">
     <span><i style="background:#D9C9A8;border-radius:50%"></i>Victim, type not known</span>
     <span><i style="background:#9AA5B1;border-radius:50%"></i>Unconscious</span>
@@ -2381,29 +2398,32 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
   <div class="cp-tune">
     <h4>Numbers still to define</h4>
     <label>Sight in smoke, any droid <output id="kpO1"></output><input type="range" id="kpS1" min="60" max="160" step="5" value="90"></label>
-    <label>How much clearer Cam sees <output id="kpO2"></output><input type="range" id="kpS2" min="11" max="25" value="16"></label>
+    <label>How much clearer Cam sees <output id="kpO2"></output><input type="range" id="kpS2" min="10" max="20" value="13"></label>
+    <label>Clear lens, on top of that (skill) <output id="kpO6"></output><input type="range" id="kpS6" min="11" max="25" value="14"></label>
     <label>Highlight radius <output id="kpO3"></output><input type="range" id="kpS3" min="100" max="320" step="10" value="190"></label>
     <label>Bar drain while the highlight is on <output id="kpO4"></output><input type="range" id="kpS4" min="2" max="40" value="12"></label>
     <label>Bar recharge <output id="kpO5"></output><input type="range" id="kpS5" min="2" max="40" value="10"></label>
+    <label>Infrared pulse reach (skill) <output id="kpO7"></output><input type="range" id="kpS7" min="200" max="900" step="20" value="560"></label>
     <label class="kp-check"><input type="checkbox" id="kpShow"> Lift the fog of war (for testing only)</label>
   </div>
   <div class="cp-rules">
     <h4>What this floor follows</h4>
     <ul>
       <li><b>Fog of war:</b> a droid sees only what is in its line of sight and near enough in the smoke. Walls block sight, doorways let it through. Places already seen stay on the map, dimmed. Places not seen yet stay dark.</li>
-      <li><b>Cam</b> sees clearer in the smoke than the other droids, but not fully clear. The player’s view of the floor is the same size for every droid.</li>
-      <li>Tap to switch the highlight on or off. It highlights victims, interactables and key items around Cam, smoke or not.</li>
-      <li>A highlighted victim shows its type: unconscious, agitated or normal. Without the highlight a victim’s type is not shown.</li>
-      <li>Anything highlighted beyond a wall is shown in infrared.</li>
+      <li><b>Cam</b> sees a little clearer in the smoke than the other droids. The player’s view of the floor is the same size for every droid.</li>
+      <li>Press F to switch the highlight on or off. It highlights victims, interactables and key items around Cam that are in its line of sight, smoke or not, and shows each victim’s type.</li>
       <li>The ability bar drains while the highlight is on. An empty bar switches it off.</li>
-      <li><b>Another droid:</b> has no highlight. Things are tagged the usual way, when they come into its view, and stay on the map after that.</li>
-      <li><span class="tbd">Whether the highlight also tags what it shows is still to define. Here it does not: when the highlight goes off, a thing that never came into view is hidden again.</span></li>
-      <li><b>The floor can be solved by any droid.</b> Another droid has no highlight and sees less far, so it has to walk every room to find the victims and the key card.</li>
+      <li><b>Another droid:</b> has no highlight. Things are tagged the usual way, when they come into its view, and stay on the map where they were last seen.</li>
+      <li>A tag is a last-seen mark. If the thing has moved, the mark is cleared when the droid sees the empty spot.</li>
+      <li>Skills from the skill tree panel only change what Cam can do. They are candidates, not confirmed.</li>
+      <li><b>Every situation can be solved by any droid.</b> Another droid has no highlight and sees less far, so it has to walk every room.</li>
+      <li><span class="tbd">Seeing beyond a wall in infrared was part of the basic highlight on 26 Nov. Here it is moved to the Infrared pulse upgrade, so the basic highlight only shows what is in Cam’s line of sight. That move is not confirmed.</span></li>
+      <li><span class="tbd">The situations, the wandering victim and the valve that needs a key card are suggestions made to give each upgrade something to solve. None is confirmed.</span></li>
     </ul>
-    <p class="cp-note">On a phone: drag on the floor to move, and tap the “Highlight” button.</p>
+    <p class="cp-note">On a phone: drag on the floor to move, and use the buttons under it. For the pulse, hold its button, drag away from it to steer, and release.</p>
   </div>
 </div>
-</div></section>
+<aside class="cp-tree cp-line" id="camProtoTree" aria-label="Skill tree" style="--n:5"><div class="sl-top"><h4>Skill tree</h4><span class="sl-tag">Candidates, not confirmed</span></div><div class="sl"><div class="sl-head"><b>Highlight</b><span class="sl-lvl"></span></div><p class="sl-lab"><b>Set the level</b> Drag the handle, or click a stop. This changes the room.</p><div class="sl-groove"><div class="sl-track"><i class="sl-rail"></i><i class="sl-fill"></i><div class="sl-col"><span class="sl-stop" aria-hidden="true">0</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">1</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">2</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">3</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">4</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">5</span></div><input type="range" class="sl-range" min="0" max="5" step="1" value="0" aria-label="Highlight: upgrade level"></div></div><div class="sl-names"><button type="button" class="sl-name" data-lvl="0" data-name="Highlight" data-what="Press to switch the highlight on or off. It shows victims, interactables and key items around Cam that are in its line of sight, and each victim’s type. The bar drains while it is on. Cam also sees a little clearer in smoke than other droids.">Basic</button><button type="button" class="sl-name" data-skill="clear" data-lvl="1" aria-pressed="false" data-name="Clear lens" data-status="Stated on 27 Nov, not confirmed" data-what="A passive. In low visibility Cam sees further and sharper than its basic level. Always on while Cam is the active droid." data-how="Choose the “Smoke-filled floor” situation. Cam’s view in the smoke is wider, so victims are spotted from further away. Without it, Cam has to get closer to each room’s corners."><span class="sl-full">Clear lens</span><span class="sl-short" aria-hidden="true">Clear</span></button><button type="button" class="sl-name" data-skill="tag" data-lvl="2" aria-pressed="false" data-name="Tag" data-status="Stated on 27 Nov, not confirmed" data-what="A passive. What the highlight shows is tagged: it stays on the map, with each victim’s type, after the highlight goes off." data-how="Choose the “Smoke-filled floor” situation. Switch the highlight on, sweep a room and switch it off again. Everything it showed stays marked. Without it, a thing that never came into plain view is hidden again when the highlight goes off."><span class="sl-full">Tag</span><span class="sl-short" aria-hidden="true">Tag</span></button><button type="button" class="sl-name" data-skill="track" data-lvl="3" aria-pressed="false" data-name="Tracker" data-status="Stated on 27 Nov, not confirmed" data-what="A ping. For a few seconds, arrows around Cam point to every tagged thing, with what it is and how far. It points at where the thing was last seen, and uses some of the bar." data-how="Choose the “Back to the valve” situation. The valve is tagged at the start. Fetch the key card on the far side of the floor, then press T or the Tracker button to find the way back. Without it, the player has to remember the way."><span class="sl-full">Tracker</span><span class="sl-short" aria-hidden="true">Tracker</span></button><button type="button" class="sl-name" data-skill="infra" data-lvl="4" aria-pressed="false" data-name="Infrared pulse" data-status="Stated on 27 Nov, not confirmed" data-what="Cam aims and sends a pulse down a wide lane: hold to aim, release to fire. It passes through walls. Everything in the lane shows as a heat shape for a few seconds and is tagged. Each pulse uses some of the bar." data-how="Choose the “Which room?” situation. Hold Q or the “Hold: aim pulse” button and release to fire. Cam can keep moving while aiming. Steer with I J K L, the mouse or a drag from the button. Without it, every room has to be walked into."><span class="sl-full">Infrared pulse</span><span class="sl-short" aria-hidden="true">Infrared</span></button><button type="button" class="sl-name" data-skill="replay" data-lvl="5" aria-pressed="false" data-name="Replay" data-status="Picked on 27 Nov, not confirmed" data-what="Cam plays back where tagged things moved over the last few seconds, as a ghost trail. It uses some of the bar." data-how="Choose the “Wanderer” situation. A confused victim was last seen at the tag and has walked off. Press R or the Replay button and follow the trail. Without it, the rooms have to be searched while the victim keeps walking."><span class="sl-full">Replay</span><span class="sl-short" aria-hidden="true">Replay</span></button></div><p class="sl-lab sl-lab2"><b>Read about an upgrade</b> Click its name. This only changes the card below.</p></div><div class="sl-card" aria-live="polite"><div class="sl-cardtop"><div><span class="sl-step"></span><h5></h5></div><div class="sl-nav"><button type="button" class="sl-prev" aria-label="Look at the upgrade before">‹</button><button type="button" class="sl-next" aria-label="Look at the next upgrade">›</button></div></div><p class="sl-what"></p><p class="sl-inc"></p><p class="st-how sl-how"><b>Try it in this room</b><span></span></p><div class="sl-act"><span class="sl-state"></span><button type="button" class="sl-set"></button></div></div><p class="cp-note sl-foot">The tree is linear: each upgrade enhances the base ability and includes the ones before it. The order and the numbers are placeholders.</p></aside></div></div></section>
           <section class="lvpanel" data-lv="orb"><header class="lvhead"><h2>Orb</h2><p class="lvchips"><span class="lvchip">Droid</span><span class="lvchip">Ability defined</span></p></header><div class="lvtabs" role="tablist" aria-label="Sections of this level"><button type="button" role="tab" data-t="main" aria-selected="true">Profile</button><button type="button" role="tab" data-t="skill" aria-selected="false">Skill tree</button><button type="button" role="tab" data-t="lofi" aria-selected="false">Playable lo-fi</button></div><div class="lvpane on" data-t="main"><div class="dhero" style="--dc:#7B4FCF;--db:url('banner-orb.jpg')"><div class="dhtx"><span class="dteam">Patchbots · Player droid</span><h3 class="dname">Orb</h3><p class="dtag">A dreamer, with their round head often in the clouds</p><p class="dwas"><b>Before the team</b>A projector <span class="tbd">Draft</span></p></div><span class="dport has"><img src="droid-orb.png" alt="" loading="lazy"></span></div><div class="dabil" style="--dc:#7B4FCF"><span class="dlab">Ability</span><h4>Charge</h4><p>An aimed charge. Orb winds up, then charges down a straight lane and destroys the first heavy obstacle it hits, leaving nothing behind. Anything else in the way is pushed or knocked aside.</p><dl><div><dt>Ability bar</dt><dd>A charge uses up part of the bar.</dd></div><div><dt>Activation</dt><dd>Press and hold to aim and wind up, release to charge</dd></div></dl></div>
           <div class="dstory" style="--dc:#7B4FCF"><span class="dlab">Story</span><p>Orb is a dreamer, who longs for the world and all of the goodness that can come of it.</p><p>They see the world for what it can be, despite the way that it is.</p><p class="dnote"><span class="tbd">The board’s text for Orb is still a draft, so only its finished lines are shown.</span></p><p class="dnote">Story from the Characters &amp; Lore section of the InnovSpur FigJam board, read on 26 Nov 2026. Picture from the game’s character sprites in the Unity project.</p></div>
           <h3 class="dsub">Details</h3>
@@ -4422,44 +4442,72 @@ function protoLine(t,onChange){
 })();
 
 /* ===== Cam's Highlight: playable lo-fi, with fog of war =====
-   A top-down floor on a canvas. World units are canvas pixels (760 x 460). */
+   A top-down floor on a canvas. The floor (1400 x 860) is larger than the view (760 x 460), which follows the droid. */
 (function(){
   const root=document.getElementById("camProto");if(!root)return;
-  const cv=root.querySelector("#kpCanvas"),g=cv.getContext("2d"),W=cv.width,H=cv.height;
+  const cv=root.querySelector("#kpCanvas"),g=cv.getContext("2d"),W=cv.width,H=cv.height,WW=1400,WH=860;
   const el=id=>root.querySelector("#"+id);
   const SPEED=150,R=17,TR=13,RAYS=360,CAM="#3FA796";   // walking speed, droid radius, thing radius, rays cast for the line of sight
   const TYPE={unconscious:["Unconscious","#9AA5B1"],agitated:["Agitated","#F08A5D"],normal:["Normal","#9EDDC4"]};
-  const tune={sight:90,clear:1.6,hl:190,drain:12,recharge:10};  // pixels, times further, pixels, % of the bar per second (x2)
-  let mode="cam",showAll=false,S;
+  const PING={cost:10,show:5},PULSE={w:110,cost:20,show:5,turn:4},REPLAY={cost:10,show:6,span:12,every:.25},WALK=60;
+  // the tracker: bar it uses (%), seconds its arrows show. the pulse: lane width (px), bar (%), seconds the heat shapes show, how fast the keys turn the aim.
+  // replay: bar (%), seconds the trail shows, seconds of movement it plays back, how often a position is kept. WALK: a wandering victim's speed (px/s)
+  const tune={sight:90,clear:1.3,lens:1.4,hl:190,drain:12,recharge:10,pulse:560};  // pixels, times further (x2), pixels, % of the bar per second (x2), pixels
+  const ORDER=["clear","tag","track","infra","replay"],NAME={clear:"Clear lens",tag:"Tag",track:"Tracker",infra:"Infrared pulse",replay:"Replay"};
+  let mode="cam",room="smoke",showAll=false,S;
+  /* skill tree candidates switched on in the panel beside the floor. They only apply to Cam */
+  const tree=window.protoTree("camProtoTree",onSkill),sk=k=>mode==="cam"&&!!tree.on[k];
   /* three layers kept off screen: the floor and walls, what has been seen so far, and a scratch layer */
-  const layer=()=>{const c=document.createElement("canvas");c.width=W;c.height=H;return c};
+  const layer=()=>{const c=document.createElement("canvas");c.width=WW;c.height=WH;return c};
   const stat=layer(),mask=layer(),tmp=layer(),sx=stat.getContext("2d"),mx=mask.getContext("2d"),tx=tmp.getContext("2d");
 
+  /* the situations. Each is solvable by any droid: the upgrade it is made for only makes it quicker.
+     goal: "find" every victim and the key card, "valve" pick up the key card and bring it to the valve, "catch" reach the wandering victim */
+  const t=(k,n,x,y,type,more)=>Object.assign({k,n,x,y,type,seen:false,known:false,found:false,lx:x,ly:y,ir:0,hist:[],path:null,i:0},more||{});
+  const LOOP=[[760,600],[927,560],[1150,640],[1280,427],[1200,250],[927,320],[700,200],[520,427],[600,640]];
+  const ROOMS={
+    smoke:{goal:"find",at:[110,760],say:"Find the three victims and the key card.",
+      things:()=>[t("victim","A",130,120,"unconscious"),t("victim","B",700,150,"agitated"),t("victim","C",1200,700,"normal"),
+                  t("key","Key card",1300,90),t("use","Fire extinguisher",650,740),t("use","Valve",1150,220)]},
+    back:{goal:"valve",at:[1180,640],say:"The valve needs the key card. Fetch the key card from the far side of the floor, then come back to the valve.",
+      things:()=>[t("use","Valve",1250,740,null,{seen:true,goal:true}),t("key","Key card",130,120),t("use","Fire extinguisher",650,740)]},
+    rooms:{goal:"find",at:[680,640],say:"Two victims are somewhere on this floor. Find them.",
+      things:()=>[t("victim","A",130,120,"unconscious"),t("victim","B",1250,150,"agitated"),t("use","Fire extinguisher",200,700)]},
+    wander:{goal:"catch",at:[500,760],say:"A confused victim was last seen at the tag and has walked off. Reach them.",
+      things:()=>[t("victim","W",760,600,"normal",{seen:true,path:LOOP}),t("use","Valve",1150,220)]}
+  };
   /* the floor: walls with doorways, the things hidden on it and the droid */
   function fresh(){
-    const t=(k,n,x,y,type)=>({k,n,x,y,type,seen:false,found:false});
+    const r=ROOMS[room];
     const s={
-      droid:{x:110,y:400},bar:100,t:0,done:false,started:false,hl:false,poly:[],
-      walls:[{x:0,y:0,w:W,h:14},{x:0,y:H-14,w:W,h:14},{x:0,y:0,w:14,h:H},{x:W-14,y:0,w:14,h:H},
-             {x:240,y:14,w:14,h:150},{x:240,y:234,w:14,h:212},                       // left wall, one doorway
-             {x:500,y:14,w:14,h:96},{x:500,y:180,w:14,h:150},{x:500,y:400,w:14,h:46}, // right wall, two doorways
-             {x:254,y:230,w:170,h:14},                                               // splits the middle, doorway on its right
-             {x:514,y:250,w:150,h:14}],                                              // splits the right, doorway on its right
-      things:[t("victim","A",130,80,"unconscious"),t("victim","B",360,110,"agitated"),t("victim","C",620,350,"normal"),
-              t("key","Key card",690,70),t("use","Fire extinguisher",330,400),t("use","Valve",580,205)]
+      droid:{x:r.at[0],y:r.at[1]},face:{x:1,y:0},bar:100,t:0,done:false,started:false,hl:false,poly:[],goal:r.goal,key:false,
+      ping:0,replay:0,pulse:null,aim:null,aimOff:false,rec:0,
+      walls:[{x:0,y:0,w:WW,h:14},{x:0,y:WH-14,w:WW,h:14},{x:0,y:0,w:14,h:WH},{x:WW-14,y:0,w:14,h:WH},
+             {x:440,y:14,w:14,h:136},{x:440,y:230,w:14,h:370},{x:440,y:680,w:14,h:166},   // left wall, two doorways
+             {x:920,y:14,w:14,h:266},{x:920,y:360,w:14,h:160},{x:920,y:600,w:14,h:246},   // right wall, two doorways
+             {x:14,y:420,w:286,h:14},{x:380,y:420,w:60,h:14},                              // splits the left column
+             {x:454,y:420,w:26,h:14},{x:560,y:420,w:360,h:14},                             // splits the middle column
+             {x:934,y:420,w:306,h:14},{x:1320,y:420,w:66,h:14}],                           // splits the right column
+      things:r.things()
     };
+    // a wandering victim has already been walking for a while, so there is a trail to play back
+    for(const th of s.things)if(th.path){for(let i=0;i<Math.round(14/REPLAY.every);i++){wander(th,REPLAY.every);th.hist.push([th.x,th.y])}th.hist=th.hist.slice(-Math.round(REPLAY.span/REPLAY.every))}
     // the floor and its walls, drawn once
-    sx.fillStyle="#F4F1E6";sx.fillRect(0,0,W,H);
+    sx.fillStyle="#F4F1E6";sx.fillRect(0,0,WW,WH);
     sx.strokeStyle="rgba(34,48,43,.07)";sx.lineWidth=1;sx.beginPath();
-    for(let x=14;x<W;x+=40){sx.moveTo(x,14);sx.lineTo(x,H-14)}for(let y=14;y<H;y+=40){sx.moveTo(14,y);sx.lineTo(W-14,y)}sx.stroke();
+    for(let x=14;x<WW;x+=40){sx.moveTo(x,14);sx.lineTo(x,WH-14)}for(let y=14;y<WH;y+=40){sx.moveTo(14,y);sx.lineTo(WW-14,y)}sx.stroke();
     sx.fillStyle="#22302B";for(const w of s.walls)sx.fillRect(w.x,w.y,w.w,w.h);
-    mx.clearRect(0,0,W,H);
+    mx.clearRect(0,0,WW,WH);
     return s;
   }
   const hit=(a,b)=>a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;
   const box=d=>({x:d.x-R,y:d.y-R,w:R*2,h:R*2});
   const dist=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
-  const sight=()=>mode==="cam"?tune.sight*tune.clear:tune.sight;
+  const sight=()=>mode==="cam"?tune.sight*tune.clear*(sk("clear")?tune.lens:1):tune.sight;
+  const ang=(a,b)=>Math.atan2(b.y-a.y,b.x-a.x),turnTo=(a,b)=>{let d=b-a;while(d>Math.PI)d-=2*Math.PI;while(d<-Math.PI)d+=2*Math.PI;return d};
+  const view=()=>({x:Math.max(0,Math.min(WW-W,S.droid.x-W/2)),y:Math.max(0,Math.min(WH-H,S.droid.y-H/2))});   // the corner of the view on the floor
+  /* a wandering victim walks its loop from point to point */
+  function wander(th,dt){let mv=WALK*dt;while(mv>0){const p=th.path[th.i],m=Math.hypot(p[0]-th.x,p[1]-th.y);if(m<=mv){th.x=p[0];th.y=p[1];mv-=m;th.i=(th.i+1)%th.path.length;if(m<.01&&th.path.length<2)break}else{th.x+=(p[0]-th.x)/m*mv;th.y+=(p[1]-th.y)/m*mv;mv=0}}}
 
   /* how far a ray from (ox,oy) travels before it meets a wall */
   function ray(ox,oy,dx,dy){
@@ -4476,38 +4524,51 @@ function protoLine(t,onChange){
     }
     return best;
   }
-  /* is there a wall between the droid and a thing */
-  function los(t){const d=S.droid,m=dist(t,d);if(m<1)return true;return ray(d.x,d.y,(t.x-d.x)/m,(t.y-d.y)/m)>=m-1}
+  /* is there no wall between the droid and a point */
+  function los(p){const d=S.droid,m=dist(p,d);if(m<1)return true;return ray(d.x,d.y,(p.x-d.x)/m,(p.y-d.y)/m)>=m-1}
+  const mark=th=>{th.seen=true;th.lx=th.x;th.ly=th.y};   // tag a thing where it is now
   /* what the droid sees now: the line of sight, cut off by the smoke. Things that come into view are tagged */
   function look(){
     const d=S.droid,r=sight(),p=[];
     for(let i=0;i<RAYS;i++){const a=i/RAYS*Math.PI*2,dx=Math.cos(a),dy=Math.sin(a),m=Math.min(r,ray(d.x,d.y,dx,dy)+10);p.push(d.x+dx*m,d.y+dy*m)}
     S.poly=p;
     mx.fillStyle="#fff";mx.beginPath();mx.moveTo(p[0],p[1]);for(let i=2;i<p.length;i+=2)mx.lineTo(p[i],p[i+1]);mx.closePath();mx.fill();
-    for(const t of S.things)if(!t.seen&&dist(t,d)<r*.8&&los(t)){t.seen=true;
-      if(!t.found)say((t.k==="victim"?"A victim":t.n)+" came into view and is tagged on the map.")}
+    for(const th of S.things){
+      const inView=dist(th,d)<r*.8&&los(th);
+      if(inView){if(!th.seen&&!th.found)say((th.k==="victim"?"A victim":th.n)+" came into view and is tagged on the map.");mark(th)}
+      else if(th.seen&&!th.found&&dist({x:th.lx,y:th.ly},th)>24&&dist({x:th.lx,y:th.ly},d)<r*.8&&los({x:th.lx,y:th.ly})){ // the droid sees the empty spot
+        th.seen=false;say("The victim is no longer where they were last seen. The tag is cleared.","bad")}
+    }
   }
 
-  /* input: keys while the floor has focus, a drag on the floor as a stick, and the highlight button */
-  const keys={};let stick=null;
+  /* input: keys while the floor has focus, a drag on the floor as a stick, and the buttons under it */
+  const keys={};let stick=null,mouse=null,pulseHeld=false,pbDrag=null;
   cv.addEventListener("keydown",e=>{const k=e.key.toLowerCase();
-    if(["arrowup","arrowdown","arrowleft","arrowright"," ","w","a","s","d"].includes(k)){
-      if(k===" "&&!e.repeat)toggle();
+    if(["arrowup","arrowdown","arrowleft","arrowright","w","a","s","d","f","t","q","r","i","j","k","l"].includes(k)){
+      if(!e.repeat){if(k==="f")toggle();if(k==="t")ping();if(k==="r")replay()}
       keys[k]=true;e.preventDefault()}});
   cv.addEventListener("keyup",e=>{keys[e.key.toLowerCase()]=false});
   cv.addEventListener("blur",()=>{for(const k in keys)keys[k]=false});
   cv.addEventListener("pointerdown",e=>{cv.focus();stick={id:e.pointerId,x:e.clientX,y:e.clientY,dx:0,dy:0};cv.setPointerCapture(e.pointerId)});
-  cv.addEventListener("pointermove",e=>{if(stick&&e.pointerId===stick.id){stick.dx=e.clientX-stick.x;stick.dy=e.clientY-stick.y}});
+  cv.addEventListener("pointermove",e=>{if(stick&&e.pointerId===stick.id){stick.dx=e.clientX-stick.x;stick.dy=e.clientY-stick.y}
+    else if(e.pointerType==="mouse"){const b=cv.getBoundingClientRect(),v=view();mouse={x:(e.clientX-b.left)*W/b.width+v.x,y:(e.clientY-b.top)*H/b.height+v.y,fresh:true}}});
   const endStick=e=>{if(stick&&e.pointerId===stick.id)stick=null};
   cv.addEventListener("pointerup",endStick);cv.addEventListener("pointercancel",endStick);
-  const hb=el("kpBtn");
-  hb.addEventListener("pointerdown",e=>{toggle();e.preventDefault()});
+  const hb=el("kpBtn"),gb=el("kpPing"),pb=el("kpPulse"),rb=el("kpReplay");
+  const why=b=>{if(b.classList.contains("lock")){say(b.dataset.why||"Not available right now.","bad");return true}return false};   // a dimmed button says why it cannot be used
+  hb.addEventListener("pointerdown",e=>{e.preventDefault();if(!why(hb))toggle()});
+  gb.addEventListener("pointerdown",e=>{e.preventDefault();if(!why(gb))ping()});
+  rb.addEventListener("pointerdown",e=>{e.preventDefault();if(!why(rb))replay()});
+  /* the pulse button: hold to aim, drag away from where it was pressed to steer, release to fire */
+  pb.addEventListener("pointerdown",e=>{e.preventDefault();if(why(pb))return;pulseHeld=true;pbDrag={x:e.clientX,y:e.clientY,dx:0,dy:0};pb.setPointerCapture(e.pointerId)});
+  pb.addEventListener("pointermove",e=>{if(pbDrag){pbDrag.dx=e.clientX-pbDrag.x;pbDrag.dy=e.clientY-pbDrag.y}});
+  const pbEnd=()=>{pulseHeld=false;pbDrag=null};pb.addEventListener("pointerup",pbEnd);pb.addEventListener("pointercancel",pbEnd);
   function wish(){
     let x=(keys.arrowright||keys.d?1:0)-(keys.arrowleft||keys.a?1:0),y=(keys.arrowdown||keys.s?1:0)-(keys.arrowup||keys.w?1:0);
     if(stick&&Math.hypot(stick.dx,stick.dy)>8){x=stick.dx;y=stick.dy}
     const m=Math.hypot(x,y);return m?{x:x/m,y:y/m}:{x:0,y:0};
   }
-  function say(t,c){const m=el("kpMsg");if(m.textContent!==t)m.textContent=t;m.className="cp-msg"+(c?" "+c:"")}
+  function say(m,c){const p=el("kpMsg");if(p.textContent!==m)p.textContent=m;p.className="cp-msg"+(c?" "+c:"")}
 
   /* the highlight is a toggle, and only Cam has it */
   function toggle(){
@@ -4515,87 +4576,163 @@ function protoLine(t,onChange){
     if(mode!=="cam"){say("Another droid has no highlight. It has to find things by getting them into view.","bad");return}
     if(!S.hl&&S.bar<=0){say("The bar is empty. Wait for it to recharge.","bad");return}
     S.hl=!S.hl;S.started=true;
-    say(S.hl?"Highlight on. Victims, interactables and key items around Cam are shown. Beyond a wall they show in infrared.":"Highlight off. The bar is recharging.");
+    say(S.hl?"Highlight on. Victims, interactables and key items around Cam, in its line of sight, are shown."+(sk("tag")?" They are tagged, so they stay on the map.":""):"Highlight off. The bar is recharging.");
+  }
+  const tagged=()=>S.things.filter(th=>th.seen&&!th.found);
+  /* skill, Tracker: a ping. For a few seconds, arrows point to where each tagged thing was last seen */
+  function ping(){
+    if(S.done||!sk("track"))return;
+    if(S.bar<PING.cost){say("Not enough bar for the Tracker. It needs "+PING.cost+"%.","bad");return}
+    const n=tagged().length;if(!n){say("Nothing is tagged yet, so the Tracker has nothing to point at.","bad");return}
+    S.bar-=PING.cost;S.ping=PING.show;S.started=true;say("Tracker: arrows point to "+n+" tagged "+(n>1?"things":"thing")+", where "+(n>1?"they were":"it was")+" last seen.","good");
+  }
+  /* skill, Infrared pulse: aimed like Red's tranquilizer. Hold to aim, release to fire. It passes through walls */
+  function inLane(th,a){const d=S.droid,ux=Math.cos(a),uy=Math.sin(a),px=th.x-d.x,py=th.y-d.y,along=px*ux+py*uy,off=Math.abs(-px*uy+py*ux);return along>0&&along<=tune.pulse&&off<=PULSE.w/2}
+  function aimStep(held,dt){
+    const d=S.droid;
+    if(held&&S.aim===null&&!S.aimOff){
+      if(S.bar<PULSE.cost){S.aimOff=true;say("Not enough bar for a pulse. It needs "+PULSE.cost+"%.","bad");return}
+      S.aim=Math.atan2(S.face.y,S.face.x);S.started=true;if(mouse)mouse.fresh=false;
+    }
+    if(!held){S.aimOff=false;if(S.aim!==null){fire(S.aim);S.aim=null}return}
+    if(S.aim===null)return;
+    const ax=(keys.l?1:0)-(keys.j?1:0),ay=(keys.k?1:0)-(keys.i?1:0);
+    if(pbDrag&&Math.hypot(pbDrag.dx,pbDrag.dy)>14)S.aim=Math.atan2(pbDrag.dy,pbDrag.dx);
+    else if(ax||ay){const tn=turnTo(S.aim,Math.atan2(ay,ax)),mv=PULSE.turn*dt;S.aim+=Math.abs(tn)<mv?tn:Math.sign(tn)*mv}
+    else if(mouse&&mouse.fresh)S.aim=ang(d,mouse);
+    say("Aiming the infrared pulse. Steer with I J K L, the mouse or a drag from the button. Cam can keep moving. Release to fire.");
+  }
+  function fire(a){
+    if(S.done||!sk("infra")||S.bar<PULSE.cost)return;
+    S.bar-=PULSE.cost;S.pulse={a,t:.7};let n=0;
+    for(const th of S.things)if(!th.found&&inLane(th,a)){th.ir=PULSE.show;th.known=true;mark(th);n++}
+    say(n?"The pulse found "+n+" "+(n>1?"things":"thing")+" in its lane. "+(n>1?"They show":"It shows")+" in infrared and "+(n>1?"are":"is")+" tagged.":"The pulse found nothing in its lane.",n?"good":"");
+  }
+  /* skill, Replay: a ghost trail of where tagged things moved over the last few seconds */
+  function replay(){
+    if(S.done||!sk("replay"))return;
+    if(S.bar<REPLAY.cost){say("Not enough bar for a replay. It needs "+REPLAY.cost+"%.","bad");return}
+    const mv=S.things.filter(th=>th.path&&!th.found&&(th.seen||th.hist.length));
+    if(!mv.length){say("Nothing tagged has moved, so there is nothing to play back.","bad");return}
+    S.bar-=REPLAY.cost;S.replay=REPLAY.show;S.started=true;say("Replay: the trail shows where the victim walked over the last "+REPLAY.span+" seconds. Follow it to its bright end.","good");
   }
 
   /* one step of the floor */
   function step(dt){
     if(S.done)return;
     const want=wish(),d=S.droid;
-    if(want.x||want.y)S.started=true;
+    if(want.x||want.y){S.started=true;S.face=want}
     if(S.started)S.t+=dt;
     for(const ax of ["x","y"]){const mv=want[ax]*SPEED*dt;if(!mv)continue;const nd={x:d.x,y:d.y};nd[ax]+=mv;if(!S.walls.some(w=>hit(box(nd),w)))d[ax]=nd[ax]}
     if(S.hl){S.bar-=tune.drain*dt;if(S.bar<=0){S.bar=0;S.hl=false;say("The bar is empty, so the highlight switched off.","bad")}}
     else S.bar=Math.min(100,S.bar+tune.recharge*dt);
-    look();
-    for(const t of S.things){
-      if(t.found||t.k==="use"||dist(t,d)>R+TR+4)continue;
-      t.found=true;t.seen=true;say(t.k==="victim"?"Victim "+t.n+" found.":"Key card picked up.","good");
+    if(sk("infra"))aimStep(!!(keys.q||pulseHeld),dt);else S.aim=null;
+    if(S.ping>0)S.ping-=dt;if(S.replay>0)S.replay-=dt;if(S.pulse&&(S.pulse.t-=dt)<=0)S.pulse=null;
+    S.rec+=dt;const keep=S.rec>=REPLAY.every;if(keep)S.rec=0;
+    for(const th of S.things){
+      if(th.ir>0)th.ir-=dt;
+      if(th.path&&!th.found&&S.started){wander(th,dt);if(keep){th.hist.push([th.x,th.y]);if(th.hist.length>REPLAY.span/REPLAY.every)th.hist.shift()}}
     }
-    const need=S.things.filter(t=>t.k!=="use");
-    if(need.every(t=>t.found)){S.done=true;S.hl=false;
-      say("Found all three victims and the key card in "+S.t.toFixed(1)+"s as "+(mode==="cam"?"Cam":"another droid")+". Reset the floor to try again.","good")}
+    look();
+    // the highlight shows what is around Cam and in its line of sight. With Tag it also tags it, type included
+    if(S.hl&&sk("tag"))for(const th of S.things)if(!th.found&&dist(th,d)<=tune.hl&&los(th)){th.known=true;mark(th)}
+    for(const th of S.things){
+      if(th.found||dist(th,d)>R+TR+4)continue;
+      if(th.k==="use"){if(th.goal&&S.key){th.found=true;say("The valve is opened with the key card.","good")}else if(th.goal&&!S.msgd){S.msgd=true;say("The valve needs the key card.","bad")}continue}
+      th.found=true;mark(th);if(th.k==="key")S.key=true;say(th.k==="victim"?"Victim "+th.n+" found.":"Key card picked up."+(S.goal==="valve"?" Now go back to the valve.":""),"good");
+    }
+    const need=goals();
+    if(need.every(th=>th.found)){S.done=true;S.hl=false;S.aim=null;
+      say("Done in "+S.t.toFixed(1)+"s as "+(mode==="cam"?"Cam":"another droid")+". Reset the floor to try again.","good")}
   }
+  const goals=()=>S.things.filter(th=>th.k!=="use"||th.goal);
 
   /* drawing */
-  /* one thing. known: its type is shown (highlighted). ir: drawn as a heat shape instead */
-  function thing(t,known,ir){
-    const x=t.x,y=t.y;
+  /* one thing at (x,y). known: its type is shown. ir: drawn as a heat shape instead */
+  function thing(th,x,y,known,ir){
     if(ir){const h=g.createRadialGradient(x,y,2,x,y,TR+9);h.addColorStop(0,"#FFF3B0");h.addColorStop(.45,"#FFB02E");h.addColorStop(.8,"#F25C2A");h.addColorStop(1,"rgba(242,92,42,0)");
       g.fillStyle=h;g.beginPath();g.arc(x,y,TR+9,0,7);g.fill();return}
-    if(t.k==="victim"){
-      g.fillStyle=known?TYPE[t.type][1]:"#D9C9A8";g.beginPath();g.arc(x,y,TR,0,7);g.fill();
-      g.strokeStyle=t.found?"#1F7A4D":"rgba(0,0,0,.45)";g.lineWidth=t.found?3:1.5;g.stroke();
-      g.fillStyle="#22302B";g.font="800 12px system-ui,sans-serif";g.fillText(t.found?"✓":known?t.n:"?",x,y+4);
+    if(th.k==="victim"){
+      g.fillStyle=known?TYPE[th.type][1]:"#D9C9A8";g.beginPath();g.arc(x,y,TR,0,7);g.fill();
+      g.strokeStyle=th.found?"#1F7A4D":"rgba(0,0,0,.45)";g.lineWidth=th.found?3:1.5;g.stroke();
+      g.fillStyle="#22302B";g.font="800 12px system-ui,sans-serif";g.fillText(th.found?"✓":known?th.n:"?",x,y+4);
     }else{
-      g.fillStyle=t.k==="key"?"#F3C623":"#6FA8DC";g.beginPath();g.roundRect(x-11,y-11,22,22,5);g.fill();
-      g.strokeStyle="rgba(0,0,0,.45)";g.lineWidth=1.5;g.stroke();
-      g.fillStyle="#22302B";g.font="800 12px system-ui,sans-serif";g.fillText(t.k==="key"?"K":"i",x,y+4);
+      g.fillStyle=th.k==="key"?"#F3C623":"#6FA8DC";g.beginPath();g.roundRect(x-11,y-11,22,22,5);g.fill();
+      g.strokeStyle=th.found?"#1F7A4D":"rgba(0,0,0,.45)";g.lineWidth=th.found?3:1.5;g.stroke();
+      g.fillStyle="#22302B";g.font="800 12px system-ui,sans-serif";g.fillText(th.k==="key"?"K":th.found?"✓":"i",x,y+4);
     }
   }
-  const shown=t=>!(t.k==="key"&&t.found);
+  const label=th=>th.k==="victim"?(th.known?TYPE[th.type][0]:"Victim"):th.n;
+  function chip(text,x,y,ir){g.font="800 11px system-ui,sans-serif";const tw=g.measureText(text).width+10;
+    g.fillStyle=ir?"rgba(60,24,8,.9)":"rgba(17,54,47,.9)";g.beginPath();g.roundRect(x-tw/2,y,tw,17,5);g.fill();g.fillStyle=ir?"#FFD27A":"#C9F3EA";g.fillText(text,x,y+12.5)}
+  const shown=th=>!(th.k==="key"&&th.found);
   function draw(){
-    const now=performance.now()/1000,d=S.droid,p=S.poly,r=sight();
+    const now=performance.now()/1000,d=S.droid,p=S.poly,r=sight(),v=view();
     g.textAlign="center";g.fillStyle="#262C2A";g.fillRect(0,0,W,H);
-    if(showAll){g.drawImage(stat,0,0);for(const t of S.things)if(shown(t))thing(t,true,false)}
+    g.save();g.translate(-v.x,-v.y);
+    if(showAll){g.drawImage(stat,0,0);for(const th of S.things)if(shown(th))thing(th,th.x,th.y,true,false)}
     else{
-      // places already seen, dimmed, with what was tagged there
-      tx.globalCompositeOperation="source-over";tx.clearRect(0,0,W,H);tx.drawImage(stat,0,0);
+      // places already seen, dimmed, with what was tagged there, where it was last seen
+      tx.globalCompositeOperation="source-over";tx.clearRect(0,0,WW,WH);tx.drawImage(stat,0,0);
       tx.globalCompositeOperation="destination-in";tx.drawImage(mask,0,0);tx.globalCompositeOperation="source-over";
       g.globalAlpha=.42;g.drawImage(tmp,0,0);
-      g.globalAlpha=.6;for(const t of S.things)if(t.seen&&shown(t))thing(t,false,false);
+      g.globalAlpha=.7;for(const th of S.things)if(th.seen&&shown(th)){thing(th,th.lx,th.ly,th.known,false);
+        if(th.path&&!th.found){g.globalAlpha=1;chip("Last seen here",th.lx,th.ly+TR+6,false);g.globalAlpha=.7}}
       g.globalAlpha=1;
       // what is in view now, under the smoke
       if(p.length){
         g.save();g.beginPath();g.moveTo(p[0],p[1]);for(let i=2;i<p.length;i+=2)g.lineTo(p[i],p[i+1]);g.closePath();g.clip();
         g.drawImage(stat,0,0);
-        for(const t of S.things)if(shown(t))thing(t,false,false);
+        for(const th of S.things)if(shown(th))thing(th,th.x,th.y,th.known,false);
         const sm=g.createRadialGradient(d.x,d.y,0,d.x,d.y,r);
         sm.addColorStop(0,"rgba(175,178,172,.14)");sm.addColorStop(.4,"rgba(170,173,168,.2)");sm.addColorStop(1,"rgba(120,124,120,.96)");
         g.fillStyle=sm;g.fillRect(d.x-r,d.y-r,r*2,r*2);
         g.restore();
       }
     }
-    if(S.hl){ // the highlight: its reach, then everything inside it
+    if(S.replay>0)for(const th of S.things){ // Replay: the ghost trail, brighter towards where the victim is now
+      if(!th.path||th.found)continue;const h=th.hist,n=h.length;
+      for(let i=0;i<n;i++){const k=(i+1)/n;g.fillStyle="rgba(120,220,255,"+(.15+.8*k)*Math.min(1,S.replay)+")";g.beginPath();g.arc(h[i][0],h[i][1],2+3*k,0,7);g.fill()}
+      if(n){const e=h[n-1];g.strokeStyle="rgba(120,220,255,"+Math.min(1,S.replay)+")";g.lineWidth=2.5;g.beginPath();g.arc(e[0],e[1],TR+5+Math.sin(now*6)*2,0,7);g.stroke();chip("Now",e[0],e[1]+TR+10,false)}
+    }
+    if(S.pulse){ // the pulse flashing down its lane
+      const a=S.pulse.a,k=S.pulse.t/.7;g.save();g.translate(d.x,d.y);g.rotate(a);g.fillStyle="rgba(255,150,60,"+(.3*k)+")";g.fillRect(0,-PULSE.w/2,tune.pulse,PULSE.w);
+      g.fillStyle="rgba(255,220,150,"+(.6*k)+")";g.fillRect(tune.pulse*(1-k)-10,-PULSE.w/2,20,PULSE.w);g.restore()}
+    for(const th of S.things)if(th.ir>0&&!th.found&&shown(th)){ // found by the pulse: a heat shape, or its type if it is in plain sight
+      const far=!los(th)||dist(th,d)>r*.8;thing(th,th.x,th.y,true,far);
+      g.strokeStyle="#FFB02E";g.lineWidth=2.5;g.beginPath();g.arc(th.x,th.y,TR+7+Math.sin(now*5)*1.5,0,7);g.stroke();chip(label(th),th.x,th.y+TR+13,true)}
+    if(S.hl){ // the highlight: its reach, then everything inside it that is in the line of sight
       g.strokeStyle="rgba(63,167,150,.9)";g.lineWidth=2;g.setLineDash([10,7]);g.lineDashOffset=-now*18;g.beginPath();g.arc(d.x,d.y,tune.hl,0,7);g.stroke();g.setLineDash([]);
       const sw=(now*.7)%1;g.strokeStyle="rgba(63,167,150,"+(.55*(1-sw))+")";g.lineWidth=3;g.beginPath();g.arc(d.x,d.y,tune.hl*sw,0,7);g.stroke();
-      for(const t of S.things){
-        if(!shown(t)||dist(t,d)>tune.hl)continue;
-        const ir=!los(t);thing(t,true,ir);
-        g.strokeStyle=ir?"#FFB02E":CAM;g.lineWidth=2.5;g.beginPath();g.arc(t.x,t.y,TR+7+Math.sin(now*5)*1.5,0,7);g.stroke();
-        const label=t.k==="victim"?TYPE[t.type][0]:t.n;
-        g.font="800 11px system-ui,sans-serif";const tw=g.measureText(label).width+10,lx=Math.max(tw/2+16,Math.min(W-tw/2-16,t.x)),ly=t.y+TR+13;
-        g.fillStyle=ir?"rgba(60,24,8,.9)":"rgba(17,54,47,.9)";g.beginPath();g.roundRect(lx-tw/2,ly,tw,17,5);g.fill();
-        g.fillStyle=ir?"#FFD27A":"#C9F3EA";g.fillText(label,lx,ly+12.5);
+      for(const th of S.things){
+        if(!shown(th)||dist(th,d)>tune.hl||!los(th))continue;
+        thing(th,th.x,th.y,true,false);
+        g.strokeStyle=CAM;g.lineWidth=2.5;g.beginPath();g.arc(th.x,th.y,TR+7+Math.sin(now*5)*1.5,0,7);g.stroke();
+        chip(th.k==="victim"?TYPE[th.type][0]:th.n,th.x,th.y+TR+13,false);
       }
     }
+    if(S.aim!==null){ // aiming the pulse: its lane
+      g.save();g.translate(d.x,d.y);g.rotate(S.aim);g.fillStyle="rgba(255,150,60,.13)";g.fillRect(0,-PULSE.w/2,tune.pulse,PULSE.w);
+      g.strokeStyle="rgba(255,176,46,.9)";g.lineWidth=2;g.setLineDash([8,6]);g.strokeRect(0,-PULSE.w/2,tune.pulse,PULSE.w);g.setLineDash([]);g.restore()}
     g.fillStyle=mode==="cam"?CAM:"#5B7C99";g.beginPath();g.arc(d.x,d.y,R,0,7);g.fill();
     g.strokeStyle="#F4F1E6";g.lineWidth=2.5;g.beginPath();g.arc(d.x,d.y,R,0,7);g.stroke();
     g.fillStyle="#fff";g.font="800 13px system-ui,sans-serif";g.fillText(mode==="cam"?"C":"D",d.x,d.y+5);
+    if(S.ping>0){ // Tracker: an arrow for each tagged thing, towards where it was last seen
+      const al=Math.min(1,S.ping);g.globalAlpha=al;
+      for(const th of tagged()){const m=Math.hypot(th.lx-d.x,th.ly-d.y);if(m<70)continue;
+        const a=Math.atan2(th.ly-d.y,th.lx-d.x),ax=d.x+Math.cos(a)*52,ay=d.y+Math.sin(a)*52;
+        g.save();g.translate(ax,ay);g.rotate(a);g.fillStyle="#FFE08A";g.strokeStyle="#22302B";g.lineWidth=2;g.beginPath();g.moveTo(16,0);g.lineTo(-8,-10);g.lineTo(-3,0);g.lineTo(-8,10);g.closePath();g.fill();g.stroke();g.restore();
+        chip(label(th)+" · "+Math.round(m/20)+" m",d.x+Math.cos(a)*104,d.y+Math.sin(a)*104-8,false)}
+      g.globalAlpha=1}
+    g.restore();
     const b=el("kpBar");b.style.width=S.bar.toFixed(1)+"%";b.classList.toggle("low",S.bar<20);
     el("kpTime").textContent=S.t.toFixed(1)+"s";
-    el("kpFound").textContent=S.things.filter(t=>t.k!=="use"&&t.found).length+"/4";
-    hb.classList.toggle("on",S.hl);hb.textContent=S.hl?"Highlight: on":"Highlight: off";hb.hidden=mode!=="cam";
+    const need=goals();el("kpFound").textContent=need.filter(th=>th.found).length+"/"+need.length;
+    const btn=(bt,text,on,lock)=>{const sp=bt.lastElementChild;if(sp.textContent!==text)sp.textContent=text;bt.classList.toggle("on",!!on&&!lock);bt.classList.toggle("lock",!!lock);bt.dataset.why=lock||""},cam=mode==="cam";
+    btn(hb,S.hl?"Highlight: on":"Highlight: off",S.hl,cam?"":"Another droid has no highlight.");
+    btn(gb,"Tracker",S.ping>0,!cam?"Only Cam has the Tracker.":!tree.on.track?"Needs upgrade 3, Tracker.":"");
+    btn(pb,"Hold: aim pulse",S.aim!==null,!cam?"Only Cam has the Infrared pulse.":!tree.on.infra?"Needs upgrade 4, Infrared pulse.":"");
+    btn(rb,"Replay",S.replay>0,!cam?"Only Cam has Replay.":!tree.on.replay?"Needs upgrade 5, Replay.":"");
   }
 
   /* the loop runs only while the floor is on screen */
@@ -4604,16 +4741,26 @@ function protoLine(t,onChange){
   new IntersectionObserver(es=>{visible=es[0].isIntersecting;if(visible&&!raf){last=performance.now();raf=requestAnimationFrame(frame)}}).observe(cv);
 
   /* controls around the floor */
-  function reset(){S=fresh();look();say(mode==="cam"?"Cam: it sees further into the smoke. Tap Space to highlight what is around it, walls or not.":"Another droid: no highlight and a shorter sight in the smoke. Search the floor room by room.");draw()}
+  function reset(){S=fresh();look();say(ROOMS[room].say+" "+(mode==="cam"?"Cam: press F to highlight what is around it.":"Another droid: no highlight and a shorter sight in the smoke. Search the floor room by room."));draw()}
+  /* the tree is a slider (proto_tree.line), so the upgrades that are on are always the first ones in order */
+  function onSkill(k,on){
+    if(!S)return;S.aim=null;
+    const need={clear:"Smoke-filled floor",tag:"Smoke-filled floor",track:"Back to the valve",infra:"Which room?",replay:"Wanderer"}[k],lvl=ORDER.filter(s=>tree.on[s]).length;
+    say(NAME[k]+(on[k]?" is on, with every upgrade before it.":" is off, with every upgrade after it.")+" The highlight is at level "+lvl+" of "+ORDER.length+"."+(on[k]?" Choose the “"+need+"” situation to see what it is for.":"")+(mode==="cam"?"":" Upgrades only apply to Cam."));look();draw();
+  }
   el("kpReset").onclick=()=>{reset();cv.focus()};
   el("kpShow").onchange=e=>{showAll=e.target.checked;draw()};
-  root.querySelectorAll(".cp-seg button").forEach(b=>b.onclick=()=>{mode=b.dataset.mode;root.querySelectorAll(".cp-seg button").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));reset()});
+  const pick=(attr,set)=>root.querySelectorAll(".cp-seg button["+attr+"]").forEach(b=>b.onclick=()=>{set(b.getAttribute(attr));
+    root.querySelectorAll(".cp-seg button["+attr+"]").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));reset()});
+  pick("data-mode",v=>{mode=v});pick("data-room",v=>{room=v});
   [["kpS1","kpO1",v=>{tune.sight=v;return v+" px"}],["kpS2","kpO2",v=>{tune.clear=v/10;return (v/10).toFixed(1)+" times as far"}],
    ["kpS3","kpO3",v=>{tune.hl=v;return v+" px"}],["kpS4","kpO4",v=>{tune.drain=v;return v+"% a second"}],
-   ["kpS5","kpO5",v=>{tune.recharge=v;return v+"% a second"}]].forEach(([s,o,f])=>{
+   ["kpS5","kpO5",v=>{tune.recharge=v;return v+"% a second"}],["kpS6","kpO6",v=>{tune.lens=v/10;return (v/10).toFixed(1)+" times as far again"}],
+   ["kpS7","kpO7",v=>{tune.pulse=v;return v+" px"}]].forEach(([s,o,f])=>{
     const sl=el(s),out=el(o),set=()=>{out.textContent=f(+sl.value)};sl.oninput=set;set()});
   S=fresh();look();draw();
-  window.camProto={state:()=>S,step,reset,tune,los,sight,toggle}; // for tests
+  const click=(attr,v)=>{const b=root.querySelector('.cp-seg button['+attr+'="'+v+'"]');if(b)b.click()};
+  window.camProto={state:()=>S,step,reset,tune,los,sight,toggle,ping,fire,replay,keys,tree,aim:on=>{pulseHeld=!!on},setMode:m=>click("data-mode",m),setRoom:r=>click("data-room",r)}; // for tests
 })();
 
 /* ===== Bee's swarm, played as Herd: playable lo-fi =====
