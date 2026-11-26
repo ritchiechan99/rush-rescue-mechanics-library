@@ -5811,7 +5811,11 @@ window.protoHud=function(rootId,cfg){
   cfg.slots.forEach((id,i)=>{
     if(i>0||!id){const e=document.createElement("div");e.className="hud-empty hud-e"+i;e.textContent="ABCD"[i];e.setAttribute("aria-hidden","true");hud.appendChild(e)}
     const b=el(id);if(!b)return;olds.add(b.parentNode);b.classList.add("hud-btn","hud-"+"abcd"[i]);hud.appendChild(b)});
-  [["ctx","hud-ctx"],["carry","hud-carry"],["chip","hud-chip"]].forEach(([k,c])=>{const b=el(cfg[k]);if(!b)return;olds.add(b.parentNode);b.classList.add("hud-btn",c);hud.appendChild(b)});
+  // Interact and Carry are in the same spots for every droid. A room with no use for one still shows it, dimmed
+  const stand=(label,key,why)=>{const b=document.createElement("button");b.type="button";b.className="cp-grip lock";b.innerHTML="<kbd>"+key+"</kbd><span>"+label+"</span>";
+    b.addEventListener("pointerdown",e=>{e.preventDefault();const m=root.querySelector(".cp-msg");if(m){m.textContent=why;m.className="cp-msg bad"}});return b};
+  [["ctx","hud-ctx","Interact","E","Nothing to interact with in this room."],["carry","hud-carry","Carry","C","Nobody to carry in this room."],["chip","hud-chip"]].forEach(([k,c,label,key,why])=>{
+    let b=el(cfg[k]);if(!b&&label)b=stand(label,key,why);if(!b)return;if(b.parentNode)olds.add(b.parentNode);b.classList.add("hud-btn",c);hud.appendChild(b)});
   olds.forEach(o=>{if(o&&o!==hud)o.classList.add("hud-off")});   // the bar the buttons came from
   stage.appendChild(hud);
   // the ability bar, as a ring around slot A
