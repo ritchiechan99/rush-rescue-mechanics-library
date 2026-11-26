@@ -2170,7 +2170,7 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
           <div class="dstory" style="--dc:#E2513C"><span class="dlab">Story</span><p>The charismatic leader of the Patchbots, Red motivates their team through uplifting music and inspiring words.</p><p>Red’s design was based on an old medic droid blueprint, but they were marked as a failed prototype due to their unpredictable empathy simulator. They were quickly reassigned to storeroom duty in a first responder HQ, and is well-liked among the staff there. However, Red always believed they were destined for greater things.</p><p>Naturally anxious at heart, Red uses music to soothe their wired nerves. They hate being alone, so they adopted a little sapling to nurture and befriend. They often speak or sing to the sapling to help themselves calm down.</p><p>Now, Red is on a journey to grow their confidence, spread their song, and blossom into the hero they know they were meant to be.</p><p class="dnote">Story from the Characters &amp; Lore section of the InnovSpur FigJam board, read on 26 Nov 2026. Picture from the game’s character sprites in the Unity project.</p></div>
           <h3 class="dsub">Details</h3>
           <div class="tw"><table class="camp def"><thead><tr><th scope="col">Field</th><th scope="col">Definition</th></tr></thead><tbody><tr><th scope="row">Without Red</th><td>Any droid calms one victim at a time through a minigame. <span class="tbd">The form of the minigame is still to define.</span></td></tr><tr><th scope="row">What it acts on</th><td>The hidden agitation meter of each <a href="#victim-agitated">agitated victim</a>. A calm victim becomes agitated again if an event happens around them.</td></tr><tr><th scope="row">Status</th><td><span class="tbd">Decided on 26 Nov 2026, not yet in the GDD, which still has this ability as to be defined.</span></td></tr><tr><th scope="row">Still to define</th><td>The radius of the aura, how long a victim takes to settle and how fast the bar drains. Which events make a calm victim agitated again.</td></tr><tr><th scope="row">Skill tree</th><td>To be added later, on the <button type="button" class="tablink" data-lvtab="skill">Skill tree tab</button>.</td></tr><tr><th scope="row">Shared rules</th><td><a href="#droid-party">Party and switching</a>, <a href="#droid-actions">What every droid can do</a>, <a href="#droid-skilltree">Skill tree rules</a></td></tr><tr><th scope="row">Sources</th><td><span class="scs"><span class="sc" title="Game design document">GDD 3.4.1, 3.3</span></span></td></tr></tbody></table></div></div><div class="lvpane" data-t="skill"><p class="lvempty">Not designed yet. Red’s skill tree will be added here later.</p>
-          <h3 class="dsub">Skill tree candidates</h3><p>A linear chain. Each upgrade enhances the Calming aura and includes the ones before it.</p><div class="tw"><table><thead><tr><th scope="col">Upgrade</th><th scope="col">What it would do</th><th scope="col">Situation it answers</th><th scope="col">Status</th></tr></thead><tbody><tr><th scope="row">1. Wider aura</th><td>The aura reaches further, so it settles more victims at once.</td><td>Agitated victims too far apart for the basic aura to reach from one spot.</td><td>Suggested on 26 Nov, not confirmed</td></tr><tr><th scope="row">2. Focus</th><td>Hold to narrow the aura onto one victim. They settle about three times as fast, and nobody else is calmed meanwhile.</td><td>A critical victim who has to be calm and diagnosed before a countdown ends.</td><td>Suggested on 26 Nov, not confirmed</td></tr><tr><th scope="row">3. Steadying aura</th><td>Calm victims inside the aura are not made agitated again by an event.</td><td>Aftershocks: events that come every few seconds.</td><td>Suggested on 26 Nov, not confirmed</td></tr><tr><th scope="row">4. Tranquilizer</th><td>Red fires a tranquilizer dart at a super agitated victim in range and in sight. They slow down, stop and are calm, and stay calm through events. It is a shot, not part of the aura, and each dart uses some of the bar.</td><td>Rampage: a super agitated victim running about, crashing into things and injuring themselves.</td><td>Stated on 26 Nov as a tranquilizer, not confirmed</td></tr><tr><th scope="row">5. Reviving pulse</th><td>A charged burst of the aura on a victim who is unconscious and not breathing. The CPR that follows is much shorter. It empties the bar and does nothing to a conscious victim.</td><td>A cardiac arrest with a countdown.</td><td>Suggested on 26 Nov, not confirmed</td></tr></tbody></table></div><p class="tbd">Super agitated victims were stated on 26 Nov: they run about hitting things and injuring themselves, and a tranquilizer is what works on them, not the aura. What makes a victim super agitated, how much a hit hurts and how they are stopped without the skill are still to define. The situations are suggestions that go with the upgrades, and none is confirmed. Focus and Reviving pulse each add a held input, and the Tranquilizer is a separate shot, which assumes an upgrade may do more than change the aura.</p>
+          <h3 class="dsub">Skill tree candidates</h3><p>A linear chain. Each upgrade enhances the Calming aura and includes the ones before it.</p><div class="tw"><table><thead><tr><th scope="col">Upgrade</th><th scope="col">What it would do</th><th scope="col">Situation it answers</th><th scope="col">Status</th></tr></thead><tbody><tr><th scope="row">1. Wider aura</th><td>The aura reaches further, so it settles more victims at once.</td><td>Agitated victims too far apart for the basic aura to reach from one spot.</td><td>Suggested on 26 Nov, not confirmed</td></tr><tr><th scope="row">2. Focus</th><td>Hold to narrow the aura onto one victim. They settle about three times as fast, and nobody else is calmed meanwhile.</td><td>A critical victim who has to be calm and diagnosed before a countdown ends.</td><td>Suggested on 26 Nov, not confirmed</td></tr><tr><th scope="row">3. Steadying aura</th><td>Calm victims inside the aura are not made agitated again by an event.</td><td>Aftershocks: events that come every few seconds.</td><td>Suggested on 26 Nov, not confirmed</td></tr><tr><th scope="row">4. Tranquilizer</th><td>Red aims and fires a tranquilizer dart: hold to aim, release to fire. A super agitated victim who is hit slows down, stops and is calm, and stays calm through events. Aiming has an assist: it starts on the nearest one in sight and locks on when the aim is close to one. It is a shot, not part of the aura, and each dart uses some of the bar.</td><td>Rampage: a super agitated victim running about, crashing into things and injuring themselves.</td><td>Stated on 26 Nov as a tranquilizer, not confirmed</td></tr><tr><th scope="row">5. Reviving pulse</th><td>A charged burst of the aura on a victim who is unconscious and not breathing. The CPR that follows is much shorter. It empties the bar and does nothing to a conscious victim.</td><td>A cardiac arrest with a countdown.</td><td>Suggested on 26 Nov, not confirmed</td></tr></tbody></table></div><p class="tbd">Super agitated victims were stated on 26 Nov: they run about hitting things and injuring themselves, and a tranquilizer is what works on them, not the aura. What makes a victim super agitated, how much a hit hurts and how they are stopped without the skill are still to define. The situations are suggestions that go with the upgrades, and none is confirmed. Focus and Reviving pulse each add a held input, and the Tranquilizer is a separate shot, which assumes an upgrade may do more than change the aura.</p>
           <p>The candidates can be switched on and tried in the room on the <button type="button" class="tablink" data-lvtab="lofi">Playable lo-fi tab</button>, from the skill tree panel beside it.</p>
           <div class="tw"><table class="camp def"><thead><tr><th scope="col">Field</th><th scope="col">Definition</th></tr></thead><tbody><tr><th scope="row">Skills</th><td>Candidates are listed above. None is confirmed as a skill yet.</td></tr><tr><th scope="row">Shape</th><td>Decided on 26 Nov, for now: the tree is linear for the active skill. Each upgrade enhances the droid’s base ability, one after another.</td></tr><tr><th scope="row">Direction</th><td>Decided on 25 Nov: hazards evolve in the later levels, and the skill tree is built around answering their new forms.</td></tr><tr><th scope="row">Bought with</th><td>Bobbles, which are used for the skill tree only. Whether they replace skill points is still open.</td></tr><tr><th scope="row">How it works</th><td>Skill points permanently upgrade the droid and can unlock abilities. See <a href="#droid-skilltree">Skill tree rules</a>.</td></tr></tbody></table></div></div><div class="lvpane" data-t="lofi"><div class="cp-wrap">
 <div class="cproto rproto" id="redProto">
@@ -2203,7 +2203,7 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
     <canvas id="rpCanvas" width="760" height="460" tabindex="0" role="img" aria-label="Test room. Red starts on the left. Victims wait around the room, some of them agitated."></canvas>
     <div class="rp-btns">
       <button type="button" class="cp-grip rp-skill" id="rpPulse" hidden>Hold: pulse</button>
-      <button type="button" class="cp-grip rp-skill" id="rpTranq" hidden>Tranquilizer</button>
+      <button type="button" class="cp-grip rp-skill" id="rpTranq" hidden>Hold: aim dart</button>
       <button type="button" class="cp-grip rp-skill" id="rpFocus" hidden>Hold: focus</button>
       <button type="button" class="cp-grip" id="rpAct">Hold to interact</button>
       <button type="button" class="cp-grip rp-aura" id="rpAura">Aura</button>
@@ -2246,7 +2246,7 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
     <p class="cp-note">On a phone: drag on the room to move, tap “Aura”, and hold the “Hold to interact” button. An upgrade that adds an action also adds its own button.</p>
   </div>
 </div>
-<aside class="cp-tree cp-line" id="redProtoTree" aria-label="Skill tree" style="--n:5"><div class="sl-top"><h4>Skill tree</h4><span class="sl-tag">Candidates, not confirmed</span></div><div class="sl"><div class="sl-head"><b>Calming aura</b><span class="sl-lvl"></span></div><p class="sl-lab"><b>Set the level</b> Drag the handle, or click a stop. This changes the room.</p><div class="sl-groove"><div class="sl-track"><i class="sl-rail"></i><i class="sl-fill"></i><div class="sl-col"><span class="sl-stop" aria-hidden="true">0</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">1</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">2</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">3</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">4</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">5</span></div><input type="range" class="sl-range" min="0" max="5" step="1" value="0" aria-label="Calming aura: upgrade level"></div></div><div class="sl-names"><button type="button" class="sl-name" data-lvl="0" data-name="Calming aura" data-what="Tap to switch the aura on or off. Agitated victims inside its radius settle over a few seconds and can then be diagnosed. The bar drains while it is on.">Basic</button><button type="button" class="sl-name" data-skill="wide" data-lvl="1" aria-pressed="false" data-name="Wider aura" data-status="Suggested on 26 Nov, not confirmed" data-what="The aura reaches further, so it settles more victims at once." data-how="Choose the “Spread out” situation. Five agitated victims stand too far apart for the basic aura. With this on, one spot covers all of them."><span class="sl-full">Wider aura</span><span class="sl-short" aria-hidden="true">Wider</span></button><button type="button" class="sl-name" data-skill="focus" data-lvl="2" aria-pressed="false" data-name="Focus" data-status="Suggested on 26 Nov, not confirmed" data-what="Narrow the aura onto one victim. They settle about three times as fast, and nobody else is calmed meanwhile." data-how="Choose the “Critical victim” situation. With the aura on, hold F or the “Hold: focus” button near an agitated victim. The victim with the countdown has to be calm and diagnosed before it runs out, and events come quickly."><span class="sl-full">Focus</span><span class="sl-short" aria-hidden="true">Focus</span></button><button type="button" class="sl-name" data-skill="steady" data-lvl="3" aria-pressed="false" data-name="Steadying aura" data-status="Suggested on 26 Nov, not confirmed" data-what="Calm victims inside the aura are not made agitated again by an event." data-how="Choose the “Aftershocks” situation. Events come every few seconds. With this on, keep the aura over the victims you have calmed and they stay calm while you diagnose them."><span class="sl-full">Steadying aura</span><span class="sl-short" aria-hidden="true">Steadying</span></button><button type="button" class="sl-name" data-skill="tranq" data-lvl="4" aria-pressed="false" data-name="Tranquilizer" data-status="Suggested on 26 Nov, not confirmed" data-what="Red fires a tranquilizer dart at a super agitated victim in range and in sight. They slow down, stop and are calm, and stay calm through events. It is a shot, not part of the aura, and each dart uses some of the bar." data-how="Choose the “Rampage” situation. Get the running victim in range, with no furniture in between, and press Q or the “Tranquilizer” button. Without it, the runner has to be caught and held while they keep crashing into things."><span class="sl-full">Tranquilizer</span><span class="sl-short" aria-hidden="true">Tranquilizer</span></button><button type="button" class="sl-name" data-skill="pulse" data-lvl="5" aria-pressed="false" data-name="Reviving pulse" data-status="Suggested on 26 Nov, not confirmed" data-what="A charged burst of the aura on a victim who is unconscious and not breathing. It restarts them, so the CPR that follows is much shorter. It empties the bar, and does nothing to a conscious victim." data-how="Choose the “Cardiac arrest” situation. Stand next to the unconscious victim, hold R or the “Hold: pulse” button until the ring is full, and release. Then hold E for the short CPR. Without it, CPR is a long hold."><span class="sl-full">Reviving pulse</span><span class="sl-short" aria-hidden="true">Reviving</span></button></div><p class="sl-lab sl-lab2"><b>Read about an upgrade</b> Click its name. This only changes the card below.</p></div><div class="sl-card" aria-live="polite"><div class="sl-cardtop"><div><span class="sl-step"></span><h5></h5></div><div class="sl-nav"><button type="button" class="sl-prev" aria-label="Look at the upgrade before">‹</button><button type="button" class="sl-next" aria-label="Look at the next upgrade">›</button></div></div><p class="sl-what"></p><p class="sl-inc"></p><p class="st-how sl-how"><b>Try it in this room</b><span></span></p><div class="sl-act"><span class="sl-state"></span><button type="button" class="sl-set"></button></div></div><p class="cp-note sl-foot">The tree is linear: each upgrade enhances the base ability and includes the ones before it. The order and the numbers are placeholders.</p></aside></div></div></section>
+<aside class="cp-tree cp-line" id="redProtoTree" aria-label="Skill tree" style="--n:5"><div class="sl-top"><h4>Skill tree</h4><span class="sl-tag">Candidates, not confirmed</span></div><div class="sl"><div class="sl-head"><b>Calming aura</b><span class="sl-lvl"></span></div><p class="sl-lab"><b>Set the level</b> Drag the handle, or click a stop. This changes the room.</p><div class="sl-groove"><div class="sl-track"><i class="sl-rail"></i><i class="sl-fill"></i><div class="sl-col"><span class="sl-stop" aria-hidden="true">0</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">1</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">2</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">3</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">4</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">5</span></div><input type="range" class="sl-range" min="0" max="5" step="1" value="0" aria-label="Calming aura: upgrade level"></div></div><div class="sl-names"><button type="button" class="sl-name" data-lvl="0" data-name="Calming aura" data-what="Tap to switch the aura on or off. Agitated victims inside its radius settle over a few seconds and can then be diagnosed. The bar drains while it is on.">Basic</button><button type="button" class="sl-name" data-skill="wide" data-lvl="1" aria-pressed="false" data-name="Wider aura" data-status="Suggested on 26 Nov, not confirmed" data-what="The aura reaches further, so it settles more victims at once." data-how="Choose the “Spread out” situation. Five agitated victims stand too far apart for the basic aura. With this on, one spot covers all of them."><span class="sl-full">Wider aura</span><span class="sl-short" aria-hidden="true">Wider</span></button><button type="button" class="sl-name" data-skill="focus" data-lvl="2" aria-pressed="false" data-name="Focus" data-status="Suggested on 26 Nov, not confirmed" data-what="Narrow the aura onto one victim. They settle about three times as fast, and nobody else is calmed meanwhile." data-how="Choose the “Critical victim” situation. With the aura on, hold F or the “Hold: focus” button near an agitated victim. The victim with the countdown has to be calm and diagnosed before it runs out, and events come quickly."><span class="sl-full">Focus</span><span class="sl-short" aria-hidden="true">Focus</span></button><button type="button" class="sl-name" data-skill="steady" data-lvl="3" aria-pressed="false" data-name="Steadying aura" data-status="Suggested on 26 Nov, not confirmed" data-what="Calm victims inside the aura are not made agitated again by an event." data-how="Choose the “Aftershocks” situation. Events come every few seconds. With this on, keep the aura over the victims you have calmed and they stay calm while you diagnose them."><span class="sl-full">Steadying aura</span><span class="sl-short" aria-hidden="true">Steadying</span></button><button type="button" class="sl-name" data-skill="tranq" data-lvl="4" aria-pressed="false" data-name="Tranquilizer" data-status="Suggested on 26 Nov, not confirmed" data-what="Red aims and fires a tranquilizer dart. A super agitated victim who is hit slows down, stops and is calm, and stays calm through events. Aiming has an assist: it starts on the nearest one in sight and locks on when the aim is close to one. It is a shot, not part of the aura, and each dart uses some of the bar." data-how="Choose the “Rampage” situation. Hold Q or the “Hold: aim dart” button, steer the aim with the movement keys, the mouse or a drag from the button, and release to fire. A green line means the aim is locked on. Furniture stops a dart. Without it, the runner has to be caught and held while they keep crashing into things."><span class="sl-full">Tranquilizer</span><span class="sl-short" aria-hidden="true">Tranquilizer</span></button><button type="button" class="sl-name" data-skill="pulse" data-lvl="5" aria-pressed="false" data-name="Reviving pulse" data-status="Suggested on 26 Nov, not confirmed" data-what="A charged burst of the aura on a victim who is unconscious and not breathing. It restarts them, so the CPR that follows is much shorter. It empties the bar, and does nothing to a conscious victim." data-how="Choose the “Cardiac arrest” situation. Stand next to the unconscious victim, hold R or the “Hold: pulse” button until the ring is full, and release. Then hold E for the short CPR. Without it, CPR is a long hold."><span class="sl-full">Reviving pulse</span><span class="sl-short" aria-hidden="true">Reviving</span></button></div><p class="sl-lab sl-lab2"><b>Read about an upgrade</b> Click its name. This only changes the card below.</p></div><div class="sl-card" aria-live="polite"><div class="sl-cardtop"><div><span class="sl-step"></span><h5></h5></div><div class="sl-nav"><button type="button" class="sl-prev" aria-label="Look at the upgrade before">‹</button><button type="button" class="sl-next" aria-label="Look at the next upgrade">›</button></div></div><p class="sl-what"></p><p class="sl-inc"></p><p class="st-how sl-how"><b>Try it in this room</b><span></span></p><div class="sl-act"><span class="sl-state"></span><button type="button" class="sl-set"></button></div></div><p class="cp-note sl-foot">The tree is linear: each upgrade enhances the base ability and includes the ones before it. The order and the numbers are placeholders.</p></aside></div></div></section>
           <section class="lvpanel" data-lv="crab"><header class="lvhead"><h2>Crab</h2><p class="lvchips"><span class="lvchip">Droid</span><span class="lvchip">Ability defined</span></p></header><div class="lvtabs" role="tablist" aria-label="Sections of this level"><button type="button" role="tab" data-t="main" aria-selected="true">Profile</button><button type="button" role="tab" data-t="skill" aria-selected="false">Skill tree</button><button type="button" role="tab" data-t="lofi" aria-selected="false">Playable lo-fi</button></div><div class="lvpane on" data-t="main"><div class="dhero" style="--dc:#EE8A2B;--db:url('banner-crab.jpg')"><div class="dhtx"><span class="dteam">Patchbots · Player droid</span><h3 class="dname">Crab</h3><p class="dtag">The dependable life(buoy) of the party</p><p class="dwas"><b>Before the team</b>A former anchor droid, who kept construction workers steady in the storm</p></div><span class="dport has"><img src="droid-crab.png" alt="" loading="lazy"></span></div><div class="dabil" style="--dc:#EE8A2B"><span class="dlab">Ability</span><h4>Grip</h4><p>Grips a light or medium object next to it. A light object is carried and a medium object is dragged behind, in any direction. Gripping again sets it down.</p><dl><div><dt>Ability bar</dt><dd>Drains while Crab is holding an object.</dd></div><div><dt>Activation</dt><dd>Tap to grip, tap again to let go</dd></div></dl></div>
           <div class="dstory" style="--dc:#EE8A2B"><span class="dlab">Story</span><p>The dependable life(buoy) of the party, Crab’s infectious whimsy and unsinkable determination reaches audiences far and wide.</p><p>Crab was once an anchor droid, braving the disastrous climate phenomena next to hardened construction workers, keeping them steady so they don’t get swept off their feet. Then, at the end of every shift, he would practice his stand up comedy routine to them, and be showered with a round of encouraging applause.</p><p>However, a job where everyone had to be kept in place meant that Crab never got the opportunity to explore the world on his own two feet. For once, he’d like to be the one swept up in a wild adventure instead.</p><p>Now, Crab travels with his newfound circus of friends to do what he does best: keep people safe from harm, while lifting their spirits with a good joke or two.</p><p class="dnote">Story from the Characters &amp; Lore section of the InnovSpur FigJam board, read on 26 Nov 2026. Picture from the game’s character sprites in the Unity project.</p></div>
           <h3 class="dsub">Details</h3>
@@ -3875,10 +3875,10 @@ function protoLine(t,onChange){
   const el=id=>root.querySelector("#"+id);
   const SPEED=150,R=17,VR=13,REACH=18,DIAG=1.0;   // walking speed, droid radius, victim radius, gap for interacting, diagnosis stand-in (s)
   /* placeholders for what the upgrades and the new victim states do */
-  const WIDE=1.45,FOCUS=3,SEDATE=1.2,RUN=130,HIT=8,CPR=6,CPR_SHORT=2,CHARGE=1.5,PULSE_BAR=50,TRANQ={range:230,cost:25,speed:560};
+  const WIDE=1.45,FOCUS=3,SEDATE=1.2,RUN=130,HIT=8,CPR=6,CPR_SHORT=2,CHARGE=1.5,PULSE_BAR=50,TRANQ={range:230,cost:25,speed:560,cone:.42,turn:5};
   // aura radius with Wider aura (x), settle speed with Focus (x), seconds a dart takes to stop a runner, runner speed (px/s), condition lost at each hit,
   // CPR stand-in (s), CPR after a pulse (s), time to charge a pulse (s), bar a pulse needs (%)
-  // the tranquilizer: how far a dart reaches (px), the bar it uses (%), how fast it flies (px/s)
+  // the tranquilizer: how far a dart reaches (px), the bar it uses (%), how fast it flies (px/s), how close the aim has to be to a victim to lock on (radians), how fast the keys turn the aim (radians/s)
   const RED="#E2513C";
   const tune={radius:110,settle:3.0,drain:15,recharge:10,mini:4.0,event:12};  // pixels, seconds, % of the bar per second (x2), seconds, seconds (0 = off)
   let mode="red",room="plain",show=false,S;
@@ -3908,7 +3908,7 @@ function protoLine(t,onChange){
     return {
       droid:{x:r.at[0],y:r.at[1]},bar:100,t:0,done:false,started:false,aura:false,ev:0,evT:tune.event,flash:0,tg:null,focus:null,charge:0,zap:0,late:0,
       walls:[{x:0,y:0,w:W,h:14},{x:0,y:H-14,w:W,h:14},{x:0,y:0,w:14,h:H},{x:W-14,y:0,w:14,h:H}],
-      objs:(r.o||[{n:"Bench",x:390,y:215,w:120,h:30},{n:"Cabinet",x:170,y:330,w:50,h:70}]).map(o=>({...o,shake:0})),dart:null,hits:[],
+      objs:(r.o||[{n:"Bench",x:390,y:215,w:120,h:30},{n:"Cabinet",x:170,y:330,w:50,h:70}]).map(o=>({...o,shake:0})),dart:null,hits:[],aim:null,lock:null,aimOff:false,face:{x:1,y:0},
       victims:r.v.map(v)
     };
   }
@@ -3925,13 +3925,14 @@ function protoLine(t,onChange){
   const keys={};let stick=null,btnHeld=false,focusHeld=false,pulseHeld=false;
   cv.addEventListener("keydown",e=>{const k=e.key.toLowerCase();
     if(["arrowup","arrowdown","arrowleft","arrowright"," ","w","a","s","d","e","f","r","q"].includes(k)){
-      if(k==="q"&&!e.repeat)tranq();
       if(k===" "&&!e.repeat)toggleAura();
       keys[k]=true;e.preventDefault()}});
   cv.addEventListener("keyup",e=>{keys[e.key.toLowerCase()]=false});
   cv.addEventListener("blur",()=>{for(const k in keys)keys[k]=false});
   cv.addEventListener("pointerdown",e=>{cv.focus();stick={id:e.pointerId,x:e.clientX,y:e.clientY,dx:0,dy:0};cv.setPointerCapture(e.pointerId)});
-  cv.addEventListener("pointermove",e=>{if(stick&&e.pointerId===stick.id){stick.dx=e.clientX-stick.x;stick.dy=e.clientY-stick.y}});
+  let mouse=null,tranqHeld=false,tbDrag=null;   // where the mouse is over the room, the aim button being held, and a drag from that button
+  cv.addEventListener("pointermove",e=>{if(stick&&e.pointerId===stick.id){stick.dx=e.clientX-stick.x;stick.dy=e.clientY-stick.y}
+    if(e.pointerType==="mouse"){const r=cv.getBoundingClientRect();mouse={x:(e.clientX-r.left)*W/r.width,y:(e.clientY-r.top)*H/r.height,fresh:true}}});
   const endStick=e=>{if(stick&&e.pointerId===stick.id)stick=null};
   cv.addEventListener("pointerup",endStick);cv.addEventListener("pointercancel",endStick);
   const ab=el("rpAct"),ub=el("rpAura"),fb=el("rpFocus"),pb=el("rpPulse"),tb=el("rpTranq");
@@ -3942,7 +3943,10 @@ function protoLine(t,onChange){
   }
   holdBtn(ab,v=>{btnHeld=v});holdBtn(fb,v=>{focusHeld=v});holdBtn(pb,v=>{pulseHeld=v});
   ub.addEventListener("pointerdown",e=>{toggleAura();e.preventDefault()});
-  tb.addEventListener("pointerdown",e=>{tranq();e.preventDefault()});
+  /* the aim button: hold to aim, drag away from where it was pressed to steer, release to fire */
+  tb.addEventListener("pointerdown",e=>{tranqHeld=true;tbDrag={x:e.clientX,y:e.clientY,dx:0,dy:0};tb.setPointerCapture(e.pointerId);e.preventDefault()});
+  tb.addEventListener("pointermove",e=>{if(tbDrag){tbDrag.dx=e.clientX-tbDrag.x;tbDrag.dy=e.clientY-tbDrag.y}});
+  const tbEnd=()=>{tranqHeld=false;tbDrag=null};tb.addEventListener("pointerup",tbEnd);tb.addEventListener("pointercancel",tbEnd);
   function wish(){
     let x=(keys.arrowright||keys.d?1:0)-(keys.arrowleft||keys.a?1:0),y=(keys.arrowdown||keys.s?1:0)-(keys.arrowup||keys.w?1:0);
     if(stick&&Math.hypot(stick.dx,stick.dy)>8){x=stick.dx;y=stick.dy}
@@ -3987,15 +3991,44 @@ function protoLine(t,onChange){
   }
   /* line of sight for the dart: the straight line between two points must not cross any furniture */
   function sight(a,b){for(let i=1;i<24;i++){const p={x:a.x+(b.x-a.x)*i/24,y:a.y+(b.y-a.y)*i/24};if(S.objs.some(o=>p.x>o.x&&p.x<o.x+o.w&&p.y>o.y&&p.y<o.y+o.h))return false}return true}
-  const aim=()=>S.victims.filter(v=>running(v)&&!v.darted&&dist(v,S.droid)<=TRANQ.range&&sight(S.droid,v)).sort((a,b)=>dist(a,S.droid)-dist(b,S.droid))[0];
-  /* the tranquilizer: one dart at the nearest super agitated victim in range and in sight */
-  function tranq(){
-    if(S.done||!sk("tranq"))return;S.started=true;
-    if(S.dart){say("A dart is already on its way.");return}
-    const v=aim();
-    if(!v){const any=S.victims.some(v=>running(v)&&!v.darted);say(any?"No clear shot: the running victim is out of range or behind furniture. No bar was used.":"The tranquilizer is only for a super agitated victim. No bar was used.","bad");return}
-    if(S.bar<TRANQ.cost){say("Not enough bar for a dart. It needs "+TRANQ.cost+"%.","bad");return}
-    S.bar-=TRANQ.cost;S.dart={x:S.droid.x,y:S.droid.y,tg:v};say("Dart fired.");
+  const ang=(a,b)=>Math.atan2(b.y-a.y,b.x-a.x),turnTo=(a,b)=>Math.atan2(Math.sin(b-a),Math.cos(b-a));   // the angle from a to b, and the shortest turn between two angles
+  /* the super agitated victims a dart could reach: in range and in sight, nearest first */
+  const shots=()=>S.victims.filter(v=>running(v)&&!v.darted&&dist(v,S.droid)<=TRANQ.range&&sight(S.droid,v)).sort((a,b)=>dist(a,S.droid)-dist(b,S.droid));
+  /* aim assist: the victim the aim is close enough to, if any */
+  const lockOn=a=>shots().filter(v=>Math.abs(turnTo(a,ang(S.droid,v)))<TRANQ.cone).sort((p,q)=>Math.abs(turnTo(a,ang(S.droid,p)))-Math.abs(turnTo(a,ang(S.droid,q))))[0]||null;
+  /* the tranquilizer, aimed: hold to aim, release to fire. Called every step with whether the aim input is held */
+  function aimStep(held,want,dt){
+    const d=S.droid;
+    if(held&&S.aim===null&&!S.aimOff){ // start aiming: on the nearest victim in sight, or the way Red is facing
+      if(S.dart){S.aimOff=true;say("A dart is already on its way.");return}
+      if(S.bar<TRANQ.cost){S.aimOff=true;say("Not enough bar for a dart. It needs "+TRANQ.cost+"%.","bad");return}
+      const v=shots()[0];S.aim=v?ang(d,v):Math.atan2(S.face.y,S.face.x);S.started=true;if(mouse)mouse.fresh=false;
+    }
+    if(!held){S.aimOff=false;if(S.aim!==null){fire(S.lock?ang(d,S.lock):S.aim,S.lock);S.aim=null;S.lock=null}return}
+    if(S.aim===null)return;
+    // steer: a drag from the button, then the movement keys or stick, then the mouse
+    let to=null;
+    if(tbDrag&&Math.hypot(tbDrag.dx,tbDrag.dy)>14)S.aim=Math.atan2(tbDrag.dy,tbDrag.dx);
+    else if(want.x||want.y){to=Math.atan2(want.y,want.x);const t=turnTo(S.aim,to),mv=TRANQ.turn*dt;S.aim+=Math.abs(t)<mv?t:Math.sign(t)*mv}
+    else if(mouse&&mouse.fresh)S.aim=ang(d,mouse);
+    S.lock=lockOn(S.aim);
+    say(S.lock?"Locked on. Release to fire.":"Aiming. Steer with the movement keys, the mouse or a drag from the button. Release to fire.",S.lock?"good":"");
+  }
+  function fire(a,lock){
+    if(S.done||S.dart||S.bar<TRANQ.cost)return;
+    S.bar-=TRANQ.cost;S.dart={x:S.droid.x,y:S.droid.y,a,left:TRANQ.range+(lock?40:0),tg:lock||null};say("Dart fired.");
+  }
+  /* a dart flies straight, and bends towards the victim it was locked on. Furniture and walls stop it */
+  function dartStep(dt){
+    const q=S.dart;let mv=TRANQ.speed*dt;
+    while(mv>0&&S.dart){const st=Math.min(5,mv);mv-=st;q.left-=st;
+      if(q.tg&&running(q.tg))q.a=ang(q,q.tg);
+      q.x+=Math.cos(q.a)*st;q.y+=Math.sin(q.a)*st;
+      const v=S.victims.find(v=>!v.diag&&dist(v,q)<VR+3),o=S.objs.find(o=>q.x>o.x&&q.x<o.x+o.w&&q.y>o.y&&q.y<o.y+o.h);
+      if(v){S.dart=null;if(running(v)&&!v.darted){v.darted=true;say("The dart hit. The victim is slowing down.","good")}else say("The dart hit victim "+v.n+". A tranquilizer is only for a super agitated victim, so it did nothing.","bad")}
+      else if(o){S.dart=null;o.shake=.2;say("The dart hit the "+o.n.toLowerCase()+".","bad")}
+      else if(S.walls.some(w=>q.x>w.x&&q.x<w.x+w.w&&q.y>w.y&&q.y<w.y+w.h)){S.dart=null;say("The dart hit the wall.","bad")}
+      else if(q.left<=0){S.dart=null;say("The dart ran out of reach and missed.","bad")}}
   }
 
   /* one step of the room */
@@ -4034,12 +4067,11 @@ function protoLine(t,onChange){
     }else S.charge=0;
     for(const o of S.objs)if(o.shake>0)o.shake-=dt;
     S.hits=S.hits.filter(h=>(h.t-=dt)>0);
-    if(S.dart){const q=S.dart,t=q.tg,l=dist(q,t),mv=TRANQ.speed*dt;
-      if(!running(t))S.dart=null;
-      else if(l<=mv+VR){S.dart=null;t.darted=true;say("The dart hit. The victim is slowing down.","good")}
-      else{q.x+=(t.x-q.x)/l*mv;q.y+=(t.y-q.y)/l*mv}}
+    if(want.x||want.y)S.face=want;
+    if(sk("tranq"))aimStep(!!(keys.q||tranqHeld),want,dt);else{S.aim=null;S.lock=null}
+    if(S.dart)dartStep(dt);
     for(const v of S.victims)if(running(v)){if(hold&&dist(v,d)<R+VR+REACH)v.held=true;run(v,dt)}
-    const tg=S.tg=target();let busy=S.charge>0;
+    const tg=S.tg=target();let busy=S.charge>0||S.aim!==null;
     if(hold&&tg&&!busy){
       if(tg.down){ // CPR, shorter after a pulse
         busy=true;tg.cpr+=dt/(tg.pulsed?CPR_SHORT:CPR);say("CPR on victim "+tg.n+(tg.pulsed?", the short one after the pulse.":". Keep holding."));
@@ -4082,9 +4114,14 @@ function protoLine(t,onChange){
     g.fillStyle="#22302B";for(const w of S.walls)g.fillRect(w.x,w.y,w.w,w.h);
     for(const o of S.objs){const sx=o.shake>0?Math.sin(now*70)*3*o.shake/.3:0;g.save();g.translate(sx,0);g.fillStyle=o.shake>0?"#6B4F4F":"#4A4F5C";rr(o.x,o.y,o.w,o.h,6);g.fillStyle="#fff";g.font="700 11px system-ui,sans-serif";
       g.save();g.translate(o.x+o.w/2,o.y+o.h/2);if(o.h>o.w)g.rotate(-Math.PI/2);if(Math.max(o.w,o.h)>=44)g.fillText(o.n,0,4);g.restore();g.restore()}
-    if(sk("tranq")&&S.victims.some(v=>running(v)&&!v.darted)){ // the dart's reach, and a line to the victim it would hit
+    if(sk("tranq")&&S.aim!==null){ // aiming: the dart's reach, and the line it would fly. Green when the assist has locked on
       g.strokeStyle="rgba(91,124,153,.55)";g.lineWidth=1.5;g.setLineDash([3,7]);g.beginPath();g.arc(d.x,d.y,TRANQ.range,0,7);g.stroke();
-      const a=aim();if(a&&!S.dart){g.strokeStyle="#5B7C99";g.lineWidth=2;g.setLineDash([6,5]);g.beginPath();g.moveTo(d.x,d.y);g.lineTo(a.x,a.y);g.stroke()}
+      const a=S.lock?ang(d,S.lock):S.aim;let l=R;
+      if(S.lock)l=dist(d,S.lock)-VR;else for(;l<TRANQ.range;l+=4){const p={x:d.x+Math.cos(a)*l,y:d.y+Math.sin(a)*l};if(solid({x:p.x,y:p.y,w:0,h:0}))break}
+      const ex=d.x+Math.cos(a)*l,ey=d.y+Math.sin(a)*l;
+      g.strokeStyle=S.lock?"#1F9D55":"#2F5D8A";g.lineWidth=S.lock?4:3;g.setLineDash(S.lock?[]:[8,6]);g.beginPath();g.moveTo(d.x+Math.cos(a)*R,d.y+Math.sin(a)*R);g.lineTo(ex,ey);g.stroke();g.setLineDash([]);
+      g.fillStyle=g.strokeStyle;g.beginPath();g.moveTo(ex+Math.cos(a)*10,ey+Math.sin(a)*10);g.lineTo(ex+Math.cos(a+2.5)*9,ey+Math.sin(a+2.5)*9);g.lineTo(ex+Math.cos(a-2.5)*9,ey+Math.sin(a-2.5)*9);g.fill();
+      if(S.lock){const v=S.lock;g.strokeStyle="#1F9D55";g.lineWidth=3;for(let j=0;j<4;j++){const c=j*1.5708+.7854;g.beginPath();g.arc(v.x,v.y,VR+9,c-.45,c+.45);g.stroke()}}
       g.setLineDash([])}
     S.victims.forEach((v,i)=>{
       const run=running(v),k=v.diag||v.down?0:run?1:v.m/100,jx=Math.sin(now*38+i*2)*3*k,jy=Math.cos(now*31+i)*3*k,x=v.x+jx,y=v.y+jy;
@@ -4114,7 +4151,7 @@ function protoLine(t,onChange){
         g.strokeStyle="#22302B";g.lineWidth=1;g.strokeRect(v.x-20,v.y-VR-my,40,6)}
     });
     for(const h of S.hits){const k=1-h.t/.45;g.strokeStyle="rgba(179,52,43,"+(1-k)+")";g.lineWidth=3;for(let j=0;j<8;j++){const a=j*.785;g.beginPath();g.moveTo(h.x+Math.cos(a)*(VR+2+k*8),h.y+Math.sin(a)*(VR+2+k*8));g.lineTo(h.x+Math.cos(a)*(VR+8+k*16),h.y+Math.sin(a)*(VR+8+k*16));g.stroke()}}
-    if(S.dart){const q=S.dart,a=Math.atan2(q.tg.y-q.y,q.tg.x-q.x);g.strokeStyle="#2F5D8A";g.lineWidth=4;g.lineCap="round";g.beginPath();g.moveTo(q.x-Math.cos(a)*9,q.y-Math.sin(a)*9);g.lineTo(q.x+Math.cos(a)*9,q.y+Math.sin(a)*9);g.stroke();g.lineCap="butt"}
+    if(S.dart){const q=S.dart,a=q.a;g.strokeStyle="#2F5D8A";g.lineWidth=4;g.lineCap="round";g.beginPath();g.moveTo(q.x-Math.cos(a)*9,q.y-Math.sin(a)*9);g.lineTo(q.x+Math.cos(a)*9,q.y+Math.sin(a)*9);g.stroke();g.lineCap="butt"}
     g.fillStyle=mode==="red"?RED:"#5B7C99";g.beginPath();g.arc(d.x,d.y,R,0,7);g.fill();
     g.strokeStyle="#22302B";g.lineWidth=2.5;g.beginPath();g.arc(d.x,d.y,R,0,7);g.stroke();
     g.fillStyle="#fff";g.font="800 13px system-ui,sans-serif";g.fillText(mode==="red"?"R":"D",d.x,d.y+5);
@@ -4126,7 +4163,7 @@ function protoLine(t,onChange){
     el("rpTime").textContent=S.t.toFixed(1)+"s";el("rpEv").textContent=S.ev;el("rpLate").textContent=S.late;
     el("rpDiag").textContent=S.victims.filter(v=>v.diag).length+"/"+S.victims.length;
     ub.classList.toggle("on",S.aura);ub.textContent=S.aura?"Aura: on":"Aura: off";ub.hidden=mode!=="red";
-    fb.hidden=!sk("focus");pb.hidden=!sk("pulse");tb.hidden=!sk("tranq");tb.classList.toggle("on",!!S.dart);
+    fb.hidden=!sk("focus");pb.hidden=!sk("pulse");tb.hidden=!sk("tranq");tb.classList.toggle("on",S.aim!==null);
   }
 
   /* the loop runs only while the room is on screen */
@@ -4157,7 +4194,7 @@ function protoLine(t,onChange){
    ["rpS6","rpO6",v=>{tune.event=v;if(S)S.evT=v;return v?"every "+v+"s":"only by the button"}]].forEach(([s,o,f])=>{
     const sl=el(s),out=el(o),set=()=>{out.textContent=f(+sl.value)};sl.oninput=set;set()});
   S=fresh();draw();
-  window.redProto={state:()=>S,step,reset,tune,event,toggleAura,tranq,tree,keys,setRoom:r=>{const b=root.querySelector('.cp-seg button[data-room="'+r+'"]');if(b)b.click()}}; // for tests
+  window.redProto={state:()=>S,step,reset,tune,event,toggleAura,fire,tree,keys,setRoom:r=>{const b=root.querySelector('.cp-seg button[data-room="'+r+'"]');if(b)b.click()}}; // for tests
 })();
 
 /* ===== Cam's Highlight: playable lo-fi, with fog of war =====
