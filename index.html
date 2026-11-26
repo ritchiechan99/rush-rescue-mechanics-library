@@ -626,6 +626,22 @@ body.dragging,body.dragging *{cursor:grabbing!important;user-select:none}
 .oproto .cp-tune input{accent-color:#7B4FCF}
 .oproto .cp-top{gap:10px 16px}
 
+/* Red's Calming aura: playable lo-fi. The rest of its styles are shared with Crab's (.cproto) */
+.rproto .cp-bar b{background:#E2513C}
+.rproto .cp-stage canvas:focus-visible{box-shadow:inset 0 0 0 4px #E2513C}
+.rproto .cp-tune input{accent-color:#E2513C}
+.rproto .cp-top{gap:10px 16px}
+.rproto .cp-reset.rp-event{margin-left:auto;border-color:#E2513C;color:#A8301F;background:#FDEDEA}
+.rproto .cp-reset.rp-event+.cp-reset{margin-left:0}
+.rp-btns{position:absolute;right:12px;bottom:12px;display:flex;gap:8px;line-height:1.2}
+.rp-btns .cp-grip{position:static;background:#22302B}
+.rp-btns .cp-grip.on{background:#0F1815}
+.rp-btns .cp-grip.rp-aura{background:#E2513C}
+.rp-btns .cp-grip.rp-aura.on{background:#A8301F;box-shadow:0 0 0 4px rgba(226,81,60,.35)}
+.rproto .cp-tune label.rp-check{grid-column:1/-1;display:flex;align-items:center;gap:8px;font-weight:600}
+.rproto .cp-tune label.rp-check input{width:auto;flex:none}
+@media(max-width:560px){.rp-btns .cp-grip{font-size:12px;padding:9px 12px}}
+
 /* ===== One look for the whole library, taken from the Medkit screen =====
    Baloo 2 for headings, Nunito for text, soft green page, white rounded cards, peach pill buttons, dark green for the chosen item. */
 :root{
@@ -1989,12 +2005,65 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
           <div class="tw"><table class="wide lvall"><thead><tr><th scope="col">Droid</th><th scope="col">Ability</th><th scope="col">Activation</th><th scope="col">Skill tree</th><th scope="col">In Bypass Firewall</th></tr></thead><tbody><tr><th scope="row"><a href="#droid-red">Red</a></th><td>A calming aura. Agitated victims inside a radius around Red settle over a few seconds, and can then be diagnosed.</td><td>Tap to toggle on or off</td><td>To be added</td><td></td></tr><tr><th scope="row"><a href="#droid-crab">Crab</a></th><td>Grips a light or medium object next to it. A light object is carried and a medium object is dragged behind, in any direction. Releasing sets it down.</td><td>Press and hold, release to let go</td><td>To be added</td><td></td></tr><tr><th scope="row"><a href="#droid-fish">Fish</a></th><td>Two water cannons that put out fires and push back crowds.</td><td>Press and hold</td><td>To be added</td><td>Yes</td></tr><tr><th scope="row"><a href="#droid-cam">Cam</a></th><td>A highlight. Victims, interactables and key items around Cam light up. A highlighted victim shows its type, and anything beyond a wall is shown in infrared.</td><td>Tap to toggle on or off</td><td>To be added</td><td>Yes</td></tr><tr><th scope="row"><a href="#droid-orb">Orb</a></th><td>An aimed charge. Orb winds up, then charges down a straight lane and destroys the first heavy obstacle it hits, leaving nothing behind. Anything else in the way is pushed or knocked aside.</td><td>Press and hold to aim and wind up, release to charge</td><td>To be added</td><td></td></tr><tr><th scope="row"><a href="#droid-bee">Bee</a></th><td>A swarm in a radius around Bee that pushes past and disperses crowds.</td><td>Tap to toggle on or off</td><td>To be added</td><td>Yes</td></tr></tbody></table></div>
           <p>Abilities run on a bar that drains while the ability is in use and recharges when it isn’t, so there are no fixed cooldowns. Drain and recharge rates are still to be balanced. The player brings up to 4 of the 6 droids into a mission and switches between them on the spot: see <a href="#droid-party">Party and switching</a>.</p>
           <div class="callout diff"><h3>Where the sources differ</h3><ul><li><b>Red’s, Cam’s, Crab’s and Orb’s abilities.</b> The GDD lists all four as to be defined. They were decided on 26 Nov 2026.</li><li><b>Cam in Figma.</b> The boards for Bypass Firewall show an earlier version, in which its ability tags the crowd and everything else in range.</li><li><b>Name of Fish’s ability.</b> Figma calls it Splash Cannons. The GDD describes two water cannons without naming the ability.</li></ul></div>
-          <div class="callout todo"><h3>Still to define in the GDD</h3><ul><li>Red’s, Cam’s, Crab’s and Orb’s abilities, as decided on 26 Nov 2026.</li><li>Drain and recharge rates for every ability bar.</li><li>The skill tree of each droid, and how skill points are earned from a stage.</li><li>Droid backstories in the GDD. Section 5.2 has a heading for them and no text yet. The stories shown here come from the FigJam board, where Cam’s, Fish’s and Orb’s are still drafts.</li></ul></div></section><section class="lvpanel" data-lv="red"><header class="lvhead"><h2>Red</h2><p class="lvchips"><span class="lvchip">Droid</span><span class="lvchip">Ability defined</span></p></header><div class="lvtabs" role="tablist" aria-label="Sections of this level"><button type="button" role="tab" data-t="main" aria-selected="true">Profile</button><button type="button" role="tab" data-t="skill" aria-selected="false">Skill tree</button></div><div class="lvpane on" data-t="main"><div class="dhero" style="--dc:#E2513C"><div class="dhtx"><span class="dteam">Patchbots · Player droid</span><h3 class="dname">Red</h3><p class="dtag">The charismatic leader of the Patchbots</p><p class="dwas"><b>Before the team</b>A failed medic droid prototype, reassigned to storeroom duty</p></div><span class="dport has"><img src="droid-red.png" alt="" loading="lazy"></span></div><div class="dabil" style="--dc:#E2513C"><span class="dlab">Ability</span><h4>Calming aura</h4><p>A calming aura. Agitated victims inside a radius around Red settle over a few seconds, and can then be diagnosed.</p><dl><div><dt>Ability bar</dt><dd>Drains while the aura is on.</dd></div><div><dt>Activation</dt><dd>Tap to toggle on or off</dd></div></dl></div>
+          <div class="callout todo"><h3>Still to define in the GDD</h3><ul><li>Red’s, Cam’s, Crab’s and Orb’s abilities, as decided on 26 Nov 2026.</li><li>Drain and recharge rates for every ability bar.</li><li>The skill tree of each droid, and how skill points are earned from a stage.</li><li>Droid backstories in the GDD. Section 5.2 has a heading for them and no text yet. The stories shown here come from the FigJam board, where Cam’s, Fish’s and Orb’s are still drafts.</li></ul></div></section><section class="lvpanel" data-lv="red"><header class="lvhead"><h2>Red</h2><p class="lvchips"><span class="lvchip">Droid</span><span class="lvchip">Ability defined</span></p></header><div class="lvtabs" role="tablist" aria-label="Sections of this level"><button type="button" role="tab" data-t="main" aria-selected="true">Profile</button><button type="button" role="tab" data-t="skill" aria-selected="false">Skill tree</button><button type="button" role="tab" data-t="lofi" aria-selected="false">Playable lo-fi</button></div><div class="lvpane on" data-t="main"><div class="dhero" style="--dc:#E2513C"><div class="dhtx"><span class="dteam">Patchbots · Player droid</span><h3 class="dname">Red</h3><p class="dtag">The charismatic leader of the Patchbots</p><p class="dwas"><b>Before the team</b>A failed medic droid prototype, reassigned to storeroom duty</p></div><span class="dport has"><img src="droid-red.png" alt="" loading="lazy"></span></div><div class="dabil" style="--dc:#E2513C"><span class="dlab">Ability</span><h4>Calming aura</h4><p>A calming aura. Agitated victims inside a radius around Red settle over a few seconds, and can then be diagnosed.</p><dl><div><dt>Ability bar</dt><dd>Drains while the aura is on.</dd></div><div><dt>Activation</dt><dd>Tap to toggle on or off</dd></div></dl></div>
           <div class="dstory" style="--dc:#E2513C"><span class="dlab">Story</span><p>The charismatic leader of the Patchbots, Red motivates their team through uplifting music and inspiring words.</p><p>Red’s design was based on an old medic droid blueprint, but they were marked as a failed prototype due to their unpredictable empathy simulator. They were quickly reassigned to storeroom duty in a first responder HQ, and is well-liked among the staff there. However, Red always believed they were destined for greater things.</p><p>Naturally anxious at heart, Red uses music to soothe their wired nerves. They hate being alone, so they adopted a little sapling to nurture and befriend. They often speak or sing to the sapling to help themselves calm down.</p><p>Now, Red is on a journey to grow their confidence, spread their song, and blossom into the hero they know they were meant to be.</p><p class="dnote">Story from the Characters &amp; Lore section of the InnovSpur FigJam board, read on 26 Nov 2026. Picture from the game’s character sprites in the Unity project.</p></div>
           <h3 class="dsub">Details</h3>
-          <div class="tw"><table class="camp def"><thead><tr><th scope="col">Field</th><th scope="col">Definition</th></tr></thead><tbody><tr><th scope="row">Without Red</th><td>Any droid calms one victim at a time through a minigame. <span class="tbd">The form of the minigame is still to define.</span></td></tr><tr><th scope="row">What it acts on</th><td>The hidden agitation meter of each <a href="#victim-agitated">agitated victim</a>. A calm victim becomes agitated again if an event happens around them.</td></tr><tr><th scope="row">Status</th><td><span class="tbd">Decided on 26 Nov 2026, not yet in the GDD, which still has this ability as to be defined.</span></td></tr><tr><th scope="row">Still to define</th><td>The radius of the aura and how fast the bar drains.</td></tr><tr><th scope="row">Skill tree</th><td>To be added later, on the <button type="button" class="tablink" data-lvtab="skill">Skill tree tab</button>.</td></tr><tr><th scope="row">Shared rules</th><td><a href="#droid-party">Party and switching</a>, <a href="#droid-actions">What every droid can do</a>, <a href="#droid-skilltree">Skill tree rules</a></td></tr><tr><th scope="row">Sources</th><td><span class="scs"><span class="sc" title="Game design document">GDD 3.4.1, 3.3</span></span></td></tr></tbody></table></div></div><div class="lvpane" data-t="skill"><p class="lvempty">Not designed yet. Red’s skill tree will be added here later.</p>
+          <div class="tw"><table class="camp def"><thead><tr><th scope="col">Field</th><th scope="col">Definition</th></tr></thead><tbody><tr><th scope="row">Without Red</th><td>Any droid calms one victim at a time through a minigame. <span class="tbd">The form of the minigame is still to define.</span></td></tr><tr><th scope="row">What it acts on</th><td>The hidden agitation meter of each <a href="#victim-agitated">agitated victim</a>. A calm victim becomes agitated again if an event happens around them.</td></tr><tr><th scope="row">Status</th><td><span class="tbd">Decided on 26 Nov 2026, not yet in the GDD, which still has this ability as to be defined.</span></td></tr><tr><th scope="row">Still to define</th><td>The radius of the aura, how long a victim takes to settle and how fast the bar drains. Which events make a calm victim agitated again.</td></tr><tr><th scope="row">Skill tree</th><td>To be added later, on the <button type="button" class="tablink" data-lvtab="skill">Skill tree tab</button>.</td></tr><tr><th scope="row">Shared rules</th><td><a href="#droid-party">Party and switching</a>, <a href="#droid-actions">What every droid can do</a>, <a href="#droid-skilltree">Skill tree rules</a></td></tr><tr><th scope="row">Sources</th><td><span class="scs"><span class="sc" title="Game design document">GDD 3.4.1, 3.3</span></span></td></tr></tbody></table></div></div><div class="lvpane" data-t="skill"><p class="lvempty">Not designed yet. Red’s skill tree will be added here later.</p>
           
-          <div class="tw"><table class="camp def"><thead><tr><th scope="col">Field</th><th scope="col">Definition</th></tr></thead><tbody><tr><th scope="row">Skills</th><td><span class="tbd">To be added</span></td></tr><tr><th scope="row">Direction</th><td>Decided on 25 Nov: hazards evolve in the later levels, and the skill tree is built around answering their new forms.</td></tr><tr><th scope="row">Bought with</th><td>Bobbles, which are used for the skill tree only. Whether they replace skill points is still open.</td></tr><tr><th scope="row">How it works</th><td>Skill points permanently upgrade the droid and can unlock abilities. See <a href="#droid-skilltree">Skill tree rules</a>.</td></tr></tbody></table></div></div></section>
+          <div class="tw"><table class="camp def"><thead><tr><th scope="col">Field</th><th scope="col">Definition</th></tr></thead><tbody><tr><th scope="row">Skills</th><td><span class="tbd">To be added</span></td></tr><tr><th scope="row">Direction</th><td>Decided on 25 Nov: hazards evolve in the later levels, and the skill tree is built around answering their new forms.</td></tr><tr><th scope="row">Bought with</th><td>Bobbles, which are used for the skill tree only. Whether they replace skill points is still open.</td></tr><tr><th scope="row">How it works</th><td>Skill points permanently upgrade the droid and can unlock abilities. See <a href="#droid-skilltree">Skill tree rules</a>.</td></tr></tbody></table></div></div><div class="lvpane" data-t="lofi">
+<div class="cproto rproto" id="redProto">
+  <p class="lead">A test room for Red’s Calming aura. Four victims wait in it, three of them agitated. Calm the agitated ones, then diagnose all four. Events keep happening, and each one makes calm victims agitated again. This is a flat sketch to try the rules and the numbers, not the game’s look.</p>
+  <div class="cp-top">
+    <div class="cp-seg" role="group" aria-label="Droid">
+      <button type="button" data-mode="red" aria-pressed="true">Red</button>
+      <button type="button" data-mode="other" aria-pressed="false">Another droid</button>
+    </div>
+    <div class="cp-bar" aria-hidden="true"><span>Ability bar</span><i><b id="rpBar"></b></i></div>
+    <div class="cp-time"><span>Time</span><b id="rpTime">0.0s</b></div>
+    <div class="cp-time"><span>Diagnosed</span><b id="rpDiag">0/4</b></div>
+    <div class="cp-time"><span>Events</span><b id="rpEv">0</b></div>
+    <button type="button" class="cp-reset rp-event" id="rpEvent">Trigger an event</button>
+    <button type="button" class="cp-reset" id="rpReset">Reset room</button>
+  </div>
+  <div class="cp-stage">
+    <canvas id="rpCanvas" width="760" height="460" tabindex="0" role="img" aria-label="Test room. Red starts on the left. Two agitated victims stand close together at the top left, a third agitated victim is at the bottom right, and a normal victim is at the top right."></canvas>
+    <div class="rp-btns">
+      <button type="button" class="cp-grip" id="rpAct">Hold to interact</button>
+      <button type="button" class="cp-grip rp-aura" id="rpAura">Aura</button>
+    </div>
+  </div>
+  <p class="cp-msg" id="rpMsg" aria-live="polite">Click the room, then move with the arrow keys or WASD. Tap Space to switch the aura on or off. Hold E next to a calm victim to diagnose.</p>
+  <div class="cp-legend">
+    <span><i style="background:#F08A5D;border-radius:50%"></i>Agitated: shakes, cannot be diagnosed</span>
+    <span><i style="background:#9EDDC4;border-radius:50%"></i>Calm or normal: can be diagnosed</span>
+    <span><i style="background:#3F8F6B;border-radius:50%"></i>Diagnosed</span>
+    <span><i style="background:rgba(226,81,60,.3);border-radius:50%"></i>Red’s aura</span>
+    <span><i style="background:#4A4F5C"></i>Furniture</span>
+  </div>
+  <div class="cp-tune">
+    <h4>Numbers still to define</h4>
+    <label>Aura radius <output id="rpO1"></output><input type="range" id="rpS1" min="60" max="200" step="5" value="110"></label>
+    <label>Time to settle in the aura <output id="rpO2"></output><input type="range" id="rpS2" min="10" max="80" value="30"></label>
+    <label>Bar drain while the aura is on <output id="rpO3"></output><input type="range" id="rpS3" min="2" max="40" value="15"></label>
+    <label>Bar recharge <output id="rpO4"></output><input type="range" id="rpS4" min="2" max="40" value="10"></label>
+    <label>Calm minigame, another droid <output id="rpO5"></output><input type="range" id="rpS5" min="10" max="100" value="40"></label>
+    <label>An event happens <output id="rpO6"></output><input type="range" id="rpS6" min="0" max="30" value="12"></label>
+    <label class="rp-check"><input type="checkbox" id="rpShow"> Show the hidden agitation meters (for testing only: the player never sees them)</label>
+  </div>
+  <div class="cp-rules">
+    <h4>What this room follows</h4>
+    <ul>
+      <li><b>Red:</b> tap to switch the aura on or off. Every agitated victim inside its radius settles over a few seconds, several at once.</li>
+      <li>The ability bar drains while the aura is on. An empty bar switches it off.</li>
+      <li>A victim can only be diagnosed once calm. <span class="tbd">Diagnosis is a short hold here, standing in for the diagnosis minigames.</span></li>
+      <li>Each agitated victim has a hidden meter. The player never sees it, and reads it from how much the victim shakes.</li>
+      <li>When an event happens, every calm victim who is not diagnosed yet becomes agitated again. <span class="tbd">Which events count is still to define, so this room uses a timer and a button. Whether a diagnosed victim can become agitated again is also still to define, so here they stay as they are.</span></li>
+      <li><b>Another droid:</b> has no aura. It calms one victim at a time through a minigame. <span class="tbd">The form of the minigame is still to define, so here it is a longer hold next to the victim.</span></li>
+    </ul>
+    <p class="cp-note">On a phone: drag on the room to move, tap “Aura”, and hold the “Hold to interact” button.</p>
+  </div>
+</div>
+</div></section>
           <section class="lvpanel" data-lv="crab"><header class="lvhead"><h2>Crab</h2><p class="lvchips"><span class="lvchip">Droid</span><span class="lvchip">Ability defined</span></p></header><div class="lvtabs" role="tablist" aria-label="Sections of this level"><button type="button" role="tab" data-t="main" aria-selected="true">Profile</button><button type="button" role="tab" data-t="skill" aria-selected="false">Skill tree</button><button type="button" role="tab" data-t="lofi" aria-selected="false">Playable lo-fi</button></div><div class="lvpane on" data-t="main"><div class="dhero" style="--dc:#EE8A2B"><div class="dhtx"><span class="dteam">Patchbots · Player droid</span><h3 class="dname">Crab</h3><p class="dtag">The dependable life(buoy) of the party</p><p class="dwas"><b>Before the team</b>A former anchor droid, who kept construction workers steady in the storm</p></div><span class="dport has"><img src="droid-crab.png" alt="" loading="lazy"></span></div><div class="dabil" style="--dc:#EE8A2B"><span class="dlab">Ability</span><h4>Grip</h4><p>Grips a light or medium object next to it. A light object is carried and a medium object is dragged behind, in any direction. Releasing sets it down.</p><dl><div><dt>Ability bar</dt><dd>Drains while Crab is holding an object.</dd></div><div><dt>Activation</dt><dd>Press and hold, release to let go</dd></div></dl></div>
           <div class="dstory" style="--dc:#EE8A2B"><span class="dlab">Story</span><p>The dependable life(buoy) of the party, Crab’s infectious whimsy and unsinkable determination reaches audiences far and wide.</p><p>Crab was once an anchor droid, braving the disastrous climate phenomena next to hardened construction workers, keeping them steady so they don’t get swept off their feet. Then, at the end of every shift, he would practice his stand up comedy routine to them, and be showered with a round of encouraging applause.</p><p>However, a job where everyone had to be kept in place meant that Crab never got the opportunity to explore the world on his own two feet. For once, he’d like to be the one swept up in a wild adventure instead.</p><p>Now, Crab travels with his newfound circus of friends to do what he does best: keep people safe from harm, while lifting their spirits with a good joke or two.</p><p class="dnote">Story from the Characters &amp; Lore section of the InnovSpur FigJam board, read on 26 Nov 2026. Picture from the game’s character sprites in the Unity project.</p></div>
           <h3 class="dsub">Details</h3>
@@ -3258,6 +3327,177 @@ document.querySelectorAll(".fgr").forEach(b=>{b.onclick=()=>{
     const sl=el(s),out=el(o),set=()=>{out.textContent=f(+sl.value)};sl.oninput=set;set()});
   S=fresh();draw();
   window.orbProto={state:()=>S,step,reset,tune,lane}; // for tests
+})();
+
+/* ===== Red's Calming aura: playable lo-fi =====
+   A top-down room on a canvas. World units are canvas pixels (760 x 460). */
+(function(){
+  const root=document.getElementById("redProto");if(!root)return;
+  const cv=root.querySelector("#rpCanvas"),g=cv.getContext("2d"),W=cv.width,H=cv.height;
+  const el=id=>root.querySelector("#"+id);
+  const SPEED=150,R=17,VR=13,REACH=18,DIAG=1.0;   // walking speed, droid radius, victim radius, gap for interacting, diagnosis stand-in (s)
+  const RED="#E2513C";
+  const tune={radius:110,settle:3.0,drain:15,recharge:10,mini:4.0,event:12};  // pixels, seconds, % of the bar per second (x2), seconds, seconds (0 = off)
+  let mode="red",show=false,S;
+
+  /* the room: walls, furniture, the victims and the droid.
+     m is a victim's hidden agitation meter (100 = fully agitated, 0 = calm) */
+  function fresh(){
+    const v=(n,x,y,type)=>({n,x,y,type,m:type==="agitated"?100:0,calm:type!=="agitated",diag:false,prog:0,cp:0,bang:0});
+    return {
+      droid:{x:90,y:300},bar:100,t:0,done:false,started:false,aura:false,ev:0,evT:tune.event,flash:0,tg:null,
+      walls:[{x:0,y:0,w:W,h:14},{x:0,y:H-14,w:W,h:14},{x:0,y:0,w:14,h:H},{x:W-14,y:0,w:14,h:H}],
+      objs:[{n:"Bench",x:390,y:215,w:120,h:30},{n:"Cabinet",x:170,y:330,w:50,h:70}],
+      victims:[v("A",250,130,"agitated"),v("B",305,180,"agitated"),v("C",610,345,"agitated"),v("D",590,105,"normal")]
+    };
+  }
+  const hit=(a,b)=>a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;
+  const box=(d,r)=>({x:d.x-r,y:d.y-r,w:r*2,h:r*2});
+  const blocked=r=>S.walls.some(w=>hit(r,w))||S.objs.some(o=>hit(r,o))||S.victims.some(v=>hit(r,box(v,VR)));
+  const dist=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
+  /* the victim the droid would interact with: the nearest one in reach that is not diagnosed yet */
+  function target(){let best=null,bd=R+VR+REACH;for(const v of S.victims){if(v.diag)continue;const d=dist(v,S.droid);if(d<bd){bd=d;best=v}}return best}
+
+  /* input: keys while the room has focus, a drag on the room as a stick, and the two buttons */
+  const keys={};let stick=null,btnHeld=false;
+  cv.addEventListener("keydown",e=>{const k=e.key.toLowerCase();
+    if(["arrowup","arrowdown","arrowleft","arrowright"," ","w","a","s","d","e"].includes(k)){
+      if(k===" "&&!e.repeat)toggleAura();
+      keys[k]=true;e.preventDefault()}});
+  cv.addEventListener("keyup",e=>{keys[e.key.toLowerCase()]=false});
+  cv.addEventListener("blur",()=>{for(const k in keys)keys[k]=false});
+  cv.addEventListener("pointerdown",e=>{cv.focus();stick={id:e.pointerId,x:e.clientX,y:e.clientY,dx:0,dy:0};cv.setPointerCapture(e.pointerId)});
+  cv.addEventListener("pointermove",e=>{if(stick&&e.pointerId===stick.id){stick.dx=e.clientX-stick.x;stick.dy=e.clientY-stick.y}});
+  const endStick=e=>{if(stick&&e.pointerId===stick.id)stick=null};
+  cv.addEventListener("pointerup",endStick);cv.addEventListener("pointercancel",endStick);
+  const ab=el("rpAct"),ub=el("rpAura");
+  ab.addEventListener("pointerdown",e=>{btnHeld=true;ab.classList.add("on");ab.setPointerCapture(e.pointerId);e.preventDefault()});
+  const endBtn=()=>{btnHeld=false;ab.classList.remove("on")};
+  ab.addEventListener("pointerup",endBtn);ab.addEventListener("pointercancel",endBtn);
+  ub.addEventListener("pointerdown",e=>{toggleAura();e.preventDefault()});
+  function wish(){
+    let x=(keys.arrowright||keys.d?1:0)-(keys.arrowleft||keys.a?1:0),y=(keys.arrowdown||keys.s?1:0)-(keys.arrowup||keys.w?1:0);
+    if(stick&&Math.hypot(stick.dx,stick.dy)>8){x=stick.dx;y=stick.dy}
+    const m=Math.hypot(x,y);return m?{x:x/m,y:y/m}:{x:0,y:0};
+  }
+  function say(t,c){const m=el("rpMsg");if(m.textContent!==t)m.textContent=t;m.className="cp-msg"+(c?" "+c:"")}
+
+  /* the aura is a toggle, and only Red has it */
+  function toggleAura(){
+    if(S.done)return;
+    if(mode!=="red"){say("Another droid has no aura. Hold E next to an agitated victim to calm them, one at a time.","bad");return}
+    if(!S.aura&&S.bar<=0){say("The bar is empty. Wait for it to recharge.","bad");return}
+    S.aura=!S.aura;S.started=true;
+    say(S.aura?"Aura on. Agitated victims inside the circle are settling. The bar is draining.":"Aura off. The bar is recharging.");
+  }
+  /* an event: every calm victim who is not diagnosed yet is agitated again */
+  function event(){
+    if(S.done)return;
+    let n=0;S.ev++;S.flash=.5;S.evT=tune.event;S.started=true;
+    for(const v of S.victims){if(v.type!=="agitated"||v.diag)continue;if(v.calm)n++;v.calm=false;v.m=100;v.prog=0;v.bang=.9}
+    say(n?"An event happened. "+n+" calm victim"+(n>1?"s are":" is")+" agitated again.":"An event happened. No calm victim was waiting to be diagnosed.",n?"bad":"");
+  }
+
+  /* one step of the room */
+  function step(dt){
+    if(S.done)return;
+    const want=wish(),hold=!!(keys.e||btnHeld),d=S.droid;
+    if(want.x||want.y||hold)S.started=true;
+    if(S.started){S.t+=dt;if(tune.event>0){S.evT-=dt;if(S.evT<=0)event()}}
+    if(S.flash>0)S.flash-=dt;
+    for(const v of S.victims)if(v.bang>0)v.bang-=dt;
+    if(S.aura){ // drain the bar, and settle every agitated victim inside the radius
+      S.bar-=tune.drain*dt;
+      for(const v of S.victims){
+        if(v.calm||dist(v,d)>tune.radius)continue;
+        v.m-=100/tune.settle*dt;
+        if(v.m<=0){v.m=0;v.calm=true;say("Victim "+v.n+" is calm and can be diagnosed.","good")}
+      }
+      if(S.bar<=0){S.bar=0;S.aura=false;say("The bar is empty, so the aura switched off.","bad")}
+    }else S.bar=Math.min(100,S.bar+tune.recharge*dt);
+    const tg=S.tg=target();let busy=false;
+    if(hold&&tg){
+      if(tg.calm){ // diagnose
+        busy=true;tg.prog+=dt/DIAG;
+        if(tg.prog>=1){tg.diag=true;tg.prog=0;say("Victim "+tg.n+" is diagnosed.","good")}
+      }else if(mode==="red"){say("Victim "+tg.n+" is still agitated. Calm them with the aura first.","bad")}
+      else{ // another droid: the calm minigame, one victim at a time
+        busy=true;tg.cp+=dt/tune.mini;say("Calming victim "+tg.n+" through the minigame. Keep holding.");
+        if(tg.cp>=1){tg.cp=0;tg.m=0;tg.calm=true;say("Victim "+tg.n+" is calm and can be diagnosed.","good")}
+      }
+    }
+    for(const v of S.victims)if(!hold||v!==tg){v.prog=0;v.cp=0}
+    if(!busy)for(const ax of ["x","y"]){const mv=want[ax]*SPEED*dt;if(!mv)continue;const nd={x:d.x,y:d.y};nd[ax]+=mv;if(!blocked(box(nd,R)))d[ax]=nd[ax]}
+    if(S.victims.every(v=>v.diag)){S.done=true;S.aura=false;
+      say("All four victims diagnosed in "+S.t.toFixed(1)+"s as "+(mode==="red"?"Red":"another droid")+", through "+S.ev+" event"+(S.ev===1?"":"s")+". Reset the room to try again.","good")}
+  }
+
+  /* drawing */
+  function rr(x,y,w,h,r){g.beginPath();g.roundRect(x,y,w,h,r);g.fill()}
+  function draw(){
+    const now=performance.now()/1000,d=S.droid;
+    g.clearRect(0,0,W,H);g.fillStyle="#F4F1E6";g.fillRect(0,0,W,H);
+    g.strokeStyle="rgba(34,48,43,.06)";g.lineWidth=1;g.beginPath();
+    for(let x=14;x<W;x+=40){g.moveTo(x,14);g.lineTo(x,H-14)}for(let y=14;y<H;y+=40){g.moveTo(14,y);g.lineTo(W-14,y)}g.stroke();
+    g.textAlign="center";
+    if(mode==="red"){ // the aura: filled while on, an outline of its reach while off
+      g.beginPath();g.arc(d.x,d.y,tune.radius,0,7);
+      if(S.aura){g.fillStyle="rgba(226,81,60,.16)";g.fill();
+        g.strokeStyle="rgba(226,81,60,.85)";g.lineWidth=3;g.stroke();
+        const p=(now*.8)%1;g.strokeStyle="rgba(226,81,60,"+(.5*(1-p))+")";g.lineWidth=2;g.beginPath();g.arc(d.x,d.y,tune.radius*p,0,7);g.stroke();
+      }else{g.strokeStyle="rgba(226,81,60,.35)";g.lineWidth=1.5;g.setLineDash([6,6]);g.stroke();g.setLineDash([])}
+    }
+    g.fillStyle="#22302B";for(const w of S.walls)g.fillRect(w.x,w.y,w.w,w.h);
+    for(const o of S.objs){g.fillStyle="#4A4F5C";rr(o.x,o.y,o.w,o.h,6);g.fillStyle="#fff";g.font="700 11px system-ui,sans-serif";
+      g.save();g.translate(o.x+o.w/2,o.y+o.h/2);if(o.h>o.w)g.rotate(-Math.PI/2);g.fillText(o.n,0,4);g.restore()}
+    S.victims.forEach((v,i)=>{
+      const k=v.diag?0:v.m/100,jx=Math.sin(now*38+i*2)*3*k,jy=Math.cos(now*31+i)*3*k,x=v.x+jx,y=v.y+jy;
+      if(S.tg===v){g.strokeStyle="#22302B";g.lineWidth=2;g.setLineDash([4,4]);g.beginPath();g.arc(v.x,v.y,VR+9,0,7);g.stroke();g.setLineDash([])}
+      g.fillStyle=v.diag?"#3F8F6B":v.calm?"#9EDDC4":"#F08A5D";g.beginPath();g.arc(x,y,VR,0,7);g.fill();
+      g.strokeStyle="rgba(0,0,0,.45)";g.lineWidth=1.5;g.stroke();
+      g.fillStyle=v.diag?"#fff":"#22302B";g.font="800 12px system-ui,sans-serif";g.fillText(v.diag?"✓":v.n,x,y+4);
+      if(!v.calm){ // agitation marks, fewer as the victim settles
+        g.strokeStyle="#B3342B";g.lineWidth=2;const marks=Math.ceil(k*3);
+        for(let j=0;j<marks;j++){const a=-Math.PI/2+(j-1)*.7,r1=VR+5,r2=VR+11+Math.sin(now*14+j)*2;g.beginPath();g.moveTo(x+Math.cos(a)*r1,y+Math.sin(a)*r1);g.lineTo(x+Math.cos(a)*r2,y+Math.sin(a)*r2);g.stroke()}
+      }
+      if(v.bang>0){g.fillStyle="#B3342B";g.font="900 20px system-ui,sans-serif";g.fillText("!",v.x+VR+8,v.y-VR-4-(.9-v.bang)*10)}
+      g.fillStyle=v.diag?"#3F8F6B":v.calm?"#1F7A4D":"#B3342B";g.font="700 11px system-ui,sans-serif";
+      g.fillText(v.diag?"Diagnosed":v.calm?(v.type==="normal"?"Normal":"Calm"):"Agitated",v.x,v.y+VR+16);
+      const p=v.prog||v.cp;
+      if(p>0){g.strokeStyle=v.cp?"#EE8A2B":"#2E8B57";g.lineWidth=5;g.beginPath();g.arc(v.x,v.y,VR+6,-Math.PI/2,-Math.PI/2+Math.PI*2*p);g.stroke()}
+      if(show&&v.type==="agitated"&&!v.diag){ // the hidden meter, for testing only
+        g.fillStyle="#fff";g.fillRect(v.x-20,v.y-VR-22,40,6);g.fillStyle="#B3342B";g.fillRect(v.x-20,v.y-VR-22,40*v.m/100,6);
+        g.strokeStyle="#22302B";g.lineWidth=1;g.strokeRect(v.x-20,v.y-VR-22,40,6)}
+    });
+    g.fillStyle=mode==="red"?RED:"#5B7C99";g.beginPath();g.arc(d.x,d.y,R,0,7);g.fill();
+    g.strokeStyle="#22302B";g.lineWidth=2.5;g.beginPath();g.arc(d.x,d.y,R,0,7);g.stroke();
+    g.fillStyle="#fff";g.font="800 13px system-ui,sans-serif";g.fillText(mode==="red"?"R":"D",d.x,d.y+5);
+    if(S.flash>0){g.fillStyle="rgba(179,52,43,"+(S.flash*.5)+")";g.fillRect(0,0,W,H);
+      g.fillStyle="#B3342B";g.font="900 22px system-ui,sans-serif";g.fillText("Event!",W/2,44)}
+    const b=el("rpBar");b.style.width=S.bar.toFixed(1)+"%";b.classList.toggle("low",S.bar<20);
+    el("rpTime").textContent=S.t.toFixed(1)+"s";el("rpEv").textContent=S.ev;
+    el("rpDiag").textContent=S.victims.filter(v=>v.diag).length+"/"+S.victims.length;
+    ub.classList.toggle("on",S.aura);ub.textContent=S.aura?"Aura: on":"Aura: off";ub.hidden=mode!=="red";
+  }
+
+  /* the loop runs only while the room is on screen */
+  let raf=0,last=0,visible=false;
+  function frame(ts){raf=0;if(!visible)return;const dt=Math.min(.05,(ts-last)/1000||0);last=ts;step(dt);draw();raf=requestAnimationFrame(frame)}
+  new IntersectionObserver(es=>{visible=es[0].isIntersecting;if(visible&&!raf){last=performance.now();raf=requestAnimationFrame(frame)}}).observe(cv);
+
+  /* controls around the room */
+  function reset(){S=fresh();say(mode==="red"?"Red: tap Space to switch the aura on, stand near the agitated victims until they settle, then hold E to diagnose.":"Another droid: no aura. Hold E next to an agitated victim to calm them, then keep holding to diagnose.");draw()}
+  el("rpReset").onclick=()=>{reset();cv.focus()};
+  el("rpEvent").onclick=()=>{event();cv.focus()};
+  el("rpShow").onchange=e=>{show=e.target.checked;draw()};
+  root.querySelectorAll(".cp-seg button").forEach(b=>b.onclick=()=>{mode=b.dataset.mode;root.querySelectorAll(".cp-seg button").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));reset()});
+  [["rpS1","rpO1",v=>{tune.radius=v;return v+" px"}],["rpS2","rpO2",v=>{tune.settle=v/10;return (v/10).toFixed(1)+"s"}],
+   ["rpS3","rpO3",v=>{tune.drain=v;return v+"% a second"}],["rpS4","rpO4",v=>{tune.recharge=v;return v+"% a second"}],
+   ["rpS5","rpO5",v=>{tune.mini=v/10;return (v/10).toFixed(1)+"s"}],
+   ["rpS6","rpO6",v=>{tune.event=v;if(S)S.evT=v;return v?"every "+v+"s":"only by the button"}]].forEach(([s,o,f])=>{
+    const sl=el(s),out=el(o),set=()=>{out.textContent=f(+sl.value)};sl.oninput=set;set()});
+  S=fresh();draw();
+  window.redProto={state:()=>S,step,reset,tune,event,toggleAura}; // for tests
 })();
 fullReset();fillDocs();paintShell(false);fromHash();
 </script>
