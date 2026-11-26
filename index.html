@@ -685,14 +685,22 @@ body.dragging,body.dragging *{cursor:grabbing!important;user-select:none}
 .rproto .cp-top{gap:10px 16px}
 .rproto .cp-reset.rp-event{margin-left:auto;border-color:#E2513C;color:#A8301F;background:#FDEDEA}
 .rproto .cp-reset.rp-event+.cp-reset{margin-left:0}
-.rp-btns{position:absolute;right:12px;bottom:12px;display:flex;gap:8px;line-height:1.2}
-.rp-btns .cp-grip{position:static;background:#22302B}
+.rproto .rp-rooms{margin-top:-2px}
+.rproto .rp-lab{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.rproto .rp-rooms .cp-seg{flex-wrap:wrap;border-radius:16px}
+.rproto .rp-rooms .cp-seg button{font-size:13px;padding:6px 12px}
+.rp-btns{position:absolute;right:12px;bottom:12px;left:12px;display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px;line-height:1.2;pointer-events:none}
+.rp-btns .cp-grip{position:static;background:#22302B;pointer-events:auto}
+.rp-btns .cp-grip[hidden]{display:none}
 .rp-btns .cp-grip.on{background:#0F1815}
+.rp-btns .cp-grip.rp-skill{font-size:13px;padding:11px 14px;background:#7A2A1E}
+.rp-btns .cp-grip.rp-skill.on{background:#4E170F}
 .rp-btns .cp-grip.rp-aura{background:#E2513C}
 .rp-btns .cp-grip.rp-aura.on{background:#A8301F;box-shadow:0 0 0 4px rgba(226,81,60,.35)}
 .rproto .cp-tune label.rp-check{grid-column:1/-1;display:flex;align-items:center;gap:8px;font-weight:600}
 .rproto .cp-tune label.rp-check input{width:auto;flex:none}
-@media(max-width:560px){.rp-btns .cp-grip{font-size:12px;padding:9px 12px}}
+#redProtoTree{--st:#A8301F}
+@media(max-width:560px){.rp-btns{position:static;justify-content:center;padding:8px 6px;background:#22302B}.rp-btns .cp-grip{font-size:12px;padding:9px 12px;background:#3A4B45}}
 
 /* Cam's Highlight: playable lo-fi. The rest of its styles are shared with Crab's (.cproto) */
 .kproto .cp-bar b{background:#3FA796}
@@ -2098,11 +2106,11 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
           <div class="dstory" style="--dc:#E2513C"><span class="dlab">Story</span><p>The charismatic leader of the Patchbots, Red motivates their team through uplifting music and inspiring words.</p><p>Red’s design was based on an old medic droid blueprint, but they were marked as a failed prototype due to their unpredictable empathy simulator. They were quickly reassigned to storeroom duty in a first responder HQ, and is well-liked among the staff there. However, Red always believed they were destined for greater things.</p><p>Naturally anxious at heart, Red uses music to soothe their wired nerves. They hate being alone, so they adopted a little sapling to nurture and befriend. They often speak or sing to the sapling to help themselves calm down.</p><p>Now, Red is on a journey to grow their confidence, spread their song, and blossom into the hero they know they were meant to be.</p><p class="dnote">Story from the Characters &amp; Lore section of the InnovSpur FigJam board, read on 26 Nov 2026. Picture from the game’s character sprites in the Unity project.</p></div>
           <h3 class="dsub">Details</h3>
           <div class="tw"><table class="camp def"><thead><tr><th scope="col">Field</th><th scope="col">Definition</th></tr></thead><tbody><tr><th scope="row">Without Red</th><td>Any droid calms one victim at a time through a minigame. <span class="tbd">The form of the minigame is still to define.</span></td></tr><tr><th scope="row">What it acts on</th><td>The hidden agitation meter of each <a href="#victim-agitated">agitated victim</a>. A calm victim becomes agitated again if an event happens around them.</td></tr><tr><th scope="row">Status</th><td><span class="tbd">Decided on 26 Nov 2026, not yet in the GDD, which still has this ability as to be defined.</span></td></tr><tr><th scope="row">Still to define</th><td>The radius of the aura, how long a victim takes to settle and how fast the bar drains. Which events make a calm victim agitated again.</td></tr><tr><th scope="row">Skill tree</th><td>To be added later, on the <button type="button" class="tablink" data-lvtab="skill">Skill tree tab</button>.</td></tr><tr><th scope="row">Shared rules</th><td><a href="#droid-party">Party and switching</a>, <a href="#droid-actions">What every droid can do</a>, <a href="#droid-skilltree">Skill tree rules</a></td></tr><tr><th scope="row">Sources</th><td><span class="scs"><span class="sc" title="Game design document">GDD 3.4.1, 3.3</span></span></td></tr></tbody></table></div></div><div class="lvpane" data-t="skill"><p class="lvempty">Not designed yet. Red’s skill tree will be added here later.</p>
-          
-          
-          <div class="tw"><table class="camp def"><thead><tr><th scope="col">Field</th><th scope="col">Definition</th></tr></thead><tbody><tr><th scope="row">Skills</th><td><span class="tbd">To be added</span></td></tr><tr><th scope="row">Shape</th><td>Decided on 26 Nov, for now: the tree is linear for the active skill. Each upgrade enhances the droid’s base ability, one after another.</td></tr><tr><th scope="row">Direction</th><td>Decided on 25 Nov: hazards evolve in the later levels, and the skill tree is built around answering their new forms.</td></tr><tr><th scope="row">Bought with</th><td>Bobbles, which are used for the skill tree only. Whether they replace skill points is still open.</td></tr><tr><th scope="row">How it works</th><td>Skill points permanently upgrade the droid and can unlock abilities. See <a href="#droid-skilltree">Skill tree rules</a>.</td></tr></tbody></table></div></div><div class="lvpane" data-t="lofi">
+          <h3 class="dsub">Skill tree candidates</h3><p>A linear chain. Each upgrade enhances the Calming aura and includes the ones before it.</p><div class="tw"><table><thead><tr><th scope="col">Upgrade</th><th scope="col">What it would do</th><th scope="col">Situation it answers</th><th scope="col">Status</th></tr></thead><tbody><tr><th scope="row">1. Wider aura</th><td>The aura reaches further, so it settles more victims at once.</td><td>Agitated victims too far apart for the basic aura to reach from one spot.</td><td>Suggested on 26 Nov, not confirmed</td></tr><tr><th scope="row">2. Focus</th><td>Hold to narrow the aura onto one victim. They settle about three times as fast, and nobody else is calmed meanwhile.</td><td>A critical victim who has to be calm and diagnosed before a countdown ends.</td><td>Suggested on 26 Nov, not confirmed</td></tr><tr><th scope="row">3. Steadying aura</th><td>Calm victims inside the aura are not made agitated again by an event.</td><td>Aftershocks: events that come every few seconds.</td><td>Suggested on 26 Nov, not confirmed</td></tr><tr><th scope="row">4. Sedating aura</th><td>A super agitated victim who runs through the aura slows down, then stops and is calm. A sedated victim stays calm through events.</td><td>A super agitated victim, who runs around hurting themselves.</td><td>Suggested on 26 Nov, not confirmed</td></tr><tr><th scope="row">5. Reviving pulse</th><td>A charged burst of the aura on a victim who is unconscious and not breathing. The CPR that follows is much shorter. It empties the bar and does nothing to a conscious victim.</td><td>A cardiac arrest with a countdown.</td><td>Suggested on 26 Nov, not confirmed</td></tr></tbody></table></div><p class="tbd">Super agitated victims were stated on 26 Nov: they run around hurting themselves, and sedation is what works on them. What makes a victim super agitated, how the harm shows and how they are stopped without the skill are still to define. The situations are suggestions that go with the upgrades, and none is confirmed. Focus and Reviving pulse each add a held input, which assumes an upgrade to the base ability may do so.</p>
+          <p>The candidates can be switched on and tried in the room on the <button type="button" class="tablink" data-lvtab="lofi">Playable lo-fi tab</button>, from the skill tree panel beside it.</p>
+          <div class="tw"><table class="camp def"><thead><tr><th scope="col">Field</th><th scope="col">Definition</th></tr></thead><tbody><tr><th scope="row">Skills</th><td>Candidates are listed above. None is confirmed as a skill yet.</td></tr><tr><th scope="row">Shape</th><td>Decided on 26 Nov, for now: the tree is linear for the active skill. Each upgrade enhances the droid’s base ability, one after another.</td></tr><tr><th scope="row">Direction</th><td>Decided on 25 Nov: hazards evolve in the later levels, and the skill tree is built around answering their new forms.</td></tr><tr><th scope="row">Bought with</th><td>Bobbles, which are used for the skill tree only. Whether they replace skill points is still open.</td></tr><tr><th scope="row">How it works</th><td>Skill points permanently upgrade the droid and can unlock abilities. See <a href="#droid-skilltree">Skill tree rules</a>.</td></tr></tbody></table></div></div><div class="lvpane" data-t="lofi"><div class="cp-wrap">
 <div class="cproto rproto" id="redProto">
-  <p class="lead">A test room for Red’s Calming aura. Four victims wait in it, three of them agitated. Calm the agitated ones, then diagnose all four. Events keep happening, and each one makes calm victims agitated again. This is a flat sketch to try the rules and the numbers, not the game’s look.</p>
+  <p class="lead">A test room for Red’s Calming aura. Calm the agitated victims, then diagnose everyone. Events keep happening, and each one makes calm victims agitated again. This is a flat sketch to try the rules and the numbers, not the game’s look.</p>
   <div class="cp-top">
     <div class="cp-seg" role="group" aria-label="Droid">
       <button type="button" data-mode="red" aria-pressed="true">Red</button>
@@ -2112,12 +2120,26 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
     <div class="cp-time"><span>Time</span><b id="rpTime">0.0s</b></div>
     <div class="cp-time"><span>Diagnosed</span><b id="rpDiag">0/4</b></div>
     <div class="cp-time"><span>Events</span><b id="rpEv">0</b></div>
+    <div class="cp-time"><span>Got worse</span><b id="rpLate">0</b></div>
     <button type="button" class="cp-reset rp-event" id="rpEvent">Trigger an event</button>
     <button type="button" class="cp-reset" id="rpReset">Reset room</button>
   </div>
+  <div class="cp-top rp-rooms">
+    <span class="rp-lab">Situation</span>
+    <div class="cp-seg" role="group" aria-label="Situation">
+      <button type="button" data-room="plain" aria-pressed="true">Agitated</button>
+      <button type="button" data-room="spread" aria-pressed="false">Spread out</button>
+      <button type="button" data-room="critical" aria-pressed="false">Critical victim</button>
+      <button type="button" data-room="shocks" aria-pressed="false">Aftershocks</button>
+      <button type="button" data-room="runner" aria-pressed="false">Runner</button>
+      <button type="button" data-room="arrest" aria-pressed="false">Cardiac arrest</button>
+    </div>
+  </div>
   <div class="cp-stage">
-    <canvas id="rpCanvas" width="760" height="460" tabindex="0" role="img" aria-label="Test room. Red starts on the left. Two agitated victims stand close together at the top left, a third agitated victim is at the bottom right, and a normal victim is at the top right."></canvas>
+    <canvas id="rpCanvas" width="760" height="460" tabindex="0" role="img" aria-label="Test room. Red starts on the left. Victims wait around the room, some of them agitated."></canvas>
     <div class="rp-btns">
+      <button type="button" class="cp-grip rp-skill" id="rpPulse" hidden>Hold: pulse</button>
+      <button type="button" class="cp-grip rp-skill" id="rpFocus" hidden>Hold: focus</button>
       <button type="button" class="cp-grip" id="rpAct">Hold to interact</button>
       <button type="button" class="cp-grip rp-aura" id="rpAura">Aura</button>
     </div>
@@ -2125,6 +2147,8 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
   <p class="cp-msg" id="rpMsg" aria-live="polite">Click the room, then move with the arrow keys or WASD. Tap Space to switch the aura on or off. Hold E next to a calm victim to diagnose.</p>
   <div class="cp-legend">
     <span><i style="background:#F08A5D;border-radius:50%"></i>Agitated: shakes, cannot be diagnosed</span>
+    <span><i style="background:#D0453A;border-radius:50%"></i>Super agitated: runs, hurting themselves</span>
+    <span><i style="background:#9AA5B1;border-radius:50%"></i>Unconscious, not breathing</span>
     <span><i style="background:#9EDDC4;border-radius:50%"></i>Calm or normal: can be diagnosed</span>
     <span><i style="background:#3F8F6B;border-radius:50%"></i>Diagnosed</span>
     <span><i style="background:rgba(226,81,60,.3);border-radius:50%"></i>Red’s aura</span>
@@ -2149,11 +2173,15 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
       <li>Each agitated victim has a hidden meter. The player never sees it, and reads it from how much the victim shakes.</li>
       <li>When an event happens, every calm victim who is not diagnosed yet becomes agitated again. <span class="tbd">Which events count is still to define, so this room uses a timer and a button. Whether a diagnosed victim can become agitated again is also still to define, so here they stay as they are.</span></li>
       <li><b>Another droid:</b> has no aura. It calms one victim at a time through a minigame. <span class="tbd">The form of the minigame is still to define, so here it is a longer hold next to the victim.</span></li>
+      <li><b>Super agitated victim:</b> runs around the room and hurts themselves, so their condition drops while they run. Red’s basic aura does not hold them. Any droid can catch one by getting next to them and holding E, which stops them and calms them through the minigame. <span class="tbd">Stated on 26 Nov. What makes a victim super agitated, how the harm shows and how they are stopped without a skill are still to define, so those parts are stand-ins.</span></li>
+      <li><b>Unconscious victim who is not breathing:</b> needs CPR before anything else. <span class="tbd">Here CPR is a long hold next to them, standing in for the CPR minigame.</span></li>
+      <li>A victim with a countdown gets worse if they are not helped in time. It is counted, and does not end the room.</li>
+      <li><span class="tbd">The situations are suggestions made to give each skill tree upgrade something to solve. None is confirmed.</span></li>
     </ul>
-    <p class="cp-note">On a phone: drag on the room to move, tap “Aura”, and hold the “Hold to interact” button.</p>
+    <p class="cp-note">On a phone: drag on the room to move, tap “Aura”, and hold the “Hold to interact” button. An upgrade that adds an action also adds its own button.</p>
   </div>
 </div>
-</div></section>
+<aside class="cp-tree" id="redProtoTree" aria-label="Skill tree"><h4>Skill tree</h4><p class="cp-note">Candidates only. A skill tree is linear for the active skill: each upgrade enhances the base ability. The order and the numbers here are placeholders. Click a skill to switch it on in the room.</p><div class="st"><div class="st-root"><b>Calming aura</b><span>Basic ability, always on</span></div><ul class="st-kids"><li><button type="button" class="st-node" data-skill="wide" aria-pressed="false" data-name="1. Wider aura" data-status="Suggested on 26 Nov, not confirmed" data-what="The aura reaches further, so it settles more victims at once." data-how="Choose the “Spread out” situation. Five agitated victims stand too far apart for the basic aura. With this on, one spot covers all of them."><b>1. Wider aura</b><span>Suggested on 26 Nov, not confirmed</span><i class="st-sw">Off</i></button></li><li><button type="button" class="st-node" data-skill="focus" aria-pressed="false" data-name="2. Focus" data-status="Suggested on 26 Nov, not confirmed" data-what="Narrow the aura onto one victim. They settle about three times as fast, and nobody else is calmed meanwhile." data-how="Choose the “Critical victim” situation. With the aura on, hold F or the “Hold: focus” button near an agitated victim. The victim with the countdown has to be calm and diagnosed before it runs out, and events come quickly."><b>2. Focus</b><span>Suggested on 26 Nov, not confirmed</span><i class="st-sw">Off</i></button></li><li><button type="button" class="st-node" data-skill="steady" aria-pressed="false" data-name="3. Steadying aura" data-status="Suggested on 26 Nov, not confirmed" data-what="Calm victims inside the aura are not made agitated again by an event." data-how="Choose the “Aftershocks” situation. Events come every few seconds. With this on, keep the aura over the victims you have calmed and they stay calm while you diagnose them."><b>3. Steadying aura</b><span>Suggested on 26 Nov, not confirmed</span><i class="st-sw">Off</i></button></li><li><button type="button" class="st-node" data-skill="sedate" aria-pressed="false" data-name="4. Sedating aura" data-status="Suggested on 26 Nov, not confirmed" data-what="A super agitated victim who runs through the aura slows down, then stops and is calm. A sedated victim stays calm through events." data-how="Choose the “Runner” situation. Keep the aura over the running victim. They slow down, stop and can be diagnosed. Without it, the runner has to be caught and held."><b>4. Sedating aura</b><span>Suggested on 26 Nov, not confirmed</span><i class="st-sw">Off</i></button></li><li><button type="button" class="st-node" data-skill="pulse" aria-pressed="false" data-name="5. Reviving pulse" data-status="Suggested on 26 Nov, not confirmed" data-what="A charged burst of the aura on a victim who is unconscious and not breathing. It restarts them, so the CPR that follows is much shorter. It empties the bar, and does nothing to a conscious victim." data-how="Choose the “Cardiac arrest” situation. Stand next to the unconscious victim, hold R or the “Hold: pulse” button until the ring is full, and release. Then hold E for the short CPR. Without it, CPR is a long hold."><b>5. Reviving pulse</b><span>Suggested on 26 Nov, not confirmed</span><i class="st-sw">Off</i></button></li></ul></div><div class="st-info" aria-live="polite"><p class="st-hint">No skill is on. The room plays with the basic ability only.</p></div></aside></div></div></section>
           <section class="lvpanel" data-lv="crab"><header class="lvhead"><h2>Crab</h2><p class="lvchips"><span class="lvchip">Droid</span><span class="lvchip">Ability defined</span></p></header><div class="lvtabs" role="tablist" aria-label="Sections of this level"><button type="button" role="tab" data-t="main" aria-selected="true">Profile</button><button type="button" role="tab" data-t="skill" aria-selected="false">Skill tree</button><button type="button" role="tab" data-t="lofi" aria-selected="false">Playable lo-fi</button></div><div class="lvpane on" data-t="main"><div class="dhero" style="--dc:#EE8A2B;--db:url('banner-crab.jpg')"><div class="dhtx"><span class="dteam">Patchbots · Player droid</span><h3 class="dname">Crab</h3><p class="dtag">The dependable life(buoy) of the party</p><p class="dwas"><b>Before the team</b>A former anchor droid, who kept construction workers steady in the storm</p></div><span class="dport has"><img src="droid-crab.png" alt="" loading="lazy"></span></div><div class="dabil" style="--dc:#EE8A2B"><span class="dlab">Ability</span><h4>Grip</h4><p>Grips a light or medium object next to it. A light object is carried and a medium object is dragged behind, in any direction. Gripping again sets it down.</p><dl><div><dt>Ability bar</dt><dd>Drains while Crab is holding an object.</dd></div><div><dt>Activation</dt><dd>Tap to grip, tap again to let go</dd></div></dl></div>
           <div class="dstory" style="--dc:#EE8A2B"><span class="dlab">Story</span><p>The dependable life(buoy) of the party, Crab’s infectious whimsy and unsinkable determination reaches audiences far and wide.</p><p>Crab was once an anchor droid, braving the disastrous climate phenomena next to hardened construction workers, keeping them steady so they don’t get swept off their feet. Then, at the end of every shift, he would practice his stand up comedy routine to them, and be showered with a round of encouraging applause.</p><p>However, a job where everyone had to be kept in place meant that Crab never got the opportunity to explore the world on his own two feet. For once, he’d like to be the one swept up in a wild adventure instead.</p><p>Now, Crab travels with his newfound circus of friends to do what he does best: keep people safe from harm, while lifting their spirits with a good joke or two.</p><p class="dnote">Story from the Characters &amp; Lore section of the InnovSpur FigJam board, read on 26 Nov 2026. Picture from the game’s character sprites in the Unity project.</p></div>
           <h3 class="dsub">Details</h3>
@@ -3750,32 +3778,55 @@ window.protoTree=function(id,onChange){
   const cv=root.querySelector("#rpCanvas"),g=cv.getContext("2d"),W=cv.width,H=cv.height;
   const el=id=>root.querySelector("#"+id);
   const SPEED=150,R=17,VR=13,REACH=18,DIAG=1.0;   // walking speed, droid radius, victim radius, gap for interacting, diagnosis stand-in (s)
+  /* placeholders for what the upgrades and the new victim states do */
+  const WIDE=1.45,FOCUS=3,SEDATE=1.5,RUN=125,HARM=4,CPR=6,CPR_SHORT=2,CHARGE=1.5,PULSE_BAR=50;
+  // aura radius with Wider aura (x), settle speed with Focus (x), seconds in the aura to sedate, runner speed (px/s), condition lost per second while running,
+  // CPR stand-in (s), CPR after a pulse (s), time to charge a pulse (s), bar a pulse needs (%)
   const RED="#E2513C";
   const tune={radius:110,settle:3.0,drain:15,recharge:10,mini:4.0,event:12};  // pixels, seconds, % of the bar per second (x2), seconds, seconds (0 = off)
-  let mode="red",show=false,S;
+  let mode="red",room="plain",show=false,S;
+  /* the skill tree is linear: each upgrade includes the ones before it. They only apply to Red */
+  const ORDER=["wide","focus","steady","sedate","pulse"],NAME={wide:"Wider aura",focus:"Focus",steady:"Steadying aura",sedate:"Sedating aura",pulse:"Reviving pulse"};
+  const tree=window.protoTree("redProtoTree",onSkill),sk=k=>mode==="red"&&!!tree.on[k];
+  const radius=()=>tune.radius*(sk("wide")?WIDE:1);
+
+  /* the situations: who is in the room, where Red starts, and how often an event happens (seconds, 0 = only by the button) */
+  const ROOMS={
+    plain:{ev:12,say:"Three agitated victims and one normal one.",at:[90,300],v:[["A",250,130,"agitated"],["B",305,180,"agitated"],["C",610,345,"agitated"],["D",590,105,"normal"]]},
+    spread:{ev:0,say:"Five agitated victims, too far apart for the basic aura to reach from one spot.",at:[90,300],v:[["A",675,270,"agitated"],["B",582,398,"agitated"],["C",431,349,"agitated"],["D",431,191,"agitated"],["E",582,142,"agitated"]]},
+    critical:{ev:5,say:"Victim A is critical: calm and diagnose them before the countdown ends. Events come quickly.",at:[330,125],v:[["A",560,110,"agitated",7.5],["B",515,160,"agitated"],["C",612,165,"agitated"]]},
+    shocks:{ev:4,say:"Aftershocks: an event every few seconds.",at:[330,330],v:[["A",500,300,"agitated"],["B",548,338,"agitated"],["C",468,352,"agitated"],["D",522,388,"agitated"]]},
+    runner:{ev:12,say:"A super agitated victim is running around, hurting themselves.",at:[90,300],v:[["R",520,180,"super"],["A",250,130,"agitated"],["B",305,180,"agitated"]]},
+    arrest:{ev:12,say:"A victim is unconscious and not breathing. Their countdown is running.",at:[330,330],v:[["V",560,335,"arrest",16],["A",500,120,"agitated"],["B",565,112,"agitated"]]}
+  };
 
   /* the room: walls, furniture, the victims and the droid.
      m is a victim's hidden agitation meter (100 = fully agitated, 0 = calm) */
   function fresh(){
-    const v=(n,x,y,type)=>({n,x,y,type,m:type==="agitated"?100:0,calm:type!=="agitated",diag:false,prog:0,cp:0,bang:0});
+    const r=ROOMS[room];
+    const v=([n,x,y,type,crit])=>({n,x,y,type,m:type==="agitated"||type==="super"?100:0,calm:type==="normal",diag:false,prog:0,cp:0,bang:0,
+      crit:crit||0,late:false,cond:100,vx:type==="super"?RUN:0,vy:type==="super"?RUN*.6:0,turn:1,sed:0,sedated:false,held:false,shield:0,
+      down:type==="arrest",pulsed:false,cpr:0});
     return {
-      droid:{x:90,y:300},bar:100,t:0,done:false,started:false,aura:false,ev:0,evT:tune.event,flash:0,tg:null,
+      droid:{x:r.at[0],y:r.at[1]},bar:100,t:0,done:false,started:false,aura:false,ev:0,evT:tune.event,flash:0,tg:null,focus:null,charge:0,zap:0,late:0,
       walls:[{x:0,y:0,w:W,h:14},{x:0,y:H-14,w:W,h:14},{x:0,y:0,w:14,h:H},{x:W-14,y:0,w:14,h:H}],
       objs:[{n:"Bench",x:390,y:215,w:120,h:30},{n:"Cabinet",x:170,y:330,w:50,h:70}],
-      victims:[v("A",250,130,"agitated"),v("B",305,180,"agitated"),v("C",610,345,"agitated"),v("D",590,105,"normal")]
+      victims:r.v.map(v)
     };
   }
   const hit=(a,b)=>a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;
   const box=(d,r)=>({x:d.x-r,y:d.y-r,w:r*2,h:r*2});
-  const blocked=r=>S.walls.some(w=>hit(r,w))||S.objs.some(o=>hit(r,o))||S.victims.some(v=>hit(r,box(v,VR)));
+  const solid=r=>S.walls.some(w=>hit(r,w))||S.objs.some(o=>hit(r,o));
+  const running=v=>v.type==="super"&&!v.calm&&!v.diag;
+  const blocked=r=>solid(r)||S.victims.some(v=>!running(v)&&hit(r,box(v,VR)));   // a running victim does not block the way
   const dist=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
   /* the victim the droid would interact with: the nearest one in reach that is not diagnosed yet */
   function target(){let best=null,bd=R+VR+REACH;for(const v of S.victims){if(v.diag)continue;const d=dist(v,S.droid);if(d<bd){bd=d;best=v}}return best}
 
-  /* input: keys while the room has focus, a drag on the room as a stick, and the two buttons */
-  const keys={};let stick=null,btnHeld=false;
+  /* input: keys while the room has focus, a drag on the room as a stick, and the buttons */
+  const keys={};let stick=null,btnHeld=false,focusHeld=false,pulseHeld=false;
   cv.addEventListener("keydown",e=>{const k=e.key.toLowerCase();
-    if(["arrowup","arrowdown","arrowleft","arrowright"," ","w","a","s","d","e"].includes(k)){
+    if(["arrowup","arrowdown","arrowleft","arrowright"," ","w","a","s","d","e","f","r"].includes(k)){
       if(k===" "&&!e.repeat)toggleAura();
       keys[k]=true;e.preventDefault()}});
   cv.addEventListener("keyup",e=>{keys[e.key.toLowerCase()]=false});
@@ -3784,10 +3835,13 @@ window.protoTree=function(id,onChange){
   cv.addEventListener("pointermove",e=>{if(stick&&e.pointerId===stick.id){stick.dx=e.clientX-stick.x;stick.dy=e.clientY-stick.y}});
   const endStick=e=>{if(stick&&e.pointerId===stick.id)stick=null};
   cv.addEventListener("pointerup",endStick);cv.addEventListener("pointercancel",endStick);
-  const ab=el("rpAct"),ub=el("rpAura");
-  ab.addEventListener("pointerdown",e=>{btnHeld=true;ab.classList.add("on");ab.setPointerCapture(e.pointerId);e.preventDefault()});
-  const endBtn=()=>{btnHeld=false;ab.classList.remove("on")};
-  ab.addEventListener("pointerup",endBtn);ab.addEventListener("pointercancel",endBtn);
+  const ab=el("rpAct"),ub=el("rpAura"),fb=el("rpFocus"),pb=el("rpPulse");
+  /* a button that counts as held while it is pressed */
+  function holdBtn(b,set){
+    b.addEventListener("pointerdown",e=>{set(true);b.classList.add("on");b.setPointerCapture(e.pointerId);e.preventDefault()});
+    const end=()=>{set(false);b.classList.remove("on")};b.addEventListener("pointerup",end);b.addEventListener("pointercancel",end);
+  }
+  holdBtn(ab,v=>{btnHeld=v});holdBtn(fb,v=>{focusHeld=v});holdBtn(pb,v=>{pulseHeld=v});
   ub.addEventListener("pointerdown",e=>{toggleAura();e.preventDefault()});
   function wish(){
     let x=(keys.arrowright||keys.d?1:0)-(keys.arrowleft||keys.a?1:0),y=(keys.arrowdown||keys.s?1:0)-(keys.arrowup||keys.w?1:0);
@@ -3804,94 +3858,150 @@ window.protoTree=function(id,onChange){
     S.aura=!S.aura;S.started=true;
     say(S.aura?"Aura on. Agitated victims inside the circle are settling. The bar is draining.":"Aura off. The bar is recharging.");
   }
-  /* an event: every calm victim who is not diagnosed yet is agitated again */
+  /* an event: every calm victim who is not diagnosed yet is agitated again. A sedated victim is not, and with the Steadying aura neither is one inside the aura */
   function event(){
     if(S.done)return;
-    let n=0;S.ev++;S.flash=.5;S.evT=tune.event;S.started=true;
-    for(const v of S.victims){if(v.type!=="agitated"||v.diag)continue;if(v.calm)n++;v.calm=false;v.m=100;v.prog=0;v.bang=.9}
-    say(n?"An event happened. "+n+" calm victim"+(n>1?"s are":" is")+" agitated again.":"An event happened. No calm victim was waiting to be diagnosed.",n?"bad":"");
+    let n=0,kept=0;S.ev++;S.flash=.5;S.evT=tune.event;S.started=true;
+    for(const v of S.victims){
+      if(v.diag||v.down||v.sedated||(v.type!=="agitated"&&v.type!=="super"))continue;
+      if(v.calm&&sk("steady")&&S.aura&&dist(v,S.droid)<radius()){v.shield=.9;kept++;continue}
+      if(v.calm)n++;v.calm=false;v.m=100;v.prog=0;v.bang=.9;
+    }
+    say("An event happened. "+(n?n+" calm victim"+(n>1?"s are":" is")+" agitated again.":kept?"":"No calm victim was waiting to be diagnosed.")+(kept?" The Steadying aura kept "+kept+" calm.":""),n?"bad":kept?"good":"");
+  }
+  function worse(v,why){if(v.late)return;v.late=true;S.late++;say(why,"bad")}
+
+  /* a super agitated victim runs around the room, bouncing off things, and loses condition while they run */
+  function run(v,dt){
+    const d=S.droid,inAura=S.aura&&mode==="red"&&dist(v,d)<radius();
+    if(sk("sedate")&&inAura){v.sed+=dt;if(v.sed>=SEDATE){v.calm=true;v.sedated=true;v.m=0;say("The running victim slowed down, stopped and is calm. They can be diagnosed.","good");return}}
+    else v.sed=Math.max(0,v.sed-dt*.5);
+    v.cond-=HARM*dt;
+    if(v.cond<=0){v.cond=0;v.calm=true;v.m=0;worse(v,"The running victim hurt themselves badly and collapsed.");return}
+    if(v.held)return;                                        // caught by a droid
+    v.turn-=dt;if(v.turn<=0){v.turn=.8+Math.random()*1.2;const a=Math.random()*6.283;v.vx=Math.cos(a)*RUN;v.vy=Math.sin(a)*RUN}
+    const slow=1-Math.min(1,v.sed/SEDATE)*.9;
+    for(const ax of ["x","y"]){const n={x:v.x,y:v.y};n[ax]+=(ax==="x"?v.vx:v.vy)*slow*dt;
+      if(solid(box(n,VR))){if(ax==="x")v.vx=-v.vx;else v.vy=-v.vy}else v[ax]=n[ax]}
   }
 
   /* one step of the room */
   function step(dt){
     if(S.done)return;
-    const want=wish(),hold=!!(keys.e||btnHeld),d=S.droid;
-    if(want.x||want.y||hold)S.started=true;
+    const want=wish(),hold=!!(keys.e||btnHeld),fhold=!!(keys.f||focusHeld),phold=!!(keys.r||pulseHeld),d=S.droid;
+    if(want.x||want.y||hold||phold)S.started=true;
     if(S.started){S.t+=dt;if(tune.event>0){S.evT-=dt;if(S.evT<=0)event()}}
-    if(S.flash>0)S.flash-=dt;
-    for(const v of S.victims)if(v.bang>0)v.bang-=dt;
-    if(S.aura){ // drain the bar, and settle every agitated victim inside the radius
+    if(S.flash>0)S.flash-=dt;if(S.zap>0)S.zap-=dt;
+    for(const v of S.victims){
+      if(v.bang>0)v.bang-=dt;if(v.shield>0)v.shield-=dt;v.held=false;
+      if(S.started&&v.crit>0&&!v.diag&&!v.late&&!(v.type==="arrest"&&!v.down)){v.crit-=dt;
+        if(v.crit<=0)worse(v,v.down?"Too long without help. Victim "+v.n+" got worse.":"The countdown ran out. Victim "+v.n+" got worse.")}
+    }
+    // Focus: with the aura on, narrow it onto the nearest agitated victim inside it
+    S.focus=null;
+    if(sk("focus")&&S.aura&&fhold){let bd=radius();for(const v of S.victims){if(v.diag||v.calm||v.type!=="agitated")continue;const x=dist(v,d);if(x<bd){bd=x;S.focus=v}}}
+    if(S.aura){ // drain the bar, and settle the agitated victims inside the radius
       S.bar-=tune.drain*dt;
       for(const v of S.victims){
-        if(v.calm||dist(v,d)>tune.radius)continue;
-        v.m-=100/tune.settle*dt;
+        if(v.calm||v.type!=="agitated"||dist(v,d)>radius()||(S.focus&&S.focus!==v))continue;
+        v.m-=100/tune.settle*(S.focus?FOCUS:1)*dt;
         if(v.m<=0){v.m=0;v.calm=true;say("Victim "+v.n+" is calm and can be diagnosed.","good")}
       }
       if(S.bar<=0){S.bar=0;S.aura=false;say("The bar is empty, so the aura switched off.","bad")}
     }else S.bar=Math.min(100,S.bar+tune.recharge*dt);
-    const tg=S.tg=target();let busy=false;
-    if(hold&&tg){
-      if(tg.calm){ // diagnose
+    // Reviving pulse: hold to charge, release next to an unconscious victim
+    if(sk("pulse")){
+      if(phold){if(S.bar<PULSE_BAR&&!S.charge)say("The pulse needs at least half the bar.","bad");else{S.charge=Math.min(1,S.charge+dt/CHARGE);if(S.charge<1)say("Charging the pulse. Hold until the ring is full, then release.")}}
+      else if(S.charge>0){
+        if(S.charge>=1){const v=S.victims.filter(v=>!v.diag&&dist(v,d)<R+VR+REACH+12).sort((a,b)=>dist(a,d)-dist(b,d))[0];
+          if(v&&v.down&&!v.pulsed){v.pulsed=true;S.bar=0;S.aura=false;S.zap=.5;say("Pulse delivered. Victim "+v.n+" has a rhythm again. Hold E for the short CPR.","good")}
+          else say(v&&!v.down?"The pulse is only for a victim who is unconscious and not breathing. No bar was used.":"Nobody unconscious is in reach. No bar was used.","bad")}
+        else say("Released early, so the pulse was cancelled.");
+        S.charge=0}
+    }else S.charge=0;
+    for(const v of S.victims)if(running(v)){if(hold&&dist(v,d)<R+VR+REACH)v.held=true;run(v,dt)}
+    const tg=S.tg=target();let busy=S.charge>0;
+    if(hold&&tg&&!busy){
+      if(tg.down){ // CPR, shorter after a pulse
+        busy=true;tg.cpr+=dt/(tg.pulsed?CPR_SHORT:CPR);say("CPR on victim "+tg.n+(tg.pulsed?", the short one after the pulse.":". Keep holding."));
+        if(tg.cpr>=1){tg.down=false;tg.calm=true;tg.cpr=0;say("Victim "+tg.n+" is breathing again and can be diagnosed.","good")}
+      }else if(tg.calm){ // diagnose
         busy=true;tg.prog+=dt/DIAG;
         if(tg.prog>=1){tg.diag=true;tg.prog=0;say("Victim "+tg.n+" is diagnosed.","good")}
+      }else if(running(tg)){ // caught: held still and calmed through the minigame, by any droid
+        busy=true;tg.cp+=dt/tune.mini;say("Holding the running victim and calming them through the minigame. Keep holding.");
+        if(tg.cp>=1){tg.cp=0;tg.m=0;tg.calm=true;say("Victim "+tg.n+" is calm and can be diagnosed.","good")}
       }else if(mode==="red"){say("Victim "+tg.n+" is still agitated. Calm them with the aura first.","bad")}
       else{ // another droid: the calm minigame, one victim at a time
         busy=true;tg.cp+=dt/tune.mini;say("Calming victim "+tg.n+" through the minigame. Keep holding.");
         if(tg.cp>=1){tg.cp=0;tg.m=0;tg.calm=true;say("Victim "+tg.n+" is calm and can be diagnosed.","good")}
       }
     }
-    for(const v of S.victims)if(!hold||v!==tg){v.prog=0;v.cp=0}
+    for(const v of S.victims)if(!hold||v!==tg){v.prog=0;v.cp=0;if(v.down)v.cpr=0}
     if(!busy)for(const ax of ["x","y"]){const mv=want[ax]*SPEED*dt;if(!mv)continue;const nd={x:d.x,y:d.y};nd[ax]+=mv;if(!blocked(box(nd,R)))d[ax]=nd[ax]}
     if(S.victims.every(v=>v.diag)){S.done=true;S.aura=false;
-      say("All four victims diagnosed in "+S.t.toFixed(1)+"s as "+(mode==="red"?"Red":"another droid")+", through "+S.ev+" event"+(S.ev===1?"":"s")+". Reset the room to try again.","good")}
+      say("Everyone is diagnosed in "+S.t.toFixed(1)+"s as "+(mode==="red"?"Red":"another droid")+", through "+S.ev+" event"+(S.ev===1?"":"s")+(S.late?", and "+S.late+" got worse on the way":"")+". Reset the room to try again.",S.late?"":"good")}
   }
 
   /* drawing */
   function rr(x,y,w,h,r){g.beginPath();g.roundRect(x,y,w,h,r);g.fill()}
   function draw(){
-    const now=performance.now()/1000,d=S.droid;
+    const now=performance.now()/1000,d=S.droid,rad=radius();
     g.clearRect(0,0,W,H);g.fillStyle="#F4F1E6";g.fillRect(0,0,W,H);
     g.strokeStyle="rgba(34,48,43,.06)";g.lineWidth=1;g.beginPath();
     for(let x=14;x<W;x+=40){g.moveTo(x,14);g.lineTo(x,H-14)}for(let y=14;y<H;y+=40){g.moveTo(14,y);g.lineTo(W-14,y)}g.stroke();
     g.textAlign="center";
-    if(mode==="red"){ // the aura: filled while on, an outline of its reach while off
-      g.beginPath();g.arc(d.x,d.y,tune.radius,0,7);
-      if(S.aura){g.fillStyle="rgba(226,81,60,.16)";g.fill();
-        g.strokeStyle="rgba(226,81,60,.85)";g.lineWidth=3;g.stroke();
-        const p=(now*.8)%1;g.strokeStyle="rgba(226,81,60,"+(.5*(1-p))+")";g.lineWidth=2;g.beginPath();g.arc(d.x,d.y,tune.radius*p,0,7);g.stroke();
+    if(mode==="red"){ // the aura: filled while on, an outline of its reach while off. Narrowed to one victim while focusing
+      g.beginPath();g.arc(d.x,d.y,rad,0,7);
+      if(S.aura){g.fillStyle=S.focus?"rgba(226,81,60,.05)":"rgba(226,81,60,.16)";g.fill();
+        g.strokeStyle=S.focus?"rgba(226,81,60,.4)":"rgba(226,81,60,.85)";g.lineWidth=3;g.stroke();
+        if(S.focus){const f=S.focus;g.strokeStyle="rgba(226,81,60,.9)";g.lineWidth=7;g.lineCap="round";g.beginPath();g.moveTo(d.x,d.y);g.lineTo(f.x,f.y);g.stroke();g.lineCap="butt";
+          g.fillStyle="rgba(226,81,60,.3)";g.beginPath();g.arc(f.x,f.y,VR+12+Math.sin(now*9)*2,0,7);g.fill()}
+        else{const p=(now*.8)%1;g.strokeStyle="rgba(226,81,60,"+(.5*(1-p))+")";g.lineWidth=2;g.beginPath();g.arc(d.x,d.y,rad*p,0,7);g.stroke()}
       }else{g.strokeStyle="rgba(226,81,60,.35)";g.lineWidth=1.5;g.setLineDash([6,6]);g.stroke();g.setLineDash([])}
     }
     g.fillStyle="#22302B";for(const w of S.walls)g.fillRect(w.x,w.y,w.w,w.h);
     for(const o of S.objs){g.fillStyle="#4A4F5C";rr(o.x,o.y,o.w,o.h,6);g.fillStyle="#fff";g.font="700 11px system-ui,sans-serif";
       g.save();g.translate(o.x+o.w/2,o.y+o.h/2);if(o.h>o.w)g.rotate(-Math.PI/2);g.fillText(o.n,0,4);g.restore()}
     S.victims.forEach((v,i)=>{
-      const k=v.diag?0:v.m/100,jx=Math.sin(now*38+i*2)*3*k,jy=Math.cos(now*31+i)*3*k,x=v.x+jx,y=v.y+jy;
+      const run=running(v),k=v.diag||v.down?0:run?1:v.m/100,jx=Math.sin(now*38+i*2)*3*k,jy=Math.cos(now*31+i)*3*k,x=v.x+jx,y=v.y+jy;
       if(S.tg===v){g.strokeStyle="#22302B";g.lineWidth=2;g.setLineDash([4,4]);g.beginPath();g.arc(v.x,v.y,VR+9,0,7);g.stroke();g.setLineDash([])}
-      g.fillStyle=v.diag?"#3F8F6B":v.calm?"#9EDDC4":"#F08A5D";g.beginPath();g.arc(x,y,VR,0,7);g.fill();
+      g.fillStyle=v.diag?"#3F8F6B":v.down?"#9AA5B1":run?"#D0453A":v.calm?"#9EDDC4":"#F08A5D";g.beginPath();g.arc(x,y,VR,0,7);g.fill();
       g.strokeStyle="rgba(0,0,0,.45)";g.lineWidth=1.5;g.stroke();
-      g.fillStyle=v.diag?"#fff":"#22302B";g.font="800 12px system-ui,sans-serif";g.fillText(v.diag?"✓":v.n,x,y+4);
-      if(!v.calm){ // agitation marks, fewer as the victim settles
+      g.fillStyle=v.diag||run?"#fff":"#22302B";g.font="800 12px system-ui,sans-serif";g.fillText(v.diag?"✓":v.n,x,y+4);
+      if(!v.calm&&!v.down){ // agitation marks, fewer as the victim settles
         g.strokeStyle="#B3342B";g.lineWidth=2;const marks=Math.ceil(k*3);
         for(let j=0;j<marks;j++){const a=-Math.PI/2+(j-1)*.7,r1=VR+5,r2=VR+11+Math.sin(now*14+j)*2;g.beginPath();g.moveTo(x+Math.cos(a)*r1,y+Math.sin(a)*r1);g.lineTo(x+Math.cos(a)*r2,y+Math.sin(a)*r2);g.stroke()}
       }
       if(v.bang>0){g.fillStyle="#B3342B";g.font="900 20px system-ui,sans-serif";g.fillText("!",v.x+VR+8,v.y-VR-4-(.9-v.bang)*10)}
-      g.fillStyle=v.diag?"#3F8F6B":v.calm?"#1F7A4D":"#B3342B";g.font="700 11px system-ui,sans-serif";
-      g.fillText(v.diag?"Diagnosed":v.calm?(v.type==="normal"?"Normal":"Calm"):"Agitated",v.x,v.y+VR+16);
-      const p=v.prog||v.cp;
-      if(p>0){g.strokeStyle=v.cp?"#EE8A2B":"#2E8B57";g.lineWidth=5;g.beginPath();g.arc(v.x,v.y,VR+6,-Math.PI/2,-Math.PI/2+Math.PI*2*p);g.stroke()}
-      if(show&&v.type==="agitated"&&!v.diag){ // the hidden meter, for testing only
-        g.fillStyle="#fff";g.fillRect(v.x-20,v.y-VR-22,40,6);g.fillStyle="#B3342B";g.fillRect(v.x-20,v.y-VR-22,40*v.m/100,6);
-        g.strokeStyle="#22302B";g.lineWidth=1;g.strokeRect(v.x-20,v.y-VR-22,40,6)}
+      if(v.shield>0){g.strokeStyle="rgba(31,122,77,"+v.shield+")";g.lineWidth=3;g.beginPath();g.arc(v.x,v.y,VR+7,0,7);g.stroke()}
+      if(v.sedated&&!v.diag){g.strokeStyle="#5B7C99";g.lineWidth=2;g.setLineDash([3,3]);g.beginPath();g.arc(v.x,v.y,VR+5,0,7);g.stroke();g.setLineDash([])}
+      g.fillStyle=v.diag?"#3F8F6B":v.down?"#4A5560":v.calm?"#1F7A4D":"#B3342B";g.font="700 11px system-ui,sans-serif";
+      g.fillText(v.diag?"Diagnosed":v.down?(v.pulsed?"Has a rhythm":"Not breathing"):run?"Super agitated":v.sedated?"Sedated":v.calm?(v.type==="normal"?"Normal":"Calm"):"Agitated",v.x,v.y+VR+16);
+      // what the player can see ticking: a countdown, or a runner's condition
+      if(v.crit>0&&!v.diag&&!v.late&&(v.type!=="arrest"||v.down)){g.font="800 12px system-ui,sans-serif";const tw=g.measureText(v.crit.toFixed(1)+"s").width+10;
+        g.fillStyle=v.crit<3?"#B3342B":"#22302B";g.beginPath();g.roundRect(v.x-tw/2,v.y-VR-26,tw,17,5);g.fill();g.fillStyle="#fff";g.fillText(v.crit.toFixed(1)+"s",v.x,v.y-VR-13)}
+      if(v.late&&!v.diag){g.fillStyle="#B3342B";g.font="700 11px system-ui,sans-serif";g.fillText("Got worse",v.x,v.y-VR-12)}
+      if(run){g.fillStyle="#fff";g.fillRect(v.x-20,v.y-VR-16,40,6);g.fillStyle=v.cond<35?"#B3342B":"#2E8B57";g.fillRect(v.x-20,v.y-VR-16,40*v.cond/100,6);g.strokeStyle="#22302B";g.lineWidth=1;g.strokeRect(v.x-20,v.y-VR-16,40,6);
+        if(v.sed>0){g.strokeStyle="#5B7C99";g.lineWidth=4;g.beginPath();g.arc(v.x,v.y,VR+6,-Math.PI/2,-Math.PI/2+Math.PI*2*Math.min(1,v.sed/SEDATE));g.stroke()}}
+      const p=v.prog||v.cp||v.cpr;
+      if(p>0){g.strokeStyle=v.prog?"#2E8B57":"#EE8A2B";g.lineWidth=5;g.beginPath();g.arc(v.x,v.y,VR+6,-Math.PI/2,-Math.PI/2+Math.PI*2*p);g.stroke()}
+      if(show&&(v.type==="agitated"||v.type==="super")&&!v.diag){ // the hidden meter, for testing only
+        const my=run?32:22;g.fillStyle="#fff";g.fillRect(v.x-20,v.y-VR-my,40,6);g.fillStyle="#B3342B";g.fillRect(v.x-20,v.y-VR-my,40*v.m/100,6);
+        g.strokeStyle="#22302B";g.lineWidth=1;g.strokeRect(v.x-20,v.y-VR-my,40,6)}
     });
     g.fillStyle=mode==="red"?RED:"#5B7C99";g.beginPath();g.arc(d.x,d.y,R,0,7);g.fill();
     g.strokeStyle="#22302B";g.lineWidth=2.5;g.beginPath();g.arc(d.x,d.y,R,0,7);g.stroke();
     g.fillStyle="#fff";g.font="800 13px system-ui,sans-serif";g.fillText(mode==="red"?"R":"D",d.x,d.y+5);
+    if(S.charge>0){g.strokeStyle=S.charge>=1?"#2E8B57":"#EE8A2B";g.lineWidth=5;g.beginPath();g.arc(d.x,d.y,R+7,-Math.PI/2,-Math.PI/2+Math.PI*2*S.charge);g.stroke()}
+    if(S.zap>0){const a=S.zap/.5;g.strokeStyle="rgba(226,81,60,"+a+")";g.lineWidth=6;g.beginPath();g.arc(d.x,d.y,(1-a)*90+16,0,7);g.stroke()}
     if(S.flash>0){g.fillStyle="rgba(179,52,43,"+(S.flash*.5)+")";g.fillRect(0,0,W,H);
       g.fillStyle="#B3342B";g.font="900 22px system-ui,sans-serif";g.fillText("Event!",W/2,44)}
     const b=el("rpBar");b.style.width=S.bar.toFixed(1)+"%";b.classList.toggle("low",S.bar<20);
-    el("rpTime").textContent=S.t.toFixed(1)+"s";el("rpEv").textContent=S.ev;
+    el("rpTime").textContent=S.t.toFixed(1)+"s";el("rpEv").textContent=S.ev;el("rpLate").textContent=S.late;
     el("rpDiag").textContent=S.victims.filter(v=>v.diag).length+"/"+S.victims.length;
     ub.classList.toggle("on",S.aura);ub.textContent=S.aura?"Aura: on":"Aura: off";ub.hidden=mode!=="red";
+    fb.hidden=!sk("focus");pb.hidden=!sk("pulse");
   }
 
   /* the loop runs only while the room is on screen */
@@ -3900,18 +4010,29 @@ window.protoTree=function(id,onChange){
   new IntersectionObserver(es=>{visible=es[0].isIntersecting;if(visible&&!raf){last=performance.now();raf=requestAnimationFrame(frame)}}).observe(cv);
 
   /* controls around the room */
-  function reset(){S=fresh();say(mode==="red"?"Red: tap Space to switch the aura on, stand near the agitated victims until they settle, then hold E to diagnose.":"Another droid: no aura. Hold E next to an agitated victim to calm them, then keep holding to diagnose.");draw()}
+  function reset(){S=fresh();say(ROOMS[room].say+" "+(mode==="red"?"Red: tap Space for the aura, then hold E next to a calm victim to diagnose.":"Another droid: no aura. Hold E next to an agitated victim to calm them, then keep holding to diagnose."));draw()}
+  /* the tree is linear: switching an upgrade on switches on every one before it, and switching it off switches off every one after it */
+  function onSkill(k,on){
+    const i=ORDER.indexOf(k);ORDER.forEach((s,j)=>tree.set(s,on[k]?j<=i:j<i));
+    if(!S)return;S.focus=null;S.charge=0;
+    const need={wide:"Spread out",focus:"Critical victim",steady:"Aftershocks",sedate:"Runner",pulse:"Cardiac arrest"}[k],lvl=ORDER.filter(s=>tree.on[s]).length;
+    say(NAME[k]+(on[k]?" is on, with every upgrade before it.":" is off, with every upgrade after it.")+" The aura is at level "+lvl+" of "+ORDER.length+"."+(on[k]?" Choose the “"+need+"” situation to see what it is for.":"")+(mode==="red"?"":" Upgrades only apply to Red."));draw();
+  }
   el("rpReset").onclick=()=>{reset();cv.focus()};
   el("rpEvent").onclick=()=>{event();cv.focus()};
   el("rpShow").onchange=e=>{show=e.target.checked;draw()};
-  root.querySelectorAll(".cp-seg button").forEach(b=>b.onclick=()=>{mode=b.dataset.mode;root.querySelectorAll(".cp-seg button").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));reset()});
+  const evSlider=el("rpS6");
+  const pick=(attr,set)=>root.querySelectorAll(".cp-seg button["+attr+"]").forEach(b=>b.onclick=()=>{set(b.getAttribute(attr));
+    root.querySelectorAll(".cp-seg button["+attr+"]").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));reset()});
+  pick("data-mode",v=>{mode=v});
+  pick("data-room",v=>{room=v;evSlider.value=ROOMS[v].ev;evSlider.oninput()});   // each situation sets how often an event happens
   [["rpS1","rpO1",v=>{tune.radius=v;return v+" px"}],["rpS2","rpO2",v=>{tune.settle=v/10;return (v/10).toFixed(1)+"s"}],
    ["rpS3","rpO3",v=>{tune.drain=v;return v+"% a second"}],["rpS4","rpO4",v=>{tune.recharge=v;return v+"% a second"}],
    ["rpS5","rpO5",v=>{tune.mini=v/10;return (v/10).toFixed(1)+"s"}],
    ["rpS6","rpO6",v=>{tune.event=v;if(S)S.evT=v;return v?"every "+v+"s":"only by the button"}]].forEach(([s,o,f])=>{
     const sl=el(s),out=el(o),set=()=>{out.textContent=f(+sl.value)};sl.oninput=set;set()});
   S=fresh();draw();
-  window.redProto={state:()=>S,step,reset,tune,event,toggleAura}; // for tests
+  window.redProto={state:()=>S,step,reset,tune,event,toggleAura,tree,keys,setRoom:r=>{const b=root.querySelector('.cp-seg button[data-room="'+r+'"]');if(b)b.click()}}; // for tests
 })();
 
 /* ===== Cam's Highlight: playable lo-fi, with fog of war =====
