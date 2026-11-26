@@ -2350,15 +2350,18 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
     <div class="cp-time"><span>Time</span><b id="bpTime">0.0s</b></div>
     <div class="cp-time"><span>At the exit</span><b id="bpOut">0/14</b></div>
     <div class="cp-time" id="bpInjWrap" hidden><span>Injured found</span><b id="bpInj">0/3</b></div>
+    <div class="cp-time" id="bpHurtWrap" hidden><span>Hurt</span><b id="bpHurt">0</b></div>
     <button type="button" class="cp-reset" id="bpReset">Reset room</button>
   </div>
   <div class="cp-top bp-rooms">
-    <span class="bp-lab">Crowd in the room</span>
-    <div class="cp-seg" role="group" aria-label="Crowd in the room">
+    <span class="bp-lab">Situation</span>
+    <div class="cp-seg" role="group" aria-label="Situation">
       <button type="button" data-room="calm" aria-pressed="true">Calm</button>
       <button type="button" data-room="panic" aria-pressed="false">Panicked</button>
       <button type="button" data-room="smoke" aria-pressed="false">In smoke</button>
       <button type="button" data-room="injured" aria-pressed="false">Injured mixed in</button>
+      <button type="button" data-room="door" aria-pressed="false">Unsafe exit</button>
+      <button type="button" data-room="escape" aria-pressed="false">Escaping crowd</button>
     </div>
   </div>
   <div class="cp-stage">
@@ -2378,6 +2381,7 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
     <span><i style="background:rgba(217,165,20,.35);border-radius:50%"></i>Bee’s swarm</span>
     <span><i style="background:#B9BDB6"></i>Smoke</span>
     <span><i style="background:#8FD6A8"></i>Exit</span>
+    <span><i style="background:#E8695A"></i>Danger, or an unsafe exit</span>
   </div>
   <div class="cp-tune">
     <h4>Numbers still to define</h4>
@@ -2396,15 +2400,17 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
       <li>A droid can squeeze through a crowd, but only slowly.</li>
       <li><b>Another droid:</b> has no swarm. It has the honk, a short pulse that pushes back the people right next to it. <span class="tbd">The honk is named on the Figma boards as a mini version of Bee’s crowd control. How it works is not defined, so this is a stand-in.</span></li>
       <li><b>Panicked crowd:</b> half the people run at random, and do not leave by themselves. The basic swarm only deflects them a little, so they have to be herded all the way out.</li>
-      <li><b>Crowd in smoke:</b> people inside the smoke cannot see which way to go, so they walk off in the wrong direction.</li>
+      <li><b>Crowd in smoke:</b> the whole room is in smoke. People only notice the swarm when it is very close, stumble off roughly away from it, and cannot see the way out.</li>
+      <li><b>Unsafe exit:</b> a second way out sits close to the crowd and leads into danger. People lean towards the nearest way out, so most of them head for the unsafe one. Anyone who leaves through it counts as hurt.</li>
+      <li><b>Escaping crowd:</b> twelve people walk to the exit by themselves, one after another, straight through a danger they do not see. Anyone who walks through it counts as hurt. Two injured people wait in the far corners and have to be found by touching them.</li>
       <li><b>Injured mixed in:</b> three people are injured and look like everyone else. They can only shuffle when pushed. Touch a person who lags behind to find out. The room is done when the others are out and all three are found.</li>
-      <li><span class="tbd">The three evolved crowds are suggestions that go with the passive candidates. None is confirmed, and neither is how a crowd behaves.</span></li>
+      <li><span class="tbd">Every situation here is a suggestion made to give a skill candidate something to solve. None is confirmed, and neither is how a crowd behaves.</span></li>
       <li>Skills from the skill tree panel only change what Bee can do. The first three add a new action each. They are candidates, not confirmed.</li>
     </ul>
     <p class="cp-note">On a phone: drag on the room to move, and tap the “Swarm” button. Each skill that adds an action also adds its own button over the room.</p>
   </div>
 </div>
-<aside class="cp-tree" id="beeProtoTree" aria-label="Skill tree"><h4>Skill tree</h4><p class="cp-note">Candidates only. The tree is not designed yet, so this layout and the numbers are placeholders. Click a skill to switch it on in the room.</p><div class="st"><div class="st-root"><b>Herd</b><span>Basic ability, always on</span></div><ul class="st-kids"><li><button type="button" class="st-node" data-skill="hive" aria-pressed="false" data-name="Drop hive" data-status="Picked to try on 26 Nov, not confirmed" data-what="Leave the swarm at a spot. It keeps herding there while Bee walks off without it. Recall it to get it back." data-how="Press Q or the “Drop hive” button to plant the swarm where Bee stands, and again to recall it. People walk away from the hive, not from Bee. Plant it on one side of the crowd and stand on another."><b>Drop hive</b><span>Picked to try on 26 Nov, not confirmed</span><i class="st-sw">Off</i></button></li><li><button type="button" class="st-node" data-skill="wall" aria-pressed="false" data-name="Swarm wall" data-status="Picked to try on 26 Nov, not confirmed" data-what="Draw a short line. Part of the swarm becomes a wall that people will not cross while the bar lasts." data-how="Hold F or the “Hold: draw wall” button, walk to draw the line, and release. Tap F again to take the wall down. People cannot cross it, and droids can. It drains the bar on top of the swarm."><b>Swarm wall</b><span>Picked to try on 26 Nov, not confirmed</span><i class="st-sw">Off</i></button></li><li><button type="button" class="st-node" data-skill="lead" aria-pressed="false" data-name="Lead" data-status="Picked to try on 26 Nov, not confirmed" data-what="The swarm pushes people from behind to lead them to the exit, or to the closest point to it. It only works on people who can walk. Around someone who cannot walk, the bees circle instead." data-how="Press E or the “Mode” button to switch between Herd and Lead. In Lead, people inside the swarm walk towards the exit wherever Bee stands, with bees behind them. Bees circle an injured person and mark them found. Try it with the “Injured mixed in” crowd. Lead drains the bar faster."><b>Lead</b><span>Picked to try on 26 Nov, not confirmed</span><i class="st-sw">Off</i></button></li><li><button type="button" class="st-node" data-skill="steady" aria-pressed="false" data-name="Steady swarm" data-status="Passive, liked on 26 Nov, not confirmed" data-what="Answers a panicked crowd that ignores the basic swarm and runs at random. The swarm slows them to a walk first, then herds them." data-how="Choose the “Panicked” crowd. With this on, a panicked person inside the swarm slows down, settles after a moment and is then herded as normal."><b>Steady swarm</b><span>Passive, liked on 26 Nov, not confirmed</span><i class="st-sw">Off</i></button></li><li><button type="button" class="st-node" data-skill="bright" aria-pressed="false" data-name="Bright swarm" data-status="Passive, liked on 26 Nov, not confirmed" data-what="Answers a crowd in smoke that cannot see where to go. The swarm glows, so people in low visibility follow it." data-how="Choose the “In smoke” crowd. With this on, people inside the smoke can see the swarm and walk away from it in the right direction, as they do in clear air."><b>Bright swarm</b><span>Passive, liked on 26 Nov, not confirmed</span><i class="st-sw">Off</i></button></li><li><button type="button" class="st-node" data-skill="sort" aria-pressed="false" data-name="Sort the crowd" data-status="Passive, liked on 26 Nov, not confirmed" data-what="Answers a crowd with injured people mixed in. The swarm moves the able ones and leaves the injured standing, so they are easy to spot." data-how="Choose the “Injured mixed in” crowd. With this on, the swarm does not move an injured person. They stay where they are and are marked as found."><b>Sort the crowd</b><span>Passive, liked on 26 Nov, not confirmed</span><i class="st-sw">Off</i></button></li></ul></div><div class="st-info" aria-live="polite"><p class="st-hint">No skill is on. The room plays with the basic ability only.</p></div></aside></div></div></section>
+<aside class="cp-tree" id="beeProtoTree" aria-label="Skill tree"><h4>Skill tree</h4><p class="cp-note">Candidates only. The tree is not designed yet, so this layout and the numbers are placeholders. Click a skill to switch it on in the room.</p><div class="st"><div class="st-root"><b>Herd</b><span>Basic ability, always on</span></div><ul class="st-kids"><li><button type="button" class="st-node" data-skill="hive" aria-pressed="false" data-name="Drop hive" data-status="Picked to try on 26 Nov, not confirmed" data-what="Leave the swarm at a spot. It keeps herding there while Bee walks off without it. Recall it to get it back." data-how="Choose the “Escaping crowd” situation. Press Q or the “Drop hive” button to plant the swarm where Bee stands, and again to recall it. Plant it on the danger with the swarm on: the people walking past bend around it, and Bee is free to go and find the two injured people. Without it, Bee has to stand guard on the danger until everyone has passed."><b>Drop hive</b><span>Picked to try on 26 Nov, not confirmed</span><i class="st-sw">Off</i></button></li><li><button type="button" class="st-node" data-skill="wall" aria-pressed="false" data-name="Swarm wall" data-status="Picked to try on 26 Nov, not confirmed" data-what="Draw a short line. Part of the swarm becomes a wall that people will not cross while the bar lasts." data-how="Choose the “Unsafe exit” situation. Hold F or the “Hold: draw wall” button, walk across the front of the unsafe exit to draw the line, and release. People can no longer reach it, so they head for the safe exit when herded. Tap F again to take the wall down. It drains the bar on top of the swarm. Without it, Bee has to herd from the unsafe exit’s side to keep people away from it."><b>Swarm wall</b><span>Picked to try on 26 Nov, not confirmed</span><i class="st-sw">Off</i></button></li><li><button type="button" class="st-node" data-skill="lead" aria-pressed="false" data-name="Lead" data-status="Picked to try on 26 Nov, not confirmed" data-what="The swarm pushes people from behind to lead them to the exit, or to the closest point to it. It only works on people who can walk. Around someone who cannot walk, the bees circle instead." data-how="Press E or the “Mode” button to switch between Herd and Lead. In Lead, people inside the swarm walk towards the exit wherever Bee stands, with bees behind them. Bees circle an injured person and mark them found. Try it with the “Injured mixed in” crowd. Lead drains the bar faster."><b>Lead</b><span>Picked to try on 26 Nov, not confirmed</span><i class="st-sw">Off</i></button></li><li><button type="button" class="st-node" data-skill="steady" aria-pressed="false" data-name="Steady swarm" data-status="Passive, liked on 26 Nov, not confirmed" data-what="Answers a panicked crowd that ignores the basic swarm and runs at random. The swarm slows them to a walk first, then herds them." data-how="Choose the “Panicked” crowd. With this on, a panicked person inside the swarm slows down, settles after a moment and is then herded as normal."><b>Steady swarm</b><span>Passive, liked on 26 Nov, not confirmed</span><i class="st-sw">Off</i></button></li><li><button type="button" class="st-node" data-skill="bright" aria-pressed="false" data-name="Bright swarm" data-status="Passive, liked on 26 Nov, not confirmed" data-what="Answers a crowd in smoke that cannot see where to go. The swarm glows, so people in low visibility follow it." data-how="Choose the “In smoke” situation. With this on, people in the smoke see the swarm glow from further away and walk towards it. Bee stops pushing and leads instead: switch the swarm on, walk to the exit and they follow. Without it, they only react when the swarm is right next to them, and stumble off."><b>Bright swarm</b><span>Passive, liked on 26 Nov, not confirmed</span><i class="st-sw">Off</i></button></li><li><button type="button" class="st-node" data-skill="sort" aria-pressed="false" data-name="Sort the crowd" data-status="Passive, liked on 26 Nov, not confirmed" data-what="Answers a crowd with injured people mixed in. The swarm moves the able ones and leaves the injured standing, so they are easy to spot." data-how="Choose the “Injured mixed in” crowd. With this on, the swarm does not move an injured person. They stay where they are and are marked as found."><b>Sort the crowd</b><span>Passive, liked on 26 Nov, not confirmed</span><i class="st-sw">Off</i></button></li></ul></div><div class="st-info" aria-live="polite"><p class="st-hint">No skill is on. The room plays with the basic ability only.</p></div></aside></div></div></section>
           <section class="lvpanel" data-lv="party"><header class="lvhead"><h2>Party and switching</h2><p class="lvchips"><span class="lvchip">Reference</span><span class="lvchip">GDD 2.1.3, 3.4.2</span></p></header><div class="lvpane on" data-t="main"><p>Droids have no AI. The player controls one droid at a time and swaps between them instantly.</p>
           <div class="tw"><table class="camp def"><thead><tr><th scope="col">Rule</th><th scope="col">How it works</th></tr></thead><tbody><tr><th scope="row">Drafting</th><td>From the campaign map the player selects a stage, and a popup appears where they choose up to 4 droids to bring as their party.</td></tr><tr><th scope="row">Switching</th><td>During the mission the HUD lists the party, and tapping another droid swaps it in. There is no switch cooldown.</td></tr><tr><th scope="row">When it is blocked</th><td>During treatment minigames and while carrying a survivor.</td></tr><tr><th scope="row">Position</th><td>The new droid appears where the current droid is standing. Droids are never spread across the map.</td></tr><tr><th scope="row">Abilities</th><td>Switching turns off any active ability. Each droid keeps its own ability bar, which keeps recharging while that droid is out of play.</td></tr><tr><th scope="row">Health and effects</th><td>Each droid has its own health bar. Burning, slipping and stun effects stay with the droid that suffered them, and a burning droid keeps burning after it is switched out, until its burn timer runs out.</td></tr><tr><th scope="row">Droid down</th><td>When the droid being controlled reaches zero health, the game switches automatically to the next droid in the party. This continues until every droid in the party is down.</td></tr><tr><th scope="row">Why it matters</th><td>The skill is choosing the right droid for the moment, such as Fish for a spreading fire or Bee to move a crowd. The choice is made twice: when building the party and again in the field.</td></tr></tbody></table></div>
           <p>The full text is on the <a href="#droids">Droid rules</a> page.</p></div></section>
@@ -4098,7 +4104,7 @@ window.protoTree=function(id,onChange){
   const cv=root.querySelector("#bpCanvas"),g=cv.getContext("2d"),W=cv.width,H=cv.height;
   const el=id=>root.querySelector("#"+id);
   const SPEED=150,R=16,PR=8,N=14,RUN=105,SQUEEZE=.35;   // droid speed, droid radius, person radius, people, a panicked person's speed, droid speed inside a crowd
-  const HONK={r:78,push:190,wait:1.4},SETTLE=.8,KEEP=1.1,LEAN=.6,WALL={max:170,min:24,cost:.75},LEAD_COST=1.5; // the stand-in honk, how long the Steady swarm takes to settle a panicked person (s), how long a person keeps walking after leaving the swarm (s), how much a person leans towards the way out while walking away, the Swarm wall's length limits and its share of the bar drain, how much faster Lead drains the bar
+  const HONK={r:78,push:190,wait:1.4},SETTLE=.8,KEEP=1.1,LEAN=.6,WALL={max:170,min:24,cost:.35},LEAD_COST=1.5,DIM=.55,GLOW=1.5,GAP=52,SELF=85; // the stand-in honk, how long the Steady swarm takes to settle a panicked person (s), how long a person keeps walking after leaving the swarm (s), how much a person leans towards the way out while walking away, the Swarm wall's length limits and its share of the bar drain, how much faster Lead drains the bar; in smoke: how much of the swarm's radius people notice, how much further its glow reaches with Bright swarm and how close its followers come; how fast people walk out by themselves
   const BEE="#D9A514";
   const tune={radius:110,walk:95,drain:8,recharge:20,slow:8};  // pixels, pixels a second, % of the bar per second (x3)
   let mode="bee",room="calm",S;
@@ -4108,17 +4114,22 @@ window.protoTree=function(id,onChange){
   /* the room: walls with a doorway, the exit, the crowd and the droid. The crowd is laid out the same way every time */
   function fresh(){
     let seed=11;const rnd=()=>(seed=seed*16807%2147483647)/2147483647;
+    const one=(x,y)=>({x,y,vx:0,vy:0,kx:0,ky:0,fx:0,fy:0,flee:0,led:0,ring:false,glow:false,injured:false,panic:false,go:false,delay:0,side:1,hurt:false,calm:0,found:false,out:false,wa:rnd()*6.283,wt:rnd()});
     const people=[];
-    for(let i=0;i<N;i++){const a=rnd()*6.283,r=Math.sqrt(rnd())*80;
-      people.push({x:300+Math.cos(a)*r*1.15,y:230+Math.sin(a)*r,vx:0,vy:0,kx:0,ky:0,fx:0,fy:0,flee:0,led:0,ring:false,injured:false,panic:false,calm:0,found:false,out:false,wa:rnd()*6.283,wt:rnd()})}
+    if(room==="escape"){ // twelve people who walk out by themselves, one after another, and two injured people in the far corners
+      for(let i=0;i<12;i++){const p=one(70+(i%4)*42,160+Math.floor(i/4)*60+(i%2)*14);p.go=true;p.delay=1+i*.5;p.side=i%2?1:-1;people.push(p)}
+      for(const [x,y] of [[610,62],[610,398]]){const p=one(x,y);p.injured=true;people.push(p)}
+    }else for(let i=0;i<N;i++){const a=rnd()*6.283,r=Math.sqrt(rnd())*80;people.push(one(300+Math.cos(a)*r*1.15,230+Math.sin(a)*r))}
     if(room==="panic")people.forEach((p,i)=>{p.panic=i%2===0});
     if(room==="injured")[2,7,11].forEach(i=>{people[i].injured=true});
     return {
-      droid:{x:80,y:230},bar:100,emptied:false,on:false,hive:null,wall:null,draft:null,lead:false,t:0,done:false,started:false,honkWait:0,pulse:0,people,
+      droid:room==="escape"?{x:250,y:80}:{x:80,y:230},bar:100,emptied:false,on:false,hive:null,wall:null,draft:null,lead:false,t:0,done:false,started:false,honkWait:0,pulse:0,hurt:0,people,
       walls:[{x:0,y:0,w:W,h:14},{x:0,y:H-14,w:W,h:14},{x:0,y:0,w:14,h:H},{x:W-14,y:0,w:14,h:H},
              {x:520,y:14,w:20,h:156},{x:520,y:290,w:20,h:156}],   // the wall before the exit, with a doorway
       exit:{x:660,y:14,w:86,h:432},
-      smoke:room==="smoke"?{x:185,y:105,w:260,h:250}:null
+      smoke:room==="smoke"?{x:14,y:14,w:646,h:432}:null,          // the whole room, up to the exit
+      danger:room==="door"?{x:235,y:14,w:130,h:34}:null,          // an unsafe way out in the top wall, close to the crowd
+      fire:room==="escape"?{x:300,y:190,w:80,h:80}:null           // a danger on the straight line to the doorway
     };
   }
   const hit=(a,b)=>a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;
@@ -4157,7 +4168,7 @@ window.protoTree=function(id,onChange){
     if(S.done)return;S.started=true;
     if(mode==="bee"){
       if(!S.on&&S.bar<=8){say("The bar is too low. Wait for it to recharge.","bad");return}
-      S.on=!S.on;say(S.on?(S.lead&&sk("lead")?"Swarm on, in Lead. Bees push people inside the ring towards the exit.":"Swarm on. People inside the ring walk away from "+(S.hive?"the hive":"Bee")+". The bar is draining."):"Swarm off. The bar is recharging"+(S.emptied?", slowly, because it was fully emptied.":"."));
+      S.on=!S.on;say(S.on?(S.smoke&&sk("bright")&&!(S.lead&&sk("lead"))?"Swarm on, and glowing. People in the smoke walk towards it, so lead them to the exit.":S.lead&&sk("lead")?"Swarm on, in Lead. Bees push people inside the ring towards the exit.":"Swarm on. People inside the ring walk away from "+(S.hive?"the hive":"Bee")+". The bar is draining."):"Swarm off. The bar is recharging"+(S.emptied?", slowly, because it was fully emptied.":"."));
       return;
     }
     if(S.honkWait>0){say("The honk is not ready yet.","bad");return}
@@ -4197,35 +4208,58 @@ window.protoTree=function(id,onChange){
     return Math.hypot(p.x-(w.x1+vx*t),p.y-(w.y1+vy*t));
   }
 
+  /* the way to the exit: the doorway first, then the exit */
+  const safeOut=p=>p.x<545?DOOR:EXIT,DOOR={x:556,y:230},EXIT={x:720,y:230};
+  /* do two line segments cross */
+  function cross(a,b,c,d){const o=(p,q,r)=>(q.x-p.x)*(r.y-p.y)-(q.y-p.y)*(r.x-p.x);return o(a,b,c)*o(a,b,d)<0&&o(c,d,a)*o(c,d,b)<0}
+  /* the way out a person can see and would head for: the nearest one, safe or not. A swarm wall in front of the unsafe one hides it */
+  function wayOut(p){
+    const safe=safeOut(p),z=S.danger;if(!z||p.x>520)return safe;
+    const u={x:z.x+z.w/2,y:z.y+z.h/2};
+    if(Math.hypot(u.x-p.x,u.y-p.y)>=Math.hypot(safe.x-p.x,safe.y-p.y))return safe;
+    if(S.wall&&cross(p,u,{x:S.wall.x1,y:S.wall.y1},{x:S.wall.x2,y:S.wall.y2}))return safe;
+    return u;
+  }
+
   /* one person: where they want to go, then the move */
   function person(p,dt){
     const d=S.droid,dx=p.x-d.x,dy=p.y-d.y,dist=Math.hypot(dx,dy)||1,
           c=S.hive||d,cx=p.x-c.x,cy=p.y-c.y,cd=Math.hypot(cx,cy)||1,            // the swarm is around Bee, or around its planted hive
-          inSwarm=S.on&&mode==="bee"&&cd<tune.radius,fogged=inside(p,S.smoke),leading=inSwarm&&S.lead&&sk("lead");
-    p.led=leading&&!p.injured&&!(fogged&&!sk("bright"))?.25:Math.max(0,p.led-dt);p.ring=leading&&p.injured;
+          swarm=S.on&&mode==="bee",fogged=inside(p,S.smoke),blind=fogged&&!sk("bright"),leadOn=S.lead&&sk("lead"),
+          glow=swarm&&fogged&&!blind&&!leadOn&&!p.injured&&!p.panic&&cd<tune.radius*GLOW,   // Bright swarm: in smoke they walk towards the glow
+          inSwarm=swarm&&cd<tune.radius*(blind?DIM:1),leading=inSwarm&&leadOn,
+          safe=safeOut(p),out=wayOut(p),walking=p.go&&!p.injured&&S.t>=p.delay;
+    p.led=leading&&!p.injured&&!blind?.25:Math.max(0,p.led-dt);p.ring=leading&&p.injured;p.glow=glow;
     p.wt-=dt;if(p.wt<=0){p.wt=.6+Math.random()*.8;p.wa=Math.random()*6.283}
     let tx=Math.cos(p.wa)*(p.panic?RUN:5),ty=Math.sin(p.wa)*(p.panic?RUN:5);   // running at random, or just milling about
     if(p.injured){tx=ty=0}
-    if(inSwarm){
-      let a=Math.atan2(cy,cx);
-      let ux=Math.cos(a),uy=Math.sin(a);
-      if(fogged&&!sk("bright")){a+=(p.wa-Math.PI)*.8;ux=Math.cos(a);uy=Math.sin(a)}   // in smoke, the way they walk off is mostly wrong
-      else{ // people who can see head for the way out as they walk away: the doorway first, then the exit
-        const gx=(p.x<545?556:720)-p.x,gy=230-p.y,gm=Math.hypot(gx,gy)||1;
-        if(leading){ux=gx/gm;uy=gy/gm}                                         // Lead: pushed from behind, straight towards the way out
-        else{const bx=ux+gx/gm*LEAN,by=uy+gy/gm*LEAN,bm=Math.hypot(bx,by)||1;ux=bx/bm;uy=by/bm}}
+    if(walking){const gx=safe.x-p.x,gy=safe.y-p.y,gm=Math.hypot(gx,gy)||1;tx=gx/gm*SELF;ty=gy/gm*SELF}   // on their way out by themselves
+    if(glow){p.flee=0;if(cd>GAP){tx=-cx/cd*tune.walk;ty=-cy/cd*tune.walk}else{tx=ty=0}}
+    else if(inSwarm){
+      const rx=cx/cd,ry=cy/cd,gx=out.x-p.x,gy=out.y-p.y,gm=Math.hypot(gx,gy)||1,sx=safe.x-p.x,sy=safe.y-p.y,sm=Math.hypot(sx,sy)||1;
+      let ux=rx,uy=ry;
+      if(blind){const a=Math.atan2(ry,rx)+(p.wa-Math.PI)*.3;ux=Math.cos(a);uy=Math.sin(a)}   // in smoke they stumble off, only roughly away
+      else if(leading){ux=sx/sm;uy=sy/sm}                                                    // Lead: pushed from behind, straight towards the exit
+      else if(walking){ // someone walking out by themselves bends around the swarm and carries on
+        const qx=sx/sm,qy=sy/sm;
+        if(qx*rx+qy*ry<.15){let px=-ry,py=rx,dot=px*qx+py*qy;const sd=Math.abs(dot)<.08?p.side:Math.sign(dot);px*=sd;py*=sd;
+          const bx=px*.9+rx*.35+qx*.2,by=py*.9+ry*.35+qy*.2,bm=Math.hypot(bx,by)||1;ux=bx/bm;uy=by/bm}
+        else{ux=qx;uy=qy}
+      }else{const bx=rx+gx/gm*LEAN,by=ry+gy/gm*LEAN,bm=Math.hypot(bx,by)||1;ux=bx/bm;uy=by/bm}   // people who can see lean towards the nearest way out as they walk away
       if(p.injured&&leading){if(!p.found){p.found=true;say("This person cannot walk, so the bees circle them. Found.","good")}}
       else if(p.injured){if(sk("sort")){if(!p.found){p.found=true;say("The swarm left an injured person standing. Found.","good")}}else{tx=ux*tune.walk*.3;ty=uy*tune.walk*.3}}
       else if(p.panic){
         if(sk("steady")){p.calm+=dt;tx=tx*.3+ux*tune.walk*.4;ty=ty*.3+uy*tune.walk*.4;if(p.calm>=SETTLE){p.panic=false;say("A panicked person settled, and can now be herded.","good")}}
         else{tx=tx*.6+ux*tune.walk*.8;ty=ty*.6+uy*tune.walk*.8}
-      }else{tx=ux*tune.walk;ty=uy*tune.walk;p.fx=ux;p.fy=uy;p.flee=KEEP}
+      }else{tx=ux*tune.walk;ty=uy*tune.walk;if(!walking){p.fx=ux;p.fy=uy;p.flee=blind?.7:KEEP}}
     }else if(p.flee>0&&!p.panic&&!p.injured){p.flee-=dt;const f=Math.min(1,p.flee/.4);tx=p.fx*tune.walk*f;ty=p.fy*tune.walk*f} // keeps walking the same way for a moment
-    // a herded person pressed against a wall walks along it towards the way out, and is not stuck in a corner
-    if((inSwarm||p.flee>0)&&!p.panic&&!p.injured&&!(fogged&&!sk("bright"))){
+    // a herded person pressed against a wall walks along it towards the exit, and is not stuck in a corner
+    if((inSwarm||p.flee>0)&&!glow&&!walking&&!p.panic&&!p.injured&&!blind){
       if(p.x>494&&p.x<522&&(p.y<178||p.y>282)){tx=tune.walk*.25;ty=Math.sign(230-p.y)*tune.walk}          // the wall beside the doorway
-      else if(p.x<28||p.y<28||p.y>H-28){const gx=(p.x<545?556:720)-p.x,gy=230-p.y,gm=Math.hypot(gx,gy)||1;tx=gx/gm*tune.walk;ty=gy/gm*tune.walk}   // an outer wall
+      else if((p.x<28||p.y<28||p.y>H-28)&&out===safe){const gx=safe.x-p.x,gy=safe.y-p.y,gm=Math.hypot(gx,gy)||1;tx=gx/gm*tune.walk;ty=gy/gm*tune.walk}   // an outer wall
     }
+    // in smoke, a herded person who backs into an outer wall turns back into the room, so nobody is lost in a corner
+    if(blind&&(inSwarm||p.flee>0)&&!p.panic&&!p.injured&&(p.x<30||p.y<30||p.y>H-30)){const gx=300-p.x,gy=230-p.y,gm=Math.hypot(gx,gy)||1;tx=gx/gm*tune.walk;ty=gy/gm*tune.walk}
     for(const q of S.people){ // people keep a little room between each other
       if(q===p||q.out)continue;const x=p.x-q.x,y=p.y-q.y,m=Math.hypot(x,y)||.01;
       if(m<PR*2+3){const f=(PR*2+3-m)*7;tx+=x/m*f;ty+=y/m*f}}
@@ -4235,6 +4269,8 @@ window.protoTree=function(id,onChange){
     for(const ax of ["x","y"]){const n={x:p.x,y:p.y};n[ax]+=((ax==="x"?p.vx+p.kx:p.vy+p.ky))*dt;
       if(walled(n,PR)||(S.wall&&toWall(n)<PR+4&&toWall(n)<toWall(p))){if(ax==="x")p.vx=p.kx=0;else p.vy=p.ky=0;if(p.panic)p.wt=0}else p[ax]=n[ax]}
     if(dist<R+PR+4&&p.injured&&!p.found){p.found=true;say("This person is injured. Found.","good")}
+    if(S.fire&&inside(p,S.fire)&&!p.hurt){p.hurt=true;S.hurt++;say("Someone walked straight through the danger.","bad")}
+    if(S.danger&&hit(box(p,PR),S.danger)){p.out=true;p.lost=true;p.hurt=true;S.hurt++;say("Someone left through the unsafe exit.","bad");return}
     if(hit(box(p,PR),S.exit)&&p.panic&&!inSwarm){p.x-=4;p.vx=-Math.abs(p.vx);p.wa=Math.PI+(Math.random()-.5);p.wt=.8}   // too panicked to leave without being herded out
     else if(hit(box(p,PR),S.exit)){p.out=true;if(p.injured){p.found=true;say("An injured person was pushed all the way to the exit.","bad")}}
   }
@@ -4250,12 +4286,12 @@ window.protoTree=function(id,onChange){
       S.bar-=((S.on?tune.drain*(S.lead&&sk("lead")?LEAD_COST:1):0)+(S.wall?tune.drain*WALL.cost:0))*dt;
       if(S.bar<=0){S.bar=0;S.on=false;S.wall=null;S.emptied=true;say("The bar is empty, so the swarm switched off. It now recharges slowly.","bad")}
     }else{S.bar=Math.min(100,S.bar+(S.emptied?tune.slow:tune.recharge)*dt);if(S.bar>=100)S.emptied=false}
-    const crowded=S.people.some(p=>!p.out&&Math.hypot(p.x-d.x,p.y-d.y)<R+PR),sp=SPEED*(crowded?SQUEEZE:1);
+    const crowded=S.people.some(p=>!p.out&&!p.glow&&Math.hypot(p.x-d.x,p.y-d.y)<R+PR),sp=SPEED*(crowded?SQUEEZE:1);
     for(const ax of ["x","y"]){const mv=want[ax]*sp*dt;if(!mv)continue;const nd={x:d.x,y:d.y};nd[ax]+=mv;if(!walled(nd,R))d[ax]=nd[ax]}
     if(S.started)for(const p of S.people)if(!p.out)person(p,dt);
     if(S.people.every(p=>p.out||(p.injured&&p.found))){S.done=true;S.on=false;
       const inj=S.people.filter(p=>p.injured).length;
-      say("Everyone is at the exit"+(inj?", and all "+inj+" injured people are found,":"")+" in "+S.t.toFixed(1)+"s as "+(mode==="bee"?"Bee":"another droid")+". Reset the room to try again.","good")}
+      say((S.hurt?S.people.filter(p=>p.out&&!p.lost).length+" people are at the exit and "+S.hurt+" got hurt":"Everyone is at the exit"+(S.danger||S.fire?" and nobody got hurt":""))+(inj?", and all "+inj+" injured people are found,":"")+" in "+S.t.toFixed(1)+"s as "+(mode==="bee"?"Bee":"another droid")+". Reset the room to try again.","good")}
   }
 
   /* drawing */
@@ -4267,9 +4303,18 @@ window.protoTree=function(id,onChange){
     g.textAlign="center";
     const e=S.exit;g.fillStyle="#8FD6A8";g.fillRect(e.x,e.y,e.w,e.h);g.fillStyle="#1F7A4D";g.font="800 12px system-ui,sans-serif";
     g.save();g.translate(e.x+e.w/2+8,e.y+e.h/2);g.rotate(-Math.PI/2);g.font="800 16px system-ui,sans-serif";g.fillText("EXIT",0,5);g.restore();
+    if(S.fire){const f=S.fire;g.fillStyle="#E8695A";g.beginPath();g.roundRect(f.x,f.y,f.w,f.h,14);g.fill();g.strokeStyle="#B3342B";g.lineWidth=2;g.setLineDash([6,5]);g.stroke();g.setLineDash([]);
+      g.fillStyle="#fff";g.font="800 12px system-ui,sans-serif";g.fillText("Danger",f.x+f.w/2,f.y+f.h/2+4)}
+    if(S.smoke){const s=S.smoke;g.fillStyle="rgba(150,154,148,.5)";g.fillRect(s.x,s.y,s.w,s.h);
+      g.fillStyle="rgba(34,48,43,.55)";g.font="700 12px system-ui,sans-serif";g.fillText("Smoke fills the room",s.x+s.w/2-70,s.y+20)}
     g.fillStyle="#22302B";for(const w of S.walls)g.fillRect(w.x,w.y,w.w,w.h);
+    if(S.danger){const z=S.danger;g.fillStyle="#E8695A";g.fillRect(z.x,z.y-14,z.w,z.h+14);g.fillStyle="#fff";g.font="800 12px system-ui,sans-serif";g.fillText("UNSAFE EXIT",z.x+z.w/2,z.y+16)}
     const c=S.hive||d,lead=S.lead&&sk("lead");
+    if(mode==="bee"&&S.on&&S.smoke&&sk("bright")&&!lead){ // Bright swarm: the glow people in smoke walk towards
+      const gl=g.createRadialGradient(c.x,c.y,tune.radius*.3,c.x,c.y,tune.radius*GLOW);gl.addColorStop(0,"rgba(255,222,89,.55)");gl.addColorStop(1,"rgba(255,222,89,0)");
+      g.fillStyle=gl;g.beginPath();g.arc(c.x,c.y,tune.radius*GLOW,0,7);g.fill()}
     if(mode==="bee"){ // the swarm: its ring, filled while on, and the bees circling in it. Around Bee, or around its planted hive
+      if(S.on&&S.smoke&&!sk("bright")){g.strokeStyle="rgba(34,48,43,.55)";g.lineWidth=1.5;g.setLineDash([3,4]);g.beginPath();g.arc(c.x,c.y,tune.radius*DIM,0,7);g.stroke();g.setLineDash([])} // how close people in smoke have to be
       g.beginPath();g.arc(c.x,c.y,tune.radius,0,7);
       if(S.on){g.fillStyle=lead?"rgba(143,214,168,.28)":sk("bright")?"rgba(255,214,64,.3)":"rgba(217,165,20,.16)";g.fill();g.strokeStyle=lead?"rgba(31,122,77,.9)":"rgba(185,138,10,.9)";g.lineWidth=2.5;g.stroke();
         g.fillStyle="#22302B";for(let i=0;i<(lead?6:16);i++){const a=now*(1.2+i%3*.5)+i*1.7,r=tune.radius*(.3+((i*37)%60)/100);
@@ -4295,10 +4340,10 @@ window.protoTree=function(id,onChange){
         const gx=(p.x<545?556:720)-p.x,gy=230-p.y,gm=Math.hypot(gx,gy)||1;g.fillStyle="#22302B";
         for(let i=-1;i<=1;i++){const w=Math.sin(now*14+i*2+p.wa)*2;g.beginPath();g.arc(x-gx/gm*(PR+6)+-gy/gm*i*5+w*.4,y-gy/gm*(PR+6)+gx/gm*i*5+w,2,0,7);g.fill()}
       }
+      if(p.hurt&&!p.out){g.strokeStyle="#B3342B";g.lineWidth=2.5;g.beginPath();g.arc(x,y,PR+3,0,7);g.stroke()}
+      if(p.glow){g.strokeStyle="rgba(217,165,20,.9)";g.lineWidth=2;g.beginPath();g.arc(x,y,PR+3,0,7);g.stroke()}
       if(p.ring){g.fillStyle="#22302B";for(let i=0;i<5;i++){const a=now*5+i*1.257;g.beginPath();g.arc(x+Math.cos(a)*(PR+7),y+Math.sin(a)*(PR+7),2,0,7);g.fill()}} // and circling one who cannot
     }
-    if(S.smoke){const s=S.smoke;g.fillStyle="rgba(150,154,148,.62)";g.beginPath();g.roundRect(s.x,s.y,s.w,s.h,50);g.fill();
-      g.fillStyle="rgba(34,48,43,.6)";g.font="700 12px system-ui,sans-serif";g.fillText("Smoke",s.x+s.w/2,s.y+18)}
     if(S.pulse>0){const a=S.pulse/.35;g.strokeStyle="rgba(34,48,43,"+a+")";g.lineWidth=3;g.beginPath();g.arc(d.x,d.y,HONK.r*(1-a*.7),0,7);g.stroke()}
     g.fillStyle=mode==="bee"?BEE:"#5B7C99";g.beginPath();g.arc(d.x,d.y,R,0,7);g.fill();
     g.strokeStyle="#22302B";g.lineWidth=2.5;g.beginPath();g.arc(d.x,d.y,R,0,7);g.stroke();
@@ -4306,7 +4351,8 @@ window.protoTree=function(id,onChange){
     const b=el("bpBar");b.style.width=S.bar.toFixed(1)+"%";b.classList.toggle("slow",S.emptied&&!S.on);
     el("bpTime").textContent=S.t.toFixed(1)+"s";
     const able=S.people.filter(p=>!p.injured),inj=S.people.filter(p=>p.injured);
-    el("bpOut").textContent=able.filter(p=>p.out).length+"/"+able.length;
+    el("bpOut").textContent=able.filter(p=>p.out&&!p.lost).length+"/"+able.length;
+    el("bpHurtWrap").hidden=!(S.danger||S.fire);el("bpHurt").textContent=S.hurt;
     el("bpInjWrap").hidden=!inj.length;el("bpInj").textContent=inj.filter(p=>p.found).length+"/"+inj.length;
     sb.classList.toggle("on",S.on);sb.textContent=mode==="bee"?(S.on?"Swarm: on":"Swarm: off"):"Honk";
     hb.hidden=!sk("hive");hb.textContent=S.hive?"Recall hive":"Drop hive";hb.classList.toggle("on",!!S.hive);
@@ -4320,13 +4366,14 @@ window.protoTree=function(id,onChange){
   new IntersectionObserver(es=>{visible=es[0].isIntersecting;if(visible&&!raf){last=performance.now();raf=requestAnimationFrame(frame)}}).observe(cv);
 
   /* controls around the room */
-  const ROOM_SAY={calm:"A calm crowd.",panic:"A panicked crowd: half the people run at random.",smoke:"A crowd in smoke: people inside it cannot see which way to go.",injured:"Three injured people are mixed into the crowd."};
-  function reset(){S=fresh();say(ROOM_SAY[room]+" "+(mode==="bee"?"Bee: tap Space for the swarm, and get behind the crowd to push it to the exit.":"Another droid: no swarm. Tap Space to honk at the people next to it."));draw()}
+  const ROOM_SAY={calm:"A calm crowd.",panic:"A panicked crowd: half the people run at random.",smoke:"The room is full of smoke: people only notice the swarm up close, and cannot see the way out.",injured:"Three injured people are mixed into the crowd.",
+    door:"An unsafe exit sits close to the crowd, and people head for the nearest way out.",escape:"People are walking out by themselves, straight through a danger. Two injured people wait in the far corners."};
+  function reset(){S=fresh();say(ROOM_SAY[room]+" "+(mode==="bee"?(room==="escape"?"Bee: keep the walkers off the danger, and find the two injured people.":"Bee: tap Space for the swarm, and get behind the crowd to push it to the exit."):"Another droid: no swarm. Tap Space to honk at the people next to it."));draw()}
   function onSkill(k,on){
-    if(!S)return;const name={hive:"Drop hive",wall:"Swarm wall",lead:"Lead",steady:"Steady swarm",bright:"Bright swarm",sort:"Sort the crowd"}[k],needs={steady:"panic",bright:"smoke",sort:"injured"}[k],
+    if(!S)return;const name={hive:"Drop hive",wall:"Swarm wall",lead:"Lead",steady:"Steady swarm",bright:"Bright swarm",sort:"Sort the crowd"}[k],needs={steady:"panic",bright:"smoke",sort:"injured",wall:"door",hive:"escape"}[k],
           key={hive:" Press Q to plant or recall the hive.",wall:" Hold F and walk to draw a wall.",lead:" Press E to switch between Herd and Lead."}[k];
     if(!on.hive)S.hive=null;if(!on.wall){S.wall=S.draft=null}if(!on.lead)S.lead=false;
-    say(name+(on[k]?" is on."+(mode!=="bee"?" It only applies to Bee.":key||(room===needs?"":" It answers the “"+{panic:"Panicked",smoke:"In smoke",injured:"Injured mixed in"}[needs]+"” crowd, so choose that crowd to see it work.")):" is off."));draw();
+    say(name+(on[k]?" is on."+(mode!=="bee"?" It only applies to Bee.":(key||"")+(!needs||room===needs?"":" Choose the “"+{panic:"Panicked",smoke:"In smoke",injured:"Injured mixed in",door:"Unsafe exit",escape:"Escaping crowd"}[needs]+"” situation to see what it is for.")):" is off."));draw();
   }
   const pick=(attr,set)=>root.querySelectorAll(".cp-seg button["+attr+"]").forEach(b=>b.onclick=()=>{set(b.getAttribute(attr));
     root.querySelectorAll(".cp-seg button["+attr+"]").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));reset()});
