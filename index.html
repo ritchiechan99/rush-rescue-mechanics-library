@@ -731,6 +731,11 @@ body.dragging,body.dragging *{cursor:grabbing!important;user-select:none}
 .cp-btns{position:absolute;right:12px;bottom:12px;display:flex;gap:8px;line-height:1.2}
 .cp-btns .cp-grip{position:static}
 .cp-btns .cp-grip.cp-toss{background:#22302B}
+.cp-rooms{margin-top:-2px}
+.cp-lab{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.cp-rooms .cp-seg{flex-wrap:wrap;border-radius:16px}
+.cp-rooms .cp-seg button{font-size:13px;padding:6px 12px}
+.cp-time[hidden]{display:none}
 #crabProtoTree{--st:#B85F10}
 @media(max-width:560px){.cp-btns .cp-grip{font-size:12px;padding:9px 12px}}
 
@@ -2258,11 +2263,11 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
           <div class="dstory" style="--dc:#EE8A2B"><span class="dlab">Story</span><p>The dependable life(buoy) of the party, Crab’s infectious whimsy and unsinkable determination reaches audiences far and wide.</p><p>Crab was once an anchor droid, braving the disastrous climate phenomena next to hardened construction workers, keeping them steady so they don’t get swept off their feet. Then, at the end of every shift, he would practice his stand up comedy routine to them, and be showered with a round of encouraging applause.</p><p>However, a job where everyone had to be kept in place meant that Crab never got the opportunity to explore the world on his own two feet. For once, he’d like to be the one swept up in a wild adventure instead.</p><p>Now, Crab travels with his newfound circus of friends to do what he does best: keep people safe from harm, while lifting their spirits with a good joke or two.</p><p class="dnote">Story from the Characters &amp; Lore section of the InnovSpur FigJam board, read on 26 Nov 2026. Picture from the game’s character sprites in the Unity project.</p></div>
           <h3 class="dsub">Details</h3>
           <div class="tw"><table class="camp def"><thead><tr><th scope="col">Field</th><th scope="col">Definition</th></tr></thead><tbody><tr><th scope="row">Carry or drag</th><td>The object’s weight decides: light objects are carried, medium objects are dragged. Crab cannot grip heavy or fixed objects.</td></tr><tr><th scope="row">Without Crab</th><td>Other droids carry light objects and push medium ones, as every droid can.</td></tr><tr><th scope="row">Status</th><td><span class="tbd">Decided on 26 Nov 2026, not yet in the GDD, which still has this ability as to be defined.</span></td></tr><tr><th scope="row">Still to define</th><td>How fast the bar drains, and how much slower Crab moves while dragging.</td></tr><tr><th scope="row">Skill tree</th><td>To be added later, on the <button type="button" class="tablink" data-lvtab="skill">Skill tree tab</button>.</td></tr><tr><th scope="row">Shared rules</th><td><a href="#droid-party">Party and switching</a>, <a href="#droid-actions">What every droid can do</a>, <a href="#droid-skilltree">Skill tree rules</a></td></tr><tr><th scope="row">Sources</th><td><span class="scs"><span class="sc" title="Game design document">GDD 3.4.1, 3.3</span></span></td></tr></tbody></table></div></div><div class="lvpane" data-t="skill"><p class="lvempty">Not designed yet. Crab’s skill tree will be added here later.</p>
-          <h3 class="dsub">Skill tree candidates</h3><div class="tw"><table><thead><tr><th scope="col">Candidate</th><th scope="col">What it would do</th><th scope="col">Status</th></tr></thead><tbody><tr><th scope="row">Tow line</th><td>Hook an object with a line and pull it from a short distance, with Crab’s hands free.</td><td>Set aside for the skill tree on 26 Nov</td></tr><tr><th scope="row">Stack and haul</th><td>Pick up as many as three objects at once. Each one slows Crab and drains the bar faster.</td><td>Set aside for the skill tree on 26 Nov</td></tr><tr><th scope="row">Lift and toss</th><td>Throw the held object a short distance. Light objects fly further than medium ones.</td><td>Set aside for the skill tree on 26 Nov</td></tr></tbody></table></div>
+          <h3 class="dsub">Skill tree candidates</h3><div class="tw"><table><thead><tr><th scope="col">Candidate</th><th scope="col">What it would do</th><th scope="col">Status</th></tr></thead><tbody><tr><th scope="row">Tow line</th><td>Hook an object with a line and pull it from a short distance, with Crab’s hands free.</td><td>Set aside for the skill tree on 26 Nov</td></tr><tr><th scope="row">Stack and haul</th><td>Pick up as many as three objects at once. Each one slows Crab and drains the bar faster.</td><td>Set aside for the skill tree on 26 Nov</td></tr><tr><th scope="row">Lift and toss</th><td>Throw the held object a short distance. Light objects fly further than medium ones.</td><td>Set aside for the skill tree on 26 Nov</td></tr></tbody></table></div><p class="tbd">Each candidate has a situation in the playable lo-fi: “Out of reach” for Tow line, “Supply run” for Stack and haul and “Across the gap” for Lift and toss. Every one can also be solved by another droid, only more slowly. The situations, the broken floor in two of them and the survivor needing supplies are suggestions, not confirmed.</p>
           <p class="tbd">On the playable lo-fi the candidates sit on a slider in one linear order, each level including the ones before it. That order is a placeholder until the tree is designed.</p><p>The candidates can be switched on and tried in the room on the <button type="button" class="tablink" data-lvtab="lofi">Playable lo-fi tab</button>, from the skill tree panel beside it.</p>
           <div class="tw"><table class="camp def"><thead><tr><th scope="col">Field</th><th scope="col">Definition</th></tr></thead><tbody><tr><th scope="row">Skills</th><td>Candidates are listed above. None is confirmed as a skill yet.</td></tr><tr><th scope="row">Shape</th><td>Decided on 26 Nov, for now: the tree is linear for the active skill. Each upgrade enhances the droid’s base ability, one after another.</td></tr><tr><th scope="row">Direction</th><td>Decided on 25 Nov: hazards evolve in the later levels, and the skill tree is built around answering their new forms.</td></tr><tr><th scope="row">Bought with</th><td>Bobbles, which are used for the skill tree only. Whether they replace skill points is still open.</td></tr><tr><th scope="row">How it works</th><td>Skill points permanently upgrade the droid and can unlock abilities. See <a href="#droid-skilltree">Skill tree rules</a>.</td></tr></tbody></table></div></div><div class="lvpane" data-t="lofi"><div class="cp-wrap">
 <div class="cproto" id="crabProto">
-  <p class="lead">A test room for Crab’s Grip. Clear the doorway and reach the survivor. This is a flat sketch to try the rules and the numbers, not the game’s look or physics.</p>
+  <p class="lead">A test room for Crab’s Grip, with four situations: a blocked doorway to clear, and three where the survivor needs supplies brought to them. This is a flat sketch to try the rules and the numbers, not the game’s look or physics.</p>
   <div class="cp-top">
     <div class="cp-seg" role="group" aria-label="Droid">
       <button type="button" data-mode="crab" aria-pressed="true">Crab</button>
@@ -2270,7 +2275,17 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
     </div>
     <div class="cp-bar" aria-hidden="true"><span>Ability bar</span><i><b id="cpBar"></b></i></div>
     <div class="cp-time"><span>Time</span><b id="cpTime">0.0s</b></div>
+    <div class="cp-time" id="cpGotWrap" hidden><span>Delivered</span><b id="cpGot">0/0</b></div>
     <button type="button" class="cp-reset" id="cpReset">Reset room</button>
+  </div>
+  <div class="cp-top cp-rooms">
+    <span class="cp-lab">Situation</span>
+    <div class="cp-seg" role="group" aria-label="Situation">
+      <button type="button" data-room="door" aria-pressed="true">Blocked doorway</button>
+      <button type="button" data-room="reach" aria-pressed="false">Out of reach</button>
+      <button type="button" data-room="run" aria-pressed="false">Supply run</button>
+      <button type="button" data-room="gap" aria-pressed="false">Across the gap</button>
+    </div>
   </div>
   <div class="cp-stage">
     <canvas id="cpCanvas" width="760" height="460" tabindex="0" role="img" aria-label="Test room. Crab starts on the left. A doorway in the middle wall is blocked by a chair, a bench and a fire extinguisher. A survivor waits on the right."></canvas>
@@ -2286,6 +2301,7 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
     <span><i style="background:#8C8F9C"></i>Heavy: cannot be gripped</span>
     <span><i style="background:#4A4F5C"></i>Fixed: cannot be gripped</span>
     <span><i style="background:#9EDDC4"></i>Survivor</span>
+    <span><i style="background:#3B2F2A"></i>Broken floor: no droid can cross</span>
   </div>
   <div class="cp-tune">
     <h4>Numbers still to define</h4>
@@ -2303,11 +2319,14 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
       <li>The bar drains while holding and recharges after letting go. If it runs out, the object is dropped.</li>
       <li>Heavy and fixed objects cannot be gripped by either.</li>
       <li>Skills from the skill tree panel only change what Crab can do. They are candidates, not confirmed.</li>
+      <li>In three of the situations the survivor needs supplies, which have to be brought within reach of them. A droid cannot cross broken floor, but an object can be pulled or thrown over it.</li>
+      <li>Every situation can be solved by another droid, and by Crab with no upgrade. It only takes longer: the long way round, or more trips.</li>
+      <li><span class="tbd">The situations, the broken floor and the survivor needing supplies are suggestions made to give each upgrade something to solve. None is confirmed.</span></li>
     </ul>
     <p class="cp-note">On a phone: drag on the room to move, and tap the “Grip” button to grip and to let go.</p>
   </div>
 </div>
-<aside class="cp-tree cp-line" id="crabProtoTree" aria-label="Skill tree" style="--n:3"><div class="sl-top"><h4>Skill tree</h4><span class="sl-tag">Candidates, not confirmed</span></div><div class="sl"><div class="sl-head"><b>Grip</b><span class="sl-lvl"></span></div><p class="sl-lab"><b>Set the level</b> Drag the handle, or click a stop. This changes the room.</p><div class="sl-groove"><div class="sl-track"><i class="sl-rail"></i><i class="sl-fill"></i><div class="sl-col"><span class="sl-stop" aria-hidden="true">0</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">1</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">2</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">3</span></div><input type="range" class="sl-range" min="0" max="3" step="1" value="0" aria-label="Grip: upgrade level"></div></div><div class="sl-names"><button type="button" class="sl-name" data-lvl="0" data-name="Grip" data-what="Tap next to a light or medium object to grip it, and tap again to set it down. A light object is carried and a medium one is dragged. The bar drains while Crab holds something.">Basic</button><button type="button" class="sl-name" data-skill="tow" data-lvl="1" aria-pressed="false" data-name="Tow line" data-status="Set aside for the skill tree on 26 Nov" data-what="Hook an object with a line and pull it from a short distance, with Crab’s hands free." data-how="Tap Space with nothing next to Crab. The nearest light or medium object within the line’s length, with no wall in between, is hooked and reeled in. Crab keeps moving at full speed. Tap again to let go."><span class="sl-full">Tow line</span><span class="sl-short" aria-hidden="true">Tow</span></button><button type="button" class="sl-name" data-skill="stack" data-lvl="2" aria-pressed="false" data-name="Stack and haul" data-status="Set aside for the skill tree on 26 Nov" data-what="Pick up as many as three objects at once. Each one slows Crab and drains the bar faster." data-how="While gripping, walk up to more objects. Crab takes hold of as many as three. Each extra one slows Crab and adds its own bar drain."><span class="sl-full">Stack and haul</span><span class="sl-short" aria-hidden="true">Stack</span></button><button type="button" class="sl-name" data-skill="toss" data-lvl="3" aria-pressed="false" data-name="Lift and toss" data-status="Set aside for the skill tree on 26 Nov" data-what="Throw the held object a short distance. Light objects fly further than medium ones." data-how="While gripping something, press F or the Toss button. It flies the way Crab is facing. A light object goes further than a medium one."><span class="sl-full">Lift and toss</span><span class="sl-short" aria-hidden="true">Lift</span></button></div><p class="sl-lab sl-lab2"><b>Read about an upgrade</b> Click its name. This only changes the card below.</p></div><div class="sl-card" aria-live="polite"><div class="sl-cardtop"><div><span class="sl-step"></span><h5></h5></div><div class="sl-nav"><button type="button" class="sl-prev" aria-label="Look at the upgrade before">‹</button><button type="button" class="sl-next" aria-label="Look at the next upgrade">›</button></div></div><p class="sl-what"></p><p class="sl-inc"></p><p class="st-how sl-how"><b>Try it in this room</b><span></span></p><div class="sl-act"><span class="sl-state"></span><button type="button" class="sl-set"></button></div></div><p class="cp-note sl-foot">The tree is linear: each upgrade enhances the base ability and includes the ones before it. The order and the numbers are placeholders.</p></aside></div></div></section>
+<aside class="cp-tree cp-line" id="crabProtoTree" aria-label="Skill tree" style="--n:3"><div class="sl-top"><h4>Skill tree</h4><span class="sl-tag">Candidates, not confirmed</span></div><div class="sl"><div class="sl-head"><b>Grip</b><span class="sl-lvl"></span></div><p class="sl-lab"><b>Set the level</b> Drag the handle, or click a stop. This changes the room.</p><div class="sl-groove"><div class="sl-track"><i class="sl-rail"></i><i class="sl-fill"></i><div class="sl-col"><span class="sl-stop" aria-hidden="true">0</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">1</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">2</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">3</span></div><input type="range" class="sl-range" min="0" max="3" step="1" value="0" aria-label="Grip: upgrade level"></div></div><div class="sl-names"><button type="button" class="sl-name" data-lvl="0" data-name="Grip" data-what="Tap next to a light or medium object to grip it, and tap again to set it down. A light object is carried and a medium one is dragged. The bar drains while Crab holds something.">Basic</button><button type="button" class="sl-name" data-skill="tow" data-lvl="1" aria-pressed="false" data-name="Tow line" data-status="Set aside for the skill tree on 26 Nov" data-what="Hook an object with a line and pull it from a short distance, with Crab’s hands free." data-how="Choose the “Out of reach” situation: the first aid bag lies across broken floor, and the line pulls it over. Tap Space with nothing next to Crab. The nearest light or medium object within the line’s length, with no wall in between, is hooked and reeled in. Crab keeps moving at full speed. Tap again to let go."><span class="sl-full">Tow line</span><span class="sl-short" aria-hidden="true">Tow</span></button><button type="button" class="sl-name" data-skill="stack" data-lvl="2" aria-pressed="false" data-name="Stack and haul" data-status="Set aside for the skill tree on 26 Nov" data-what="Pick up as many as three objects at once. Each one slows Crab and drains the bar faster." data-how="Choose the “Supply run” situation: three boxes go to the survivor in one trip instead of three. While gripping, walk up to more objects. Crab takes hold of as many as three. Each extra one slows Crab and adds its own bar drain."><span class="sl-full">Stack and haul</span><span class="sl-short" aria-hidden="true">Stack</span></button><button type="button" class="sl-name" data-skill="toss" data-lvl="3" aria-pressed="false" data-name="Lift and toss" data-status="Set aside for the skill tree on 26 Nov" data-what="Throw the held object a short distance. Light objects fly further than medium ones." data-how="Choose the “Across the gap” situation: the bag is thrown over the broken floor to the survivor. While gripping something, press F or the Toss button. It flies the way Crab is facing. A light object goes further than a medium one."><span class="sl-full">Lift and toss</span><span class="sl-short" aria-hidden="true">Lift</span></button></div><p class="sl-lab sl-lab2"><b>Read about an upgrade</b> Click its name. This only changes the card below.</p></div><div class="sl-card" aria-live="polite"><div class="sl-cardtop"><div><span class="sl-step"></span><h5></h5></div><div class="sl-nav"><button type="button" class="sl-prev" aria-label="Look at the upgrade before">‹</button><button type="button" class="sl-next" aria-label="Look at the next upgrade">›</button></div></div><p class="sl-what"></p><p class="sl-inc"></p><p class="st-how sl-how"><b>Try it in this room</b><span></span></p><div class="sl-act"><span class="sl-state"></span><button type="button" class="sl-set"></button></div></div><p class="cp-note sl-foot">The tree is linear: each upgrade enhances the base ability and includes the ones before it. The order and the numbers are placeholders.</p></aside></div></div></section>
           <section class="lvpanel" data-lv="fish"><header class="lvhead"><h2>Fish</h2><p class="lvchips"><span class="lvchip">Droid</span><span class="lvchip">Ability defined</span><span class="lvchip">In Bypass Firewall</span></p></header><div class="lvtabs" role="tablist" aria-label="Sections of this level"><button type="button" role="tab" data-t="main" aria-selected="true">Profile</button><button type="button" role="tab" data-t="skill" aria-selected="false">Skill tree</button><button type="button" role="tab" data-t="lofi" aria-selected="false">Lo-fi</button></div><div class="lvpane on" data-t="main"><div class="dhero" style="--dc:#2F8FC4;--db:url('banner-fish.jpg')"><div class="dhtx"><span class="dteam">Patchbots · Player droid</span><h3 class="dname">Fish</h3><p class="dtag">Cool, level-headed and shy</p><p class="dwas"><b>Before the team</b>A water droid made for tending plants <span class="tbd">Draft</span></p></div><span class="dport has"><img src="droid-fish.png" alt="" loading="lazy"></span></div><div class="dabil" style="--dc:#2F8FC4"><span class="dlab">Ability</span><h4>Splash Cannons</h4><p>Two water cannons that put out fires and push back crowds.</p><dl><div><dt>Ability bar</dt><dd>Drains while firing. Recharges faster if the bar was not fully emptied, and slower if it was.</dd></div><div><dt>Activation</dt><dd>Press and hold</dd></div></dl></div>
           <div class="dstory" style="--dc:#2F8FC4"><span class="dlab">Story</span><p>Don’t let his larger stature fool you: Fish is as gentle as they come. They’re a water droid made for the purposes of tending plants, moving heavy pots with plenty of water for the plants to drink up.</p><p>An audience of plants is silent and non-judgmental. Fish has finally built the confidence to reach out to people.</p><p class="dnote"><span class="tbd">The board’s text for Fish is still a draft, so only its finished lines are shown.</span></p><p class="dnote">Story from the Characters &amp; Lore section of the InnovSpur FigJam board, read on 26 Nov 2026. Picture from the game’s character sprites in the Unity project.</p></div>
           <h3 class="dsub">Details</h3>
@@ -3366,23 +3385,41 @@ function protoLine(t,onChange){
   /* skill tree candidates switched on in the panel beside the room. They only apply to Crab */
   const tree=window.protoTree("crabProtoTree",onSkill),sk=k=>mode==="crab"&&!!tree.on[k];
 
+  /* the situations. Each is solvable by any droid: the upgrade it is made for only makes it quicker.
+     pits is broken floor, which no droid can cross and objects can. need is how many supplies the survivor has to be brought */
+  let room="door";
+  const o=(n,k,x,y,w,h,sup)=>({n,k,x,y,w,h,vx:0,vy:0,held:false,carried:false,sup:!!sup,gone:false});
+  const PIT={x:340,y:14,w:70,h:346};   // broken floor from the top wall down, with a way round at the bottom
+  const ROOMS={
+    door:{say:"Clear the doorway and reach the survivor.",at:[110,230],goal:[640,230],need:0,pits:[],
+      walls:[{x:372,y:14,w:22,h:156},{x:372,y:290,w:22,h:156}],
+      objs:()=>[o("Chair","medium",356,180,40,40),o("Bench","medium",330,232,84,30),o("Fire extinguisher","light",300,192,22,22),
+            o("Chair","medium",200,330,40,40),o("Long table","heavy",470,70,120,44),o("Hawker stall","fixed",470,350,130,60),
+            o("Tool box","light",150,90,22,22),o("First aid bag","light",120,330,22,22)]},
+    reach:{say:"The survivor needs the first aid bag, which lies across the broken floor. The long way round is at the bottom.",at:[110,110],goal:[120,350],need:1,pits:[PIT],walls:[],
+      objs:()=>[o("First aid bag","light",425,90,22,22,true),o("Shelf","fixed",520,170,120,40),o("Chair","medium",200,220,40,40)]},
+    run:{say:"The survivor needs all three supply boxes.",at:[170,230],goal:[100,230],need:3,pits:[],walls:[],
+      objs:()=>[o("Supply box","light",400,190,22,22,true),o("Supply box","light",430,222,22,22,true),o("Supply box","light",400,254,22,22,true),
+            o("Hawker stall","fixed",230,60,130,60),o("Long table","heavy",240,350,120,44),o("Chair","medium",560,120,40,40)]},
+    gap:{say:"The survivor is across the broken floor and needs the first aid bag. The long way round is at the bottom.",at:[110,120],goal:[500,120],need:1,pits:[PIT],walls:[],
+      objs:()=>[o("First aid bag","light",190,109,22,22,true),o("Bench","medium",520,250,84,30),o("Chair","medium",200,300,40,40)]}
+  };
   /* the room: walls, objects, the droid and the goal. holds is what Crab has hold of, tow is what is on its line */
   function fresh(){
-    const o=(n,k,x,y,w,h)=>({n,k,x,y,w,h,vx:0,vy:0,held:false,carried:false});
+    const r=ROOMS[room];
     return {
-      droid:{x:110,y:230},face:{x:1,y:0},bar:100,holds:[],tow:null,grip:false,locked:false,t:0,done:false,started:false,shake:0,
-      walls:[{x:0,y:0,w:W,h:14},{x:0,y:H-14,w:W,h:14},{x:0,y:0,w:14,h:H},{x:W-14,y:0,w:14,h:H},
-             {x:372,y:14,w:22,h:156},{x:372,y:290,w:22,h:156}],
-      goal:{x:640,y:230,r:22},
-      objs:[o("Chair","medium",356,180,40,40),o("Bench","medium",330,232,84,30),o("Fire extinguisher","light",300,192,22,22),
-            o("Chair","medium",200,330,40,40),o("Long table","heavy",470,70,120,44),o("Hawker stall","fixed",470,350,130,60),
-            o("Tool box","light",150,90,22,22),o("First aid bag","light",120,330,22,22)]
+      droid:{x:r.at[0],y:r.at[1]},face:{x:1,y:0},bar:100,holds:[],tow:null,grip:false,locked:false,t:0,done:false,started:false,shake:0,
+      walls:[{x:0,y:0,w:W,h:14},{x:0,y:H-14,w:W,h:14},{x:0,y:0,w:14,h:H},{x:W-14,y:0,w:14,h:H}].concat(r.walls),
+      pits:r.pits,need:r.need,got:0,
+      goal:{x:r.goal[0],y:r.goal[1],r:22},
+      objs:r.objs()
     };
   }
   const hit=(a,b)=>a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;
   const box=d=>({x:d.x-R,y:d.y-R,w:R*2,h:R*2});
   /* what is in the way: walls and every object Crab is not holding */
   const blocked=(r,skip)=>S.walls.some(w=>hit(r,w))||S.objs.some(o=>o!==skip&&!o.held&&hit(r,o));
+  const pit=r=>S.pits.some(p=>hit(r,p));   // broken floor stops a droid, never an object
   const mid=o=>({x:o.x+o.w/2,y:o.y+o.h/2});
   const can=o=>o.k==="light"||(o.k==="medium"&&mode==="crab");   // can this droid grip it
   const maxHold=()=>sk("stack")?3:1;
@@ -3525,24 +3562,32 @@ function protoLine(t,onChange){
       const nd={x:d.x,y:d.y};nd[ax]+=mv;const nb=box(nd);
       if(dragged.length){ // the droid and what it drags move as one
         const next=dragged.map(h=>({x:nd.x+h.off.x,y:nd.y+h.off.y,w:h.o.w,h:h.o.h}));
-        if(blocked(nb)||next.some(r=>blocked(r)))continue;
+        if(pit(nb)||blocked(nb)||next.some(r=>blocked(r)))continue;
         d[ax]=nd[ax];dragged.forEach((h,i)=>{h.o.x=next[i].x;h.o.y=next[i].y});continue;
       }
-      if(S.walls.some(w=>hit(nb,w)))continue;
+      if(pit(nb)||S.walls.some(w=>hit(nb,w)))continue;
       const hitObj=S.objs.find(o=>!o.held&&hit(nb,o));
       if(hitObj){ // every droid can push a medium object by walking into it, at half speed
         if(hitObj.k!=="medium")continue;
         const po={x:hitObj.x,y:hitObj.y,w:hitObj.w,h:hitObj.h};po[ax]+=mv*.5;
         if(blocked(po,hitObj))continue;
         hitObj[ax]=po[ax];const half={x:d.x,y:d.y};half[ax]+=mv*.5;
-        if(!blocked(box(half)))d[ax]=half[ax];
+        if(!blocked(box(half))&&!pit(box(half)))d[ax]=half[ax];
         continue;
       }
       d[ax]=nd[ax];
     }
     for(const h of S.holds)if(h.o.carried){h.o.x=d.x-h.o.w/2;h.o.y=d.y-h.o.h/2}
     if(S.shake>0)S.shake-=dt;
-    if(Math.hypot(d.x-S.goal.x,d.y-S.goal.y)<S.goal.r+R){S.done=true;say("Reached the survivor in "+S.t.toFixed(1)+"s as "+(mode==="crab"?"Crab":"another droid")+". Reset the room to try again.","good")}
+    const who=mode==="crab"?"Crab":"another droid";
+    if(S.need){ // supplies count once they are within reach of the survivor, however they got there: carried, pulled or thrown
+      for(const o of S.objs){if(!o.sup||o.gone)continue;const m=o.carried?d:mid(o);
+        if(Math.hypot(m.x-S.goal.x,m.y-S.goal.y)<S.goal.r+34){o.gone=true;o.held=false;o.carried=false;o.vx=o.vy=0;S.holds=S.holds.filter(h=>h.o!==o);if(S.tow===o)S.tow=null;S.got++;
+          if(!S.holds.length&&!S.tow)S.grip=false;
+          say("The survivor has the "+o.n.toLowerCase()+". "+S.got+" of "+S.need+" delivered.","good")}}
+      S.objs=S.objs.filter(o=>!o.gone);
+      if(S.got>=S.need){S.done=true;say("Everything was delivered in "+S.t.toFixed(1)+"s as "+who+". Reset the room to try again.","good")}
+    }else if(Math.hypot(d.x-S.goal.x,d.y-S.goal.y)<S.goal.r+R){S.done=true;say("Reached the survivor in "+S.t.toFixed(1)+"s as "+who+". Reset the room to try again.","good")}
   }
 
   /* drawing */
@@ -3551,9 +3596,12 @@ function protoLine(t,onChange){
     g.clearRect(0,0,W,H);g.fillStyle="#F4F1E6";g.fillRect(0,0,W,H);
     g.strokeStyle="rgba(34,48,43,.06)";g.lineWidth=1;g.beginPath();
     for(let x=14;x<W;x+=40){g.moveTo(x,14);g.lineTo(x,H-14)}for(let y=14;y<H;y+=40){g.moveTo(14,y);g.lineTo(W-14,y)}g.stroke();
-    g.fillStyle="rgba(158,221,196,.35)";g.beginPath();g.arc(S.goal.x,S.goal.y,S.goal.r+16,0,7);g.fill();
+    for(const p of S.pits){g.fillStyle="#3B2F2A";g.fillRect(p.x,p.y,p.w,p.h);g.save();g.beginPath();g.rect(p.x,p.y,p.w,p.h);g.clip();g.strokeStyle="rgba(255,255,255,.14)";g.lineWidth=2;
+      for(let y=p.y-p.w;y<p.y+p.h;y+=18){g.beginPath();g.moveTo(p.x,y+p.w);g.lineTo(p.x+p.w,y);g.stroke()}g.restore();
+      g.save();g.translate(p.x+p.w/2,p.y+p.h/2);g.rotate(-Math.PI/2);g.fillStyle="#E9DCCB";g.font="700 12px system-ui,sans-serif";g.textAlign="center";g.fillText("Broken floor",0,4);g.restore()}
+    g.fillStyle="rgba(158,221,196,.35)";g.beginPath();g.arc(S.goal.x,S.goal.y,S.goal.r+(S.need?34:16),0,7);g.fill();
     g.fillStyle="#9EDDC4";g.beginPath();g.arc(S.goal.x,S.goal.y,S.goal.r-6,0,7);g.fill();
-    g.fillStyle="#22302B";g.font="700 12px system-ui,sans-serif";g.textAlign="center";g.fillText("Survivor",S.goal.x,S.goal.y+S.goal.r+26);
+    g.fillStyle="#22302B";g.font="700 12px system-ui,sans-serif";g.textAlign="center";g.fillText(S.need?"Survivor: needs "+(S.need-S.got)+" more":"Survivor",S.goal.x,S.goal.y+S.goal.r+(S.need?48:26));
     g.fillStyle="#22302B";for(const w of S.walls)g.fillRect(w.x,w.y,w.w,w.h);
     const d=S.droid,free=!S.holds.length&&!S.tow&&!S.done,near=!S.done&&S.holds.length<maxHold()&&!S.tow?nearest():null,
           hook=free&&!near&&sk("tow")?towTarget():null;
@@ -3578,7 +3626,7 @@ function protoLine(t,onChange){
       g.fillStyle="#B85F10";g.save();g.translate(d.x+S.face.x*(R+16),d.y+S.face.y*(R+16));g.rotate(Math.atan2(S.face.y,S.face.x));
       g.beginPath();g.moveTo(9,0);g.lineTo(-4,-7);g.lineTo(-4,7);g.fill();g.restore()}
     const b=el("cpBar");b.style.width=S.bar.toFixed(1)+"%";b.classList.toggle("low",S.bar<=15);
-    el("cpTime").textContent=S.t.toFixed(1)+"s";
+    el("cpTime").textContent=S.t.toFixed(1)+"s";el("cpGotWrap").hidden=!S.need;el("cpGot").textContent=S.got+"/"+S.need;
     tb.hidden=!sk("toss");gb.textContent=S.grip?"Let go":"Grip";gb.classList.toggle("on",S.grip);
   }
 
@@ -3588,7 +3636,7 @@ function protoLine(t,onChange){
   new IntersectionObserver(es=>{visible=es[0].isIntersecting;if(visible&&!raf){last=performance.now();raf=requestAnimationFrame(frame)}}).observe(cv);
 
   /* controls around the room */
-  function reset(){S=fresh();say(mode==="crab"?"Crab: tap Space to grip, tap again to let go. Light objects are carried and medium objects are dragged.":"Another droid: it can carry light objects, and has to push medium ones by walking into them.");draw()}
+  function reset(){S=fresh();say(ROOMS[room].say+" "+(mode==="crab"?"Crab: tap Space to grip, tap again to let go. Light objects are carried and medium objects are dragged.":"Another droid: it can carry light objects, and has to push medium ones by walking into them."));draw()}
   /* a skill was switched on or off in the panel: let go of everything, so the room is never left half in a skill */
   function onSkill(k,on){
     if(!S)return;S.tow=null;drop();S.locked=true;
@@ -3596,11 +3644,13 @@ function protoLine(t,onChange){
     say(name+(on[k]?" is on."+(mode==="crab"?"":" It only applies to Crab."):" is off."));draw();
   }
   el("cpReset").onclick=()=>{reset();cv.focus()};
-  root.querySelectorAll(".cp-seg button").forEach(b=>b.onclick=()=>{mode=b.dataset.mode;root.querySelectorAll(".cp-seg button").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));reset()});
+  const pick=(attr,set)=>root.querySelectorAll(".cp-seg button["+attr+"]").forEach(b=>b.onclick=()=>{set(b.getAttribute(attr));
+    root.querySelectorAll(".cp-seg button["+attr+"]").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));reset()});
+  pick("data-mode",v=>{mode=v});pick("data-room",v=>{room=v});
   [["cpS1","cpO1","carry","% a second"],["cpS2","cpO2","drag","% a second"],["cpS3","cpO3","recharge","% a second"],["cpS4","cpO4","dragSpeed","% of full speed"],["cpS5","cpO5","tow"," px"]].forEach(([s,o,k,u])=>{
     const sl=el(s),out=el(o),set=()=>{tune[k]=+sl.value;out.textContent=sl.value+u};sl.oninput=set;set()});
   S=fresh();draw();
-  window.crabProto={state:()=>S,step,keys,reset,setMode:m=>{mode=m;reset()},tune,tree,toss:()=>{tossAsk=true}}; // for tests
+  window.crabProto={state:()=>S,step,keys,reset,setMode:m=>{const b=root.querySelector('.cp-seg button[data-mode="'+m+'"]');if(b)b.click()},setRoom:r=>{const b=root.querySelector('.cp-seg button[data-room="'+r+'"]');if(b)b.click()},grip:()=>{gripAsk=true},tune,tree,toss:()=>{tossAsk=true}}; // for tests
 })();
 
 /* ===== Orb's Charge: playable lo-fi =====
