@@ -871,6 +871,8 @@ body.dragging,body.dragging *{cursor:grabbing!important;user-select:none}
 .fproto .cp-bar b{background:#2F8FC4}
 .fproto .rp-btns .cp-grip.fp-main{background:#2F8FC4}
 .fproto .rp-btns .cp-grip.fp-main.on{background:#1C6690;box-shadow:0 0 0 4px rgba(47,143,196,.4)}
+.fproto .rp-btns .cp-grip.fp-item{background:#C2412D}
+.fproto .rp-btns .cp-grip.fp-item.on{background:#8E2A1B;box-shadow:0 0 0 4px rgba(194,65,45,.4)}
 .fproto .rp-btns .cp-grip.fp-skill{background:#245F82}
 .fproto .rp-btns .cp-grip.fp-skill.on{background:#17425C;box-shadow:0 0 0 4px rgba(47,143,196,.4)}
 .fproto .rp-btns .cp-grip.lock{background:#2C3A35;color:#8FA098;border:2px dashed #53645D}
@@ -2427,6 +2429,7 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
   <div class="cp-stage">
     <canvas id="fpCanvas" width="760" height="460" tabindex="0" role="img" aria-label="Test room. Fish starts on the left. A wall with a doorway splits the room, and a longer route runs along the bottom. Fires burn in the room."></canvas>
     <div class="rp-btns">
+      <button type="button" class="cp-grip fp-item" id="fpUse"><kbd>E</kbd><span>Hold: use item</span></button>
       <button type="button" class="cp-grip fp-main" id="fpSpray"><kbd>Q</kbd><span>Hold: spray</span></button>
       <button type="button" class="cp-grip fp-skill" id="fpFoam"><kbd>F</kbd><span>Foam: off</span></button>
       <button type="button" class="cp-grip fp-skill" id="fpBub"><kbd>R</kbd><span>Hold: aim bubble</span></button>
@@ -2471,7 +2474,8 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
       <li><b>Electrical fire:</b> while its breaker is on, spraying it stuns the droid. Once the breaker is off it is an ordinary fire.</li>
       <li><b>Gas fire:</b> it can be cooled, but while the valve is open it relights a few seconds later. Closing the valve ends it.</li>
       <li><b>Smouldering pile:</b> it shows no flame, and it flares into an ordinary fire if it is left. Water or the extinguisher puts it out.</li>
-      <li><b>Another droid:</b> has no stream. It carries the extinguisher or the lid to the fire, or goes to the breaker, the valve or the hydrant. Fish can do all of this too.</li>
+      <li><b>The extinguisher and the lid:</b> a droid picks one up by touching it. To use it, stand next to the fire and hold E or the “Hold: use” button. The extinguisher works on an ordinary fire and on a smouldering pile, and the lid covers an oil fire.</li>
+      <li><b>Another droid:</b> has no stream. It carries the extinguisher or the lid to the fire, or goes to the breaker, the valve or the hydrant, which switch when a droid touches them. Fish can do all of this too.</li>
       <li><b>Every situation can be solved by any droid,</b> and by Fish with no upgrade. It only takes longer.</li>
       <li>Skills from the skill tree panel only change what Fish can do. They are candidates, not confirmed.</li>
       <li><span class="tbd">The situations, the items in them and every number are placeholders. What an injury does to a victim is still to define, so this room only counts it.</span></li>
@@ -5429,9 +5433,9 @@ function protoLine(t,onChange){
   function los(a,b,br){const m=dist(a,b),n=Math.max(1,Math.ceil(m/6));for(let i=1;i<n;i++){const p={x:a.x+(b.x-a.x)*i/n,y:a.y+(b.y-a.y)*i/n};if(dist(p,b)<=(br||0))return true;if(S.walls.some(w=>inRect(p,w)))return false}return true}
 
   /* input: keys while the room has focus, a drag on the room as a stick, and the buttons under it */
-  const keys={},held={q:false,r:false,b:false};let stick=null,drag=null,mouse=null;
+  const keys={},held={q:false,r:false,b:false,e:false};let stick=null,drag=null,mouse=null;
   cv.addEventListener("keydown",e=>{const k=e.key.toLowerCase();
-    if(["arrowup","arrowdown","arrowleft","arrowright","w","a","s","d","q","f","r","b","i","j","k","l"].includes(k)){if(!e.repeat&&k==="f")foam();keys[k]=true;e.preventDefault()}});
+    if(["arrowup","arrowdown","arrowleft","arrowright","w","a","s","d","q","f","r","b","e","i","j","k","l"].includes(k)){if(!e.repeat&&k==="f")foam();keys[k]=true;e.preventDefault()}});
   cv.addEventListener("keyup",e=>{keys[e.key.toLowerCase()]=false});
   cv.addEventListener("blur",()=>{for(const k in keys)keys[k]=false});
   cv.addEventListener("pointerdown",e=>{cv.focus();stick={id:e.pointerId,x:e.clientX,y:e.clientY,dx:0,dy:0};cv.setPointerCapture(e.pointerId)});
@@ -5439,7 +5443,7 @@ function protoLine(t,onChange){
     else if(e.pointerType==="mouse"){const b=cv.getBoundingClientRect();mouse={x:(e.clientX-b.left)*W/b.width,y:(e.clientY-b.top)*H/b.height,fresh:true}}});
   const endStick=e=>{if(stick&&e.pointerId===stick.id)stick=null};
   cv.addEventListener("pointerup",endStick);cv.addEventListener("pointercancel",endStick);
-  const qb=el("fpSpray"),fb=el("fpFoam"),rb=el("fpBub"),db=el("fpDel");
+  const ub=el("fpUse"),qb=el("fpSpray"),fb=el("fpFoam"),rb=el("fpBub"),db=el("fpDel");
   const why=b=>{if(b.classList.contains("lock")){say(b.dataset.why||"Not available right now.","bad");return true}return false};   // a dimmed button says why it cannot be used
   /* a hold button: hold to aim, drag away from where it was pressed to steer, release to let go */
   function holdBtn(b,k){
@@ -5447,7 +5451,7 @@ function protoLine(t,onChange){
     b.addEventListener("pointermove",e=>{if(drag&&held[k]){drag.dx=e.clientX-drag.x;drag.dy=e.clientY-drag.y}});
     const end=()=>{held[k]=false;drag=null};b.addEventListener("pointerup",end);b.addEventListener("pointercancel",end);
   }
-  holdBtn(qb,"q");holdBtn(rb,"r");holdBtn(db,"b");
+  holdBtn(ub,"e");holdBtn(qb,"q");holdBtn(rb,"r");holdBtn(db,"b");
   fb.addEventListener("pointerdown",e=>{e.preventDefault();if(!why(fb))foam()});
   function wish(){
     let x=(keys.arrowright||keys.d?1:0)-(keys.arrowleft||keys.a?1:0),y=(keys.arrowdown||keys.s?1:0)-(keys.arrowup||keys.w?1:0);
@@ -5554,13 +5558,17 @@ function protoLine(t,onChange){
   /* things any droid can do: pick up and use the extinguisher or the lid, and flip a breaker, a valve or the hydrant by touching it */
   function hands(dt){
     const d=S.droid;
-    if(!S.carry){const i=S.items.findIndex(it=>dist(it,d)<R+16);if(i>=0){S.carry=S.items.splice(i,1)[0];say(S.carry.k==="ext"?"Picked up the extinguisher. Stand next to an ordinary fire to use it.":"Picked up the lid. Touch the oil fire with it to cover it.")}}
-    else for(const f of S.fires){
-      if(!burning(f)||f.bub>0||dist(f,d)>f.r+R+16)continue;const k=eff(f);
+    if(!S.carry){const i=S.items.findIndex(it=>dist(it,d)<R+16);if(i>=0){S.carry=S.items.splice(i,1)[0];say(S.carry.k==="ext"?"Picked up the extinguisher. Stand next to an ordinary fire and hold E or the button to use it.":"Picked up the lid. Stand next to the oil fire and hold E or the button to cover it.")}}
+    else if(S.using=!!(keys.e||held.e)&&!(S.stun>0)){
+      const near=S.fires.filter(f=>burning(f)&&!(f.bub>0)&&dist(f,d)<=f.r+R+16).sort((p,q)=>dist(p,d)-dist(q,d));S.useAt=near[0]||null;
+      if(!near.length)say("Nothing in reach. Stand next to the fire first.","bad");
+      for(const f of near.slice(0,1)){const k=eff(f);
       if(S.carry.k==="lid"&&k==="oil"){f.heat=0;say("The lid covered the oil fire, and it is out.","good")}
       else if(S.carry.k==="ext"&&(k==="plain"||k==="smoulder")){f.heat=Math.max(0,f.heat-EXT*dt);f.hit=.2;if(f.heat<=0)say((k==="smoulder"?"The pile":"The fire")+" is out.","good")}
       else if(S.carry.k==="ext"&&k==="elec")say("The breaker is still on. Switch it off before using the extinguisher.","bad");
-    }
+      else if(S.carry.k==="ext")say("The extinguisher does not work on "+(k==="oil"?"an oil fire. It needs the lid.":"a gas fire. Close the valve."),"bad");
+      else say("The lid only covers an oil fire.","bad");
+    }}else S.useAt=null;
     for(const s of S.sw){if(s.used||dist(s,d)>R+24)continue;s.used=true;s.on=s.k==="hydrant";
       say(s.k==="breaker"?"Breaker off. The electrical fire is now an ordinary fire.":s.k==="valve"?"Valve closed. The gas fire is out.":"Hydrant on. It is putting out the big fire.","good")}
   }
@@ -5568,8 +5576,8 @@ function protoLine(t,onChange){
   /* one step of the room */
   function step(dt){
     if(S.done){shove(dt);if(S.wave){S.wave.t-=dt;if(S.wave.t<=0)S.wave=null}return}
-    const want=wish(),d=S.droid,fish=mode==="fish",hq=!!(keys.q||held.q),hr=!!(keys.r||held.r),hb=!!(keys.b||held.b);
-    if(want.x||want.y||hq||hr||hb)S.started=true;
+    S.using=false;const want=wish(),d=S.droid,fish=mode==="fish",hq=!!(keys.q||held.q),hr=!!(keys.r||held.r),hb=!!(keys.b||held.b);
+    if(want.x||want.y||hq||hr||hb||keys.e||held.e)S.started=true;
     if(S.started)S.t+=dt;
     if(S.wave){S.wave.t-=dt;if(S.wave.t<=0)S.wave=null}
     if(S.shot)fly(dt);
@@ -5693,6 +5701,7 @@ function protoLine(t,onChange){
     g.fillStyle="#fff";g.font="800 13px system-ui,sans-serif";g.fillText(mode==="fish"?"F":"D",d.x,d.y+5);
     const fa=Math.atan2(S.face.y,S.face.x);g.fillStyle="#22302B";g.beginPath();g.arc(d.x+Math.cos(fa)*(R+4),d.y+Math.sin(fa)*(R+4),4,0,7);g.fill();
     if(S.carry)item(S.carry,d.x+16,d.y-18);
+    if(S.using&&S.carry&&S.carry.k==="ext"&&S.useAt){const f=S.useAt,a=ang(d,f),m=Math.max(0,dist(d,f)-f.r*.5);g.fillStyle="rgba(255,255,255,.8)";g.beginPath();g.moveTo(d.x+Math.cos(a)*R,d.y+Math.sin(a)*R);g.lineTo(d.x+Math.cos(a-.35)*m,d.y+Math.sin(a-.35)*m);g.lineTo(d.x+Math.cos(a+.35)*m,d.y+Math.sin(a+.35)*m);g.closePath();g.fill();g.strokeStyle="rgba(34,48,43,.25)";g.lineWidth=1;g.stroke()}
     if(S.stun>0){const a=now*6;g.fillStyle="#F3B61F";g.strokeStyle="#22302B";g.lineWidth=1.5;
       for(let i=0;i<3;i++){const x=d.x+Math.cos(a+i*2.094)*(R+4),y=d.y-R-10+Math.sin(a+i*2.094)*5;g.beginPath();g.arc(x,y,4.5,0,7);g.fill();g.stroke()}
       lab("Stunned "+Math.max(0,S.stun).toFixed(1)+"s",d.x,d.y+R+16,"#B3342B","800 12px")}
@@ -5702,6 +5711,7 @@ function protoLine(t,onChange){
     el("fpHurtWrap").hidden=!S.vics.length;el("fpHurt").textContent=S.hurt;
     const btn=(bt,text,on,lock)=>{const sp=bt.lastElementChild;if(sp.textContent!==text)sp.textContent=text;bt.classList.toggle("on",!!on&&!lock);bt.classList.toggle("lock",!!lock);bt.dataset.why=lock||""},fish=mode==="fish";
     const foamOn=S.foamOn&&sk("smother");
+    btn(ub,S.carry?(S.carry.k==="ext"?"Hold: use extinguisher":"Hold: use lid"):"Hold: use item",S.using&&S.carry,!S.carry?(S.items.length?"Pick up the "+(S.items[0].k==="ext"?"extinguisher":"lid")+" first, by touching it.":"There is nothing to pick up in this situation."):"");
     btn(qb,foamOn?"Hold: spray foam":"Hold: spray",S.act==="spray",!fish?"Only Fish has the stream.":"");
     btn(fb,foamOn?"Foam: on":"Foam: off",foamOn,!fish?"Only Fish has foam.":!tree.on.smother?"Needs upgrade 1, Smother.":"");
     btn(rb,"Hold: aim bubble",S.act==="bubble",!fish?"Only Fish has the bubble.":!tree.on.starve?"Needs upgrade 2, Starve.":"");
@@ -5733,7 +5743,7 @@ function protoLine(t,onChange){
    ["fpS13","fpO13",v=>{tune.push=v;return v+" px"}]].forEach(([s,o,f])=>{const sl=el(s),out=el(o),set=()=>{out.textContent=f(+sl.value)};sl.oninput=set;set()});
   S=fresh();draw();
   const click=(attr,v)=>{const b=root.querySelector('.cp-seg button['+attr+'="'+v+'"]');if(b)b.click()};
-  window.fishProto={state:()=>S,step,reset,tune,targets,ray,tree,keys,foam,hold:(k,on)=>{held[k]=!!on},aim:a=>{S.aimA=a;S.aimMan=true},setMode:m=>click("data-mode",m),setRoom:r=>click("data-room",r)}; // for tests
+  window.fishProto={state:()=>S,step,reset,tune,targets,ray,tree,keys,foam,hold:(k,on)=>{held[k]=!!on},use:on=>{held.e=!!on},aim:a=>{S.aimA=a;S.aimMan=true},setMode:m=>click("data-mode",m),setRoom:r=>click("data-room",r)}; // for tests
 })();
 fullReset();fillDocs();paintShell(false);fromHash();
 </script>
