@@ -705,6 +705,21 @@ body.dragging,body.dragging *{cursor:grabbing!important;user-select:none}
 .kproto .cp-tune label.kp-check input{width:auto;flex:none}
 @media(max-width:560px){.kproto .cp-grip{font-size:12px;padding:9px 12px}}
 
+/* Bee's swarm: playable lo-fi. The rest of its styles are shared with Crab's (.cproto) */
+.bproto .cp-bar b{background:#D9A514}
+.bproto .cp-bar b.slow{background:repeating-linear-gradient(135deg,#D0453A 0 6px,#E58A82 6px 12px)}
+.bproto .cp-grip{background:#B98A0A}.bproto .cp-grip.on{background:#7A5A00;box-shadow:0 0 0 4px rgba(217,165,20,.4)}
+.bproto .cp-stage canvas:focus-visible{box-shadow:inset 0 0 0 4px #D9A514}
+.bproto .cp-tune input{accent-color:#B98A0A}
+.bproto .cp-top{gap:10px 16px}
+.bproto .cp-time[hidden]{display:none}
+.bproto .bp-rooms{margin-top:-2px}
+.bproto .bp-lab{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.bproto .bp-rooms .cp-seg{flex-wrap:wrap;border-radius:16px}
+.bproto .bp-rooms .cp-seg button{font-size:13px;padding:6px 12px}
+#beeProtoTree{--st:#9A7400}
+@media(max-width:560px){.bproto .cp-grip{font-size:12px;padding:9px 12px}}
+
 /* ===== One look for the whole library, taken from the Medkit screen =====
    Baloo 2 for headings, Nunito for text, soft green page, white rounded cards, peach pill buttons, dark green for the chosen item. */
 :root{
@@ -2061,11 +2076,11 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
 
         <section class="docsec cat" data-doc="cat-droids">
           <p class="src">Read from the GDD, Figma and the mission sheet on 23 Nov 2026</p>
-          <div class="lvwrap" data-prefix="droid"><nav class="lvdir" aria-label="Droid directory"><button type="button" class="lvb" data-lv="all" aria-current="true"><b>All droids</b><span>Overview</span></button><div class="lvg">Droids</div><button type="button" class="lvb" data-lv="red"><img class="lvhd" src="head-red.png" alt="" width="26" height="26" loading="lazy"><b>Red</b><span>Ability defined</span></button><button type="button" class="lvb" data-lv="crab"><img class="lvhd" src="head-crab.png" alt="" width="26" height="26" loading="lazy"><b>Crab</b><span>Ability defined</span></button><button type="button" class="lvb" data-lv="fish"><img class="lvhd" src="head-fish.png" alt="" width="26" height="26" loading="lazy"><b>Fish</b><span>Ability defined</span></button><button type="button" class="lvb" data-lv="cam"><img class="lvhd" src="head-cam.png" alt="" width="26" height="26" loading="lazy"><b>Cam</b><span>Ability defined</span></button><button type="button" class="lvb" data-lv="orb"><img class="lvhd" src="head-orb.png" alt="" width="26" height="26" loading="lazy"><b>Orb</b><span>Ability defined</span></button><button type="button" class="lvb" data-lv="bee"><img class="lvhd" src="head-bee.png" alt="" width="26" height="26" loading="lazy"><b>Bee</b><span>Ability defined</span></button><div class="lvg">Reference</div><button type="button" class="lvb" data-lv="party"><b>Party and switching</b></button><button type="button" class="lvb" data-lv="actions"><b>What every droid can do</b></button><button type="button" class="lvb" data-lv="skilltree"><b>Skill tree rules</b></button></nav><div class="lvmain"><section class="lvpanel on" data-lv="all"><header class="lvhead"><h2>All droids</h2></header><div class="droster"><div class="drhead"><span class="dteam">Meet the team</span><h3>The Patchbots</h3><p>Six droids on their way to becoming a fully recognized first responder team. Pick one to meet them.</p></div><div class="drgrid"><a class="drcard" href="#droid-red" style="--dc:#E2513C"><span class="dport sm has"><img src="droid-red.png" alt="" loading="lazy"></span><b>Red</b><span>The charismatic leader of the Patchbots</span><em>Calming aura</em></a><a class="drcard" href="#droid-crab" style="--dc:#EE8A2B"><span class="dport sm has"><img src="droid-crab.png" alt="" loading="lazy"></span><b>Crab</b><span>The dependable life(buoy) of the party</span><em>Grip</em></a><a class="drcard" href="#droid-fish" style="--dc:#2F8FC4"><span class="dport sm has"><img src="droid-fish.png" alt="" loading="lazy"></span><b>Fish</b><span>Cool, level-headed and shy</span><em>Splash Cannons</em></a><a class="drcard" href="#droid-cam" style="--dc:#3FA796"><span class="dport sm has"><img src="droid-cam.png" alt="" loading="lazy"></span><b>Cam</b><span>The lovable star of the show</span><em>Highlight</em></a><a class="drcard" href="#droid-orb" style="--dc:#7B4FCF"><span class="dport sm has"><img src="droid-orb.png" alt="" loading="lazy"></span><b>Orb</b><span>A dreamer, with their round head often in the clouds</span><em>Charge</em></a><a class="drcard" href="#droid-bee" style="--dc:#D9A514"><span class="dport sm has"><img src="droid-bee.png" alt="" loading="lazy"></span><b>Bee</b><span>The no-nonsense go-getter of the group</span><em>Ability defined</em></a></div></div>
+          <div class="lvwrap" data-prefix="droid"><nav class="lvdir" aria-label="Droid directory"><button type="button" class="lvb" data-lv="all" aria-current="true"><b>All droids</b><span>Overview</span></button><div class="lvg">Droids</div><button type="button" class="lvb" data-lv="red"><img class="lvhd" src="head-red.png" alt="" width="26" height="26" loading="lazy"><b>Red</b><span>Ability defined</span></button><button type="button" class="lvb" data-lv="crab"><img class="lvhd" src="head-crab.png" alt="" width="26" height="26" loading="lazy"><b>Crab</b><span>Ability defined</span></button><button type="button" class="lvb" data-lv="fish"><img class="lvhd" src="head-fish.png" alt="" width="26" height="26" loading="lazy"><b>Fish</b><span>Ability defined</span></button><button type="button" class="lvb" data-lv="cam"><img class="lvhd" src="head-cam.png" alt="" width="26" height="26" loading="lazy"><b>Cam</b><span>Ability defined</span></button><button type="button" class="lvb" data-lv="orb"><img class="lvhd" src="head-orb.png" alt="" width="26" height="26" loading="lazy"><b>Orb</b><span>Ability defined</span></button><button type="button" class="lvb" data-lv="bee"><img class="lvhd" src="head-bee.png" alt="" width="26" height="26" loading="lazy"><b>Bee</b><span>Ability defined</span></button><div class="lvg">Reference</div><button type="button" class="lvb" data-lv="party"><b>Party and switching</b></button><button type="button" class="lvb" data-lv="actions"><b>What every droid can do</b></button><button type="button" class="lvb" data-lv="skilltree"><b>Skill tree rules</b></button></nav><div class="lvmain"><section class="lvpanel on" data-lv="all"><header class="lvhead"><h2>All droids</h2></header><div class="droster"><div class="drhead"><span class="dteam">Meet the team</span><h3>The Patchbots</h3><p>Six droids on their way to becoming a fully recognized first responder team. Pick one to meet them.</p></div><div class="drgrid"><a class="drcard" href="#droid-red" style="--dc:#E2513C"><span class="dport sm has"><img src="droid-red.png" alt="" loading="lazy"></span><b>Red</b><span>The charismatic leader of the Patchbots</span><em>Calming aura</em></a><a class="drcard" href="#droid-crab" style="--dc:#EE8A2B"><span class="dport sm has"><img src="droid-crab.png" alt="" loading="lazy"></span><b>Crab</b><span>The dependable life(buoy) of the party</span><em>Grip</em></a><a class="drcard" href="#droid-fish" style="--dc:#2F8FC4"><span class="dport sm has"><img src="droid-fish.png" alt="" loading="lazy"></span><b>Fish</b><span>Cool, level-headed and shy</span><em>Splash Cannons</em></a><a class="drcard" href="#droid-cam" style="--dc:#3FA796"><span class="dport sm has"><img src="droid-cam.png" alt="" loading="lazy"></span><b>Cam</b><span>The lovable star of the show</span><em>Highlight</em></a><a class="drcard" href="#droid-orb" style="--dc:#7B4FCF"><span class="dport sm has"><img src="droid-orb.png" alt="" loading="lazy"></span><b>Orb</b><span>A dreamer, with their round head often in the clouds</span><em>Charge</em></a><a class="drcard" href="#droid-bee" style="--dc:#D9A514"><span class="dport sm has"><img src="droid-bee.png" alt="" loading="lazy"></span><b>Bee</b><span>The no-nonsense go-getter of the group</span><em>Herd</em></a></div></div>
           <div class="dplayer"><span class="dlab">The player</span><p>You are the player. You have the ability to swap between and control each of the Patchbots, and the responsibility to help them achieve their goal of becoming a fully recognized first responder team. They don’t know you exist, but they trust you to make their dreams come true.</p></div>
           <p class="lead">The game has six playable droids, each with one ability. All six are defined: Fish’s and Bee’s in the GDD, and Red’s, Cam’s, Crab’s and Orb’s by the decisions of 26 Nov 2026.</p>
           <div class="callout chg"><h3>Decided on 26 Nov 2026, not yet in the GDD</h3><ul><li><b>Red</b> has a calming aura that settles agitated victims around it.</li><li><b>Cam</b> sees clearer in low visibility, and its highlight shows victims with their type, interactables and key items. Anything beyond a wall is shown in infrared.</li><li><b>Crab</b> grips light and medium objects: light ones are carried and medium ones are dragged.</li><li><b>Orb</b> makes an aimed charge that destroys heavy obstacles. Anything else in the way is knocked aside, and each destroyed obstacle counts as property damage.</li><li>Skill tree candidates are noted for Crab and Orb on their Skill tree tabs.</li><li>Victims now come in three types, with a hidden agitation meter. See <a href="#cat-victims">Victims</a>.</li></ul></div>
-          <div class="tw"><table class="wide lvall"><thead><tr><th scope="col">Droid</th><th scope="col">Ability</th><th scope="col">Activation</th><th scope="col">Skill tree</th><th scope="col">In Bypass Firewall</th></tr></thead><tbody><tr><th scope="row"><a href="#droid-red">Red</a></th><td>A calming aura. Agitated victims inside a radius around Red settle over a few seconds, and can then be diagnosed.</td><td>Tap to toggle on or off</td><td>To be added</td><td></td></tr><tr><th scope="row"><a href="#droid-crab">Crab</a></th><td>Grips a light or medium object next to it. A light object is carried and a medium object is dragged behind, in any direction. Releasing sets it down.</td><td>Press and hold, release to let go</td><td>To be added</td><td></td></tr><tr><th scope="row"><a href="#droid-fish">Fish</a></th><td>Two water cannons that put out fires and push back crowds.</td><td>Press and hold</td><td>To be added</td><td>Yes</td></tr><tr><th scope="row"><a href="#droid-cam">Cam</a></th><td>A highlight. Victims, interactables and key items around Cam light up. A highlighted victim shows its type, and anything beyond a wall is shown in infrared.</td><td>Tap to toggle on or off</td><td>To be added</td><td>Yes</td></tr><tr><th scope="row"><a href="#droid-orb">Orb</a></th><td>An aimed charge. Orb winds up, then charges down a straight lane and destroys the first heavy obstacle it hits, leaving nothing behind. Anything else in the way is pushed or knocked aside.</td><td>Press and hold to aim and wind up, release to charge</td><td>To be added</td><td></td></tr><tr><th scope="row"><a href="#droid-bee">Bee</a></th><td>A swarm in a radius around Bee that pushes past and disperses crowds.</td><td>Tap to toggle on or off</td><td>To be added</td><td>Yes</td></tr></tbody></table></div>
+          <div class="tw"><table class="wide lvall"><thead><tr><th scope="col">Droid</th><th scope="col">Ability</th><th scope="col">Activation</th><th scope="col">Skill tree</th><th scope="col">In Bypass Firewall</th></tr></thead><tbody><tr><th scope="row"><a href="#droid-red">Red</a></th><td>A calming aura. Agitated victims inside a radius around Red settle over a few seconds, and can then be diagnosed.</td><td>Tap to toggle on or off</td><td>To be added</td><td></td></tr><tr><th scope="row"><a href="#droid-crab">Crab</a></th><td>Grips a light or medium object next to it. A light object is carried and a medium object is dragged behind, in any direction. Releasing sets it down.</td><td>Press and hold, release to let go</td><td>To be added</td><td></td></tr><tr><th scope="row"><a href="#droid-fish">Fish</a></th><td>Two water cannons that put out fires and push back crowds.</td><td>Press and hold</td><td>To be added</td><td>Yes</td></tr><tr><th scope="row"><a href="#droid-cam">Cam</a></th><td>A highlight. Victims, interactables and key items around Cam light up. A highlighted victim shows its type, and anything beyond a wall is shown in infrared.</td><td>Tap to toggle on or off</td><td>To be added</td><td>Yes</td></tr><tr><th scope="row"><a href="#droid-orb">Orb</a></th><td>An aimed charge. Orb winds up, then charges down a straight lane and destroys the first heavy obstacle it hits, leaving nothing behind. Anything else in the way is pushed or knocked aside.</td><td>Press and hold to aim and wind up, release to charge</td><td>To be added</td><td></td></tr><tr><th scope="row"><a href="#droid-bee">Bee</a></th><td>A swarm in a radius around Bee that pushes past and disperses crowds. Played as Herd: people inside the swarm walk away from Bee, so the player steers a crowd by where Bee stands.</td><td>Tap to toggle on or off</td><td>To be added</td><td>Yes</td></tr></tbody></table></div>
           <p>Abilities run on a bar that drains while the ability is in use and recharges when it isn’t, so there are no fixed cooldowns. Drain and recharge rates are still to be balanced. The player brings up to 4 of the 6 droids into a mission and switches between them on the spot: see <a href="#droid-party">Party and switching</a>.</p>
           <div class="callout diff"><h3>Where the sources differ</h3><ul><li><b>Red’s, Cam’s, Crab’s and Orb’s abilities.</b> The GDD lists all four as to be defined. They were decided on 26 Nov 2026.</li><li><b>Cam in Figma.</b> The boards for Bypass Firewall show an earlier version, in which its ability tags the crowd and everything else in range.</li><li><b>Name of Fish’s ability.</b> Figma calls it Splash Cannons. The GDD describes two water cannons without naming the ability.</li></ul></div>
           <div class="callout todo"><h3>Still to define in the GDD</h3><ul><li>Red’s, Cam’s, Crab’s and Orb’s abilities, as decided on 26 Nov 2026.</li><li>Drain and recharge rates for every ability bar.</li><li>The skill tree of each droid, and how skill points are earned from a stage.</li><li>Droid backstories in the GDD. Section 5.2 has a heading for them and no text yet. The stories shown here come from the FigJam board, where Cam’s, Fish’s and Orb’s are still drafts.</li></ul></div></section><section class="lvpanel" data-lv="red"><header class="lvhead"><h2>Red</h2><p class="lvchips"><span class="lvchip">Droid</span><span class="lvchip">Ability defined</span></p></header><div class="lvtabs" role="tablist" aria-label="Sections of this level"><button type="button" role="tab" data-t="main" aria-selected="true">Profile</button><button type="button" role="tab" data-t="skill" aria-selected="false">Skill tree</button><button type="button" role="tab" data-t="lofi" aria-selected="false">Playable lo-fi</button></div><div class="lvpane on" data-t="main"><div class="dhero" style="--dc:#E2513C;--db:url('banner-red.jpg')"><div class="dhtx"><span class="dteam">Patchbots · Player droid</span><h3 class="dname">Red</h3><p class="dtag">The charismatic leader of the Patchbots</p><p class="dwas"><b>Before the team</b>A failed medic droid prototype, reassigned to storeroom duty</p></div><span class="dport has"><img src="droid-red.png" alt="" loading="lazy"></span></div><div class="dabil" style="--dc:#E2513C"><span class="dlab">Ability</span><h4>Calming aura</h4><p>A calming aura. Agitated victims inside a radius around Red settle over a few seconds, and can then be diagnosed.</p><dl><div><dt>Ability bar</dt><dd>Drains while the aura is on.</dd></div><div><dt>Activation</dt><dd>Tap to toggle on or off</dd></div></dl></div>
@@ -2312,15 +2327,75 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
   </div>
 </div>
 <aside class="cp-tree" id="orbProtoTree" aria-label="Skill tree"><h4>Skill tree</h4><p class="cp-note">Candidates only. The tree is not designed yet, so this layout and the numbers are placeholders. Click a skill to switch it on in the room.</p><div class="st"><div class="st-root"><b>Charge</b><span>Basic ability, always on</span></div><ul class="st-kids"><li><button type="button" class="st-node na" data-skill="shield" aria-pressed="false" data-name="Shield" data-status="Set aside for the skill tree on 26 Nov" data-what="Raise a shield." data-how="What the shield blocks is still to define, so there is nothing to try in the room yet."><b>Shield</b><span>Set aside for the skill tree on 26 Nov</span><i class="st-sw">Not yet</i></button></li><li><button type="button" class="st-node" data-skill="carry" aria-pressed="false" data-name="Carry heavy" data-status="A maybe" data-what="Move a heavy obstacle instead of destroying it." data-how="Walk into a heavy obstacle to push it slowly. It is moved, not destroyed, so it adds no property damage."><b>Carry heavy</b><span>A maybe</span><i class="st-sw">Off</i></button></li><li><button type="button" class="st-node" data-skill="roll" aria-pressed="false" data-name="Rolling charge" data-status="Being considered, not confirmed" data-what="Roll to build up speed, steer, and destroy a heavy obstacle on contact at full speed." data-how="Replaces the aimed charge. Hold Space to roll and build up speed, and steer with the direction keys. At full speed the ring turns green: a heavy obstacle is destroyed on contact, and a wall stuns Orb. The bar drains while rolling. Switching this on switches the Charge-up meter off."><b>Rolling charge</b><span>Being considered, not confirmed</span><i class="st-sw">Off</i></button></li><li><button type="button" class="st-node" data-skill="meter" aria-pressed="false" data-name="Charge-up meter" data-status="Being considered, not confirmed" data-what="Hold longer for a stronger charge: knock aside, destroy one heavy obstacle, or destroy every one in the lane." data-how="The wind-up ring has three steps. Release in the first for a weak charge that only knocks things aside, for half the bar. Release in the second to destroy one heavy obstacle. Hold to the third to destroy every heavy obstacle in the lane, for one and a half times the bar. Switching this on switches Rolling charge off."><b>Charge-up meter</b><span>Being considered, not confirmed</span><i class="st-sw">Off</i></button></li><li><button type="button" class="st-node" data-skill="ricochet" aria-pressed="false" data-name="Ricochet" data-status="Being considered, not confirmed" data-what="Bounce off a destroyed obstacle at an angle to hit a second one." data-how="After an aimed charge destroys an obstacle, Orb bounces once: the way you are holding, or towards the nearest other heavy obstacle. The bounce travels 60% of the charge distance and uses no bar."><b>Ricochet</b><span>Being considered, not confirmed</span><i class="st-sw">Off</i></button></li></ul></div><div class="st-info" aria-live="polite"><p class="st-hint">No skill is on. The room plays with the basic ability only.</p></div></aside></div></div></section>
-          <section class="lvpanel" data-lv="bee"><header class="lvhead"><h2>Bee</h2><p class="lvchips"><span class="lvchip">Droid</span><span class="lvchip">Ability defined</span><span class="lvchip">In Bypass Firewall</span></p></header><div class="lvtabs" role="tablist" aria-label="Sections of this level"><button type="button" role="tab" data-t="main" aria-selected="true">Profile</button><button type="button" role="tab" data-t="skill" aria-selected="false">Skill tree</button><button type="button" role="tab" data-t="lofi" aria-selected="false">Lo-fi</button></div><div class="lvpane on" data-t="main"><div class="dhero" style="--dc:#D9A514;--db:url('banner-bee.jpg')"><div class="dhtx"><span class="dteam">Patchbots · Player droid</span><h3 class="dname">Bee</h3><p class="dtag">The no-nonsense go-getter of the group</p><p class="dwas"><b>Before the team</b>A portable apiary, built to shelter animals caught in climate disasters</p></div><span class="dport has"><img src="droid-bee.png" alt="" loading="lazy"></span></div><div class="dabil" style="--dc:#D9A514"><span class="dlab">Ability</span><h4>Ability</h4><p>A swarm in a radius around Bee that pushes past and disperses crowds.</p><dl><div><dt>Ability bar</dt><dd>Drains while active. Recharges faster if the bar was not fully emptied, and slower if it was.</dd></div><div><dt>Activation</dt><dd>Tap to toggle on or off</dd></div></dl></div>
+          <section class="lvpanel" data-lv="bee"><header class="lvhead"><h2>Bee</h2><p class="lvchips"><span class="lvchip">Droid</span><span class="lvchip">Ability defined</span><span class="lvchip">In Bypass Firewall</span></p></header><div class="lvtabs" role="tablist" aria-label="Sections of this level"><button type="button" role="tab" data-t="main" aria-selected="true">Profile</button><button type="button" role="tab" data-t="skill" aria-selected="false">Skill tree</button><button type="button" role="tab" data-t="lofi" aria-selected="false">Lo-fi</button><button type="button" role="tab" data-t="play" aria-selected="false">Playable lo-fi</button></div><div class="lvpane on" data-t="main"><div class="dhero" style="--dc:#D9A514;--db:url('banner-bee.jpg')"><div class="dhtx"><span class="dteam">Patchbots · Player droid</span><h3 class="dname">Bee</h3><p class="dtag">The no-nonsense go-getter of the group</p><p class="dwas"><b>Before the team</b>A portable apiary, built to shelter animals caught in climate disasters</p></div><span class="dport has"><img src="droid-bee.png" alt="" loading="lazy"></span></div><div class="dabil" style="--dc:#D9A514"><span class="dlab">Ability</span><h4>Herd</h4><p>A swarm in a radius around Bee that pushes past and disperses crowds. Played as Herd: people inside the swarm walk away from Bee, so the player steers a crowd by where Bee stands.</p><dl><div><dt>Ability bar</dt><dd>Drains while active. Recharges faster if the bar was not fully emptied, and slower if it was.</dd></div><div><dt>Activation</dt><dd>Tap to toggle on or off</dd></div></dl></div>
           <div class="dstory" style="--dc:#D9A514"><span class="dlab">Story</span><p>The no-nonsense go-getter of the group, Bee makes sure the Patchbots are always on track towards their shared dream.</p><p>Bee is a portable apiary. They were part of a line of droids designed to evacuate and temporarily shelter animals that get caught within climate disasters. However, Bee ended up forming an unusual connection with the colony, and now they’re sticking together like honey through thick and thin.</p><p>Bee is an avatar of justice, especially in matters of trade. Despite being more stand-offish in nature, they strongly believe in community living and symbiotic relationships between all species living together in harmony.</p><p>Now, Bee carries their hive of friends everywhere the team goes, saving lives no matter how big or small, while spreading their pragmatic philosophy to the world.</p><p class="dnote">Story from the Characters &amp; Lore section of the InnovSpur FigJam board, read on 26 Nov 2026. Picture from the game’s character sprites in the Unity project.</p></div>
           <h3 class="dsub">Details</h3>
-          <div class="tw"><table class="camp def"><thead><tr><th scope="col">Field</th><th scope="col">Definition</th></tr></thead><tbody><tr><th scope="row">In Bypass Firewall</th><td><ul><li>Switching to Bee and using its ability is one of three ways to direct the <a href="#npc-crowd">escaping crowd</a>.</li><li>The honk that every droid has is described as a mini version of Bee’s crowd control. See <a href="#npc-crowdcontrol">Moving a crowd</a>.</li></ul></td></tr><tr><th scope="row">Related</th><td><a href="#hazard-crowd">Escaping crowd</a>, <a href="#npc-crowdcontrol">Moving a crowd</a></td></tr><tr><th scope="row">Skill tree</th><td>To be added later, on the <button type="button" class="tablink" data-lvtab="skill">Skill tree tab</button>.</td></tr><tr><th scope="row">Shared rules</th><td><a href="#droid-party">Party and switching</a>, <a href="#droid-actions">What every droid can do</a>, <a href="#droid-skilltree">Skill tree rules</a></td></tr><tr><th scope="row">Sources</th><td><span class="scs"><span class="sc" title="Game design document">GDD 3.4.1, 3.3</span><span class="sc" title="Figma Level Design page">Figma</span><span class="sc" title="Mission content sheet">Sheet</span></span></td></tr></tbody></table></div></div><div class="lvpane" data-t="skill"><p class="lvempty">Not designed yet. Bee’s skill tree will be added here later.</p>
-          
-          
-          <div class="tw"><table class="camp def"><thead><tr><th scope="col">Field</th><th scope="col">Definition</th></tr></thead><tbody><tr><th scope="row">Skills</th><td><span class="tbd">To be added</span></td></tr><tr><th scope="row">Direction</th><td>Decided on 25 Nov: hazards evolve in the later levels, and the skill tree is built around answering their new forms.</td></tr><tr><th scope="row">Bought with</th><td>Bobbles, which are used for the skill tree only. Whether they replace skill points is still open.</td></tr><tr><th scope="row">How it works</th><td>Skill points permanently upgrade the droid and can unlock abilities. See <a href="#droid-skilltree">Skill tree rules</a>.</td></tr></tbody></table></div></div><div class="lvpane" data-t="lofi"><p class="part">Directing the crowd</p>
+          <div class="tw"><table class="camp def"><thead><tr><th scope="col">Field</th><th scope="col">Definition</th></tr></thead><tbody><tr><th scope="row">In Bypass Firewall</th><td><ul><li>Switching to Bee and using its ability is one of three ways to direct the <a href="#npc-crowd">escaping crowd</a>.</li><li>The honk that every droid has is described as a mini version of Bee’s crowd control. See <a href="#npc-crowdcontrol">Moving a crowd</a>.</li></ul></td></tr><tr><th scope="row">Herd</th><td>People inside the swarm’s radius walk away from Bee. The crowd goes where the player pushes it, by where Bee stands.</td></tr><tr><th scope="row">Without Bee</th><td>A droid can squeeze through a crowd slowly. The Figma boards name a honk that every droid has, as a mini version of Bee’s crowd control. <span class="tbd">How the honk works is still to define.</span></td></tr><tr><th scope="row">Status</th><td>The swarm, its toggle and its bar are in the GDD. <span class="tbd">Herd was picked on 26 Nov 2026 as the way the swarm moves a crowd, and is not yet in the GDD.</span></td></tr><tr><th scope="row">Still to define</th><td>The radius of the swarm, how fast people walk away, how fast the bar drains and its two recharge speeds. Whether a dispersed crowd stays away, and whether the swarm affects single bystanders and victims.</td></tr><tr><th scope="row">Related</th><td><a href="#hazard-crowd">Escaping crowd</a>, <a href="#npc-crowdcontrol">Moving a crowd</a></td></tr><tr><th scope="row">Skill tree</th><td>To be added later, on the <button type="button" class="tablink" data-lvtab="skill">Skill tree tab</button>.</td></tr><tr><th scope="row">Shared rules</th><td><a href="#droid-party">Party and switching</a>, <a href="#droid-actions">What every droid can do</a>, <a href="#droid-skilltree">Skill tree rules</a></td></tr><tr><th scope="row">Sources</th><td><span class="scs"><span class="sc" title="Game design document">GDD 3.4.1, 3.3</span><span class="sc" title="Figma Level Design page">Figma</span><span class="sc" title="Mission content sheet">Sheet</span></span></td></tr></tbody></table></div></div><div class="lvpane" data-t="skill"><p class="lvempty">Not designed yet. Bee’s skill tree will be added here later.</p>
+          <h3 class="dsub">Skill tree candidates</h3><div class="tw"><table><thead><tr><th scope="col">Candidate</th><th scope="col">Evolved crowd it answers</th><th scope="col">What it would do</th><th scope="col">Status</th></tr></thead><tbody><tr><th scope="row">Steady swarm</th><td>A panicked crowd that ignores the basic swarm and runs at random.</td><td>The swarm slows them to a walk first, then herds them.</td><td>Liked on 26 Nov, not confirmed</td></tr><tr><th scope="row">Bright swarm</th><td>A crowd in smoke that cannot see where to go.</td><td>The swarm glows, so people in low visibility follow it.</td><td>Liked on 26 Nov, not confirmed</td></tr><tr><th scope="row">Sort the crowd</th><td>A crowd with injured people mixed in.</td><td>The swarm moves the able ones and leaves the injured standing, so they are easy to spot.</td><td>Liked on 26 Nov, not confirmed</td></tr></tbody></table></div><p class="tbd">The three evolved crowds are suggestions that go with these candidates. None is confirmed.</p>
+          <p>The candidates can be switched on and tried in the room on the <button type="button" class="tablink" data-lvtab="play">Playable lo-fi tab</button>, from the skill tree panel beside it.</p>
+          <div class="tw"><table class="camp def"><thead><tr><th scope="col">Field</th><th scope="col">Definition</th></tr></thead><tbody><tr><th scope="row">Skills</th><td>Candidates are listed above. None is confirmed as a skill yet.</td></tr><tr><th scope="row">Direction</th><td>Decided on 25 Nov: hazards evolve in the later levels, and the skill tree is built around answering their new forms.</td></tr><tr><th scope="row">Bought with</th><td>Bobbles, which are used for the skill tree only. Whether they replace skill points is still open.</td></tr><tr><th scope="row">How it works</th><td>Skill points permanently upgrade the droid and can unlock abilities. See <a href="#droid-skilltree">Skill tree rules</a>.</td></tr></tbody></table></div></div><div class="lvpane" data-t="lofi"><p class="part">Directing the crowd</p>
           <div class="fge"><button type="button" class="fgr" aria-label="Reload the Figma board: Directing the crowd"><span aria-hidden="true">↻</span> Reload</button><iframe title="Figma board: Directing the crowd" src="https://embed.figma.com/design/VxnDDZ0JOWff7Z7uleDt3O/Innovspur-UIUX-Flow?node-id=2586-46774&embed-host=share&page-selector=false&footer=false" loading="lazy" allowfullscreen></iframe></div>
-          <ul><li><b>Honk.</b> Press the honk button (this might change to pressing on the droid itself) for a mini version of Bee’s crowd control. It has a small range centred on the player, and nearby NPCs move away.</li><li><b>Bee.</b> Switch to Bee if available and use its ability.</li><li><b>Fish.</b> Switch to Fish if available and use the force of the splash cannons to knock NPCs out of the way. The board notes this is “not very nice”.</li></ul></div></section>
+          <ul><li><b>Honk.</b> Press the honk button (this might change to pressing on the droid itself) for a mini version of Bee’s crowd control. It has a small range centred on the player, and nearby NPCs move away.</li><li><b>Bee.</b> Switch to Bee if available and use its ability.</li><li><b>Fish.</b> Switch to Fish if available and use the force of the splash cannons to knock NPCs out of the way. The board notes this is “not very nice”.</li></ul></div><div class="lvpane" data-t="play"><div class="cp-wrap">
+<div class="cproto bproto" id="beeProto">
+  <p class="lead">A test room for Bee’s swarm, played as Herd. A crowd stands in the middle of the room. Move everyone through the doorway to the exit. This is a flat sketch to try the rules and the numbers, not the game’s look or its crowd behaviour.</p>
+  <div class="cp-top">
+    <div class="cp-seg" role="group" aria-label="Droid">
+      <button type="button" data-mode="bee" aria-pressed="true">Bee</button>
+      <button type="button" data-mode="other" aria-pressed="false">Another droid</button>
+    </div>
+    <div class="cp-bar" aria-hidden="true"><span>Ability bar</span><i><b id="bpBar"></b></i></div>
+    <div class="cp-time"><span>Time</span><b id="bpTime">0.0s</b></div>
+    <div class="cp-time"><span>At the exit</span><b id="bpOut">0/14</b></div>
+    <div class="cp-time" id="bpInjWrap" hidden><span>Injured found</span><b id="bpInj">0/3</b></div>
+    <button type="button" class="cp-reset" id="bpReset">Reset room</button>
+  </div>
+  <div class="cp-top bp-rooms">
+    <span class="bp-lab">Crowd in the room</span>
+    <div class="cp-seg" role="group" aria-label="Crowd in the room">
+      <button type="button" data-room="calm" aria-pressed="true">Calm</button>
+      <button type="button" data-room="panic" aria-pressed="false">Panicked</button>
+      <button type="button" data-room="smoke" aria-pressed="false">In smoke</button>
+      <button type="button" data-room="injured" aria-pressed="false">Injured mixed in</button>
+    </div>
+  </div>
+  <div class="cp-stage">
+    <canvas id="bpCanvas" width="760" height="460" tabindex="0" role="img" aria-label="Test room. Bee starts on the left. A crowd of fourteen people stands in the middle. A doorway in a wall on the right leads to the exit."></canvas>
+    <button type="button" class="cp-grip" id="bpBtn">Swarm: off</button>
+  </div>
+  <p class="cp-msg" id="bpMsg" aria-live="polite">Click the room, then move with the arrow keys or WASD. Tap Space to switch the swarm on or off.</p>
+  <div class="cp-legend">
+    <span><i style="background:#F2B8C6;border-radius:50%"></i>Person</span>
+    <span><i style="background:#F08A5D;border-radius:50%"></i>Panicked: runs at random</span>
+    <span><i style="background:#9EDDC4;border-radius:50%"></i>Injured, once found</span>
+    <span><i style="background:rgba(217,165,20,.35);border-radius:50%"></i>Bee’s swarm</span>
+    <span><i style="background:#B9BDB6"></i>Smoke</span>
+    <span><i style="background:#8FD6A8"></i>Exit</span>
+  </div>
+  <div class="cp-tune">
+    <h4>Numbers still to define</h4>
+    <label>Swarm radius <output id="bpO1"></output><input type="range" id="bpS1" min="60" max="180" step="5" value="110"></label>
+    <label>How fast people walk away <output id="bpO2"></output><input type="range" id="bpS2" min="40" max="140" step="5" value="95"></label>
+    <label>Bar drain while the swarm is on <output id="bpO3"></output><input type="range" id="bpS3" min="4" max="40" value="8"></label>
+    <label>Bar recharge <output id="bpO4"></output><input type="range" id="bpS4" min="4" max="40" value="20"></label>
+    <label>Bar recharge after it was emptied <output id="bpO5"></output><input type="range" id="bpS5" min="2" max="30" value="8"></label>
+  </div>
+  <div class="cp-rules">
+    <h4>What this room follows</h4>
+    <ul>
+      <li><b>Bee:</b> tap to switch the swarm on or off. People inside its radius walk away from Bee, so the crowd is steered by where Bee stands. Get behind the crowd to push it towards the exit.</li>
+      <li>People who can see lean towards the way out as they walk away, and keep walking for a moment after leaving the swarm. <span class="tbd">How a crowd behaves is not defined, so this is a stand-in.</span></li>
+      <li>The ability bar drains while the swarm is on. It recharges faster if the bar was not fully emptied, and slower if it was. This is the GDD’s rule.</li>
+      <li>A droid can squeeze through a crowd, but only slowly.</li>
+      <li><b>Another droid:</b> has no swarm. It has the honk, a short pulse that pushes back the people right next to it. <span class="tbd">The honk is named on the Figma boards as a mini version of Bee’s crowd control. How it works is not defined, so this is a stand-in.</span></li>
+      <li><b>Panicked crowd:</b> half the people run at random, and do not leave by themselves. The basic swarm only deflects them a little, so they have to be herded all the way out.</li>
+      <li><b>Crowd in smoke:</b> people inside the smoke cannot see which way to go, so they walk off in the wrong direction.</li>
+      <li><b>Injured mixed in:</b> three people are injured and look like everyone else. They can only shuffle when pushed. Touch a person who lags behind to find out. The room is done when the others are out and all three are found.</li>
+      <li><span class="tbd">The three evolved crowds are suggestions that go with the skill candidates. None is confirmed, and neither is how a crowd behaves.</span></li>
+    </ul>
+    <p class="cp-note">On a phone: drag on the room to move, and tap the “Swarm” button.</p>
+  </div>
+</div>
+<aside class="cp-tree" id="beeProtoTree" aria-label="Skill tree"><h4>Skill tree</h4><p class="cp-note">Candidates only. The tree is not designed yet, so this layout and the numbers are placeholders. Click a skill to switch it on in the room.</p><div class="st"><div class="st-root"><b>Herd</b><span>Basic ability, always on</span></div><ul class="st-kids"><li><button type="button" class="st-node" data-skill="steady" aria-pressed="false" data-name="Steady swarm" data-status="Liked on 26 Nov, not confirmed" data-what="Answers a panicked crowd that ignores the basic swarm and runs at random. The swarm slows them to a walk first, then herds them." data-how="Choose the “Panicked” crowd. With this on, a panicked person inside the swarm slows down, settles after a moment and is then herded as normal."><b>Steady swarm</b><span>Liked on 26 Nov, not confirmed</span><i class="st-sw">Off</i></button></li><li><button type="button" class="st-node" data-skill="bright" aria-pressed="false" data-name="Bright swarm" data-status="Liked on 26 Nov, not confirmed" data-what="Answers a crowd in smoke that cannot see where to go. The swarm glows, so people in low visibility follow it." data-how="Choose the “In smoke” crowd. With this on, people inside the smoke can see the swarm and walk away from Bee in the right direction, as they do in clear air."><b>Bright swarm</b><span>Liked on 26 Nov, not confirmed</span><i class="st-sw">Off</i></button></li><li><button type="button" class="st-node" data-skill="sort" aria-pressed="false" data-name="Sort the crowd" data-status="Liked on 26 Nov, not confirmed" data-what="Answers a crowd with injured people mixed in. The swarm moves the able ones and leaves the injured standing, so they are easy to spot." data-how="Choose the “Injured mixed in” crowd. With this on, the swarm does not move an injured person. They stay where they are and are marked as found."><b>Sort the crowd</b><span>Liked on 26 Nov, not confirmed</span><i class="st-sw">Off</i></button></li></ul></div><div class="st-info" aria-live="polite"><p class="st-hint">No skill is on. The room plays with the basic ability only.</p></div></aside></div></div></section>
           <section class="lvpanel" data-lv="party"><header class="lvhead"><h2>Party and switching</h2><p class="lvchips"><span class="lvchip">Reference</span><span class="lvchip">GDD 2.1.3, 3.4.2</span></p></header><div class="lvpane on" data-t="main"><p>Droids have no AI. The player controls one droid at a time and swaps between them instantly.</p>
           <div class="tw"><table class="camp def"><thead><tr><th scope="col">Rule</th><th scope="col">How it works</th></tr></thead><tbody><tr><th scope="row">Drafting</th><td>From the campaign map the player selects a stage, and a popup appears where they choose up to 4 droids to bring as their party.</td></tr><tr><th scope="row">Switching</th><td>During the mission the HUD lists the party, and tapping another droid swaps it in. There is no switch cooldown.</td></tr><tr><th scope="row">When it is blocked</th><td>During treatment minigames and while carrying a survivor.</td></tr><tr><th scope="row">Position</th><td>The new droid appears where the current droid is standing. Droids are never spread across the map.</td></tr><tr><th scope="row">Abilities</th><td>Switching turns off any active ability. Each droid keeps its own ability bar, which keeps recharging while that droid is out of play.</td></tr><tr><th scope="row">Health and effects</th><td>Each droid has its own health bar. Burning, slipping and stun effects stay with the droid that suffered them, and a burning droid keeps burning after it is switched out, until its burn timer runs out.</td></tr><tr><th scope="row">Droid down</th><td>When the droid being controlled reaches zero health, the game switches automatically to the next droid in the party. This continues until every droid in the party is down.</td></tr><tr><th scope="row">Why it matters</th><td>The skill is choosing the right droid for the moment, such as Fish for a spreading fire or Bee to move a crowd. The choice is made twice: when building the party and again in the field.</td></tr></tbody></table></div>
           <p>The full text is on the <a href="#droids">Droid rules</a> page.</p></div></section>
@@ -4005,6 +4080,191 @@ window.protoTree=function(id,onChange){
     const sl=el(s),out=el(o),set=()=>{out.textContent=f(+sl.value)};sl.oninput=set;set()});
   S=fresh();look();draw();
   window.camProto={state:()=>S,step,reset,tune,los,sight,toggle}; // for tests
+})();
+
+/* ===== Bee's swarm, played as Herd: playable lo-fi =====
+   A top-down room on a canvas with a moving crowd. World units are canvas pixels (760 x 460). */
+(function(){
+  const root=document.getElementById("beeProto");if(!root)return;
+  const cv=root.querySelector("#bpCanvas"),g=cv.getContext("2d"),W=cv.width,H=cv.height;
+  const el=id=>root.querySelector("#"+id);
+  const SPEED=150,R=16,PR=8,N=14,RUN=105,SQUEEZE=.35;   // droid speed, droid radius, person radius, people, a panicked person's speed, droid speed inside a crowd
+  const HONK={r:78,push:190,wait:1.4},SETTLE=.8,KEEP=1.1,LEAN=.6; // the stand-in honk, how long the Steady swarm takes to settle a panicked person (s), how long a person keeps walking after leaving the swarm (s), how much a person leans towards the way out while walking away
+  const BEE="#D9A514";
+  const tune={radius:110,walk:95,drain:8,recharge:20,slow:8};  // pixels, pixels a second, % of the bar per second (x3)
+  let mode="bee",room="calm",S;
+  /* skill tree candidates switched on in the panel beside the room. They only apply to Bee */
+  const tree=window.protoTree("beeProtoTree",onSkill),sk=k=>mode==="bee"&&!!tree.on[k];
+
+  /* the room: walls with a doorway, the exit, the crowd and the droid. The crowd is laid out the same way every time */
+  function fresh(){
+    let seed=11;const rnd=()=>(seed=seed*16807%2147483647)/2147483647;
+    const people=[];
+    for(let i=0;i<N;i++){const a=rnd()*6.283,r=Math.sqrt(rnd())*80;
+      people.push({x:300+Math.cos(a)*r*1.15,y:230+Math.sin(a)*r,vx:0,vy:0,kx:0,ky:0,fx:0,fy:0,flee:0,injured:false,panic:false,calm:0,found:false,out:false,wa:rnd()*6.283,wt:rnd()})}
+    if(room==="panic")people.forEach((p,i)=>{p.panic=i%2===0});
+    if(room==="injured")[2,7,11].forEach(i=>{people[i].injured=true});
+    return {
+      droid:{x:80,y:230},bar:100,emptied:false,on:false,t:0,done:false,started:false,honkWait:0,pulse:0,people,
+      walls:[{x:0,y:0,w:W,h:14},{x:0,y:H-14,w:W,h:14},{x:0,y:0,w:14,h:H},{x:W-14,y:0,w:14,h:H},
+             {x:520,y:14,w:20,h:156},{x:520,y:290,w:20,h:156}],   // the wall before the exit, with a doorway
+      exit:{x:660,y:14,w:86,h:432},
+      smoke:room==="smoke"?{x:185,y:105,w:260,h:250}:null
+    };
+  }
+  const hit=(a,b)=>a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;
+  const box=(d,r)=>({x:d.x-r,y:d.y-r,w:r*2,h:r*2});
+  const walled=(d,r)=>S.walls.some(w=>hit(box(d,r),w));
+  const inside=(p,r)=>r&&p.x>r.x&&p.x<r.x+r.w&&p.y>r.y&&p.y<r.y+r.h;
+
+  /* input: keys while the room has focus, a drag on the room as a stick, and the swarm button */
+  const keys={};let stick=null;
+  cv.addEventListener("keydown",e=>{const k=e.key.toLowerCase();
+    if(["arrowup","arrowdown","arrowleft","arrowright"," ","w","a","s","d"].includes(k)){
+      if(k===" "&&!e.repeat)act();
+      keys[k]=true;e.preventDefault()}});
+  cv.addEventListener("keyup",e=>{keys[e.key.toLowerCase()]=false});
+  cv.addEventListener("blur",()=>{for(const k in keys)keys[k]=false});
+  cv.addEventListener("pointerdown",e=>{cv.focus();stick={id:e.pointerId,x:e.clientX,y:e.clientY,dx:0,dy:0};cv.setPointerCapture(e.pointerId)});
+  cv.addEventListener("pointermove",e=>{if(stick&&e.pointerId===stick.id){stick.dx=e.clientX-stick.x;stick.dy=e.clientY-stick.y}});
+  const endStick=e=>{if(stick&&e.pointerId===stick.id)stick=null};
+  cv.addEventListener("pointerup",endStick);cv.addEventListener("pointercancel",endStick);
+  const sb=el("bpBtn");
+  sb.addEventListener("pointerdown",e=>{act();e.preventDefault()});
+  function wish(){
+    let x=(keys.arrowright||keys.d?1:0)-(keys.arrowleft||keys.a?1:0),y=(keys.arrowdown||keys.s?1:0)-(keys.arrowup||keys.w?1:0);
+    if(stick&&Math.hypot(stick.dx,stick.dy)>8){x=stick.dx;y=stick.dy}
+    const m=Math.hypot(x,y);return m?{x:x/m,y:y/m}:{x:0,y:0};
+  }
+  function say(t,c){const m=el("bpMsg");if(m.textContent!==t)m.textContent=t;m.className="cp-msg"+(c?" "+c:"")}
+
+  /* the action button: Bee toggles its swarm, another droid honks */
+  function act(){
+    if(S.done)return;S.started=true;
+    if(mode==="bee"){
+      if(!S.on&&S.bar<=8){say("The bar is too low. Wait for it to recharge.","bad");return}
+      S.on=!S.on;say(S.on?"Swarm on. People inside the ring walk away from Bee. The bar is draining.":"Swarm off. The bar is recharging"+(S.emptied?", slowly, because it was fully emptied.":"."));
+      return;
+    }
+    if(S.honkWait>0){say("The honk is not ready yet.","bad");return}
+    S.honkWait=HONK.wait;S.pulse=.35;const d=S.droid;
+    for(const p of S.people){if(p.out)continue;const x=p.x-d.x,y=p.y-d.y,m=Math.hypot(x,y)||1;if(m<HONK.r){const f=p.injured?.3:1;p.kx+=x/m*HONK.push*f;p.ky+=y/m*HONK.push*f}}
+    say("Honk! The people right next to the droid step back.");
+  }
+
+  /* one person: where they want to go, then the move */
+  function person(p,dt){
+    const d=S.droid,dx=p.x-d.x,dy=p.y-d.y,dist=Math.hypot(dx,dy)||1,
+          inSwarm=S.on&&mode==="bee"&&dist<tune.radius,fogged=inside(p,S.smoke);
+    p.wt-=dt;if(p.wt<=0){p.wt=.6+Math.random()*.8;p.wa=Math.random()*6.283}
+    let tx=Math.cos(p.wa)*(p.panic?RUN:5),ty=Math.sin(p.wa)*(p.panic?RUN:5);   // running at random, or just milling about
+    if(p.injured){tx=ty=0}
+    if(inSwarm){
+      let a=Math.atan2(dy,dx);
+      let ux=Math.cos(a),uy=Math.sin(a);
+      if(fogged&&!sk("bright")){a+=(p.wa-Math.PI)*.8;ux=Math.cos(a);uy=Math.sin(a)}   // in smoke, the way they walk off is mostly wrong
+      else{ // people who can see head for the way out as they walk away: the doorway first, then the exit
+        const gx=(p.x<545?556:720)-p.x,gy=230-p.y,gm=Math.hypot(gx,gy)||1,bx=ux+gx/gm*LEAN,by=uy+gy/gm*LEAN,bm=Math.hypot(bx,by)||1;ux=bx/bm;uy=by/bm}
+      if(p.injured){if(sk("sort")){if(!p.found){p.found=true;say("The swarm left an injured person standing. Found.","good")}}else{tx=ux*tune.walk*.3;ty=uy*tune.walk*.3}}
+      else if(p.panic){
+        if(sk("steady")){p.calm+=dt;tx=tx*.3+ux*tune.walk*.4;ty=ty*.3+uy*tune.walk*.4;if(p.calm>=SETTLE){p.panic=false;say("A panicked person settled, and can now be herded.","good")}}
+        else{tx=tx*.6+ux*tune.walk*.8;ty=ty*.6+uy*tune.walk*.8}
+      }else{tx=ux*tune.walk;ty=uy*tune.walk;p.fx=ux;p.fy=uy;p.flee=KEEP}
+    }else if(p.flee>0&&!p.panic&&!p.injured){p.flee-=dt;const f=Math.min(1,p.flee/.4);tx=p.fx*tune.walk*f;ty=p.fy*tune.walk*f} // keeps walking the same way for a moment
+    // a herded person pressed against a wall walks along it towards the way out, and is not stuck in a corner
+    if((inSwarm||p.flee>0)&&!p.panic&&!p.injured&&!(fogged&&!sk("bright"))){
+      if(p.x>494&&p.x<522&&(p.y<178||p.y>282)){tx=tune.walk*.25;ty=Math.sign(230-p.y)*tune.walk}          // the wall beside the doorway
+      else if(p.x<28||p.y<28||p.y>H-28){const gx=(p.x<545?556:720)-p.x,gy=230-p.y,gm=Math.hypot(gx,gy)||1;tx=gx/gm*tune.walk;ty=gy/gm*tune.walk}   // an outer wall
+    }
+    for(const q of S.people){ // people keep a little room between each other
+      if(q===p||q.out)continue;const x=p.x-q.x,y=p.y-q.y,m=Math.hypot(x,y)||.01;
+      if(m<PR*2+3){const f=(PR*2+3-m)*7;tx+=x/m*f;ty+=y/m*f}}
+    if(dist<R+PR+2){const f=(R+PR+2-dist)*9;tx+=dx/dist*f;ty+=dy/dist*f}   // and step aside for a droid squeezing through
+    const k=Math.min(1,dt*8);p.vx+=(tx-p.vx)*k;p.vy+=(ty-p.vy)*k;
+    const fade=Math.pow(.02,dt);p.kx*=fade;p.ky*=fade;
+    for(const ax of ["x","y"]){const n={x:p.x,y:p.y};n[ax]+=((ax==="x"?p.vx+p.kx:p.vy+p.ky))*dt;
+      if(walled(n,PR)){if(ax==="x")p.vx=p.kx=0;else p.vy=p.ky=0;if(p.panic)p.wt=0}else p[ax]=n[ax]}
+    if(dist<R+PR+4&&p.injured&&!p.found){p.found=true;say("This person is injured. Found.","good")}
+    if(hit(box(p,PR),S.exit)&&p.panic&&!inSwarm){p.x-=4;p.vx=-Math.abs(p.vx);p.wa=Math.PI+(Math.random()-.5);p.wt=.8}   // too panicked to leave without being herded out
+    else if(hit(box(p,PR),S.exit)){p.out=true;if(p.injured){p.found=true;say("An injured person was pushed all the way to the exit.","bad")}}
+  }
+
+  /* one step of the room */
+  function step(dt){
+    if(S.done)return;
+    const want=wish(),d=S.droid;
+    if(want.x||want.y)S.started=true;
+    if(S.started)S.t+=dt;
+    if(S.honkWait>0)S.honkWait-=dt;if(S.pulse>0)S.pulse-=dt;
+    if(S.on){S.bar-=tune.drain*dt;if(S.bar<=0){S.bar=0;S.on=false;S.emptied=true;say("The bar is empty, so the swarm switched off. It now recharges slowly.","bad")}}
+    else{S.bar=Math.min(100,S.bar+(S.emptied?tune.slow:tune.recharge)*dt);if(S.bar>=100)S.emptied=false}
+    const crowded=S.people.some(p=>!p.out&&Math.hypot(p.x-d.x,p.y-d.y)<R+PR),sp=SPEED*(crowded?SQUEEZE:1);
+    for(const ax of ["x","y"]){const mv=want[ax]*sp*dt;if(!mv)continue;const nd={x:d.x,y:d.y};nd[ax]+=mv;if(!walled(nd,R))d[ax]=nd[ax]}
+    if(S.started)for(const p of S.people)if(!p.out)person(p,dt);
+    if(S.people.every(p=>p.out||(p.injured&&p.found))){S.done=true;S.on=false;
+      const inj=S.people.filter(p=>p.injured).length;
+      say("Everyone is at the exit"+(inj?", and all "+inj+" injured people are found,":"")+" in "+S.t.toFixed(1)+"s as "+(mode==="bee"?"Bee":"another droid")+". Reset the room to try again.","good")}
+  }
+
+  /* drawing */
+  function draw(){
+    const now=performance.now()/1000,d=S.droid;
+    g.clearRect(0,0,W,H);g.fillStyle="#F4F1E6";g.fillRect(0,0,W,H);
+    g.strokeStyle="rgba(34,48,43,.06)";g.lineWidth=1;g.beginPath();
+    for(let x=14;x<W;x+=40){g.moveTo(x,14);g.lineTo(x,H-14)}for(let y=14;y<H;y+=40){g.moveTo(14,y);g.lineTo(W-14,y)}g.stroke();
+    g.textAlign="center";
+    const e=S.exit;g.fillStyle="#8FD6A8";g.fillRect(e.x,e.y,e.w,e.h);g.fillStyle="#1F7A4D";g.font="800 12px system-ui,sans-serif";
+    g.save();g.translate(e.x+e.w/2+8,e.y+e.h/2);g.rotate(-Math.PI/2);g.font="800 16px system-ui,sans-serif";g.fillText("EXIT",0,5);g.restore();
+    g.fillStyle="#22302B";for(const w of S.walls)g.fillRect(w.x,w.y,w.w,w.h);
+    if(mode==="bee"){ // the swarm: its ring, filled while on, and the bees circling in it
+      g.beginPath();g.arc(d.x,d.y,tune.radius,0,7);
+      if(S.on){g.fillStyle=sk("bright")?"rgba(255,214,64,.3)":"rgba(217,165,20,.16)";g.fill();g.strokeStyle="rgba(185,138,10,.9)";g.lineWidth=2.5;g.stroke();
+        g.fillStyle="#22302B";for(let i=0;i<16;i++){const a=now*(1.2+i%3*.5)+i*1.7,r=tune.radius*(.3+((i*37)%60)/100);
+          g.beginPath();g.arc(d.x+Math.cos(a)*r,d.y+Math.sin(a*1.3)*r*.9,2.2,0,7);g.fill()}
+      }else{g.strokeStyle="rgba(185,138,10,.4)";g.lineWidth=1.5;g.setLineDash([6,6]);g.stroke();g.setLineDash([])}
+    }
+    for(const p of S.people){
+      if(p.out)continue;
+      const j=p.panic?2.2:0,x=p.x+Math.sin(now*40+p.wa*9)*j,y=p.y+Math.cos(now*33+p.wa*5)*j,marked=p.injured&&p.found;
+      g.fillStyle=marked?"#9EDDC4":p.panic?"#F08A5D":"#F2B8C6";g.beginPath();g.arc(x,y,PR,0,7);g.fill();
+      g.strokeStyle=marked?"#1F7A4D":"rgba(0,0,0,.4)";g.lineWidth=marked?2.5:1.5;g.stroke();
+      if(marked){g.fillStyle="#1F7A4D";g.font="900 12px system-ui,sans-serif";g.fillText("+",x,y+4)}
+      if(p.panic){g.fillStyle="#B3342B";g.font="900 13px system-ui,sans-serif";g.fillText("!",x+PR+3,y-PR)}
+    }
+    if(S.smoke){const s=S.smoke;g.fillStyle="rgba(150,154,148,.62)";g.beginPath();g.roundRect(s.x,s.y,s.w,s.h,50);g.fill();
+      g.fillStyle="rgba(34,48,43,.6)";g.font="700 12px system-ui,sans-serif";g.fillText("Smoke",s.x+s.w/2,s.y+18)}
+    if(S.pulse>0){const a=S.pulse/.35;g.strokeStyle="rgba(34,48,43,"+a+")";g.lineWidth=3;g.beginPath();g.arc(d.x,d.y,HONK.r*(1-a*.7),0,7);g.stroke()}
+    g.fillStyle=mode==="bee"?BEE:"#5B7C99";g.beginPath();g.arc(d.x,d.y,R,0,7);g.fill();
+    g.strokeStyle="#22302B";g.lineWidth=2.5;g.beginPath();g.arc(d.x,d.y,R,0,7);g.stroke();
+    g.fillStyle=mode==="bee"?"#22302B":"#fff";g.font="800 13px system-ui,sans-serif";g.fillText(mode==="bee"?"B":"D",d.x,d.y+5);
+    const b=el("bpBar");b.style.width=S.bar.toFixed(1)+"%";b.classList.toggle("slow",S.emptied&&!S.on);
+    el("bpTime").textContent=S.t.toFixed(1)+"s";
+    const able=S.people.filter(p=>!p.injured),inj=S.people.filter(p=>p.injured);
+    el("bpOut").textContent=able.filter(p=>p.out).length+"/"+able.length;
+    el("bpInjWrap").hidden=!inj.length;el("bpInj").textContent=inj.filter(p=>p.found).length+"/"+inj.length;
+    sb.classList.toggle("on",S.on);sb.textContent=mode==="bee"?(S.on?"Swarm: on":"Swarm: off"):"Honk";
+  }
+
+  /* the loop runs only while the room is on screen */
+  let raf=0,last=0,visible=false;
+  function frame(ts){raf=0;if(!visible)return;const dt=Math.min(.05,(ts-last)/1000||0);last=ts;step(dt);draw();raf=requestAnimationFrame(frame)}
+  new IntersectionObserver(es=>{visible=es[0].isIntersecting;if(visible&&!raf){last=performance.now();raf=requestAnimationFrame(frame)}}).observe(cv);
+
+  /* controls around the room */
+  const ROOM_SAY={calm:"A calm crowd.",panic:"A panicked crowd: half the people run at random.",smoke:"A crowd in smoke: people inside it cannot see which way to go.",injured:"Three injured people are mixed into the crowd."};
+  function reset(){S=fresh();say(ROOM_SAY[room]+" "+(mode==="bee"?"Bee: tap Space for the swarm, and get behind the crowd to push it to the exit.":"Another droid: no swarm. Tap Space to honk at the people next to it."));draw()}
+  function onSkill(k,on){
+    if(!S)return;const name={steady:"Steady swarm",bright:"Bright swarm",sort:"Sort the crowd"}[k],needs={steady:"panic",bright:"smoke",sort:"injured"}[k];
+    say(name+(on[k]?" is on."+(room===needs?"":" It answers the “"+{panic:"Panicked",smoke:"In smoke",injured:"Injured mixed in"}[needs]+"” crowd, so choose that crowd to see it work."):" is off."));draw();
+  }
+  const pick=(attr,set)=>root.querySelectorAll(".cp-seg button["+attr+"]").forEach(b=>b.onclick=()=>{set(b.getAttribute(attr));
+    root.querySelectorAll(".cp-seg button["+attr+"]").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));reset()});
+  pick("data-mode",v=>{mode=v});pick("data-room",v=>{room=v});
+  el("bpReset").onclick=()=>{reset();cv.focus()};
+  [["bpS1","bpO1","radius"," px"],["bpS2","bpO2","walk"," px a second"],["bpS3","bpO3","drain","% a second"],["bpS4","bpO4","recharge","% a second"],["bpS5","bpO5","slow","% a second"]].forEach(([s,o,k,u])=>{
+    const sl=el(s),out=el(o),set=()=>{tune[k]=+sl.value;out.textContent=sl.value+u};sl.oninput=set;set()});
+  S=fresh();draw();
+  window.beeProto={state:()=>S,step,reset,tune,tree,act,keys,setRoom:r=>{room=r;reset()}}; // for tests
 })();
 fullReset();fillDocs();paintShell(false);fromHash();
 </script>
