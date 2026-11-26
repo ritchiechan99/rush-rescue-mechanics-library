@@ -4123,7 +4123,7 @@ window.protoTree=function(id,onChange){
   /* the room: walls with a doorway, the exit, the crowd and the droid. The crowd is laid out the same way every time */
   function fresh(){
     let seed=11;const rnd=()=>(seed=seed*16807%2147483647)/2147483647;
-    const one=(x,y)=>({x,y,vx:0,vy:0,kx:0,ky:0,fx:0,fy:0,flee:0,led:0,ring:false,glow:false,sent:false,injured:false,panic:false,go:false,delay:0,side:1,hurt:false,calm:0,found:false,out:false,wa:rnd()*6.283,wt:rnd()});
+    const one=(x,y)=>({x,y,vx:0,vy:0,kx:0,ky:0,fx:0,fy:0,flee:0,led:0,ring:false,glow:false,sent:false,st:0,sw:0,sx:x,sy:y,jam:0,jx:0,jy:0,injured:false,panic:false,go:false,delay:0,side:1,hurt:false,calm:0,found:false,out:false,wa:rnd()*6.283,wt:rnd()});
     const people=[];
     if(room==="escape"){ // twelve people who walk out by themselves, one after another, and two injured people in the far corners
       for(let i=0;i<12;i++){const p=one(70+(i%4)*42,160+Math.floor(i/4)*60+(i%2)*14);p.go=true;p.delay=1+i*.5;p.side=i%2?1:-1;people.push(p)}
@@ -4244,6 +4244,13 @@ window.protoTree=function(id,onChange){
     return u;
   }
 
+  /* the dividing wall has one doorway. Someone heading for a point on its other side goes to the doorway first, and is not stuck against the wall */
+  function via(p,t){
+    const left=q=>q.x<530;if(left(p)===left(t))return t;
+    if(Math.abs(p.y-230)<50&&Math.abs(p.x-530)<44)return t;      // already in the doorway
+    return {x:left(p)?498:562,y:230};
+  }
+
   /* one person: where they want to go, then the move */
   function person(p,dt){
     const d=S.droid,dx=p.x-d.x,dy=p.y-d.y,dist=Math.hypot(dx,dy)||1,
@@ -4259,7 +4266,8 @@ window.protoTree=function(id,onChange){
     let tx=Math.cos(p.wa)*(p.panic?RUN:5),ty=Math.sin(p.wa)*(p.panic?RUN:5);   // running at random, or just milling about
     if(p.injured){tx=ty=0}
     if(walking){const gx=safe.x-p.x,gy=safe.y-p.y,gm=Math.hypot(gx,gy)||1;tx=gx/gm*SELF;ty=gy/gm*SELF}   // on their way out by themselves
-    if(glow){p.flee=0;if(cd>GAP){tx=-cx/cd*tune.walk;ty=-cy/cd*tune.walk}else{tx=ty=0}}
+    if(glow){p.flee=0;const v=via(p,c),vx=v.x-p.x,vy=v.y-p.y,vm=Math.hypot(vx,vy)||1;   // towards the glow, through the doorway if the wall is in between
+      if(v!==c||cd>GAP){tx=vx/vm*tune.walk;ty=vy/vm*tune.walk}else{tx=ty=0}}
     else if(inSwarm){
       const rx=cx/cd,ry=cy/cd,gx=out.x-p.x,gy=out.y-p.y,gm=Math.hypot(gx,gy)||1,sx=safe.x-p.x,sy=safe.y-p.y,sm=Math.hypot(sx,sy)||1;
       let ux=rx,uy=ry;
@@ -4285,6 +4293,9 @@ window.protoTree=function(id,onChange){
     }
     // in smoke, a herded person who backs into an outer wall turns back into the room, so nobody is lost in a corner
     if(blind&&(inSwarm||p.flee>0)&&!p.panic&&!p.injured&&(p.x<30||p.y<30||p.y>H-30)){const gx=300-p.x,gy=230-p.y,gm=Math.hypot(gx,gy)||1;tx=gx/gm*tune.walk;ty=gy/gm*tune.walk}
+    if(leading&&!p.injured&&Math.abs(p.y-230)>50&&((p.x>494&&p.x<523&&S.aim.x>.2)||(p.x>537&&p.x<566&&S.aim.x<-.2))){tx=0;ty=Math.sign(230-p.y)*tune.walk*LEAD_PACE}   // led into the dividing wall: along it to the doorway
+    if(p.jam>0){p.jam-=dt;tx=p.jx*tune.walk;ty=p.jy*tune.walk}                // sidestepping out of a jam
+    const wantSp=Math.hypot(tx,ty),wx=tx,wy=ty;
     for(const q of S.people){ // people keep a little room between each other
       if(q===p||q.out)continue;const x=p.x-q.x,y=p.y-q.y,m=Math.hypot(x,y)||.01;
       if(m<PR*2+3){const f=(PR*2+3-m)*7;tx+=x/m*f;ty+=y/m*f}}
@@ -4294,6 +4305,12 @@ window.protoTree=function(id,onChange){
     for(const ax of ["x","y"]){const n={x:p.x,y:p.y};n[ax]+=((ax==="x"?p.vx+p.kx:p.vy+p.ky))*dt;
       if(walled(n,PR)||(S.wall&&!leading&&toWall(n)<PR+4&&toWall(n)<toWall(p))){   // a survivor being led walks through the swarm wall
       if(ax==="x")p.vx=p.kx=0;else p.vy=p.ky=0;if(p.panic)p.wt=0}else p[ax]=n[ax]}
+    // jam check: every so often, someone who wants to walk but has barely moved steps sideways, towards the open side
+    p.st+=dt;p.sw=Math.max(p.sw,wantSp);
+    if(p.st>=.6){
+      if(!p.injured&&!leading&&!(p.jam>0)&&p.sw>40&&Math.hypot(p.x-p.sx,p.y-p.sy)<5){
+        const m=Math.hypot(wx,wy)||1,px=-wy/m,py=wx/m,mid={x:p.x<530?270:600,y:230},sd=(px*(mid.x-p.x)+py*(mid.y-p.y))>=0?1:-1;p.jx=px*sd;p.jy=py*sd;p.jam=.55}
+      p.st=0;p.sw=0;p.sx=p.x;p.sy=p.y}
     if(dist<R+PR+4&&p.injured&&!p.found){p.found=true;say("This person is injured. Found.","good")}
     if(S.fire&&inside(p,S.fire)&&!p.hurt){p.hurt=true;S.hurt++;say("Someone walked straight through the danger.","bad")}
     if(S.danger&&hit(box(p,PR),S.danger)){p.out=true;p.lost=true;p.hurt=true;S.hurt++;say("Someone left through the unsafe exit.","bad");return}
