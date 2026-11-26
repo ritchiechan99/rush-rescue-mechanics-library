@@ -618,28 +618,49 @@ body.dragging,body.dragging *{cursor:grabbing!important;user-select:none}
 .st-info p{margin:0 0 6px}.st-info .st-hint{color:var(--muted);margin:0}
 .st-info .st-how{background:#fff;border:1px solid var(--line);border-radius:10px;padding:7px 10px}
 .st-info .st-how b{display:block;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-/* a linear tree as a slider: a rail of stops, filled up to the level that is on */
-.sl{background:#22302B;color:#fff;border-radius:14px;padding:11px 14px 9px}
-.sl-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:2px 10px;margin-bottom:10px}
-.sl-head b{font-family:var(--fd);font-size:17px}.sl-lvl{font-size:12px;color:#C9D6CE}
-.sl-track{position:relative;display:flex;justify-content:space-between;align-items:center;height:40px;--d:34px}
-.sl-rail,.sl-fill{position:absolute;left:calc(var(--d)/2);top:50%;height:4px;margin-top:-2px;border-radius:2px}
-.sl-rail{right:calc(var(--d)/2);background:#4A5A54}
-.sl-fill{width:calc((100% - var(--d))*var(--lvl,0)/var(--n));background:var(--st,#fff);transition:width .15s}
-.sl-stop{position:relative;width:var(--d);height:var(--d);flex:none;border-radius:50%;border:3px solid #4A5A54;background:#22302B;color:#C9D6CE;font:800 13px/1 var(--fd);padding:0;transition:background .15s,border-color .15s,transform .15s}
-.sl-stop.on{border-color:var(--st,#fff);background:var(--st,#fff);color:#fff}
-.sl-stop.cur{transform:scale(1.18);box-shadow:0 0 0 4px rgba(255,255,255,.28)}
-.sl-range{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer;-webkit-appearance:none;appearance:none;background:none}
+/* a linear tree as one slider: a rail of stops with their names under them, filled up to the level that is on, and one card for that level */
+.cp-line{--c:calc(var(--n) + 1);--d:30px;container-type:inline-size}
+.sl-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:4px 10px;margin-bottom:10px}
+.cp-line .sl-top h4{margin:0}
+.sl-tag{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#8A5A00;background:#FFF1CF;border-radius:999px;padding:3px 10px;white-space:nowrap}
+.sl{background:#22302B;color:#fff;border-radius:16px;padding:14px 10px 12px;user-select:none;-webkit-user-select:none}
+.sl-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 6px 14px}
+.sl-head b{font-family:var(--fd);font-size:17px}
+.sl-lvl{font-size:12px;font-weight:800;letter-spacing:.04em;background:rgba(255,255,255,.14);border-radius:999px;padding:3px 10px;white-space:nowrap}
+.sl-track{position:relative;display:grid;grid-template-columns:repeat(var(--c),minmax(0,1fr))}
+.sl-rail,.sl-fill{position:absolute;left:calc(50%/var(--c));top:calc(var(--d)/2 - 3px);height:6px;border-radius:3px}
+.sl-rail{right:calc(50%/var(--c));background:#43534D}
+.sl-fill{width:calc((100% - 100%/var(--c))*var(--lvl,0)/var(--n));background:var(--st,#fff);filter:brightness(1.25);transition:width .18s}
+.sl-col{position:relative;display:flex;flex-direction:column;align-items:center;gap:7px;min-width:0}
+.sl-stop{display:grid;place-items:center;width:var(--d);height:var(--d);border-radius:50%;border:3px solid #43534D;background:#22302B;color:#9FB0A8;font:800 12.5px/1 var(--fd);transition:background .18s,border-color .18s,transform .18s,box-shadow .18s}
+.sl-col.on .sl-stop{border-color:transparent;background:var(--st,#fff);filter:brightness(1.25);color:#fff}
+.sl-col.cur .sl-stop{background:#fff;color:var(--st,#22302B);filter:none;transform:scale(1.22);box-shadow:0 0 0 4px color-mix(in srgb,var(--st,#fff) 70%,transparent),0 2px 8px rgba(0,0,0,.35)}
+.sl-name{font:inherit;font-size:11.5px;line-height:1.25;font-weight:600;color:#9FB0A8;background:none;border:0;border-radius:8px;padding:3px 2px;width:100%;text-align:center;cursor:pointer;overflow-wrap:anywhere;transition:color .18s}
+.sl-col.on .sl-name{color:#E4ECE7}.sl-col.cur .sl-name{color:#fff;font-weight:800}
+.sl-name:hover{color:#fff;background:rgba(255,255,255,.08)}
+.sl-name:focus-visible{outline:2px solid #fff;outline-offset:1px}
+.sl-range{position:absolute;top:-6px;left:calc(50%/var(--c) - var(--d)/2);width:calc(100% - 100%/var(--c) + var(--d));height:calc(var(--d) + 12px);margin:0;opacity:0;cursor:grab;-webkit-appearance:none;appearance:none;background:none;touch-action:pan-y}
+.sl-range:active{cursor:grabbing}
 .sl-range::-webkit-slider-thumb{-webkit-appearance:none;width:var(--d);height:var(--d)}
 .sl-range::-moz-range-thumb{width:var(--d);height:var(--d);border:0}
-.sl-track:has(.sl-range:focus-visible) .sl-stop.cur{box-shadow:0 0 0 4px #fff}
-.sl-ends{display:flex;justify-content:space-between;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#C9D6CE;margin-top:5px}
-.cp-tree .sl-list{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:6px}
-.cp-tree .sl-list li{margin:0;padding:0}.cp-tree .sl-list li::before,.cp-tree .sl-list li::marker{content:none}
-.sl-list .st-node{padding:8px 12px;height:100%}.sl-list .st-node span{display:none}.sl-list .st-node .st-sw{grid-row:1}
-.sl,.sl-stop{user-select:none;-webkit-user-select:none}
-.sl-list .st-node[aria-pressed="false"]{opacity:.62}
-.sl-list .st-node.cur{box-shadow:0 0 0 3px color-mix(in srgb,var(--st,#22302B) 30%,transparent)}
+.sl-track:has(.sl-range:focus-visible) .sl-col.cur .sl-stop{box-shadow:0 0 0 4px #fff,0 0 0 7px var(--st,#22302B)}
+.sl-track:has(.sl-range:hover) .sl-col.cur .sl-stop{transform:scale(1.3)}
+.sl-card{margin-top:10px;background:#fff;border:1px solid var(--line);border-left:5px solid var(--st,#22302B);border-radius:12px;padding:11px 14px 12px;font-size:13.5px}
+.sl-cardtop{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:6px}
+.sl-step{display:block;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--st,#22302B)}
+.sl-card h5{font-family:var(--fd);font-size:18px;margin:1px 0 0}
+.sl-card p{margin:0 0 8px}.sl-card p:last-child{margin-bottom:0}
+.sl-inc{color:var(--muted);font-size:12.5px}
+.sl-card .sl-how{background:#F6F8F5;border:1px solid var(--line);border-radius:10px;padding:7px 10px}
+.sl-card .sl-how b{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.sl-nav{display:flex;gap:6px;flex:none}
+.sl-nav button{width:34px;height:34px;border-radius:50%;border:2px solid var(--line);background:#fff;color:var(--ink);font:800 19px/1 var(--fd);cursor:pointer;padding:0 0 2px}
+.sl-nav button:hover:not(:disabled){border-color:#22302B}.sl-nav button:disabled{opacity:.35;cursor:default}
+.cp-tree .sl-foot{margin:10px 0 0}
+.sl-short{display:none}
+@container (max-width:560px){.sl-full{display:none}.sl-short{display:inline}.sl-name{font-size:11px;overflow-wrap:normal;padding:3px 0;letter-spacing:-.01em}}
+@container (max-width:380px){.sl-col:not(.cur) .sl-name{visibility:hidden}.sl-col.cur .sl-name{overflow:visible;white-space:nowrap;font-size:12px;width:auto}.sl-col.cur .sl-full{display:inline}.sl-col.cur .sl-short{display:none}.sl-col:last-child.cur .sl-name{align-self:flex-end;text-align:right}}
+@media(max-width:560px){.cp-line{--d:26px}.sl{padding-left:4px;padding-right:4px}}
 /* not enough room beside it: the panel goes under the room and its legend, above the numbers, with its skills in a row */
 @media (max-width:1700px){
   .cp-wrap{grid-template-columns:minmax(0,1fr);gap:0}
@@ -652,9 +673,9 @@ body.dragging,body.dragging *{cursor:grabbing!important;user-select:none}
   .st-kids{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;border:0;flex:1 1 300px}
   .st-kids li{margin:0;padding:0;flex:1 1 170px}.st-kids li::before,.st-kids li:last-child::after{display:none}
   .st-node{height:100%}
-  .cp-tree .sl-list{grid-template-columns:repeat(auto-fit,minmax(125px,1fr))}
+  .cp-line{--d:34px}.cp-line .sl-name{font-size:13px}
 }
-@media (prefers-reduced-motion:reduce){.st-node,.sl-fill,.sl-stop{transition:none}}
+@media (prefers-reduced-motion:reduce){.st-node,.sl-fill,.sl-stop,.sl-name{transition:none}}
 
 /* Crab's Grip: playable lo-fi */
 .cproto{max-width:860px}
@@ -2204,7 +2225,7 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
     <p class="cp-note">On a phone: drag on the room to move, tap “Aura”, and hold the “Hold to interact” button. An upgrade that adds an action also adds its own button.</p>
   </div>
 </div>
-<aside class="cp-tree cp-line" id="redProtoTree" aria-label="Skill tree" style="--n:5"><h4>Skill tree</h4><p class="cp-note">Candidates only. The tree is linear: each upgrade enhances the base ability and includes the ones before it. Drag the slider, or click a stop, to set how far along the tree the room plays. The order and the numbers are placeholders.</p><div class="sl"><div class="sl-head"><b>Calming aura</b><span class="sl-lvl">Basic ability only</span></div><div class="sl-track"><i class="sl-rail"></i><i class="sl-fill"></i><button type="button" class="sl-stop on" data-lvl="0" tabindex="-1" aria-hidden="true">0</button><button type="button" class="sl-stop" data-lvl="1" tabindex="-1" aria-hidden="true">1</button><button type="button" class="sl-stop" data-lvl="2" tabindex="-1" aria-hidden="true">2</button><button type="button" class="sl-stop" data-lvl="3" tabindex="-1" aria-hidden="true">3</button><button type="button" class="sl-stop" data-lvl="4" tabindex="-1" aria-hidden="true">4</button><button type="button" class="sl-stop" data-lvl="5" tabindex="-1" aria-hidden="true">5</button><input type="range" class="sl-range" min="0" max="5" step="1" value="0" aria-label="Calming aura: upgrade level"></div><div class="sl-ends"><span>Basic</span><span>Fully upgraded</span></div></div><ol class="sl-list"><li><button type="button" class="st-node" data-skill="wide" data-lvl="1" aria-pressed="false" data-name="1. Wider aura" data-status="Suggested on 26 Nov, not confirmed" data-what="The aura reaches further, so it settles more victims at once." data-how="Choose the “Spread out” situation. Five agitated victims stand too far apart for the basic aura. With this on, one spot covers all of them."><b>1. Wider aura</b><span>Suggested on 26 Nov, not confirmed</span><i class="st-sw">Off</i></button></li><li><button type="button" class="st-node" data-skill="focus" data-lvl="2" aria-pressed="false" data-name="2. Focus" data-status="Suggested on 26 Nov, not confirmed" data-what="Narrow the aura onto one victim. They settle about three times as fast, and nobody else is calmed meanwhile." data-how="Choose the “Critical victim” situation. With the aura on, hold F or the “Hold: focus” button near an agitated victim. The victim with the countdown has to be calm and diagnosed before it runs out, and events come quickly."><b>2. Focus</b><span>Suggested on 26 Nov, not confirmed</span><i class="st-sw">Off</i></button></li><li><button type="button" class="st-node" data-skill="steady" data-lvl="3" aria-pressed="false" data-name="3. Steadying aura" data-status="Suggested on 26 Nov, not confirmed" data-what="Calm victims inside the aura are not made agitated again by an event." data-how="Choose the “Aftershocks” situation. Events come every few seconds. With this on, keep the aura over the victims you have calmed and they stay calm while you diagnose them."><b>3. Steadying aura</b><span>Suggested on 26 Nov, not confirmed</span><i class="st-sw">Off</i></button></li><li><button type="button" class="st-node" data-skill="sedate" data-lvl="4" aria-pressed="false" data-name="4. Sedating aura" data-status="Suggested on 26 Nov, not confirmed" data-what="A super agitated victim who runs through the aura slows down, then stops and is calm. A sedated victim stays calm through events." data-how="Choose the “Runner” situation. Keep the aura over the running victim. They slow down, stop and can be diagnosed. Without it, the runner has to be caught and held."><b>4. Sedating aura</b><span>Suggested on 26 Nov, not confirmed</span><i class="st-sw">Off</i></button></li><li><button type="button" class="st-node" data-skill="pulse" data-lvl="5" aria-pressed="false" data-name="5. Reviving pulse" data-status="Suggested on 26 Nov, not confirmed" data-what="A charged burst of the aura on a victim who is unconscious and not breathing. It restarts them, so the CPR that follows is much shorter. It empties the bar, and does nothing to a conscious victim." data-how="Choose the “Cardiac arrest” situation. Stand next to the unconscious victim, hold R or the “Hold: pulse” button until the ring is full, and release. Then hold E for the short CPR. Without it, CPR is a long hold."><b>5. Reviving pulse</b><span>Suggested on 26 Nov, not confirmed</span><i class="st-sw">Off</i></button></li></ol><div class="st-info" aria-live="polite"><p class="st-hint">No upgrade is on. The room plays with the basic ability only.</p></div></aside></div></div></section>
+<aside class="cp-tree cp-line" id="redProtoTree" aria-label="Skill tree" style="--n:5"><div class="sl-top"><h4>Skill tree</h4><span class="sl-tag">Candidates, not confirmed</span></div><div class="sl"><div class="sl-head"><b>Calming aura</b><span class="sl-lvl"></span></div><div class="sl-track"><i class="sl-rail"></i><i class="sl-fill"></i><div class="sl-col"><span class="sl-stop" aria-hidden="true">0</span><button type="button" class="sl-name" data-lvl="0" data-name="Calming aura" data-what="Tap to switch the aura on or off. Agitated victims inside its radius settle over a few seconds and can then be diagnosed. The bar drains while it is on.">Basic</button></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">1</span><button type="button" class="sl-name" data-skill="wide" data-lvl="1" aria-pressed="false" data-name="Wider aura" data-status="Suggested on 26 Nov, not confirmed" data-what="The aura reaches further, so it settles more victims at once." data-how="Choose the “Spread out” situation. Five agitated victims stand too far apart for the basic aura. With this on, one spot covers all of them."><span class="sl-full">Wider aura</span><span class="sl-short" aria-hidden="true">Wider</span></button></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">2</span><button type="button" class="sl-name" data-skill="focus" data-lvl="2" aria-pressed="false" data-name="Focus" data-status="Suggested on 26 Nov, not confirmed" data-what="Narrow the aura onto one victim. They settle about three times as fast, and nobody else is calmed meanwhile." data-how="Choose the “Critical victim” situation. With the aura on, hold F or the “Hold: focus” button near an agitated victim. The victim with the countdown has to be calm and diagnosed before it runs out, and events come quickly."><span class="sl-full">Focus</span><span class="sl-short" aria-hidden="true">Focus</span></button></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">3</span><button type="button" class="sl-name" data-skill="steady" data-lvl="3" aria-pressed="false" data-name="Steadying aura" data-status="Suggested on 26 Nov, not confirmed" data-what="Calm victims inside the aura are not made agitated again by an event." data-how="Choose the “Aftershocks” situation. Events come every few seconds. With this on, keep the aura over the victims you have calmed and they stay calm while you diagnose them."><span class="sl-full">Steadying aura</span><span class="sl-short" aria-hidden="true">Steadying</span></button></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">4</span><button type="button" class="sl-name" data-skill="sedate" data-lvl="4" aria-pressed="false" data-name="Sedating aura" data-status="Suggested on 26 Nov, not confirmed" data-what="A super agitated victim who runs through the aura slows down, then stops and is calm. A sedated victim stays calm through events." data-how="Choose the “Runner” situation. Keep the aura over the running victim. They slow down, stop and can be diagnosed. Without it, the runner has to be caught and held."><span class="sl-full">Sedating aura</span><span class="sl-short" aria-hidden="true">Sedating</span></button></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">5</span><button type="button" class="sl-name" data-skill="pulse" data-lvl="5" aria-pressed="false" data-name="Reviving pulse" data-status="Suggested on 26 Nov, not confirmed" data-what="A charged burst of the aura on a victim who is unconscious and not breathing. It restarts them, so the CPR that follows is much shorter. It empties the bar, and does nothing to a conscious victim." data-how="Choose the “Cardiac arrest” situation. Stand next to the unconscious victim, hold R or the “Hold: pulse” button until the ring is full, and release. Then hold E for the short CPR. Without it, CPR is a long hold."><span class="sl-full">Reviving pulse</span><span class="sl-short" aria-hidden="true">Reviving</span></button></div><input type="range" class="sl-range" min="0" max="5" step="1" value="0" aria-label="Calming aura: upgrade level"></div></div><div class="sl-card" aria-live="polite"><div class="sl-cardtop"><div><span class="sl-step"></span><h5></h5></div><div class="sl-nav"><button type="button" class="sl-prev" aria-label="One upgrade back">‹</button><button type="button" class="sl-next" aria-label="Next upgrade">›</button></div></div><p class="sl-what"></p><p class="sl-inc"></p><p class="st-how sl-how"><b>Try it in this room</b><span></span></p></div><p class="cp-note sl-foot">The tree is linear: each upgrade enhances the base ability and includes the ones before it. Drag the slider, or tap a stop. The order and the numbers are placeholders.</p></aside></div></div></section>
           <section class="lvpanel" data-lv="crab"><header class="lvhead"><h2>Crab</h2><p class="lvchips"><span class="lvchip">Droid</span><span class="lvchip">Ability defined</span></p></header><div class="lvtabs" role="tablist" aria-label="Sections of this level"><button type="button" role="tab" data-t="main" aria-selected="true">Profile</button><button type="button" role="tab" data-t="skill" aria-selected="false">Skill tree</button><button type="button" role="tab" data-t="lofi" aria-selected="false">Playable lo-fi</button></div><div class="lvpane on" data-t="main"><div class="dhero" style="--dc:#EE8A2B;--db:url('banner-crab.jpg')"><div class="dhtx"><span class="dteam">Patchbots · Player droid</span><h3 class="dname">Crab</h3><p class="dtag">The dependable life(buoy) of the party</p><p class="dwas"><b>Before the team</b>A former anchor droid, who kept construction workers steady in the storm</p></div><span class="dport has"><img src="droid-crab.png" alt="" loading="lazy"></span></div><div class="dabil" style="--dc:#EE8A2B"><span class="dlab">Ability</span><h4>Grip</h4><p>Grips a light or medium object next to it. A light object is carried and a medium object is dragged behind, in any direction. Gripping again sets it down.</p><dl><div><dt>Ability bar</dt><dd>Drains while Crab is holding an object.</dd></div><div><dt>Activation</dt><dd>Tap to grip, tap again to let go</dd></div></dl></div>
           <div class="dstory" style="--dc:#EE8A2B"><span class="dlab">Story</span><p>The dependable life(buoy) of the party, Crab’s infectious whimsy and unsinkable determination reaches audiences far and wide.</p><p>Crab was once an anchor droid, braving the disastrous climate phenomena next to hardened construction workers, keeping them steady so they don’t get swept off their feet. Then, at the end of every shift, he would practice his stand up comedy routine to them, and be showered with a round of encouraging applause.</p><p>However, a job where everyone had to be kept in place meant that Crab never got the opportunity to explore the world on his own two feet. For once, he’d like to be the one swept up in a wild adventure instead.</p><p>Now, Crab travels with his newfound circus of friends to do what he does best: keep people safe from harm, while lifting their spirits with a good joke or two.</p><p class="dnote">Story from the Characters &amp; Lore section of the InnovSpur FigJam board, read on 26 Nov 2026. Picture from the game’s character sprites in the Unity project.</p></div>
           <h3 class="dsub">Details</h3>
@@ -3263,31 +3284,35 @@ document.querySelectorAll(".fgr").forEach(b=>{b.onclick=()=>{
    on is a map of skill key to true or false. onChange(key, on) runs after a click. */
 window.protoTree=function(id,onChange){
   const t=document.getElementById(id),on={},btn={};if(!t)return {on,set(){}};
+  if(t.classList.contains("cp-line"))return protoLine(t,onChange);
   const info=t.querySelector(".st-info"),esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
   function set(k,v){on[k]=v;const b=btn[k];if(!b||b.classList.contains("na"))return;b.setAttribute("aria-pressed",String(v));b.querySelector(".st-sw").textContent=v?"On":"Off"}
   function show(b){const d=b.dataset;info.innerHTML="<h5>"+esc(d.name)+"</h5><p>"+esc(d.what)+"</p><p class=\"st-hint\" style=\"margin-bottom:6px\">"+esc(d.status)+"</p><p class=\"st-how\"><b>"+(b.classList.contains("na")?"Cannot be tried yet":"In this room")+"</b>"+esc(d.how)+"</p>"}
-  if(t.classList.contains("cp-line"))return protoLine(t,onChange,info,show);
   t.querySelectorAll(".st-node").forEach(b=>{const k=b.dataset.skill;btn[k]=b;on[k]=false;
     b.onclick=()=>{show(b);if(b.classList.contains("na"))return;set(k,!on[k]);onChange(k,on)}});
   return {on,set};
 };
-/* a linear tree as a slider. The level is how many upgrades are on, always the first ones in order.
+/* a linear tree as one slider. The level is how many upgrades are on, always the first ones in order.
    onChange(key, on, level) runs after the user moves it: key is the upgrade that was just reached, or the first one switched off */
-function protoLine(t,onChange,info,show){
-  const rows=[...t.querySelectorAll(".st-node")],keys=rows.map(b=>b.dataset.skill),stops=[...t.querySelectorAll(".sl-stop")],range=t.querySelector(".sl-range"),lab=t.querySelector(".sl-lvl"),on={};
+function protoLine(t,onChange){
+  const q=s=>t.querySelector(s),names=[...t.querySelectorAll(".sl-name")],cols=[...t.querySelectorAll(".sl-col")],rows=names.slice(1),keys=rows.map(b=>b.dataset.skill),n=keys.length,
+    range=q(".sl-range"),on={};
   let lvl=0;
   function draw(){
-    keys.forEach((k,i)=>{on[k]=i<lvl;rows[i].setAttribute("aria-pressed",String(i<lvl));rows[i].classList.toggle("cur",i===lvl-1);rows[i].querySelector(".st-sw").textContent=i<lvl?"On":"Off"});
-    stops.forEach((s,i)=>{s.classList.toggle("on",i<=lvl);s.classList.toggle("cur",i===lvl)});
+    keys.forEach((k,i)=>{on[k]=i<lvl;rows[i].setAttribute("aria-pressed",String(i<lvl))});
+    cols.forEach((c,i)=>{c.classList.toggle("on",i<=lvl);c.classList.toggle("cur",i===lvl)});
     t.style.setProperty("--lvl",lvl);range.value=lvl;
-    const txt=lvl?"Level "+lvl+" of "+keys.length+": "+rows[lvl-1].dataset.name.replace(/^\d+\.\s*/,""):"Basic ability only";
-    lab.textContent=txt;range.setAttribute("aria-valuetext",txt);
+    const d=names[lvl].dataset,txt=lvl?"Level "+lvl+" of "+n+": "+d.name:"Basic ability, no upgrade";
+    q(".sl-lvl").textContent=lvl+" / "+n;range.setAttribute("aria-valuetext",txt);
+    q(".sl-step").textContent=lvl?"Upgrade "+lvl+" of "+n:"Basic ability";q(".sl-card h5").textContent=d.name;q(".sl-what").textContent=d.what||"";
+    q(".sl-inc").textContent=lvl>1?"Includes "+rows.slice(0,lvl-1).map(b=>b.dataset.name).join(", ")+".":lvl?"The first upgrade.":"No upgrade is on. Move the slider to try one.";
+    q(".sl-how").hidden=!lvl;q(".sl-how span").textContent=d.how||"";
+    q(".sl-prev").disabled=!lvl;q(".sl-next").disabled=lvl===n;
   }
-  function go(n){n=Math.max(0,Math.min(keys.length,n));if(n===lvl)return;const old=lvl;lvl=n;draw();
-    if(lvl)show(rows[lvl-1]);else info.innerHTML="<p class=\"st-hint\">No upgrade is on. The room plays with the basic ability only.</p>";
-    onChange(n>old?keys[n-1]:keys[n],on,lvl)}
+  function go(v){v=Math.max(0,Math.min(n,v));if(v===lvl)return;const old=lvl;lvl=v;draw();onChange(v>old?keys[v-1]:keys[v],on,lvl)}
   range.oninput=()=>go(+range.value);
-  rows.forEach((b,i)=>{b.onclick=()=>{show(b);go(lvl===i+1?i:i+1)}});
+  names.forEach((b,i)=>{b.onclick=()=>go(i)});
+  q(".sl-prev").onclick=()=>go(lvl-1);q(".sl-next").onclick=()=>go(lvl+1);
   draw();
   /* set(key, value) keeps the chain whole: switching one on reaches at least that level, switching one off drops below it */
   return {on,linear:true,level:()=>lvl,set(k,v){const i=keys.indexOf(k);if(i<0)return;if(v&&lvl<i+1)lvl=i+1;if(!v&&lvl>i)lvl=i;draw()}};
