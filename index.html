@@ -2253,6 +2253,7 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
       <li><b>Unconscious victim who is not breathing:</b> needs CPR before anything else. <span class="tbd">Here CPR is a long hold next to them, standing in for the CPR minigame.</span></li>
       <li>A victim with a countdown gets worse if they are not helped in time. It is counted, and does not end the room.</li>
       <li><b>Carrying, in the “Carry out” situation:</b> the base rules decided on 26 Nov, for every droid. Tap C or the “Carry” button next to a victim who is diagnosed to pick them up, and again to put them down. A victim who can walk is walked out at near full speed; one who cannot walk or is unconscious is a slow full carry. Everyone’s vitality keeps dropping until they reach the ambulance. Bumping into something, or crossing the rubble, jolts the victim and costs vitality. An agitated victim cannot be carried, and trying makes them more agitated. An event makes a victim who was agitated before struggle, so they have to be put down and calmed again. The ability is blocked while carrying. <span class="tbd">Every number is a placeholder, and so are the rubble and what an event does to a carried victim.</span></li>
+      <li><b>Every situation can be solved by any droid,</b> and by Red with no upgrade. It only takes longer: one victim at a time through the calm minigame, catching a runner by hand, the long CPR, carrying by hand.</li>
       <li><span class="tbd">The situations are suggestions made to give each skill tree upgrade something to solve. None is confirmed.</span></li>
     </ul>
     <p class="cp-note">On a phone: drag on the room to move, and use the buttons under it. Every action has a button there, marked with its key. A dimmed button cannot be used yet, and says why when pressed.</p>
@@ -2394,6 +2395,7 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
       <li>The ability bar drains while the highlight is on. An empty bar switches it off.</li>
       <li><b>Another droid:</b> has no highlight. Things are tagged the usual way, when they come into its view, and stay on the map after that.</li>
       <li><span class="tbd">Whether the highlight also tags what it shows is still to define. Here it does not: when the highlight goes off, a thing that never came into view is hidden again.</span></li>
+      <li><b>The floor can be solved by any droid.</b> Another droid has no highlight and sees less far, so it has to walk every room to find the victims and the key card.</li>
     </ul>
     <p class="cp-note">On a phone: drag on the floor to move, and tap the “Highlight” button.</p>
   </div>
@@ -2451,6 +2453,7 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
       <li>Anything else in the lane, such as a chair or a bystander, is knocked aside and Orb keeps going.</li>
       <li>Each destroyed obstacle adds 1 to property damage. <span class="tbd">What being knocked aside does to a person is still to define, so this room only counts it.</span></li>
       <li><b>Another droid:</b> has no charge and cannot move the heavy table, so it has to take the long way around.</li>
+      <li><b>The room can be solved by any droid.</b> Another droid cannot destroy the heavy table, so it takes the long way around, which is slower.</li>
       <li>Skills from the skill tree panel only change what Orb can do. They are candidates, not confirmed.</li>
     </ul>
     <p class="cp-note">On a phone: drag on the room to move and to aim, and hold the “Hold to charge” button.</p>
@@ -2526,7 +2529,8 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
       <li>People who can see lean towards the way out as they walk away, and keep walking for a moment after leaving the swarm. <span class="tbd">How a crowd behaves is not defined, so this is a stand-in.</span></li>
       <li>The ability bar drains while the swarm is on. It recharges faster if the bar was not fully emptied, and slower if it was. This is the GDD’s rule.</li>
       <li>A droid can squeeze through a crowd, but only slowly.</li>
-      <li><b>Another droid:</b> has no swarm. It has the honk, a short pulse that pushes back the people right next to it. <span class="tbd">The honk is named on the Figma boards as a mini version of Bee’s crowd control. How it works is not defined, so this is a stand-in.</span></li>
+      <li><b>Another droid:</b> has no swarm. It has the honk, a short pulse: the people right next to it step back and walk on for a moment, so a crowd can be moved a few people at a time. <span class="tbd">The honk is named in the Figma boards as a mini version of Bee’s ability. How it works is still to define, so this is a stand-in.</span></li>
+      <li><b>Every situation can be solved by any droid,</b> and by Bee with no upgrade. It only takes much longer. Two things make that true here, both stand-ins: any droid can stay right next to a panicked person until they settle, one at a time, and in smoke a person the droid touches takes hold and follows it out, one at a time.</li>
       <li><b>Panicked crowd:</b> half the people run at random, and do not leave by themselves. The basic swarm only deflects them a little, so they have to be herded all the way out.</li>
       <li><b>Crowd in smoke:</b> the whole room is in smoke. Without Bright swarm the swarm’s radius shrinks to a very small ring around Bee, for Herd and for Lead. People inside it stumble off roughly away, and cannot see the way out. The faint dotted ring shows the swarm’s reach in clear air.</li>
       <li><b>Unsafe exit:</b> a second way out sits close to the crowd and leads into danger. People lean towards the nearest way out, so most of them head for the unsafe one. Anyone who leaves through it counts as hurt.</li>
@@ -2548,7 +2552,7 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
           <p>The Interact button and its variants are on the <a href="#interactions">Level interactions</a> page and under <a href="#item-buttons">Interact button variants</a>.</p></div></section>
           <section class="lvpanel" data-lv="skilltree"><header class="lvhead"><h2>Skill tree rules</h2><p class="lvchips"><span class="lvchip">Reference</span><span class="lvchip">GDD 3.4.3</span></p></header><div class="lvpane on" data-t="main"><p>The skill tree is where the player spends skill points to upgrade droids permanently and unlock abilities. Each droid’s own tree is on that droid’s Skill tree tab. None of the trees is designed yet.</p>
           <div class="callout chg"><h3>Decided on 25 Nov 2026, not yet in the GDD</h3><ul><li><b>Direction.</b> Hazards evolve in the later levels, and the skill tree is built around that. The same hazard comes back in different forms that need different ways to solve it. Example: a fire that comes from an electrical source and a fire that comes from oil are solved differently.</li><li><b>Bobbles.</b> Bobbles are used for the skill tree only. Whether they replace skill points is still open.</li><li><b>Never required.</b> Every hazard can be solved with or without the matching droid ability or skill. See the five <a href="#hazard-designrules">hazard design rules</a>.</li></ul></div>
-          <div class="tw"><table class="camp def"><thead><tr><th scope="col">Known so far</th><th scope="col">From the GDD</th></tr></thead><tbody><tr><th scope="row">What it does</th><td>Skill points permanently upgrade droids and can unlock abilities.</td></tr><tr><th scope="row">Skill points</th><td>A maximum number is awarded once per stage, so the total is fixed and the player has to choose where to invest.</td></tr><tr><th scope="row">Where they come from</th><td>Campaign stages, and side quests, which award skill points like any other stage. They are only awarded for a completed attempt.</td></tr><tr><th scope="row">After a failed mission</th><td>The player keeps the skill points they already have.</td></tr><tr><th scope="row">Where it is used</th><td>At the HQ, between missions.</td></tr><tr><th scope="row">Not for sale</th><td>Skill points can only be earned by playing. Nothing bought with real money affects them.</td></tr><tr><th scope="row">Shape of a tree</th><td>Decided on 26 Nov, for now: a skill tree is linear for the active skill. Each upgrade enhances the droid’s base ability, one after another. <span class="tbd">Which of the candidates listed on the droid pages fit that, and in what order, is still to work out.</span></td></tr><tr><th scope="row">How skills will be designed</th><td>Together with the level design, so that skills answer the hazards and challenges the levels actually contain.</td></tr><tr><th scope="row">Sources</th><td><span class="scs"><span class="sc" title="Game design document">GDD 2.1, 2.2.2, 2.5, 3.4.3, 6</span></span></td></tr></tbody></table></div>
+          <div class="tw"><table class="camp def"><thead><tr><th scope="col">Known so far</th><th scope="col">From the GDD</th></tr></thead><tbody><tr><th scope="row">What it does</th><td>Skill points permanently upgrade droids and can unlock abilities.</td></tr><tr><th scope="row">Skill points</th><td>A maximum number is awarded once per stage, so the total is fixed and the player has to choose where to invest.</td></tr><tr><th scope="row">Where they come from</th><td>Campaign stages, and side quests, which award skill points like any other stage. They are only awarded for a completed attempt.</td></tr><tr><th scope="row">After a failed mission</th><td>The player keeps the skill points they already have.</td></tr><tr><th scope="row">Where it is used</th><td>At the HQ, between missions.</td></tr><tr><th scope="row">Not for sale</th><td>Skill points can only be earned by playing. Nothing bought with real money affects them.</td></tr><tr><th scope="row">Shape of a tree</th><td>Decided on 26 Nov, for now: a skill tree is linear for the active skill. Each upgrade enhances the droid’s base ability, one after another. <span class="tbd">Which of the candidates listed on the droid pages fit that, and in what order, is still to work out.</span></td></tr><tr><th scope="row">A normal droid can always solve it</th><td>Stated on 27 Nov: any situation an upgrade is made for must also be solvable by a normal droid, and by the droid itself with no upgrade, only far less efficiently. An upgrade makes a problem quicker, never possible. This goes with hazard rule 1, always solvable. Every situation in the playable lo-fis follows it.</td></tr><tr><th scope="row">How skills will be designed</th><td>Together with the level design, so that skills answer the hazards and challenges the levels actually contain.</td></tr><tr><th scope="row">Sources</th><td><span class="scs"><span class="sc" title="Game design document">GDD 2.1, 2.2.2, 2.5, 3.4.3, 6</span></span></td></tr></tbody></table></div>
           <div class="callout todo"><h3>To be added later</h3><ul><li>The skill tree of each droid: which skills exist and what each one does.</li><li>How skill points are earned from a stage, and how many a stage can give.</li></ul></div></div></section></div></div>
         </section>
 
@@ -3921,7 +3925,7 @@ function protoLine(t,onChange){
    ["opS5","opO5",v=>{tune.stun=v/10;return (v/10).toFixed(1)+"s"}],["opS6","opO6",v=>{tune.roll=v;return v+"% a second"}]].forEach(([s,o,f])=>{
     const sl=el(s),out=el(o),set=()=>{out.textContent=f(+sl.value)};sl.oninput=set;set()});
   S=fresh();draw();
-  window.orbProto={state:()=>S,step,reset,tune,lane,tree}; // for tests
+  window.orbProto={state:()=>S,step,reset,tune,lane,tree,keys}; // for tests
 })();
 
 /* ===== Red's Calming aura: playable lo-fi =====
@@ -3959,7 +3963,7 @@ function protoLine(t,onChange){
       amb:{x:14,y:150,w:74,h:160},rough:{x:236,y:96,w:104,h:268},
       o:[{n:"Bench",x:440,y:215,w:120,h:30},{n:"Crate",x:380,y:120,w:42,h:42},{n:"Table",x:470,y:330,w:80,h:44},{n:"Drum",x:270,y:388,w:40,h:40}],
       v:[["A",620,110,"normal",0,{ready:true,walk:false}],["B",660,330,"agitated",0,{ready:true,walk:true}],["C",600,250,"normal",0,{ready:true,walk:false,unc:true}],["D",520,70,"agitated",0,{walk:true}]]},
-    shocks:{ev:4,say:"Aftershocks: an event every few seconds.",at:[330,330],v:[["A",500,300,"agitated"],["B",548,338,"agitated"],["C",468,352,"agitated"],["D",522,388,"agitated"]]},
+    shocks:{ev:5,say:"Aftershocks: an event every few seconds.",at:[330,330],v:[["A",500,300,"agitated"],["B",548,338,"agitated"],["C",468,352,"agitated"],["D",522,388,"agitated"]]},
     runner:{ev:12,say:"A super agitated victim is running about, crashing into things and injuring themselves.",at:[90,230],v:[["R",560,300,"super"],["A",250,110,"agitated"],["B",305,150,"agitated"]],
       o:[{n:"Bench",x:390,y:215,w:120,h:30},{n:"Cabinet",x:170,y:330,w:50,h:70},{n:"Shelf",x:560,y:70,w:110,h:28},{n:"Table",x:420,y:340,w:80,h:44},{n:"Trolley",x:640,y:200,w:40,h:40},{n:"Chair",x:320,y:290,w:32,h:32},{n:"Crate",x:500,y:120,w:38,h:38}]},
     arrest:{ev:12,say:"A victim is unconscious and not breathing. Their countdown is running.",at:[330,330],v:[["V",560,335,"arrest",16],["A",500,120,"agitated"],["B",565,112,"agitated"]]}
@@ -4525,7 +4529,7 @@ function protoLine(t,onChange){
   const cv=root.querySelector("#bpCanvas"),g=cv.getContext("2d"),W=cv.width,H=cv.height;
   const el=id=>root.querySelector("#"+id);
   const SPEED=150,R=16,PR=8,N=14,RUN=105,SQUEEZE=.35;   // droid speed, droid radius, person radius, people, a panicked person's speed, droid speed inside a crowd
-  const HONK={r:78,push:190,wait:1.4},SETTLE=.8,KEEP=1.1,LEAN=.6,WALL={max:170,min:24,cost:.35},LEAD_COST=1,LEAD_MAX=4,LEAD_PACE=.75,DIM=.3,GLOW=1.5,GAP=52,SELF=85; // the stand-in honk, how long the Steady swarm takes to settle a panicked person (s), how long a person keeps walking after leaving the swarm (s), how much a person leans towards the way out while walking away, the Swarm wall's length limits and its share of the bar drain, how much faster Lead drains the bar, how many people it escorts at once and at what share of the walking speed; in smoke: how much of the swarm's radius people notice, how much further its glow reaches with Bright swarm and how close its followers come; how fast people walk out by themselves
+  const HONK={r:78,push:190,wait:1},SETTLE=.8,TALK={reach:26,time:1.3},KEEP=1.1,LEAN=.6,WALL={max:170,min:24,cost:.35},LEAD_COST=1,LEAD_MAX=4,LEAD_PACE=.75,DIM=.3,GLOW=1.5,GAP=52,SELF=85; // the stand-in honk, how long the Steady swarm takes to settle a panicked person (s), how long a person keeps walking after leaving the swarm (s), how much a person leans towards the way out while walking away, the Swarm wall's length limits and its share of the bar drain, how much faster Lead drains the bar, how many people it escorts at once and at what share of the walking speed; in smoke: how much of the swarm's radius people notice, how much further its glow reaches with Bright swarm and how close its followers come; how fast people walk out by themselves
   const BEE="#D9A514";
   const tune={radius:110,walk:95,drain:8,recharge:20,slow:8};  // pixels, pixels a second, % of the bar per second (x3)
   let mode="bee",room="calm",S;
@@ -4544,7 +4548,7 @@ function protoLine(t,onChange){
     if(room==="panic")people.forEach((p,i)=>{p.panic=i%2===0});
     if(room==="injured")[2,7,11].forEach(i=>{people[i].injured=true});
     return {
-      droid:room==="escape"?{x:250,y:80}:{x:80,y:230},bar:100,emptied:false,on:false,hive:null,wall:null,draft:null,lead:false,escort:[],aim:{x:1,y:0},t:0,done:false,started:false,honkWait:0,pulse:0,hurt:0,people,
+      droid:room==="escape"?{x:250,y:80}:{x:80,y:230},bar:100,emptied:false,on:false,hive:null,wall:null,draft:null,lead:false,escort:[],hold:null,aim:{x:1,y:0},t:0,done:false,started:false,honkWait:0,pulse:0,hurt:0,people,
       walls:[{x:0,y:0,w:W,h:14},{x:0,y:H-14,w:W,h:14},{x:0,y:0,w:14,h:H},{x:W-14,y:0,w:14,h:H},
              {x:520,y:14,w:20,h:156},{x:520,y:290,w:20,h:156}],   // the wall before the exit, with a doorway
       exit:{x:660,y:14,w:86,h:432},
@@ -4608,8 +4612,14 @@ function protoLine(t,onChange){
     }
     if(S.honkWait>0){say("The honk is not ready yet.","bad");return}
     S.honkWait=HONK.wait;S.pulse=.35;const d=S.droid;
-    for(const p of S.people){if(p.out)continue;const x=p.x-d.x,y=p.y-d.y,m=Math.hypot(x,y)||1;if(m<HONK.r){const f=p.injured?.3:1;p.kx+=x/m*HONK.push*f;p.ky+=y/m*HONK.push*f}}
-    say("Honk! The people right next to the droid step back.");
+    // a honk is a small, short herd: the people right next to the droid step back and keep walking that way for a moment,
+    // leaning towards the way out if they can see it. That is how any droid can move a crowd, a few people at a time
+    for(const p of S.people){if(p.out)continue;const x=p.x-d.x,y=p.y-d.y,m=Math.hypot(x,y)||1;if(m>=HONK.r)continue;
+      const f=p.injured?.3:1;p.kx+=x/m*HONK.push*f;p.ky+=y/m*HONK.push*f;
+      if(p.injured||p.panic)continue;
+      let ux=x/m,uy=y/m;if(!inside(p,S.smoke)){const o=wayOut(p),gx=o.x-p.x,gy=o.y-p.y,gm=Math.hypot(gx,gy)||1,bx=ux+gx/gm*LEAN,by=uy+gy/gm*LEAN,bm=Math.hypot(bx,by)||1;ux=bx/bm;uy=by/bm}
+      p.fx=ux;p.fy=uy;p.flee=KEEP}
+    say("Honk! The people right next to the droid step back and walk on for a moment.");
   }
 
   /* skill, Drop hive: plant the swarm where Bee stands, or recall it */
@@ -4677,6 +4687,15 @@ function protoLine(t,onChange){
     p.wt-=dt;if(p.wt<=0){p.wt=.6+Math.random()*.8;p.wa=Math.random()*6.283}
     let tx=Math.cos(p.wa)*(p.panic?RUN:5),ty=Math.sin(p.wa)*(p.panic?RUN:5);   // running at random, or just milling about
     if(p.injured){tx=ty=0}
+    const pushed=swarm&&cd<tune.radius*(blind?DIM:1);
+    if(S.hold===p&&(pushed||!fogged||p.panic||p.out))S.hold=null;
+    if(!S.hold&&fogged&&!pushed&&!p.injured&&!p.panic&&dist<R+PR+6){S.hold=p;say("Someone in the smoke took hold of the droid. They follow it, one person at a time. Walk them to the exit.","good")}
+    if(S.hold===p){p.flee=0;const v=via(p,d),vx=v.x-p.x,vy=v.y-p.y,vm=Math.hypot(vx,vy)||1;   // they follow through the doorway if the wall is in between
+      if(v!==d||dist>R+PR+5){tx=vx/vm*SPEED;ty=vy/vm*SPEED}else{tx=ty=0}}   // any droid can walk one person out of the smoke by hand
+    if(p.panic&&dist<R+PR+TALK.reach&&!(swarm&&!S.hive)){ // any droid can talk a panicked person down by staying right next to them: slow, and one at a time
+      p.talk=(p.talk||0)+dt;tx*=.15;ty*=.15;
+      if(p.talk>=TALK.time){p.panic=false;p.talk=0;say("The droid stayed with a panicked person until they settled. They can now be moved.","good")}
+    }else if(p.talk>0)p.talk=Math.max(0,p.talk-dt*.5);
     if(walking){const gx=safe.x-p.x,gy=safe.y-p.y,gm=Math.hypot(gx,gy)||1;tx=gx/gm*SELF;ty=gy/gm*SELF}   // on their way out by themselves
     if(glow){p.flee=0;const v=via(p,c),vx=v.x-p.x,vy=v.y-p.y,vm=Math.hypot(vx,vy)||1;   // towards the glow, through the doorway if the wall is in between
       if(v!==c||cd>GAP){tx=vx/vm*tune.walk;ty=vy/vm*tune.walk}else{tx=ty=0}}
@@ -4696,7 +4715,7 @@ function protoLine(t,onChange){
       else if(p.panic){
         if(sk("steady")){p.calm+=dt;tx=tx*.3+ux*tune.walk*.4;ty=ty*.3+uy*tune.walk*.4;if(p.calm>=SETTLE){p.panic=false;say("A panicked person settled, and can now be herded.","good")}}
         else{tx=tx*.6+ux*tune.walk*.8;ty=ty*.6+uy*tune.walk*.8}
-      }else{const pace=leading?LEAD_PACE:1;tx=ux*tune.walk*pace;ty=uy*tune.walk*pace;if(!walking){p.fx=ux;p.fy=uy;p.flee=leading?0:blind?.7:KEEP}}
+      }else{const pace=leading?LEAD_PACE:1;tx=ux*tune.walk*pace;ty=uy*tune.walk*pace;if(!walking){p.fx=ux;p.fy=uy;p.flee=leading?0:KEEP}}
     }else if(p.flee>0&&!p.panic&&!p.injured){p.flee-=dt;const f=Math.min(1,p.flee/.4);tx=p.fx*tune.walk*f;ty=p.fy*tune.walk*f} // keeps walking the same way for a moment
     // a herded person pressed against a wall walks along it towards the exit, and is not stuck in a corner
     if((inSwarm||p.flee>0)&&!leading&&!glow&&!walking&&!p.panic&&!p.injured&&!blind){
@@ -4711,7 +4730,7 @@ function protoLine(t,onChange){
     for(const q of S.people){ // people keep a little room between each other
       if(q===p||q.out)continue;const x=p.x-q.x,y=p.y-q.y,m=Math.hypot(x,y)||.01;
       if(m<PR*2+3){const f=(PR*2+3-m)*7;tx+=x/m*f;ty+=y/m*f}}
-    if(dist<R+PR+2){const f=(R+PR+2-dist)*9;tx+=dx/dist*f;ty+=dy/dist*f}   // and step aside for a droid squeezing through
+    if(dist<R+PR+2&&S.hold!==p){const f=(R+PR+2-dist)*9;tx+=dx/dist*f;ty+=dy/dist*f}   // and step aside for a droid squeezing through
     const k=Math.min(1,dt*8);p.vx+=(tx-p.vx)*k;p.vy+=(ty-p.vy)*k;
     const fade=Math.pow(.02,dt);p.kx*=fade;p.ky*=fade;
     for(const ax of ["x","y"]){const n={x:p.x,y:p.y};n[ax]+=((ax==="x"?p.vx+p.kx:p.vy+p.ky))*dt;
@@ -4727,7 +4746,7 @@ function protoLine(t,onChange){
     if(S.fire&&inside(p,S.fire)&&!p.hurt){p.hurt=true;S.hurt++;say("Someone walked straight through the danger.","bad")}
     if(S.danger&&hit(box(p,PR),S.danger)){p.out=true;p.lost=true;p.hurt=true;S.hurt++;say("Someone left through the unsafe exit.","bad");return}
     if(hit(box(p,PR),S.exit)&&p.panic&&!inSwarm){p.x-=4;p.vx=-Math.abs(p.vx);p.wa=Math.PI+(Math.random()-.5);p.wt=.8}   // too panicked to leave without being herded out
-    else if(hit(box(p,PR),S.exit)){p.out=true;if(p.injured){p.found=true;say("An injured person was pushed all the way to the exit.","bad")}}
+    else if(hit(box(p,PR),S.exit)){p.out=true;if(S.hold===p)S.hold=null;if(p.injured){p.found=true;say("An injured person was pushed all the way to the exit.","bad")}}
   }
 
   /* one step of the room */
@@ -4776,6 +4795,7 @@ function protoLine(t,onChange){
     if(mode==="bee"&&S.on&&S.smoke&&sk("bright")){ // Bright swarm: the glow people in smoke walk towards
       const gl=g.createRadialGradient(c.x,c.y,tune.radius*.3,c.x,c.y,tune.radius*GLOW);gl.addColorStop(0,"rgba(255,222,89,.55)");gl.addColorStop(1,"rgba(255,222,89,0)");
       g.fillStyle=gl;g.beginPath();g.arc(c.x,c.y,tune.radius*GLOW,0,7);g.fill()}
+    if(S.hold&&!S.hold.out){g.strokeStyle="#5B7C99";g.lineWidth=3;g.beginPath();g.moveTo(d.x,d.y);g.lineTo(S.hold.x,S.hold.y);g.stroke()}
     if(mode==="bee"){ // the swarm: its ring, filled while on, and the bees circling in it. Around Bee, or around its planted hive
       const dim=S.smoke&&!sk("bright"),rad=tune.radius*(dim?DIM:1);     // in smoke without Bright swarm, the swarm only reaches a small ring around Bee
       if(dim){g.strokeStyle="rgba(34,48,43,.28)";g.lineWidth=1.2;g.setLineDash([3,6]);g.beginPath();g.arc(c.x,c.y,tune.radius,0,7);g.stroke();g.setLineDash([])}   // its reach in clear air, for comparison
