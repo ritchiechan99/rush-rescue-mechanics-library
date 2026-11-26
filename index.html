@@ -887,7 +887,8 @@ body.dragging,body.dragging *{cursor:grabbing!important;user-select:none}
 /* It sits in a bar under the room at every width: these rooms are one fixed screen, so a HUD laid over them would hide the corners */
 .hud{position:relative;height:calc(var(--u)*204);background:#22302B;line-height:1.05;--u:min(1px,calc(100cqw / 480));font-family:var(--fb,system-ui,sans-serif)}
 .hud .hud-stick{position:absolute;left:calc(var(--u)*14);bottom:calc(var(--u)*20);width:calc(var(--u)*114);height:calc(var(--u)*114);border-radius:50%;background:rgba(255,255,255,.12);border:2px solid rgba(255,255,255,.5);box-sizing:border-box;touch-action:none;cursor:grab}
-.hud .hud-stick i{position:absolute;left:50%;top:50%;width:42%;height:42%;margin:-21% 0 0 -21%;border-radius:50%;background:#141A17;border:2px solid rgba(255,255,255,.55);box-sizing:border-box;pointer-events:none}
+.hud .hud-stick.on{border-color:#fff}
+.hud .hud-stick i{transition:transform .07s ease-out;position:absolute;left:50%;top:50%;width:42%;height:42%;margin:-21% 0 0 -21%;border-radius:50%;background:#141A17;border:2px solid rgba(255,255,255,.55);box-sizing:border-box;pointer-events:none}
 .hud .hud-empty{position:absolute;border-radius:50%;border:2px dashed rgba(255,255,255,.35);box-sizing:border-box;display:grid;place-items:center;color:rgba(255,255,255,.6);font:700 calc(var(--u)*12)/1 var(--fd,system-ui);pointer-events:none}
 .hud .cp-grip.hud-btn{position:absolute;left:auto;top:auto;transform:none;margin:0;padding:calc(var(--u)*4);border-radius:50%;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(var(--u)*2);
   background:#141A17;color:#fff;border:calc(var(--u)*3) solid var(--hud,#fff);font-size:max(8.5px,calc(var(--u)*10.5));font-weight:800;line-height:1.05;text-align:center;white-space:normal;overflow-wrap:anywhere;box-shadow:0 4px 10px -4px rgba(0,0,0,.6);touch-action:none}
@@ -5802,9 +5803,9 @@ window.protoHud=function(rootId,cfg){
   const knob=st.firstChild;let sid=null;
   const move=e=>{const r=st.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2,max=r.width/2;let dx=e.clientX-cx,dy=e.clientY-cy;const m=Math.hypot(dx,dy);if(m>max){dx*=max/m;dy*=max/m}
     knob.style.transform="translate("+dx*.6+"px,"+dy*.6+"px)";cfg.stick(dx/max*40,dy/max*40)};
-  st.addEventListener("pointerdown",e=>{e.preventDefault();sid=e.pointerId;st.setPointerCapture(sid);move(e)});
+  st.addEventListener("pointerdown",e=>{e.preventDefault();sid=e.pointerId;st.setPointerCapture(sid);st.classList.add("on");move(e)});
   st.addEventListener("pointermove",e=>{if(e.pointerId===sid)move(e)});
-  const end=e=>{if(e.pointerId!==sid)return;sid=null;knob.style.transform="";cfg.stick(0,0)};
+  const end=e=>{if(e.pointerId!==sid)return;sid=null;knob.style.transform="";shown="";st.classList.remove("on");cfg.stick(0,0)};
   st.addEventListener("pointerup",end);st.addEventListener("pointercancel",end);
   // the four ability slots. An empty one keeps its place
   const olds=new Set();
@@ -5821,15 +5822,20 @@ window.protoHud=function(rootId,cfg){
   // the ability bar, as a ring around slot A
   const bar=el(cfg.bar),a=el(cfg.slots[0]);
   if(bar&&a)setInterval(()=>{if(stage.offsetParent)a.style.setProperty("--bar",parseFloat(bar.style.width)||0)},120);
+  // the stick's knob follows the keyboard too, so it always shows the way the droid is being moved
+  let shown="";
+  setInterval(()=>{if(sid!==null||!stage.offsetParent)return;const k=cfg.keys&&cfg.keys()||{};
+    let x=(k.arrowright||k.d?1:0)-(k.arrowleft||k.a?1:0),y=(k.arrowdown||k.s?1:0)-(k.arrowup||k.w?1:0);const m=Math.hypot(x,y),r=st.getBoundingClientRect().width*.3;
+    const t=m?"translate("+x/m*r+"px,"+y/m*r+"px)":"";if(t!==shown){shown=t;knob.style.transform=t;st.classList.toggle("on",!!m)}},40);
 };
 (function(){
-  const P=(n)=>window[n]||{},S=n=>(dx,dy)=>{const p=P(n);if(p.stick)p.stick(dx,dy)};
-  protoHud("redProto",{color:"#FF8A75",bar:"rpBar",slots:["rpAura","rpTranq",null,null],ctx:"rpAct",carry:"rpCarry",stick:S("redProto")});
-  protoHud("camProto",{color:"#6FD3C2",bar:"kpBar",slots:["kpBtn","kpPulse","kpPing","kpReplay"],stick:S("camProto")});
-  protoHud("crabProto",{color:"#FFB066",bar:"cpBar",slots:["cpGrip","cpAim","cpToss",null],stick:S("crabProto")});
-  protoHud("orbProto",{color:"#B79BF2",bar:"opBar",slots:["opGrip","opShield","opBrace",null],stick:S("orbProto")});
-  protoHud("fishProto",{color:"#7CC4EC",bar:"fpBar",slots:["fpSpray","fpFoam","fpBub","fpDel"],ctx:"fpUse",chip:"fpDrop",stick:S("fishProto")});
-  protoHud("beeProto",{color:"#F2CB57",bar:"bpBar",slots:["bpBtn","bpHive","bpLead",null],stick:S("beeProto")});
+  const P=(n)=>window[n]||{},S=n=>(dx,dy)=>{const p=P(n);if(p.stick)p.stick(dx,dy)},K=n=>()=>P(n).keys;
+  protoHud("redProto",{color:"#FF8A75",bar:"rpBar",slots:["rpAura","rpTranq",null,null],ctx:"rpAct",carry:"rpCarry",stick:S("redProto"),keys:K("redProto")});
+  protoHud("camProto",{color:"#6FD3C2",bar:"kpBar",slots:["kpBtn","kpPulse","kpPing","kpReplay"],stick:S("camProto"),keys:K("camProto")});
+  protoHud("crabProto",{color:"#FFB066",bar:"cpBar",slots:["cpGrip","cpAim","cpToss",null],stick:S("crabProto"),keys:K("crabProto")});
+  protoHud("orbProto",{color:"#B79BF2",bar:"opBar",slots:["opGrip","opShield","opBrace",null],stick:S("orbProto"),keys:K("orbProto")});
+  protoHud("fishProto",{color:"#7CC4EC",bar:"fpBar",slots:["fpSpray","fpFoam","fpBub","fpDel"],ctx:"fpUse",chip:"fpDrop",stick:S("fishProto"),keys:K("fishProto")});
+  protoHud("beeProto",{color:"#F2CB57",bar:"bpBar",slots:["bpBtn","bpHive","bpLead",null],stick:S("beeProto"),keys:K("beeProto")});
 })();
 fullReset();fillDocs();paintShell(false);fromHash();
 </script>
