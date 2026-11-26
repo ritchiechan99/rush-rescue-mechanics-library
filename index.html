@@ -588,6 +588,46 @@ body.dragging,body.dragging *{cursor:grabbing!important;user-select:none}
 .zoomer .zx{position:fixed;top:8px;right:12px;font-family:var(--font);font-weight:700;font-size:13px;border:2px solid #fff;border-radius:6px;background:#222;color:#fff;padding:4px 12px;cursor:pointer}
 @media (max-width:900px){.zoomer{padding:44px 8px 8px}}
 
+/* ----- Playable lo-fi: the room with a skill tree panel beside it ----- */
+.docin:has(.lvpane.on .cp-wrap){max-width:1780px}
+.cp-wrap{display:grid;grid-template-columns:minmax(0,860px) minmax(270px,400px);gap:26px;align-items:start}
+.cp-tree{border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:14px 16px;margin-top:4px}
+.cp-tree h4{font-family:var(--fd);font-size:18px;margin:0 0 4px}
+.cp-tree .cp-note{margin:0 0 12px}
+.st-root{display:flex;flex-direction:column;gap:1px;background:#22302B;color:#fff;border-radius:12px;padding:9px 14px}
+.st-root b{font-family:var(--fd);font-size:17px}.st-root span{font-size:12px;color:#C9D6CE}
+.st-kids{list-style:none;margin:0 0 0 22px;padding:10px 0 0;border-left:2px solid var(--line)}
+.st-kids li{position:relative;margin:0 0 8px;padding-left:18px}
+.st-kids li::before{content:"";position:absolute;left:0;top:22px;width:18px;border-top:2px solid var(--line)}
+.st-kids li:last-child{margin-bottom:0}
+.st-kids li:last-child::after{content:"";position:absolute;left:-2px;top:23px;bottom:0;width:2px;background:var(--panel)}
+.st-node{display:grid;grid-template-columns:1fr auto;gap:0 10px;align-items:center;width:100%;text-align:left;font:inherit;color:var(--ink);background:#fff;border:2px solid var(--line);border-radius:12px;padding:8px 12px;cursor:pointer;transition:border-color .15s,background .15s,transform .1s}
+.st-node b{font-size:14.5px}.st-node span{grid-column:1;font-size:12px;color:var(--muted)}
+.st-node .st-sw{grid-column:2;grid-row:1/3;font-style:normal;font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:3px 9px;background:#E3E8E2;color:var(--muted)}
+.st-node:hover{border-color:#22302B}.st-node:active{transform:scale(.985)}
+.st-node[aria-pressed="true"]{border-color:var(--st,#22302B);background:color-mix(in srgb,var(--st,#22302B) 10%,#fff)}
+.st-node[aria-pressed="true"] .st-sw{background:var(--st,#22302B);color:#fff}
+.st-node.na{border-style:dashed;background:transparent}
+.st-info{margin-top:12px;border-top:1px solid var(--line);padding-top:10px;font-size:13.5px}
+.st-info h5{font-family:var(--fd);font-size:15.5px;margin:0 0 4px}
+.st-info p{margin:0 0 6px}.st-info .st-hint{color:var(--muted);margin:0}
+.st-info .st-how{background:#fff;border:1px solid var(--line);border-radius:10px;padding:7px 10px}
+.st-info .st-how b{display:block;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+/* not enough room beside it: the panel goes under the room and its legend, above the numbers, with its skills in a row */
+@media (max-width:1700px){
+  .cp-wrap{grid-template-columns:minmax(0,1fr);gap:0}
+  .cp-wrap>.cproto{display:contents}
+  .cp-wrap>.cproto>*{max-width:860px;min-width:0}
+  .cp-wrap>.cproto>.cp-tune,.cp-wrap>.cproto>.cp-rules{order:2}
+  .cp-tree{order:1;max-width:860px;margin:0 0 12px}
+  .st{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch}
+  .st-root{justify-content:center}
+  .st-kids{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;border:0;flex:1 1 300px}
+  .st-kids li{margin:0;padding:0;flex:1 1 170px}.st-kids li::before,.st-kids li:last-child::after{display:none}
+  .st-node{height:100%}
+}
+@media (prefers-reduced-motion:reduce){.st-node{transition:none}}
+
 /* Crab's Grip: playable lo-fi */
 .cproto{max-width:860px}
 .cp-top{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;margin:0 0 10px}
@@ -618,6 +658,12 @@ body.dragging,body.dragging *{cursor:grabbing!important;user-select:none}
 .cp-tune input{grid-column:1/-1;width:100%;accent-color:#EE8A2B}
 .cp-rules ul{margin:0;padding-left:18px}.cp-rules li{margin:3px 0}
 .cp-note{font-size:12.5px;color:var(--muted);margin:8px 0 0}
+/* two buttons over the room, and the skill tree panel's accent */
+.cp-btns{position:absolute;right:12px;bottom:12px;display:flex;gap:8px;line-height:1.2}
+.cp-btns .cp-grip{position:static}
+.cp-btns .cp-grip.cp-toss{background:#22302B}
+#crabProtoTree{--st:#B85F10}
+@media(max-width:560px){.cp-btns .cp-grip{font-size:12px;padding:9px 12px}}
 
 /* Orb's Charge: playable lo-fi. The rest of its styles are shared with Crab's (.cproto) */
 .oproto .cp-bar b{background:#7B4FCF}
@@ -625,6 +671,7 @@ body.dragging,body.dragging *{cursor:grabbing!important;user-select:none}
 .oproto .cp-stage canvas:focus-visible{box-shadow:inset 0 0 0 4px #7B4FCF}
 .oproto .cp-tune input{accent-color:#7B4FCF}
 .oproto .cp-top{gap:10px 16px}
+#orbProtoTree{--st:#7B4FCF}
 
 /* Red's Calming aura: playable lo-fi. The rest of its styles are shared with Crab's (.cproto) */
 .rproto .cp-bar b{background:#E2513C}
@@ -2021,6 +2068,7 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
           <h3 class="dsub">Details</h3>
           <div class="tw"><table class="camp def"><thead><tr><th scope="col">Field</th><th scope="col">Definition</th></tr></thead><tbody><tr><th scope="row">Without Red</th><td>Any droid calms one victim at a time through a minigame. <span class="tbd">The form of the minigame is still to define.</span></td></tr><tr><th scope="row">What it acts on</th><td>The hidden agitation meter of each <a href="#victim-agitated">agitated victim</a>. A calm victim becomes agitated again if an event happens around them.</td></tr><tr><th scope="row">Status</th><td><span class="tbd">Decided on 26 Nov 2026, not yet in the GDD, which still has this ability as to be defined.</span></td></tr><tr><th scope="row">Still to define</th><td>The radius of the aura, how long a victim takes to settle and how fast the bar drains. Which events make a calm victim agitated again.</td></tr><tr><th scope="row">Skill tree</th><td>To be added later, on the <button type="button" class="tablink" data-lvtab="skill">Skill tree tab</button>.</td></tr><tr><th scope="row">Shared rules</th><td><a href="#droid-party">Party and switching</a>, <a href="#droid-actions">What every droid can do</a>, <a href="#droid-skilltree">Skill tree rules</a></td></tr><tr><th scope="row">Sources</th><td><span class="scs"><span class="sc" title="Game design document">GDD 3.4.1, 3.3</span></span></td></tr></tbody></table></div></div><div class="lvpane" data-t="skill"><p class="lvempty">Not designed yet. Red’s skill tree will be added here later.</p>
           
+          
           <div class="tw"><table class="camp def"><thead><tr><th scope="col">Field</th><th scope="col">Definition</th></tr></thead><tbody><tr><th scope="row">Skills</th><td><span class="tbd">To be added</span></td></tr><tr><th scope="row">Direction</th><td>Decided on 25 Nov: hazards evolve in the later levels, and the skill tree is built around answering their new forms.</td></tr><tr><th scope="row">Bought with</th><td>Bobbles, which are used for the skill tree only. Whether they replace skill points is still open.</td></tr><tr><th scope="row">How it works</th><td>Skill points permanently upgrade the droid and can unlock abilities. See <a href="#droid-skilltree">Skill tree rules</a>.</td></tr></tbody></table></div></div><div class="lvpane" data-t="lofi">
 <div class="cproto rproto" id="redProto">
   <p class="lead">A test room for Red’s Calming aura. Four victims wait in it, three of them agitated. Calm the agitated ones, then diagnose all four. Events keep happening, and each one makes calm victims agitated again. This is a flat sketch to try the rules and the numbers, not the game’s look.</p>
@@ -2080,7 +2128,8 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
           <h3 class="dsub">Details</h3>
           <div class="tw"><table class="camp def"><thead><tr><th scope="col">Field</th><th scope="col">Definition</th></tr></thead><tbody><tr><th scope="row">Carry or drag</th><td>The object’s weight decides: light objects are carried, medium objects are dragged. Crab cannot grip heavy or fixed objects.</td></tr><tr><th scope="row">Without Crab</th><td>Other droids carry light objects and push medium ones, as every droid can.</td></tr><tr><th scope="row">Status</th><td><span class="tbd">Decided on 26 Nov 2026, not yet in the GDD, which still has this ability as to be defined.</span></td></tr><tr><th scope="row">Still to define</th><td>How fast the bar drains, and how much slower Crab moves while dragging.</td></tr><tr><th scope="row">Skill tree</th><td>To be added later, on the <button type="button" class="tablink" data-lvtab="skill">Skill tree tab</button>.</td></tr><tr><th scope="row">Shared rules</th><td><a href="#droid-party">Party and switching</a>, <a href="#droid-actions">What every droid can do</a>, <a href="#droid-skilltree">Skill tree rules</a></td></tr><tr><th scope="row">Sources</th><td><span class="scs"><span class="sc" title="Game design document">GDD 3.4.1, 3.3</span></span></td></tr></tbody></table></div></div><div class="lvpane" data-t="skill"><p class="lvempty">Not designed yet. Crab’s skill tree will be added here later.</p>
           <h3 class="dsub">Skill tree candidates</h3><div class="tw"><table><thead><tr><th scope="col">Candidate</th><th scope="col">What it would do</th><th scope="col">Status</th></tr></thead><tbody><tr><th scope="row">Tow line</th><td>Hook an object with a line and pull it from a short distance, with Crab’s hands free.</td><td>Set aside for the skill tree on 26 Nov</td></tr><tr><th scope="row">Stack and haul</th><td>Pick up as many as three objects at once. Each one slows Crab and drains the bar faster.</td><td>Set aside for the skill tree on 26 Nov</td></tr><tr><th scope="row">Lift and toss</th><td>Throw the held object a short distance. Light objects fly further than medium ones.</td><td>Set aside for the skill tree on 26 Nov</td></tr></tbody></table></div>
-          <div class="tw"><table class="camp def"><thead><tr><th scope="col">Field</th><th scope="col">Definition</th></tr></thead><tbody><tr><th scope="row">Skills</th><td>Candidates are listed above. None is confirmed as a skill yet.</td></tr><tr><th scope="row">Direction</th><td>Decided on 25 Nov: hazards evolve in the later levels, and the skill tree is built around answering their new forms.</td></tr><tr><th scope="row">Bought with</th><td>Bobbles, which are used for the skill tree only. Whether they replace skill points is still open.</td></tr><tr><th scope="row">How it works</th><td>Skill points permanently upgrade the droid and can unlock abilities. See <a href="#droid-skilltree">Skill tree rules</a>.</td></tr></tbody></table></div></div><div class="lvpane" data-t="lofi">
+          <p>The candidates can be switched on and tried in the room on the <button type="button" class="tablink" data-lvtab="lofi">Playable lo-fi tab</button>, from the skill tree panel beside it.</p>
+          <div class="tw"><table class="camp def"><thead><tr><th scope="col">Field</th><th scope="col">Definition</th></tr></thead><tbody><tr><th scope="row">Skills</th><td>Candidates are listed above. None is confirmed as a skill yet.</td></tr><tr><th scope="row">Direction</th><td>Decided on 25 Nov: hazards evolve in the later levels, and the skill tree is built around answering their new forms.</td></tr><tr><th scope="row">Bought with</th><td>Bobbles, which are used for the skill tree only. Whether they replace skill points is still open.</td></tr><tr><th scope="row">How it works</th><td>Skill points permanently upgrade the droid and can unlock abilities. See <a href="#droid-skilltree">Skill tree rules</a>.</td></tr></tbody></table></div></div><div class="lvpane" data-t="lofi"><div class="cp-wrap">
 <div class="cproto" id="crabProto">
   <p class="lead">A test room for Crab’s Grip. Clear the doorway and reach the survivor. This is a flat sketch to try the rules and the numbers, not the game’s look or physics.</p>
   <div class="cp-top">
@@ -2094,7 +2143,10 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
   </div>
   <div class="cp-stage">
     <canvas id="cpCanvas" width="760" height="460" tabindex="0" role="img" aria-label="Test room. Crab starts on the left. A doorway in the middle wall is blocked by a chair, a bench and a fire extinguisher. A survivor waits on the right."></canvas>
-    <button type="button" class="cp-grip" id="cpGrip">Hold to grip</button>
+    <div class="cp-btns">
+      <button type="button" class="cp-grip cp-toss" id="cpToss" hidden>Toss</button>
+      <button type="button" class="cp-grip" id="cpGrip">Hold to grip</button>
+    </div>
   </div>
   <p class="cp-msg" id="cpMsg" aria-live="polite">Click the room, then move with the arrow keys or WASD. Hold Space next to an object to grip it.</p>
   <div class="cp-legend">
@@ -2110,6 +2162,7 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
     <label>Bar drain while dragging <output id="cpO2"></output><input type="range" id="cpS2" min="2" max="60" value="20"></label>
     <label>Bar recharge <output id="cpO3"></output><input type="range" id="cpS3" min="2" max="60" value="18"></label>
     <label>Speed while dragging <output id="cpO4"></output><input type="range" id="cpS4" min="20" max="100" value="55"></label>
+    <label>Tow line length (skill) <output id="cpO5"></output><input type="range" id="cpS5" min="80" max="260" step="10" value="150"></label>
   </div>
   <div class="cp-rules">
     <h4>What this room follows</h4>
@@ -2118,15 +2171,17 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
       <li><b>Another droid:</b> can carry light objects, and can only push medium objects by walking into them.</li>
       <li>The bar drains while holding and recharges after letting go. If it runs out, the object is dropped.</li>
       <li>Heavy and fixed objects cannot be gripped by either.</li>
+      <li>Skills from the skill tree panel only change what Crab can do. They are candidates, not confirmed.</li>
     </ul>
     <p class="cp-note">On a phone: drag on the room to move, and hold the “Hold to grip” button.</p>
   </div>
 </div>
-</div></section>
+<aside class="cp-tree" id="crabProtoTree" aria-label="Skill tree"><h4>Skill tree</h4><p class="cp-note">Candidates only. The tree is not designed yet, so this layout and the numbers are placeholders. Click a skill to switch it on in the room.</p><div class="st"><div class="st-root"><b>Grip</b><span>Basic ability, always on</span></div><ul class="st-kids"><li><button type="button" class="st-node" data-skill="tow" aria-pressed="false" data-name="Tow line" data-status="Set aside for the skill tree on 26 Nov" data-what="Hook an object with a line and pull it from a short distance, with Crab’s hands free." data-how="Hold Space with nothing next to Crab. The nearest light or medium object within the line’s length, with no wall in between, is hooked and reeled in. Crab keeps moving at full speed. Release to let go."><b>Tow line</b><span>Set aside for the skill tree on 26 Nov</span><i class="st-sw">Off</i></button></li><li><button type="button" class="st-node" data-skill="stack" aria-pressed="false" data-name="Stack and haul" data-status="Set aside for the skill tree on 26 Nov" data-what="Pick up as many as three objects at once. Each one slows Crab and drains the bar faster." data-how="Keep holding Space and walk up to more objects. Crab takes hold of as many as three. Each extra one slows Crab and adds its own bar drain."><b>Stack and haul</b><span>Set aside for the skill tree on 26 Nov</span><i class="st-sw">Off</i></button></li><li><button type="button" class="st-node" data-skill="toss" aria-pressed="false" data-name="Lift and toss" data-status="Set aside for the skill tree on 26 Nov" data-what="Throw the held object a short distance. Light objects fly further than medium ones." data-how="While holding something, press F or the Toss button. It flies the way Crab is facing. A light object goes further than a medium one."><b>Lift and toss</b><span>Set aside for the skill tree on 26 Nov</span><i class="st-sw">Off</i></button></li></ul></div><div class="st-info" aria-live="polite"><p class="st-hint">No skill is on. The room plays with the basic ability only.</p></div></aside></div></div></section>
           <section class="lvpanel" data-lv="fish"><header class="lvhead"><h2>Fish</h2><p class="lvchips"><span class="lvchip">Droid</span><span class="lvchip">Ability defined</span><span class="lvchip">In Bypass Firewall</span></p></header><div class="lvtabs" role="tablist" aria-label="Sections of this level"><button type="button" role="tab" data-t="main" aria-selected="true">Profile</button><button type="button" role="tab" data-t="skill" aria-selected="false">Skill tree</button><button type="button" role="tab" data-t="lofi" aria-selected="false">Lo-fi</button></div><div class="lvpane on" data-t="main"><div class="dhero" style="--dc:#2F8FC4"><div class="dhtx"><span class="dteam">Patchbots · Player droid</span><h3 class="dname">Fish</h3><p class="dtag">Cool, level-headed and shy</p><p class="dwas"><b>Before the team</b>A water droid made for tending plants <span class="tbd">Draft</span></p></div><span class="dport has"><img src="droid-fish.png" alt="" loading="lazy"></span></div><div class="dabil" style="--dc:#2F8FC4"><span class="dlab">Ability</span><h4>Splash Cannons</h4><p>Two water cannons that put out fires and push back crowds.</p><dl><div><dt>Ability bar</dt><dd>Drains while firing. Recharges faster if the bar was not fully emptied, and slower if it was.</dd></div><div><dt>Activation</dt><dd>Press and hold</dd></div></dl></div>
           <div class="dstory" style="--dc:#2F8FC4"><span class="dlab">Story</span><p>Don’t let his larger stature fool you: Fish is as gentle as they come. They’re a water droid made for the purposes of tending plants, moving heavy pots with plenty of water for the plants to drink up.</p><p>An audience of plants is silent and non-judgmental. Fish has finally built the confidence to reach out to people.</p><p class="dnote"><span class="tbd">The board’s text for Fish is still a draft, so only its finished lines are shown.</span></p><p class="dnote">Story from the Characters &amp; Lore section of the InnovSpur FigJam board, read on 26 Nov 2026. Picture from the game’s character sprites in the Unity project.</p></div>
           <h3 class="dsub">Details</h3>
           <div class="tw"><table class="camp def"><thead><tr><th scope="col">Field</th><th scope="col">Definition</th></tr></thead><tbody><tr><th scope="row">In Bypass Firewall</th><td><ul><li>Its Splash Cannons are one of three ways to put out the <a href="#hazard-stove">stove fire</a>: the player aims and shoots water at the fires.</li><li>The force of the cannons can also knock the <a href="#npc-crowd">escaping crowd</a> out of the way. The board notes this is “not very nice”, and the sheet counts it as pragmatic.</li><li>Using Fish, the extinguisher or the sprinklers on fires counts towards Resourceful.</li></ul></td></tr><tr><th scope="row">Related</th><td><a href="#hazard-fire">Fire</a>, <a href="#hazard-stove">Stove fire</a>, <a href="#hazard-crowd">Escaping crowd</a></td></tr><tr><th scope="row">Skill tree</th><td>To be added later, on the <button type="button" class="tablink" data-lvtab="skill">Skill tree tab</button>.</td></tr><tr><th scope="row">Shared rules</th><td><a href="#droid-party">Party and switching</a>, <a href="#droid-actions">What every droid can do</a>, <a href="#droid-skilltree">Skill tree rules</a></td></tr><tr><th scope="row">Sources</th><td><span class="scs"><span class="sc" title="Game design document">GDD 3.4.1, 3.3</span><span class="sc" title="Figma Level Design page">Figma</span><span class="sc" title="Mission content sheet">Sheet</span></span></td></tr></tbody></table></div></div><div class="lvpane" data-t="skill"><p class="lvempty">Not designed yet. Fish’s skill tree will be added here later.</p>
+          
           
           <div class="tw"><table class="camp def"><thead><tr><th scope="col">Field</th><th scope="col">Definition</th></tr></thead><tbody><tr><th scope="row">Skills</th><td><span class="tbd">To be added</span></td></tr><tr><th scope="row">Direction</th><td>Decided on 25 Nov: hazards evolve in the later levels, and the skill tree is built around answering their new forms.</td></tr><tr><th scope="row">Bought with</th><td>Bobbles, which are used for the skill tree only. Whether they replace skill points is still open.</td></tr><tr><th scope="row">How it works</th><td>Skill points permanently upgrade the droid and can unlock abilities. See <a href="#droid-skilltree">Skill tree rules</a>.</td></tr></tbody></table></div></div><div class="lvpane" data-t="lofi"><p class="part">Putting out the fire: using Fish</p>
           <div class="fge"><button type="button" class="fgr" aria-label="Reload the Figma board: Putting out the fire: using Fish"><span aria-hidden="true">↻</span> Reload</button><iframe title="Figma board: Putting out the fire: using Fish" src="https://embed.figma.com/design/VxnDDZ0JOWff7Z7uleDt3O/Innovspur-UIUX-Flow?node-id=2600-74579&embed-host=share&page-selector=false&footer=false" loading="lazy" allowfullscreen></iframe></div>
@@ -2138,6 +2193,7 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
           <div class="dstory" style="--dc:#3FA796"><span class="dlab">Story</span><p>The lovable star of the show, Cam is a reliable friendly face that would never leave anybody behind.</p><p>Relegated to the medical room for a majority of their life, Cam is an X-ray camera. After the disaster at the first responder HQ, Cam took the chance to jump into action, and promptly proved to be more than others said.</p><p>Cam is eager to leap into heroism, to see the wider world and to no longer be trapped in a box.</p><p class="dnote"><span class="tbd">The board’s text for Cam is still a draft, so only its finished lines are shown.</span></p><p class="dnote">Story from the Characters &amp; Lore section of the InnovSpur FigJam board, read on 26 Nov 2026. Picture from the game’s character sprites in the Unity project.</p></div>
           <h3 class="dsub">Details</h3>
           <div class="tw"><table class="camp def"><thead><tr><th scope="col">Field</th><th scope="col">Definition</th></tr></thead><tbody><tr><th scope="row">In Bypass Firewall</th><td><ul><li>The player can walk forward until the <a href="#npc-crowd">crowd</a> is in range, or use Cam’s ability to tag the crowd and everything else in range.</li></ul></td></tr><tr><th scope="row">Clearer view</th><td>In low visibility Cam sees clearer than the other droids, but not fully clear.</td></tr><tr><th scope="row">Victim types</th><td>A highlighted victim shows whether it is unconscious, agitated or normal. See <a href="#cat-victims">Victims</a>.</td></tr><tr><th scope="row">Without Cam</th><td>Things are tagged the usual way, when they come into a droid’s view.</td></tr><tr><th scope="row">Status</th><td><span class="tbd">Decided on 26 Nov 2026, not yet in the GDD, which still has this ability as to be defined.</span> The Figma boards for Bypass Firewall show an earlier version, in which the ability tags everything in range.</td></tr><tr><th scope="row">Still to define</th><td>The radius of the highlight, how fast the bar drains and how much clearer Cam sees.</td></tr><tr><th scope="row">Related</th><td><a href="#hazard-crowd">Escaping crowd</a></td></tr><tr><th scope="row">Skill tree</th><td>To be added later, on the <button type="button" class="tablink" data-lvtab="skill">Skill tree tab</button>.</td></tr><tr><th scope="row">Shared rules</th><td><a href="#droid-party">Party and switching</a>, <a href="#droid-actions">What every droid can do</a>, <a href="#droid-skilltree">Skill tree rules</a></td></tr><tr><th scope="row">Sources</th><td><span class="scs"><span class="sc" title="Game design document">GDD 3.4.1, 3.3</span><span class="sc" title="Figma Level Design page">Figma</span><span class="sc" title="Mission content sheet">Sheet</span></span></td></tr></tbody></table></div></div><div class="lvpane" data-t="skill"><p class="lvempty">Not designed yet. Cam’s skill tree will be added here later.</p>
+          
           
           <div class="tw"><table class="camp def"><thead><tr><th scope="col">Field</th><th scope="col">Definition</th></tr></thead><tbody><tr><th scope="row">Skills</th><td><span class="tbd">To be added</span></td></tr><tr><th scope="row">Direction</th><td>Decided on 25 Nov: hazards evolve in the later levels, and the skill tree is built around answering their new forms.</td></tr><tr><th scope="row">Bought with</th><td>Bobbles, which are used for the skill tree only. Whether they replace skill points is still open.</td></tr><tr><th scope="row">How it works</th><td>Skill points permanently upgrade the droid and can unlock abilities. See <a href="#droid-skilltree">Skill tree rules</a>.</td></tr></tbody></table></div></div><div class="lvpane" data-t="lofi"><p class="part">Tagging the crowd</p>
           <div class="fge"><button type="button" class="fgr" aria-label="Reload the Figma board: Tagging the crowd"><span aria-hidden="true">↻</span> Reload</button><iframe title="Figma board: Tagging the crowd" src="https://embed.figma.com/design/VxnDDZ0JOWff7Z7uleDt3O/Innovspur-UIUX-Flow?node-id=2583-16510&embed-host=share&page-selector=false&footer=false" loading="lazy" allowfullscreen></iframe></div>
@@ -2198,7 +2254,8 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
           <h3 class="dsub">Details</h3>
           <div class="tw"><table class="camp def"><thead><tr><th scope="col">Field</th><th scope="col">Definition</th></tr></thead><tbody><tr><th scope="row">What it destroys</th><td>Heavy obstacles only, not fixed ones. Nothing is left behind.</td></tr><tr><th scope="row">Anything else it hits</th><td>Is pushed or knocked away, not destroyed.</td></tr><tr><th scope="row">Charging into a wall</th><td>Orb is stunned.</td></tr><tr><th scope="row">Property damage</th><td>Destroying an obstacle always counts as property damage.</td></tr><tr><th scope="row">Without Orb</th><td>No other droid can move a heavy obstacle, so the player takes another way around.</td></tr><tr><th scope="row">Status</th><td><span class="tbd">Decided on 26 Nov 2026, not yet in the GDD, which still has this ability as to be defined.</span></td></tr><tr><th scope="row">Still to define</th><td>How far Orb charges, how long the wind-up is, how much of the bar a charge uses and how long a stun lasts. What being knocked away does to a victim or a crowd.</td></tr><tr><th scope="row">Skill tree</th><td>To be added later, on the <button type="button" class="tablink" data-lvtab="skill">Skill tree tab</button>.</td></tr><tr><th scope="row">Shared rules</th><td><a href="#droid-party">Party and switching</a>, <a href="#droid-actions">What every droid can do</a>, <a href="#droid-skilltree">Skill tree rules</a></td></tr><tr><th scope="row">Sources</th><td><span class="scs"><span class="sc" title="Game design document">GDD 3.4.1, 3.3</span></span></td></tr></tbody></table></div></div><div class="lvpane" data-t="skill"><p class="lvempty">Not designed yet. Orb’s skill tree will be added here later.</p>
           <h3 class="dsub">Skill tree candidates</h3><div class="tw"><table><thead><tr><th scope="col">Candidate</th><th scope="col">What it would do</th><th scope="col">Status</th></tr></thead><tbody><tr><th scope="row">Shield</th><td>Raise a shield. <span class="tbd">What it blocks is still to define.</span></td><td>Set aside for the skill tree on 26 Nov</td></tr><tr><th scope="row">Carry heavy</th><td>Move a heavy obstacle instead of destroying it.</td><td>A maybe</td></tr><tr><th scope="row">Rolling charge</th><td>Roll to build up speed, steer, and destroy a heavy obstacle on contact at full speed.</td><td>Being considered, not confirmed</td></tr><tr><th scope="row">Charge-up meter</th><td>Hold longer for a stronger charge: knock aside, destroy one heavy obstacle, or destroy every one in the lane.</td><td>Being considered, not confirmed</td></tr><tr><th scope="row">Ricochet</th><td>Bounce off a destroyed obstacle at an angle to hit a second one.</td><td>Being considered, not confirmed</td></tr></tbody></table></div>
-          <div class="tw"><table class="camp def"><thead><tr><th scope="col">Field</th><th scope="col">Definition</th></tr></thead><tbody><tr><th scope="row">Skills</th><td>Candidates are listed above. None is confirmed as a skill yet.</td></tr><tr><th scope="row">Direction</th><td>Decided on 25 Nov: hazards evolve in the later levels, and the skill tree is built around answering their new forms.</td></tr><tr><th scope="row">Bought with</th><td>Bobbles, which are used for the skill tree only. Whether they replace skill points is still open.</td></tr><tr><th scope="row">How it works</th><td>Skill points permanently upgrade the droid and can unlock abilities. See <a href="#droid-skilltree">Skill tree rules</a>.</td></tr></tbody></table></div></div><div class="lvpane" data-t="lofi">
+          <p>The candidates can be switched on and tried in the room on the <button type="button" class="tablink" data-lvtab="lofi">Playable lo-fi tab</button>, from the skill tree panel beside it.</p>
+          <div class="tw"><table class="camp def"><thead><tr><th scope="col">Field</th><th scope="col">Definition</th></tr></thead><tbody><tr><th scope="row">Skills</th><td>Candidates are listed above. None is confirmed as a skill yet.</td></tr><tr><th scope="row">Direction</th><td>Decided on 25 Nov: hazards evolve in the later levels, and the skill tree is built around answering their new forms.</td></tr><tr><th scope="row">Bought with</th><td>Bobbles, which are used for the skill tree only. Whether they replace skill points is still open.</td></tr><tr><th scope="row">How it works</th><td>Skill points permanently upgrade the droid and can unlock abilities. See <a href="#droid-skilltree">Skill tree rules</a>.</td></tr></tbody></table></div></div><div class="lvpane" data-t="lofi"><div class="cp-wrap">
 <div class="cproto oproto" id="orbProto">
   <p class="lead">A test room for Orb’s Charge. The doorway is blocked by a heavy table. Break through it, or take the long way around, and reach the survivor. This is a flat sketch to try the rules and the numbers, not the game’s look or physics.</p>
   <div class="cp-top">
@@ -2232,6 +2289,7 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
     <label>Bar used by a charge <output id="opO3"></output><input type="range" id="opS3" min="10" max="100" step="5" value="50"></label>
     <label>Bar recharge <output id="opO4"></output><input type="range" id="opS4" min="2" max="60" value="12"></label>
     <label>Stun after hitting a wall <output id="opO5"></output><input type="range" id="opS5" min="5" max="40" value="15"></label>
+    <label>Bar drain while rolling (skill) <output id="opO6"></output><input type="range" id="opS6" min="5" max="60" value="25"></label>
   </div>
   <div class="cp-rules">
     <h4>What this room follows</h4>
@@ -2243,15 +2301,17 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
       <li>Anything else in the lane, such as a chair or a bystander, is knocked aside and Orb keeps going.</li>
       <li>Each destroyed obstacle adds 1 to property damage. <span class="tbd">What being knocked aside does to a person is still to define, so this room only counts it.</span></li>
       <li><b>Another droid:</b> has no charge and cannot move the heavy table, so it has to take the long way around.</li>
+      <li>Skills from the skill tree panel only change what Orb can do. They are candidates, not confirmed.</li>
     </ul>
     <p class="cp-note">On a phone: drag on the room to move and to aim, and hold the “Hold to charge” button.</p>
   </div>
 </div>
-</div></section>
+<aside class="cp-tree" id="orbProtoTree" aria-label="Skill tree"><h4>Skill tree</h4><p class="cp-note">Candidates only. The tree is not designed yet, so this layout and the numbers are placeholders. Click a skill to switch it on in the room.</p><div class="st"><div class="st-root"><b>Charge</b><span>Basic ability, always on</span></div><ul class="st-kids"><li><button type="button" class="st-node na" data-skill="shield" aria-pressed="false" data-name="Shield" data-status="Set aside for the skill tree on 26 Nov" data-what="Raise a shield." data-how="What the shield blocks is still to define, so there is nothing to try in the room yet."><b>Shield</b><span>Set aside for the skill tree on 26 Nov</span><i class="st-sw">Not yet</i></button></li><li><button type="button" class="st-node" data-skill="carry" aria-pressed="false" data-name="Carry heavy" data-status="A maybe" data-what="Move a heavy obstacle instead of destroying it." data-how="Walk into a heavy obstacle to push it slowly. It is moved, not destroyed, so it adds no property damage."><b>Carry heavy</b><span>A maybe</span><i class="st-sw">Off</i></button></li><li><button type="button" class="st-node" data-skill="roll" aria-pressed="false" data-name="Rolling charge" data-status="Being considered, not confirmed" data-what="Roll to build up speed, steer, and destroy a heavy obstacle on contact at full speed." data-how="Replaces the aimed charge. Hold Space to roll and build up speed, and steer with the direction keys. At full speed the ring turns green: a heavy obstacle is destroyed on contact, and a wall stuns Orb. The bar drains while rolling. Switching this on switches the Charge-up meter off."><b>Rolling charge</b><span>Being considered, not confirmed</span><i class="st-sw">Off</i></button></li><li><button type="button" class="st-node" data-skill="meter" aria-pressed="false" data-name="Charge-up meter" data-status="Being considered, not confirmed" data-what="Hold longer for a stronger charge: knock aside, destroy one heavy obstacle, or destroy every one in the lane." data-how="The wind-up ring has three steps. Release in the first for a weak charge that only knocks things aside, for half the bar. Release in the second to destroy one heavy obstacle. Hold to the third to destroy every heavy obstacle in the lane, for one and a half times the bar. Switching this on switches Rolling charge off."><b>Charge-up meter</b><span>Being considered, not confirmed</span><i class="st-sw">Off</i></button></li><li><button type="button" class="st-node" data-skill="ricochet" aria-pressed="false" data-name="Ricochet" data-status="Being considered, not confirmed" data-what="Bounce off a destroyed obstacle at an angle to hit a second one." data-how="After an aimed charge destroys an obstacle, Orb bounces once: the way you are holding, or towards the nearest other heavy obstacle. The bounce travels 60% of the charge distance and uses no bar."><b>Ricochet</b><span>Being considered, not confirmed</span><i class="st-sw">Off</i></button></li></ul></div><div class="st-info" aria-live="polite"><p class="st-hint">No skill is on. The room plays with the basic ability only.</p></div></aside></div></div></section>
           <section class="lvpanel" data-lv="bee"><header class="lvhead"><h2>Bee</h2><p class="lvchips"><span class="lvchip">Droid</span><span class="lvchip">Ability defined</span><span class="lvchip">In Bypass Firewall</span></p></header><div class="lvtabs" role="tablist" aria-label="Sections of this level"><button type="button" role="tab" data-t="main" aria-selected="true">Profile</button><button type="button" role="tab" data-t="skill" aria-selected="false">Skill tree</button><button type="button" role="tab" data-t="lofi" aria-selected="false">Lo-fi</button></div><div class="lvpane on" data-t="main"><div class="dhero" style="--dc:#D9A514"><div class="dhtx"><span class="dteam">Patchbots · Player droid</span><h3 class="dname">Bee</h3><p class="dtag">The no-nonsense go-getter of the group</p><p class="dwas"><b>Before the team</b>A portable apiary, built to shelter animals caught in climate disasters</p></div><span class="dport has"><img src="droid-bee.png" alt="" loading="lazy"></span></div><div class="dabil" style="--dc:#D9A514"><span class="dlab">Ability</span><h4>Ability</h4><p>A swarm in a radius around Bee that pushes past and disperses crowds.</p><dl><div><dt>Ability bar</dt><dd>Drains while active. Recharges faster if the bar was not fully emptied, and slower if it was.</dd></div><div><dt>Activation</dt><dd>Tap to toggle on or off</dd></div></dl></div>
           <div class="dstory" style="--dc:#D9A514"><span class="dlab">Story</span><p>The no-nonsense go-getter of the group, Bee makes sure the Patchbots are always on track towards their shared dream.</p><p>Bee is a portable apiary. They were part of a line of droids designed to evacuate and temporarily shelter animals that get caught within climate disasters. However, Bee ended up forming an unusual connection with the colony, and now they’re sticking together like honey through thick and thin.</p><p>Bee is an avatar of justice, especially in matters of trade. Despite being more stand-offish in nature, they strongly believe in community living and symbiotic relationships between all species living together in harmony.</p><p>Now, Bee carries their hive of friends everywhere the team goes, saving lives no matter how big or small, while spreading their pragmatic philosophy to the world.</p><p class="dnote">Story from the Characters &amp; Lore section of the InnovSpur FigJam board, read on 26 Nov 2026. Picture from the game’s character sprites in the Unity project.</p></div>
           <h3 class="dsub">Details</h3>
           <div class="tw"><table class="camp def"><thead><tr><th scope="col">Field</th><th scope="col">Definition</th></tr></thead><tbody><tr><th scope="row">In Bypass Firewall</th><td><ul><li>Switching to Bee and using its ability is one of three ways to direct the <a href="#npc-crowd">escaping crowd</a>.</li><li>The honk that every droid has is described as a mini version of Bee’s crowd control. See <a href="#npc-crowdcontrol">Moving a crowd</a>.</li></ul></td></tr><tr><th scope="row">Related</th><td><a href="#hazard-crowd">Escaping crowd</a>, <a href="#npc-crowdcontrol">Moving a crowd</a></td></tr><tr><th scope="row">Skill tree</th><td>To be added later, on the <button type="button" class="tablink" data-lvtab="skill">Skill tree tab</button>.</td></tr><tr><th scope="row">Shared rules</th><td><a href="#droid-party">Party and switching</a>, <a href="#droid-actions">What every droid can do</a>, <a href="#droid-skilltree">Skill tree rules</a></td></tr><tr><th scope="row">Sources</th><td><span class="scs"><span class="sc" title="Game design document">GDD 3.4.1, 3.3</span><span class="sc" title="Figma Level Design page">Figma</span><span class="sc" title="Mission content sheet">Sheet</span></span></td></tr></tbody></table></div></div><div class="lvpane" data-t="skill"><p class="lvempty">Not designed yet. Bee’s skill tree will be added here later.</p>
+          
           
           <div class="tw"><table class="camp def"><thead><tr><th scope="col">Field</th><th scope="col">Definition</th></tr></thead><tbody><tr><th scope="row">Skills</th><td><span class="tbd">To be added</span></td></tr><tr><th scope="row">Direction</th><td>Decided on 25 Nov: hazards evolve in the later levels, and the skill tree is built around answering their new forms.</td></tr><tr><th scope="row">Bought with</th><td>Bobbles, which are used for the skill tree only. Whether they replace skill points is still open.</td></tr><tr><th scope="row">How it works</th><td>Skill points permanently upgrade the droid and can unlock abilities. See <a href="#droid-skilltree">Skill tree rules</a>.</td></tr></tbody></table></div></div><div class="lvpane" data-t="lofi"><p class="part">Directing the crowd</p>
           <div class="fge"><button type="button" class="fgr" aria-label="Reload the Figma board: Directing the crowd"><span aria-hidden="true">↻</span> Reload</button><iframe title="Figma board: Directing the crowd" src="https://embed.figma.com/design/VxnDDZ0JOWff7Z7uleDt3O/Innovspur-UIUX-Flow?node-id=2586-46774&embed-host=share&page-selector=false&footer=false" loading="lazy" allowfullscreen></iframe></div>
@@ -3043,53 +3103,69 @@ document.querySelectorAll(".fgr").forEach(b=>{b.onclick=()=>{
   setTimeout(done,6000);
 }});
 
+/* ===== Skill tree panel beside a playable lo-fi =====
+   protoTree(id, onChange) wires the panel up and returns {on, set}.
+   on is a map of skill key to true or false. onChange(key, on) runs after a click. */
+window.protoTree=function(id,onChange){
+  const t=document.getElementById(id),on={},btn={};if(!t)return {on,set(){}};
+  const info=t.querySelector(".st-info"),esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+  function set(k,v){on[k]=v;const b=btn[k];if(!b||b.classList.contains("na"))return;b.setAttribute("aria-pressed",String(v));b.querySelector(".st-sw").textContent=v?"On":"Off"}
+  function show(b){const d=b.dataset;info.innerHTML="<h5>"+esc(d.name)+"</h5><p>"+esc(d.what)+"</p><p class=\"st-hint\" style=\"margin-bottom:6px\">"+esc(d.status)+"</p><p class=\"st-how\"><b>"+(b.classList.contains("na")?"Cannot be tried yet":"In this room")+"</b>"+esc(d.how)+"</p>"}
+  t.querySelectorAll(".st-node").forEach(b=>{const k=b.dataset.skill;btn[k]=b;on[k]=false;
+    b.onclick=()=>{show(b);if(b.classList.contains("na"))return;set(k,!on[k]);onChange(k,on)}});
+  return {on,set};
+};
+
 /* ===== Crab's Grip: playable lo-fi =====
    A top-down room on a canvas. World units are canvas pixels (760 x 460). */
 (function(){
   const root=document.getElementById("crabProto");if(!root)return;
   const cv=root.querySelector("#cpCanvas"),g=cv.getContext("2d"),W=cv.width,H=cv.height;
   const el=id=>root.querySelector("#"+id);
-  const SPEED=150,REACH=16,R=15;                       // droid speed (px/s), grip reach, droid radius
+  const SPEED=150,REACH=16,R=15,REEL=130;                 // droid speed (px/s), grip reach, droid radius, tow reel-in speed
+  const TOSS={light:430,medium:250},STACK_SLOW=.85;       // throw speed by weight (px/s), speed kept for each extra object held
   const COL={light:"#F3D58A",medium:"#E9A15B",heavy:"#8C8F9C",fixed:"#4A4F5C"};
-  const tune={carry:10,drag:20,recharge:18,dragSpeed:55}; // % of the bar per second, and % of full speed
+  const tune={carry:10,drag:20,recharge:18,dragSpeed:55,tow:150}; // % of the bar per second (x3), % of full speed, pixels
   let mode="crab",S;
+  /* skill tree candidates switched on in the panel beside the room. They only apply to Crab */
+  const tree=window.protoTree("crabProtoTree",onSkill),sk=k=>mode==="crab"&&!!tree.on[k];
 
-  /* the room: walls, objects, the droid and the goal */
+  /* the room: walls, objects, the droid and the goal. holds is what Crab has hold of, tow is what is on its line */
   function fresh(){
+    const o=(n,k,x,y,w,h)=>({n,k,x,y,w,h,vx:0,vy:0,held:false,carried:false});
     return {
-      droid:{x:110,y:230},bar:100,held:null,off:{x:0,y:0},locked:false,t:0,done:false,started:false,shake:0,
+      droid:{x:110,y:230},face:{x:1,y:0},bar:100,holds:[],tow:null,locked:false,t:0,done:false,started:false,shake:0,
       walls:[{x:0,y:0,w:W,h:14},{x:0,y:H-14,w:W,h:14},{x:0,y:0,w:14,h:H},{x:W-14,y:0,w:14,h:H},
              {x:372,y:14,w:22,h:156},{x:372,y:290,w:22,h:156}],
       goal:{x:640,y:230,r:22},
-      objs:[
-        {n:"Chair",k:"medium",x:356,y:180,w:40,h:40},
-        {n:"Bench",k:"medium",x:330,y:232,w:84,h:30},
-        {n:"Fire extinguisher",k:"light",x:300,y:192,w:22,h:22},
-        {n:"Chair",k:"medium",x:200,y:330,w:40,h:40},
-        {n:"Long table",k:"heavy",x:470,y:70,w:120,h:44},
-        {n:"Hawker stall",k:"fixed",x:470,y:350,w:130,h:60},
-        {n:"Tool box",k:"light",x:150,y:90,w:22,h:22}]
+      objs:[o("Chair","medium",356,180,40,40),o("Bench","medium",330,232,84,30),o("Fire extinguisher","light",300,192,22,22),
+            o("Chair","medium",200,330,40,40),o("Long table","heavy",470,70,120,44),o("Hawker stall","fixed",470,350,130,60),
+            o("Tool box","light",150,90,22,22),o("First aid bag","light",120,330,22,22)]
     };
   }
   const hit=(a,b)=>a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;
   const box=d=>({x:d.x-R,y:d.y-R,w:R*2,h:R*2});
-  const solids=skip=>S.walls.concat(S.objs.filter(o=>o!==skip&&!o.carried));
-  const blocked=(r,skip)=>solids(skip).some(s=>hit(r,s));
+  /* what is in the way: walls and every object Crab is not holding */
+  const blocked=(r,skip)=>S.walls.some(w=>hit(r,w))||S.objs.some(o=>o!==skip&&!o.held&&hit(r,o));
+  const mid=o=>({x:o.x+o.w/2,y:o.y+o.h/2});
+  const can=o=>o.k==="light"||(o.k==="medium"&&mode==="crab");   // can this droid grip it
+  const maxHold=()=>sk("stack")?3:1;
 
-  /* input: keys while the room has focus, a drag on the room as a stick, and the grip button */
-  const keys={};let stick=null,gripHeld=false;
+  /* input: keys while the room has focus, a drag on the room as a stick, and the buttons */
+  const keys={};let stick=null,gripHeld=false,tossAsk=false;
   cv.addEventListener("keydown",e=>{const k=e.key.toLowerCase();
-    if(["arrowup","arrowdown","arrowleft","arrowright"," ","w","a","s","d"].includes(k)){keys[k]=true;e.preventDefault()}});
+    if(["arrowup","arrowdown","arrowleft","arrowright"," ","w","a","s","d","f"].includes(k)){if(k==="f"&&!e.repeat)tossAsk=true;keys[k]=true;e.preventDefault()}});
   cv.addEventListener("keyup",e=>{keys[e.key.toLowerCase()]=false});
   cv.addEventListener("blur",()=>{for(const k in keys)keys[k]=false});
   cv.addEventListener("pointerdown",e=>{cv.focus();stick={id:e.pointerId,x:e.clientX,y:e.clientY,dx:0,dy:0};cv.setPointerCapture(e.pointerId)});
   cv.addEventListener("pointermove",e=>{if(stick&&e.pointerId===stick.id){stick.dx=e.clientX-stick.x;stick.dy=e.clientY-stick.y}});
   const endStick=e=>{if(stick&&e.pointerId===stick.id)stick=null};
   cv.addEventListener("pointerup",endStick);cv.addEventListener("pointercancel",endStick);
-  const gb=el("cpGrip");
+  const gb=el("cpGrip"),tb=el("cpToss");
   gb.addEventListener("pointerdown",e=>{gripHeld=true;gb.classList.add("on");gb.setPointerCapture(e.pointerId);e.preventDefault()});
   const endGrip=()=>{gripHeld=false;gb.classList.remove("on")};
   gb.addEventListener("pointerup",endGrip);gb.addEventListener("pointercancel",endGrip);
+  tb.addEventListener("pointerdown",e=>{tossAsk=true;e.preventDefault()});
   function wish(){
     let x=(keys.arrowright||keys.d?1:0)-(keys.arrowleft||keys.a?1:0),y=(keys.arrowdown||keys.s?1:0)-(keys.arrowup||keys.w?1:0);
     if(stick&&Math.hypot(stick.dx,stick.dy)>8){x=stick.dx;y=stick.dy}
@@ -3099,65 +3175,133 @@ document.querySelectorAll(".fgr").forEach(b=>{b.onclick=()=>{
   /* messages under the room */
   function say(t,c){const m=el("cpMsg");if(m.textContent!==t){m.textContent=t}m.className="cp-msg"+(c?" "+c:"")}
 
-  /* grip: find the nearest object in reach and take hold of it, or say why not */
+  /* grip: find the nearest free object in reach and take hold of it, or say why not */
   function nearest(){
     const d=S.droid;let best=null,bd=1e9;
-    for(const o of S.objs){const cx=Math.max(o.x,Math.min(d.x,o.x+o.w)),cy=Math.max(o.y,Math.min(d.y,o.y+o.h)),dist=Math.hypot(d.x-cx,d.y-cy)-R;
+    for(const o of S.objs){if(o.held||o===S.tow)continue;
+      const cx=Math.max(o.x,Math.min(d.x,o.x+o.w)),cy=Math.max(o.y,Math.min(d.y,o.y+o.h)),dist=Math.hypot(d.x-cx,d.y-cy)-R;
       if(dist<=REACH&&dist<bd){best=o;bd=dist}}
     return best;
   }
-  function tryGrip(){
-    const o=nearest();if(!o)return;
-    if(o.k==="heavy"||o.k==="fixed"){S.shake=.25;say(o.n+" is "+o.k+". "+(mode==="crab"?"Crab":"This droid")+" cannot grip it.","bad");S.locked=true;return}
-    if(o.k==="medium"&&mode!=="crab"){S.shake=.25;say("Only Crab can grip a medium object. Another droid has to push it.","bad");S.locked=true;return}
-    S.held=o;o.carried=o.k==="light";S.off={x:o.x-S.droid.x,y:o.y-S.droid.y};
-    say(o.k==="light"?"Carrying the "+o.n.toLowerCase()+".":"Dragging the "+o.n.toLowerCase()+". It moves with Crab in any direction.");
+  function take(o){
+    o.held=true;o.carried=o.k==="light";o.vx=o.vy=0;S.holds.push({o,off:{x:o.x-S.droid.x,y:o.y-S.droid.y}});
+    const n=S.holds.length,what=o.k==="light"?"Carrying the "+o.n.toLowerCase()+".":"Dragging the "+o.n.toLowerCase()+". It moves with Crab in any direction.";
+    say(n>1?"Holding "+n+" objects. Each one slows Crab and drains the bar faster.":what);
   }
-  function drop(why){
-    const o=S.held;if(!o)return;
-    if(o.carried){ // set a carried object down in the nearest free spot around the droid
-      o.carried=false;const d=S.droid;let placed=false;
-      for(const [ax,ay] of [[1,0],[-1,0],[0,1],[0,-1],[1,1],[-1,1],[1,-1],[-1,-1]]){
-        const r={x:d.x+ax*(R+o.w/2+3)-o.w/2,y:d.y+ay*(R+o.h/2+3)-o.h/2,w:o.w,h:o.h};
-        if(!blocked(r,o)){o.x=r.x;o.y=r.y;placed=true;break}}
-      if(!placed){o.carried=true;say("No room to set it down here.","bad");return}
+  function tryGrip(){
+    const o=nearest();
+    if(!o){if(sk("tow"))tryTow();return}
+    if(o.k==="heavy"||o.k==="fixed"){S.shake=.25;say(o.n+" is "+o.k+". "+(mode==="crab"?"Crab":"This droid")+" cannot grip it.","bad");S.locked=true;return}
+    if(!can(o)){S.shake=.25;say("Only Crab can grip a medium object. Another droid has to push it.","bad");S.locked=true;return}
+    take(o);
+  }
+  /* set a carried object down in a free spot around the droid, trying the given side first */
+  function place(o,first){
+    const d=S.droid,sides=(first?[first]:[]).concat([[1,0],[-1,0],[0,1],[0,-1],[1,1],[-1,1],[1,-1],[-1,-1]]);
+    for(const [ax,ay] of sides){
+      const r={x:d.x+ax*(R+o.w/2+3)-o.w/2,y:d.y+ay*(R+o.h/2+3)-o.h/2,w:o.w,h:o.h};
+      if(!blocked(r,o)){o.x=r.x;o.y=r.y;return true}}
+    return false;
+  }
+  /* let go of everything. Dragged objects stay where they are, carried ones are set down. Returns what was let go */
+  function drop(why,first){
+    const out=[],keep=[];
+    for(const h of S.holds.filter(h=>!h.o.carried)){h.o.held=false;out.push(h.o)}
+    for(const h of S.holds.filter(h=>h.o.carried)){
+      h.o.held=false;h.o.carried=false;
+      if(place(h.o,first))out.push(h.o);else{h.o.held=true;h.o.carried=true;keep.push(h)}
     }
-    S.held=null;say(why||"Set down.");
+    S.holds=keep;
+    if(keep.length)say("No room to set it down here.","bad");else if(out.length)say(why||"Set down.");
+    return out;
+  }
+
+  /* skill, Tow line: hook the nearest object within the line's length, with no wall in between */
+  function clearLine(a,b){const n=Math.ceil(Math.hypot(b.x-a.x,b.y-a.y)/6);
+    for(let i=1;i<n;i++){const p={x:a.x+(b.x-a.x)*i/n-1,y:a.y+(b.y-a.y)*i/n-1,w:2,h:2};if(S.walls.some(w=>hit(p,w)))return false}return true}
+  function towTarget(){
+    const d=S.droid;let best=null,bd=tune.tow;
+    for(const o of S.objs){if(o.held||(o.k!=="light"&&o.k!=="medium"))continue;const m=mid(o),dist=Math.hypot(m.x-d.x,m.y-d.y);
+      if(dist<bd&&clearLine(d,m)){best=o;bd=dist}}
+    return best;
+  }
+  function tryTow(){const o=towTarget();if(!o)return;S.tow=o;o.vx=o.vy=0;say("Tow line hooked on the "+o.n.toLowerCase()+". It is reeled in while Crab keeps moving.")}
+  function reel(dt){
+    const o=S.tow,d=S.droid,m=mid(o),dist=Math.hypot(m.x-d.x,m.y-d.y);
+    if(dist>tune.tow*1.25||!clearLine(d,m)){S.tow=null;S.locked=true;say("The tow line snapped: too far, or a wall got in the way.","bad");return}
+    if(dist<R+Math.max(o.w,o.h)/2+8)return;
+    for(const ax of ["x","y"]){const n={x:o.x,y:o.y,w:o.w,h:o.h};n[ax]+=(d[ax]-m[ax])/dist*REEL*dt;if(!blocked(n,o)&&!hit(n,box(d)))o[ax]=n[ax]}
+  }
+  /* skill, Lift and toss: throw what is held the way Crab is facing. A thrown object passes over Crab and other thrown objects */
+  const still=(r,skip)=>S.walls.some(w=>hit(r,w))||S.objs.some(o=>o!==skip&&!o.held&&!o.fly&&hit(r,o));
+  function toss(){
+    if(!sk("toss")||!S.holds.length)return;
+    const f=S.face,d=S.droid,out=[];
+    for(const h of S.holds){
+      const o=h.o;o.held=false;
+      if(o.carried){ // a carried object leaves from in front of Crab
+        o.carried=false;const r={x:d.x+f.x*(R+o.w/2+3)-o.w/2,y:d.y+f.y*(R+o.h/2+3)-o.h/2,w:o.w,h:o.h};
+        if(!still(r,o)){o.x=r.x;o.y=r.y}else if(!place(o)){o.held=true;o.carried=true;continue}
+      }
+      const v=TOSS[o.k]*(1-.12*out.length);o.vx=f.x*v;o.vy=f.y*v;o.fly=true;out.push(o);
+    }
+    S.holds=S.holds.filter(h=>h.o.held);
+    if(out.length){S.locked=true;say(out.length>1?"Tossed "+out.length+" objects.":"Tossed the "+out[0].n.toLowerCase()+". "+(out[0].k==="light"?"A light object flies further.":"A medium object does not go as far."))}
+  }
+  /* thrown objects slide until they slow down or hit something */
+  function slide(dt){
+    for(const o of S.objs){
+      if(!o.vx&&!o.vy)continue;
+      for(const ax of ["x","y"]){const v=ax==="x"?o.vx:o.vy,n={x:o.x,y:o.y,w:o.w,h:o.h};n[ax]+=v*dt;
+        if(still(n,o)){if(ax==="x")o.vx=0;else o.vy=0}else o[ax]=n[ax]}
+      const k=Math.pow(.04,dt);o.vx*=k;o.vy*=k;if(Math.hypot(o.vx,o.vy)<10){o.vx=o.vy=0;o.fly=false}
+    }
   }
 
   /* one step of the room */
   function step(dt){
     if(S.done)return;
-    const want=wish(),holding=keys[" "]||gripHeld,d=S.droid;
+    const want=wish(),holding=!!(keys[" "]||gripHeld),d=S.droid;
     if(want.x||want.y||holding)S.started=true;
+    if(want.x||want.y)S.face=want;
     if(S.started)S.t+=dt;
     if(!holding)S.locked=false;
-    if(holding&&!S.held&&!S.locked&&S.bar>15)tryGrip();
-    if(!holding&&S.held)drop();
-    if(S.held){S.bar-=(S.held.k==="light"?tune.carry:tune.drag)*dt;if(S.bar<=0){S.bar=0;S.locked=true;drop("The bar ran out, so the object was dropped.")}}
-    else S.bar=Math.min(100,S.bar+tune.recharge*dt);
-    const dragging=S.held&&!S.held.carried,sp=SPEED*(dragging?tune.dragSpeed/100:1);
+    if(holding&&!S.locked){
+      if(!S.holds.length&&!S.tow){if(S.bar>15)tryGrip()}
+      else if(S.holds.length&&S.holds.length<maxHold()){const o=nearest();if(o&&can(o))take(o)} // Stack and haul
+    }
+    if(!holding){if(S.holds.length)drop();if(S.tow){S.tow=null;say("Tow line released.")}}
+    if(tossAsk){tossAsk=false;toss()}
+    slide(dt);
+    if(S.tow)reel(dt);
+    if(S.holds.length||S.tow){
+      let rate=S.tow?tune.drag:0;for(const h of S.holds)rate+=h.o.carried?tune.carry:tune.drag;
+      S.bar-=rate*dt;
+      if(S.bar<=0){S.bar=0;S.locked=true;S.tow=null;drop("The bar ran out, so the object was dropped.");if(!S.holds.length)say("The bar ran out, so Crab let go.","bad")}
+    }else S.bar=Math.min(100,S.bar+tune.recharge*dt);
+    const dragged=S.holds.filter(h=>!h.o.carried),
+          sp=SPEED*(dragged.length?tune.dragSpeed/100:1)*Math.pow(STACK_SLOW,Math.max(0,S.holds.length-1));
     for(const ax of ["x","y"]){
       const mv=want[ax]*sp*dt;if(!mv)continue;
       const nd={x:d.x,y:d.y};nd[ax]+=mv;const nb=box(nd);
-      if(dragging){ // the droid and the dragged object move as one
-        const o=S.held,no={x:nd.x+S.off.x,y:nd.y+S.off.y,w:o.w,h:o.h};
-        if(blocked(nb,o)||blocked(no,o))continue;
-        d[ax]=nd[ax];o.x=no.x;o.y=no.y;continue;
+      if(dragged.length){ // the droid and what it drags move as one
+        const next=dragged.map(h=>({x:nd.x+h.off.x,y:nd.y+h.off.y,w:h.o.w,h:h.o.h}));
+        if(blocked(nb)||next.some(r=>blocked(r)))continue;
+        d[ax]=nd[ax];dragged.forEach((h,i)=>{h.o.x=next[i].x;h.o.y=next[i].y});continue;
       }
-      const hitObj=S.objs.find(o=>!o.carried&&hit(nb,o));
       if(S.walls.some(w=>hit(nb,w)))continue;
+      const hitObj=S.objs.find(o=>!o.held&&hit(nb,o));
       if(hitObj){ // every droid can push a medium object by walking into it, at half speed
         if(hitObj.k!=="medium")continue;
         const po={x:hitObj.x,y:hitObj.y,w:hitObj.w,h:hitObj.h};po[ax]+=mv*.5;
         if(blocked(po,hitObj))continue;
         hitObj[ax]=po[ax];const half={x:d.x,y:d.y};half[ax]+=mv*.5;
-        if(!blocked(box(half),null))d[ax]=half[ax];
+        if(!blocked(box(half)))d[ax]=half[ax];
         continue;
       }
       d[ax]=nd[ax];
     }
-    if(S.held&&S.held.carried){S.held.x=d.x-S.held.w/2;S.held.y=d.y-S.held.h/2}
+    for(const h of S.holds)if(h.o.carried){h.o.x=d.x-h.o.w/2;h.o.y=d.y-h.o.h/2}
     if(S.shake>0)S.shake-=dt;
     if(Math.hypot(d.x-S.goal.x,d.y-S.goal.y)<S.goal.r+R){S.done=true;say("Reached the survivor in "+S.t.toFixed(1)+"s as "+(mode==="crab"?"Crab":"another droid")+". Reset the room to try again.","good")}
   }
@@ -3172,20 +3316,31 @@ document.querySelectorAll(".fgr").forEach(b=>{b.onclick=()=>{
     g.fillStyle="#9EDDC4";g.beginPath();g.arc(S.goal.x,S.goal.y,S.goal.r-6,0,7);g.fill();
     g.fillStyle="#22302B";g.font="700 12px system-ui,sans-serif";g.textAlign="center";g.fillText("Survivor",S.goal.x,S.goal.y+S.goal.r+26);
     g.fillStyle="#22302B";for(const w of S.walls)g.fillRect(w.x,w.y,w.w,w.h);
-    const near=!S.held&&!S.done?nearest():null;
+    const d=S.droid,free=!S.holds.length&&!S.tow&&!S.done,near=!S.done&&S.holds.length<maxHold()&&!S.tow?nearest():null,
+          hook=free&&!near&&sk("tow")?towTarget():null;
+    if(sk("tow")&&free){g.strokeStyle="rgba(184,95,16,.3)";g.lineWidth=1.5;g.setLineDash([5,7]);g.beginPath();g.arc(d.x,d.y,tune.tow,0,7);g.stroke();g.setLineDash([])}
     for(const o of S.objs){if(o.carried)continue;
       g.fillStyle=COL[o.k];rr(o.x,o.y,o.w,o.h,6);
-      g.lineWidth=o===S.held||o===near?3:1.5;g.strokeStyle=o===S.held?"#B85F10":o===near?(o.k==="heavy"||o.k==="fixed"||(o.k==="medium"&&mode!=="crab")?"#B3342B":"#22302B"):"rgba(0,0,0,.3)";
-      g.beginPath();g.roundRect(o.x,o.y,o.w,o.h,6);g.stroke();
+      const bad=o.k==="heavy"||o.k==="fixed"||!can(o);
+      g.lineWidth=o.held||o===near||o===S.tow||o===hook?3:1.5;
+      g.strokeStyle=o.held||o===S.tow?"#B85F10":o===near?(bad?"#B3342B":"#22302B"):o===hook?"#B85F10":"rgba(0,0,0,.3)";
+      if(o===hook)g.setLineDash([5,4]);
+      g.beginPath();g.roundRect(o.x,o.y,o.w,o.h,6);g.stroke();g.setLineDash([]);
       if(o.w>=60){g.fillStyle=o.k==="fixed"?"#fff":"#22302B";g.font="700 11px system-ui,sans-serif";g.fillText(o.n,o.x+o.w/2,o.y+o.h/2+4)}}
-    const d=S.droid,sx=S.shake>0?Math.sin(S.shake*90)*3:0;
-    if(S.held&&!S.held.carried){g.strokeStyle="#B85F10";g.lineWidth=4;g.beginPath();g.moveTo(d.x,d.y);g.lineTo(S.held.x+S.held.w/2,S.held.y+S.held.h/2);g.stroke()}
+    const sx=S.shake>0?Math.sin(S.shake*90)*3:0;
+    for(const h of S.holds)if(!h.o.carried){const m=mid(h.o);g.strokeStyle="#B85F10";g.lineWidth=4;g.beginPath();g.moveTo(d.x,d.y);g.lineTo(m.x,m.y);g.stroke()}
+    if(S.tow){const m=mid(S.tow);g.strokeStyle="#B85F10";g.lineWidth=2;g.setLineDash([7,5]);g.beginPath();g.moveTo(d.x,d.y);g.lineTo(m.x,m.y);g.stroke();g.setLineDash([])}
     g.fillStyle=mode==="crab"?"#EE8A2B":"#5B7C99";g.beginPath();g.arc(d.x+sx,d.y,R,0,7);g.fill();
     g.strokeStyle="#22302B";g.lineWidth=2.5;g.beginPath();g.arc(d.x+sx,d.y,R,0,7);g.stroke();
     g.fillStyle="#fff";g.font="800 13px system-ui,sans-serif";g.fillText(mode==="crab"?"C":"D",d.x+sx,d.y+5);
-    if(S.held&&S.held.carried){const o=S.held;g.fillStyle=COL.light;rr(d.x-o.w/2,d.y-R-o.h+2,o.w,o.h,5);g.strokeStyle="#B85F10";g.lineWidth=2.5;g.beginPath();g.roundRect(d.x-o.w/2,d.y-R-o.h+2,o.w,o.h,5);g.stroke()}
+    let up=0;for(const h of S.holds)if(h.o.carried){const o=h.o,y=d.y-R-o.h+2-up*(o.h-5);up++;
+      g.fillStyle=COL.light;rr(d.x-o.w/2,y,o.w,o.h,5);g.strokeStyle="#B85F10";g.lineWidth=2.5;g.beginPath();g.roundRect(d.x-o.w/2,y,o.w,o.h,5);g.stroke()}
+    if(sk("toss")&&S.holds.length){ // which way a toss would go
+      g.fillStyle="#B85F10";g.save();g.translate(d.x+S.face.x*(R+16),d.y+S.face.y*(R+16));g.rotate(Math.atan2(S.face.y,S.face.x));
+      g.beginPath();g.moveTo(9,0);g.lineTo(-4,-7);g.lineTo(-4,7);g.fill();g.restore()}
     const b=el("cpBar");b.style.width=S.bar.toFixed(1)+"%";b.classList.toggle("low",S.bar<=15);
     el("cpTime").textContent=S.t.toFixed(1)+"s";
+    tb.hidden=!sk("toss");
   }
 
   /* the loop runs only while the room is on screen */
@@ -3195,12 +3350,18 @@ document.querySelectorAll(".fgr").forEach(b=>{b.onclick=()=>{
 
   /* controls around the room */
   function reset(){S=fresh();say(mode==="crab"?"Crab: hold to grip. Light objects are carried and medium objects are dragged.":"Another droid: it can carry light objects, and has to push medium ones by walking into them.");draw()}
+  /* a skill was switched on or off in the panel: let go of everything, so the room is never left half in a skill */
+  function onSkill(k,on){
+    if(!S)return;S.tow=null;drop();S.locked=true;
+    const name={tow:"Tow line",stack:"Stack and haul",toss:"Lift and toss"}[k];
+    say(name+(on[k]?" is on."+(mode==="crab"?"":" It only applies to Crab."):" is off."));draw();
+  }
   el("cpReset").onclick=()=>{reset();cv.focus()};
   root.querySelectorAll(".cp-seg button").forEach(b=>b.onclick=()=>{mode=b.dataset.mode;root.querySelectorAll(".cp-seg button").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));reset()});
-  [["cpS1","cpO1","carry","% a second"],["cpS2","cpO2","drag","% a second"],["cpS3","cpO3","recharge","% a second"],["cpS4","cpO4","dragSpeed","% of full speed"]].forEach(([s,o,k,u])=>{
+  [["cpS1","cpO1","carry","% a second"],["cpS2","cpO2","drag","% a second"],["cpS3","cpO3","recharge","% a second"],["cpS4","cpO4","dragSpeed","% of full speed"],["cpS5","cpO5","tow"," px"]].forEach(([s,o,k,u])=>{
     const sl=el(s),out=el(o),set=()=>{tune[k]=+sl.value;out.textContent=sl.value+u};sl.oninput=set;set()});
   S=fresh();draw();
-  window.crabProto={state:()=>S,step,keys,reset,setMode:m=>{mode=m;reset()},tune}; // for tests
+  window.crabProto={state:()=>S,step,keys,reset,setMode:m=>{mode=m;reset()},tune,tree,toss:()=>{tossAsk=true}}; // for tests
 })();
 
 /* ===== Orb's Charge: playable lo-fi =====
@@ -3211,14 +3372,17 @@ document.querySelectorAll(".fgr").forEach(b=>{b.onclick=()=>{
   const el=id=>root.querySelector("#"+id);
   const SPEED=150,R=17,CHARGE_SPEED=560,RECOVER=.35;   // walking speed, droid radius, charge speed (px/s), pause after a hit (s)
   const COL={light:"#F3D58A",medium:"#E9A15B",heavy:"#8C8F9C",fixed:"#4A4F5C",person:"#F2B8C6"};
-  const tune={windup:1.0,dist:260,cost:50,recharge:12,stun:1.5};  // seconds, pixels, % of the bar, % of the bar per second, seconds
+  const ROLL_MAX=420,TURN=2.8,PUSH=.4;                 // skills: top rolling speed (px/s), steering (rad/s), speed while pushing a heavy obstacle
+  const tune={windup:1.0,dist:260,cost:50,recharge:12,stun:1.5,roll:25};  // seconds, pixels, % of the bar, % of the bar per second, seconds, % of the bar per second
   let mode="orb",S;
+  /* skill tree candidates switched on in the panel beside the room. They only apply to Orb */
+  const tree=window.protoTree("orbProtoTree",onSkill),sk=k=>mode==="orb"&&!!tree.on[k];
 
   /* the room: walls, things in it, the droid and the goal */
   function fresh(){
     return {
       droid:{x:110,y:230},face:{x:1,y:0},bar:100,t:0,done:false,started:false,
-      aiming:false,wind:0,charge:null,recover:0,stun:0,flash:0,dmg:0,ppl:0,
+      aiming:false,wind:0,charge:null,roll:null,recover:0,stun:0,flash:0,dmg:0,ppl:0,
       walls:[{x:0,y:0,w:W,h:14},{x:0,y:H-14,w:W,h:14},{x:0,y:0,w:14,h:H},{x:W-14,y:0,w:14,h:H},
              {x:372,y:14,w:22,h:156},{x:372,y:290,w:22,h:104},      // middle wall, with the doorway and a gap at the bottom
              {x:120,y:380,w:252,h:14},{x:394,y:380,w:216,h:14}],   // the long way around runs under these
@@ -3228,6 +3392,7 @@ document.querySelectorAll(".fgr").forEach(b=>{b.onclick=()=>{
         {n:"Chair",k:"medium",x:290,y:206,w:36,h:36,vx:0,vy:0},
         {n:"Bystander",k:"person",x:318,y:256,w:24,h:24,vx:0,vy:0},
         {n:"Crate",k:"heavy",x:500,y:210,w:50,h:50,vx:0,vy:0},
+        {n:"Cabinet",k:"heavy",x:430,y:262,w:44,h:50,vx:0,vy:0},
         {n:"Hawker stall",k:"fixed",x:440,y:60,w:60,h:120,vx:0,vy:0},
         {n:"Tool box",k:"light",x:200,y:110,w:22,h:22,vx:0,vy:0}]
     };
@@ -3272,9 +3437,9 @@ document.querySelectorAll(".fgr").forEach(b=>{b.onclick=()=>{
   }
 
   /* knock a light or medium object, or a person, out of the lane */
-  function knock(o){
+  function knock(o,by){
     const f=S.face,d=S.droid,side=((o.x+o.w/2-d.x)*-f.y+(o.y+o.h/2-d.y)*f.x)>=0?1:-1;
-    o.vx=f.x*230+-f.y*side*210;o.vy=f.y*230+f.x*side*210;o.hitBy=S.charge;
+    o.vx=f.x*230+-f.y*side*210;o.vy=f.y*230+f.x*side*210;o.hitBy=by;
     if(o.k==="person"){S.ppl++;say("The bystander was knocked aside.","bad")}
   }
   function slide(dt){
@@ -3286,10 +3451,24 @@ document.querySelectorAll(".fgr").forEach(b=>{b.onclick=()=>{
     }
   }
 
+  /* the charge-up meter: how far the ring may fill with the bar there is, and what a release at that point gives */
+  const windMax=()=>!sk("meter")?1:S.bar>=tune.cost*1.5?2:S.bar>=tune.cost?1.99:.99;
+  const power=w=>!sk("meter")?(w>=1?2:0):w>=2?3:w>=1?2:w>=.5?1:0;   // 0 cancelled, 1 knocks aside only, 2 destroys one, 3 destroys every one in the lane
+  const COST=[0,.5,1,1.5];
+  function destroy(o){S.objs.splice(S.objs.indexOf(o),1);S.dmg++;S.flash=.25;S.boom={x:o.x+o.w/2,y:o.y+o.h/2,t:.35}}
+  /* skill, Ricochet: after a destroyed obstacle, bounce once the way the player holds, or towards the nearest other heavy obstacle */
+  function bounce(want){
+    const d=S.droid;let dir=null;
+    if(want.x||want.y)dir=want;
+    else{let bd=260;for(const o of S.objs){if(o.k!=="heavy")continue;const x=o.x+o.w/2-d.x,y=o.y+o.h/2-d.y,m=Math.hypot(x,y);if(m<bd){bd=m;dir={x:x/m,y:y/m}}}}
+    if(!dir)return false;
+    S.face=dir;S.charge={left:tune.dist*.6,power:2,bounced:true};say("Ricochet! Orb bounces off towards a second obstacle.","good");return true;
+  }
+
   /* one step of the room */
   function step(dt){
     if(S.done)return;
-    const want=wish(),holding=(keys[" "]||btnHeld),d=S.droid;
+    const want=wish(),holding=!!(keys[" "]||btnHeld),d=S.droid;
     if(want.x||want.y||holding)S.started=true;
     if(S.started)S.t+=dt;
     if(S.flash>0)S.flash-=dt;
@@ -3297,38 +3476,81 @@ document.querySelectorAll(".fgr").forEach(b=>{b.onclick=()=>{
     if(S.charge){ // charging: move along the lane in small steps
       let left=CHARGE_SPEED*dt;
       while(left>0&&S.charge){
-        const s=Math.min(4,left);left-=s;
+        const c=S.charge,s=Math.min(4,left);left-=s;
         const nd={x:d.x+S.face.x*s,y:d.y+S.face.y*s},nb=box(nd);
         if(S.walls.some(w=>hit(nb,w))){endCharge("Orb charged into a wall and is stunned.","bad");S.stun=tune.stun;break}
         const o=S.objs.find(o=>hit(nb,o));
         if(o){
-          if(o.k==="heavy"){S.objs.splice(S.objs.indexOf(o),1);S.dmg++;S.flash=.25;S.boom={x:o.x+o.w/2,y:o.y+o.h/2,t:.35};endCharge("The "+o.n.toLowerCase()+" was destroyed. Nothing is left, and it counts as property damage.","good");break}
+          if(o.k==="heavy"){
+            if(c.power<2){endCharge("The charge was too weak for the "+o.n.toLowerCase()+". A short hold only knocks things aside.","bad");break}
+            destroy(o);
+            if(c.power>=3){say("The "+o.n.toLowerCase()+" was destroyed, and the charge keeps going.","good");continue}
+            if(sk("ricochet")&&!c.bounced&&bounce(want))continue;
+            endCharge("The "+o.n.toLowerCase()+" was destroyed. Nothing is left, and it counts as property damage.","good");break}
           if(o.k==="fixed"){endCharge("The "+o.n.toLowerCase()+" is fixed. It stopped the charge and was not destroyed.","bad");break}
-          if(o.hitBy!==S.charge)knock(o);
+          if(o.hitBy!==c)knock(o,c);
         }
-        d.x=nd.x;d.y=nd.y;S.charge.left-=s;if(S.charge.left<=0)endCharge("The charge ran its full distance.");
+        d.x=nd.x;d.y=nd.y;c.left-=s;if(c.left<=0)endCharge("The charge ran its full distance.");
       }
     }else if(S.stun>0){ // stunned: no moving, aiming or charging
-      S.stun-=dt;S.aiming=false;S.wind=0;if(S.stun<=0)say("Orb has recovered.")
+      S.stun-=dt;S.aiming=false;S.wind=0;S.roll=null;if(S.stun<=0)say("Orb has recovered.")
     }else if(S.recover>0){S.recover-=dt}
-    else if(mode==="orb"&&holding){ // planted: aim and wind up
-      if(!S.aiming){if(S.bar<tune.cost){say("Not enough bar for a charge yet.","bad")}else{S.aiming=true;S.wind=0;say("Aiming. Hold until the ring is full, then release to charge.")}}
-      if(S.aiming){if(want.x||want.y)S.face=want;S.wind=Math.min(1,S.wind+dt/tune.windup)}
+    else if(sk("roll")){ // skill, Rolling charge: hold to roll and build up speed, steer while rolling
+      if(holding&&S.bar>0){
+        if(!S.roll){S.roll={v:SPEED};say("Rolling. Keep holding to build up speed, and steer with the direction keys.")}
+        const r=S.roll;r.v=Math.min(ROLL_MAX,r.v+(ROLL_MAX-SPEED)/tune.windup*dt);S.bar=Math.max(0,S.bar-tune.roll*dt);
+        if(want.x||want.y){const a=Math.atan2(S.face.y,S.face.x);let da=Math.atan2(want.y,want.x)-a;while(da>Math.PI)da-=2*Math.PI;while(da<-Math.PI)da+=2*Math.PI;
+          const na=a+Math.max(-TURN*dt,Math.min(TURN*dt,da));S.face={x:Math.cos(na),y:Math.sin(na)}}
+        const full=r.v>=ROLL_MAX*.98;let left=r.v*dt;
+        while(left>0&&S.roll){
+          const s=Math.min(4,left);left-=s;
+          const nd={x:d.x+S.face.x*s,y:d.y+S.face.y*s},nb=box(nd);
+          if(S.walls.some(w=>hit(nb,w))){S.roll=null;S.recover=RECOVER;if(full){S.stun=tune.stun;say("Orb rolled into a wall at full speed and is stunned.","bad")}else say("Orb bumped into a wall. Below full speed it is not stunned.");break}
+          const o=S.objs.find(o=>hit(nb,o)&&!hit(box(d),o));
+          if(o){
+            if(o.k==="heavy"){S.roll=null;S.recover=RECOVER;
+              if(full){destroy(o);say("The "+o.n.toLowerCase()+" was destroyed at full speed. It counts as property damage.","good")}
+              else say("Not fast enough to destroy the "+o.n.toLowerCase()+". Build up to full speed first.","bad");break}
+            if(o.k==="fixed"){S.roll=null;S.recover=RECOVER;say("The "+o.n.toLowerCase()+" is fixed. It stopped the roll and was not destroyed.","bad");break}
+            if(o.hitBy!==r)knock(o,r);
+          }
+          d.x=nd.x;d.y=nd.y;
+        }
+        if(S.roll&&S.bar<=0){S.roll=null;say("The bar is empty, so Orb stopped rolling.","bad")}
+      }else{
+        if(S.roll){S.roll=null;say("Orb stopped rolling.")}
+        walk(want,dt);
+      }
+    }else if(mode==="orb"&&holding){ // planted: aim and wind up
+      const need=tune.cost*(sk("meter")?.5:1);
+      if(!S.aiming){if(S.bar<need){say("Not enough bar for a charge yet.","bad")}else{S.aiming=true;S.wind=0;say(sk("meter")?"Aiming. The ring fills in three steps: knock aside, destroy one, destroy every one in the lane.":"Aiming. Hold until the ring is full, then release to charge.")}}
+      if(S.aiming){if(want.x||want.y)S.face=want;S.wind=Math.min(windMax(),S.wind+dt/tune.windup)}
     }else{
       if(S.aiming){ // released
-        S.aiming=false;
-        if(S.wind>=1){S.bar-=tune.cost;S.charge={left:tune.dist};say("Charge!")}
+        S.aiming=false;const p=power(S.wind);
+        if(p){S.bar-=tune.cost*COST[p];S.charge={left:tune.dist,power:p};say(["","Weak charge: it only knocks things aside.","Charge!","Full charge: it destroys every heavy obstacle in the lane."][p])}
         else say("Released early, so the charge was cancelled. No bar was used.");
         S.wind=0;
-      }else{
-        for(const ax of ["x","y"]){const mv=want[ax]*SPEED*dt;if(!mv)continue;const nd={x:d.x,y:d.y};nd[ax]+=mv;if(!walkBlocked(nd))d[ax]=nd[ax]}
-        if(want.x||want.y)S.face=want;
-      }
+      }else walk(want,dt);
     }
-    if(!S.aiming&&!S.charge)S.bar=Math.min(100,S.bar+tune.recharge*dt);
+    if(!S.aiming&&!S.charge&&!S.roll)S.bar=Math.min(100,S.bar+tune.recharge*dt);
     if(S.boom){S.boom.t-=dt;if(S.boom.t<=0)S.boom=null}
-    if(Math.hypot(d.x-S.goal.x,d.y-S.goal.y)<S.goal.r+R){S.done=true;S.charge=null;
+    if(Math.hypot(d.x-S.goal.x,d.y-S.goal.y)<S.goal.r+R){S.done=true;S.charge=null;S.roll=null;
       say("Reached the survivor in "+S.t.toFixed(1)+"s as "+(mode==="orb"?"Orb":"another droid")+", with "+S.dmg+" property damage and "+S.ppl+" people knocked. Reset the room to try again.","good")}
+  }
+  /* walking. With the Carry heavy skill, Orb pushes a heavy obstacle by walking into it */
+  function walk(want,dt){
+    const d=S.droid;
+    for(const ax of ["x","y"]){
+      const mv=want[ax]*SPEED*dt;if(!mv)continue;const nd={x:d.x,y:d.y};nd[ax]+=mv;
+      if(!walkBlocked(nd)){d[ax]=nd[ax];continue}
+      if(!sk("carry")||S.walls.some(w=>hit(box(nd),w)))continue;
+      const o=S.objs.find(o=>hit(box(nd),o)&&!hit(box(d),o));if(!o||o.k!=="heavy")continue;
+      const po={x:o.x,y:o.y,w:o.w,h:o.h};po[ax]+=mv*PUSH;if(blocked(po,o))continue;
+      o[ax]=po[ax];const h={x:d.x,y:d.y};h[ax]+=mv*PUSH;if(!walkBlocked(h))d[ax]=h[ax];
+      say("Pushing the "+o.n.toLowerCase()+". It is moved, not destroyed, so there is no property damage.");
+    }
+    if(want.x||want.y)S.face=want;
   }
   function endCharge(msg,c){S.charge=null;S.recover=RECOVER;say(msg,c)}
 
@@ -3369,8 +3591,23 @@ document.querySelectorAll(".fgr").forEach(b=>{b.onclick=()=>{
       for(let i=0;i<3;i++){const x=d.x+Math.cos(a+i*2.094)*(R+4),y=d.y-R-10+Math.sin(a+i*2.094)*5;g.beginPath();g.arc(x,y,4.5,0,7);g.fill();g.stroke()}
       g.fillStyle="#B3342B";g.font="800 12px system-ui,sans-serif";g.fillText("Stunned "+Math.max(0,S.stun).toFixed(1)+"s",Math.max(62,Math.min(W-62,d.x)),d.y+R+16);
     }
-    if(S.aiming){g.strokeStyle=S.wind>=1?"#2E8B57":"#EE8A2B";g.lineWidth=5;g.beginPath();g.arc(d.x,d.y,R+7,-Math.PI/2,-Math.PI/2+Math.PI*2*S.wind);g.stroke()}
-    const b=el("opBar");b.style.width=S.bar.toFixed(1)+"%";b.classList.toggle("low",S.bar<tune.cost);
+    if(S.aiming){
+      if(sk("meter")){ // three steps: half a ring to knock aside, a full ring to destroy one, a second ring to destroy every one
+        const p=power(S.wind),c=["#C9C3B4","#EE8A2B","#2E8B57","#7B4FCF"][p];
+        g.strokeStyle="rgba(34,48,43,.18)";g.lineWidth=5;g.beginPath();g.arc(d.x,d.y,R+7,0,7);g.stroke();g.beginPath();g.arc(d.x,d.y,R+14,0,7);g.stroke();
+        g.strokeStyle=c;g.beginPath();g.arc(d.x,d.y,R+7,-Math.PI/2,-Math.PI/2+Math.PI*2*Math.min(1,S.wind));g.stroke();
+        if(S.wind>1){g.beginPath();g.arc(d.x,d.y,R+14,-Math.PI/2,-Math.PI/2+Math.PI*2*Math.min(1,S.wind-1));g.stroke()}
+        g.fillStyle=c==="#C9C3B4"?"#6B6F6A":c;g.font="800 11px system-ui,sans-serif";g.fillText(["Too early","Knock aside","Destroy one","Destroy all in lane"][p],Math.max(70,Math.min(W-70,d.x)),d.y-R-22);
+      }else{g.strokeStyle=S.wind>=1?"#2E8B57":"#EE8A2B";g.lineWidth=5;g.beginPath();g.arc(d.x,d.y,R+7,-Math.PI/2,-Math.PI/2+Math.PI*2*S.wind);g.stroke()}
+    }
+    if(S.roll){ // rolling: the ring is the speed, green at full speed, with an arrow for the heading
+      const f=(S.roll.v-SPEED)/(ROLL_MAX-SPEED),full=S.roll.v>=ROLL_MAX*.98;
+      g.strokeStyle=full?"#2E8B57":"#EE8A2B";g.lineWidth=5;g.beginPath();g.arc(d.x,d.y,R+7,-Math.PI/2,-Math.PI/2+Math.PI*2*f);g.stroke();
+      g.fillStyle=full?"#2E8B57":"#EE8A2B";g.save();g.translate(d.x+S.face.x*(R+20),d.y+S.face.y*(R+20));g.rotate(Math.atan2(S.face.y,S.face.x));
+      g.beginPath();g.moveTo(10,0);g.lineTo(-4,-8);g.lineTo(-4,8);g.fill();g.restore();
+    }
+    const b=el("opBar");b.style.width=S.bar.toFixed(1)+"%";b.classList.toggle("low",S.bar<tune.cost*(sk("meter")?.5:1)&&!sk("roll"));
+    gb.textContent=sk("roll")?"Hold to roll":"Hold to charge";
     el("opTime").textContent=S.t.toFixed(1)+"s";el("opDmg").textContent=S.dmg;el("opPpl").textContent=S.ppl;
   }
 
@@ -3381,14 +3618,22 @@ document.querySelectorAll(".fgr").forEach(b=>{b.onclick=()=>{
 
   /* controls around the room */
   function reset(){S=fresh();say(mode==="orb"?"Orb: hold to aim and wind up, release to charge through the heavy table.":"Another droid: it cannot move the heavy table, so it has to take the long way around.");draw()}
+  /* a skill was switched on or off in the panel. Rolling charge and the Charge-up meter replace each other */
+  function onSkill(k,on){
+    if(on[k]&&k==="roll")tree.set("meter",false);
+    if(on[k]&&k==="meter")tree.set("roll",false);
+    if(!S)return;S.aiming=false;S.wind=0;S.roll=null;
+    const name={carry:"Carry heavy",roll:"Rolling charge",meter:"Charge-up meter",ricochet:"Ricochet"}[k];
+    say(name+(on[k]?" is on."+(mode==="orb"?"":" It only applies to Orb."):" is off."));draw();
+  }
   el("opReset").onclick=()=>{reset();cv.focus()};
   root.querySelectorAll(".cp-seg button").forEach(b=>b.onclick=()=>{mode=b.dataset.mode;root.querySelectorAll(".cp-seg button").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));reset()});
   [["opS1","opO1",v=>{tune.windup=v/10;return (v/10).toFixed(1)+"s"}],["opS2","opO2",v=>{tune.dist=v;return v+" px"}],
    ["opS3","opO3",v=>{tune.cost=v;return v+"% of the bar"}],["opS4","opO4",v=>{tune.recharge=v;return v+"% a second"}],
-   ["opS5","opO5",v=>{tune.stun=v/10;return (v/10).toFixed(1)+"s"}]].forEach(([s,o,f])=>{
+   ["opS5","opO5",v=>{tune.stun=v/10;return (v/10).toFixed(1)+"s"}],["opS6","opO6",v=>{tune.roll=v;return v+"% a second"}]].forEach(([s,o,f])=>{
     const sl=el(s),out=el(o),set=()=>{out.textContent=f(+sl.value)};sl.oninput=set;set()});
   S=fresh();draw();
-  window.orbProto={state:()=>S,step,reset,tune,lane}; // for tests
+  window.orbProto={state:()=>S,step,reset,tune,lane,tree}; // for tests
 })();
 
 /* ===== Red's Calming aura: playable lo-fi =====
