@@ -619,6 +619,13 @@ body.dragging,body.dragging *{cursor:grabbing!important;user-select:none}
 .cp-rules ul{margin:0;padding-left:18px}.cp-rules li{margin:3px 0}
 .cp-note{font-size:12.5px;color:var(--muted);margin:8px 0 0}
 
+/* Orb's Charge: playable lo-fi. The rest of its styles are shared with Crab's (.cproto) */
+.oproto .cp-bar b{background:#7B4FCF}
+.oproto .cp-grip{background:#7B4FCF}.oproto .cp-grip.on{background:#55329B}
+.oproto .cp-stage canvas:focus-visible{box-shadow:inset 0 0 0 4px #7B4FCF}
+.oproto .cp-tune input{accent-color:#7B4FCF}
+.oproto .cp-top{gap:10px 16px}
+
 /* ===== One look for the whole library, taken from the Medkit screen =====
    Baloo 2 for headings, Nunito for text, soft green page, white rounded cards, peach pill buttons, dark green for the chosen item. */
 :root{
@@ -2055,12 +2062,58 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
           <div class="tw"><table class="camp def"><thead><tr><th scope="col">Field</th><th scope="col">Definition</th></tr></thead><tbody><tr><th scope="row">Skills</th><td><span class="tbd">To be added</span></td></tr><tr><th scope="row">Direction</th><td>Decided on 25 Nov: hazards evolve in the later levels, and the skill tree is built around answering their new forms.</td></tr><tr><th scope="row">Bought with</th><td>Bobbles, which are used for the skill tree only. Whether they replace skill points is still open.</td></tr><tr><th scope="row">How it works</th><td>Skill points permanently upgrade the droid and can unlock abilities. See <a href="#droid-skilltree">Skill tree rules</a>.</td></tr></tbody></table></div></div><div class="lvpane" data-t="lofi"><p class="part">Tagging the crowd</p>
           <div class="fge"><button type="button" class="fgr" aria-label="Reload the Figma board: Tagging the crowd"><span aria-hidden="true">↻</span> Reload</button><iframe title="Figma board: Tagging the crowd" src="https://embed.figma.com/design/VxnDDZ0JOWff7Z7uleDt3O/Innovspur-UIUX-Flow?node-id=2583-16510&embed-host=share&page-selector=false&footer=false" loading="lazy" allowfullscreen></iframe></div>
           <ol><li>The player walks near a window to check the situation indoors.</li><li>The crowd is tagged once it is in range.</li><li><b>With Cam in the party:</b> the player walks forward until the crowd is in range, or uses Cam’s ability to tag the crowd and everything else in range.</li></ol></div></section>
-          <section class="lvpanel" data-lv="orb"><header class="lvhead"><h2>Orb</h2><p class="lvchips"><span class="lvchip">Droid</span><span class="lvchip">Ability defined</span></p></header><div class="lvtabs" role="tablist" aria-label="Sections of this level"><button type="button" role="tab" data-t="main" aria-selected="true">Profile</button><button type="button" role="tab" data-t="skill" aria-selected="false">Skill tree</button></div><div class="lvpane on" data-t="main"><div class="dhero" style="--dc:#7B4FCF"><div class="dhtx"><span class="dteam">Patchbots · Player droid</span><h3 class="dname">Orb</h3><p class="dtag">A dreamer, with their round head often in the clouds</p><p class="dwas"><b>Before the team</b>A projector <span class="tbd">Draft</span></p></div><span class="dport has"><img src="droid-orb.png" alt="" loading="lazy"></span></div><div class="dabil" style="--dc:#7B4FCF"><span class="dlab">Ability</span><h4>Charge</h4><p>An aimed charge. Orb winds up, then charges down a straight lane and destroys the first heavy obstacle it hits, leaving nothing behind. Anything else in the way is pushed or knocked aside.</p><dl><div><dt>Ability bar</dt><dd>A charge uses up part of the bar.</dd></div><div><dt>Activation</dt><dd>Press and hold to aim and wind up, release to charge</dd></div></dl></div>
+          <section class="lvpanel" data-lv="orb"><header class="lvhead"><h2>Orb</h2><p class="lvchips"><span class="lvchip">Droid</span><span class="lvchip">Ability defined</span></p></header><div class="lvtabs" role="tablist" aria-label="Sections of this level"><button type="button" role="tab" data-t="main" aria-selected="true">Profile</button><button type="button" role="tab" data-t="skill" aria-selected="false">Skill tree</button><button type="button" role="tab" data-t="lofi" aria-selected="false">Playable lo-fi</button></div><div class="lvpane on" data-t="main"><div class="dhero" style="--dc:#7B4FCF"><div class="dhtx"><span class="dteam">Patchbots · Player droid</span><h3 class="dname">Orb</h3><p class="dtag">A dreamer, with their round head often in the clouds</p><p class="dwas"><b>Before the team</b>A projector <span class="tbd">Draft</span></p></div><span class="dport has"><img src="droid-orb.png" alt="" loading="lazy"></span></div><div class="dabil" style="--dc:#7B4FCF"><span class="dlab">Ability</span><h4>Charge</h4><p>An aimed charge. Orb winds up, then charges down a straight lane and destroys the first heavy obstacle it hits, leaving nothing behind. Anything else in the way is pushed or knocked aside.</p><dl><div><dt>Ability bar</dt><dd>A charge uses up part of the bar.</dd></div><div><dt>Activation</dt><dd>Press and hold to aim and wind up, release to charge</dd></div></dl></div>
           <div class="dstory" style="--dc:#7B4FCF"><span class="dlab">Story</span><p>Orb is a dreamer, who longs for the world and all of the goodness that can come of it.</p><p>They see the world for what it can be, despite the way that it is.</p><p class="dnote"><span class="tbd">The board’s text for Orb is still a draft, so only its finished lines are shown.</span></p><p class="dnote">Story from the Characters &amp; Lore section of the InnovSpur FigJam board, read on 26 Nov 2026. Picture from the game’s character sprites in the Unity project.</p></div>
           <h3 class="dsub">Details</h3>
           <div class="tw"><table class="camp def"><thead><tr><th scope="col">Field</th><th scope="col">Definition</th></tr></thead><tbody><tr><th scope="row">What it destroys</th><td>Heavy obstacles only, not fixed ones. Nothing is left behind.</td></tr><tr><th scope="row">Anything else it hits</th><td>Is pushed or knocked away, not destroyed.</td></tr><tr><th scope="row">Property damage</th><td>Destroying an obstacle always counts as property damage.</td></tr><tr><th scope="row">Without Orb</th><td>No other droid can move a heavy obstacle, so the player takes another way around.</td></tr><tr><th scope="row">Status</th><td><span class="tbd">Decided on 26 Nov 2026, not yet in the GDD, which still has this ability as to be defined.</span></td></tr><tr><th scope="row">Still to define</th><td>How far Orb charges, how long the wind-up is and how much of the bar a charge uses. What being knocked away does to a victim or a crowd.</td></tr><tr><th scope="row">Skill tree</th><td>To be added later, on the <button type="button" class="tablink" data-lvtab="skill">Skill tree tab</button>.</td></tr><tr><th scope="row">Shared rules</th><td><a href="#droid-party">Party and switching</a>, <a href="#droid-actions">What every droid can do</a>, <a href="#droid-skilltree">Skill tree rules</a></td></tr><tr><th scope="row">Sources</th><td><span class="scs"><span class="sc" title="Game design document">GDD 3.4.1, 3.3</span></span></td></tr></tbody></table></div></div><div class="lvpane" data-t="skill"><p class="lvempty">Not designed yet. Orb’s skill tree will be added here later.</p>
           <h3 class="dsub">Skill tree candidates</h3><div class="tw"><table><thead><tr><th scope="col">Candidate</th><th scope="col">What it would do</th><th scope="col">Status</th></tr></thead><tbody><tr><th scope="row">Shield</th><td>Raise a shield. <span class="tbd">What it blocks is still to define.</span></td><td>Set aside for the skill tree on 26 Nov</td></tr><tr><th scope="row">Carry heavy</th><td>Move a heavy obstacle instead of destroying it.</td><td>A maybe</td></tr><tr><th scope="row">Rolling charge</th><td>Roll to build up speed, steer, and destroy a heavy obstacle on contact at full speed.</td><td>Being considered, not confirmed</td></tr><tr><th scope="row">Charge-up meter</th><td>Hold longer for a stronger charge: knock aside, destroy one heavy obstacle, or destroy every one in the lane.</td><td>Being considered, not confirmed</td></tr><tr><th scope="row">Ricochet</th><td>Bounce off a destroyed obstacle at an angle to hit a second one.</td><td>Being considered, not confirmed</td></tr></tbody></table></div>
-          <div class="tw"><table class="camp def"><thead><tr><th scope="col">Field</th><th scope="col">Definition</th></tr></thead><tbody><tr><th scope="row">Skills</th><td>Candidates are listed above. None is confirmed as a skill yet.</td></tr><tr><th scope="row">Direction</th><td>Decided on 25 Nov: hazards evolve in the later levels, and the skill tree is built around answering their new forms.</td></tr><tr><th scope="row">Bought with</th><td>Bobbles, which are used for the skill tree only. Whether they replace skill points is still open.</td></tr><tr><th scope="row">How it works</th><td>Skill points permanently upgrade the droid and can unlock abilities. See <a href="#droid-skilltree">Skill tree rules</a>.</td></tr></tbody></table></div></div></section>
+          <div class="tw"><table class="camp def"><thead><tr><th scope="col">Field</th><th scope="col">Definition</th></tr></thead><tbody><tr><th scope="row">Skills</th><td>Candidates are listed above. None is confirmed as a skill yet.</td></tr><tr><th scope="row">Direction</th><td>Decided on 25 Nov: hazards evolve in the later levels, and the skill tree is built around answering their new forms.</td></tr><tr><th scope="row">Bought with</th><td>Bobbles, which are used for the skill tree only. Whether they replace skill points is still open.</td></tr><tr><th scope="row">How it works</th><td>Skill points permanently upgrade the droid and can unlock abilities. See <a href="#droid-skilltree">Skill tree rules</a>.</td></tr></tbody></table></div></div><div class="lvpane" data-t="lofi">
+<div class="cproto oproto" id="orbProto">
+  <p class="lead">A test room for Orb’s Charge. The doorway is blocked by a heavy table. Break through it, or take the long way around, and reach the survivor. This is a flat sketch to try the rules and the numbers, not the game’s look or physics.</p>
+  <div class="cp-top">
+    <div class="cp-seg" role="group" aria-label="Droid">
+      <button type="button" data-mode="orb" aria-pressed="true">Orb</button>
+      <button type="button" data-mode="other" aria-pressed="false">Another droid</button>
+    </div>
+    <div class="cp-bar" aria-hidden="true"><span>Ability bar</span><i><b id="opBar"></b></i></div>
+    <div class="cp-time"><span>Time</span><b id="opTime">0.0s</b></div>
+    <div class="cp-time"><span>Property damage</span><b id="opDmg">0</b></div>
+    <div class="cp-time"><span>People knocked</span><b id="opPpl">0</b></div>
+    <button type="button" class="cp-reset" id="opReset">Reset room</button>
+  </div>
+  <div class="cp-stage">
+    <canvas id="opCanvas" width="760" height="460" tabindex="0" role="img" aria-label="Test room. Orb starts on the left. A doorway in the middle wall is blocked by a heavy long table, with a chair and a bystander in front of it. A longer route runs along the bottom. A survivor waits on the right."></canvas>
+    <button type="button" class="cp-grip" id="opGrip">Hold to charge</button>
+  </div>
+  <p class="cp-msg" id="opMsg" aria-live="polite">Click the room, then move with the arrow keys or WASD. Hold Space to aim and wind up, then release to charge.</p>
+  <div class="cp-legend">
+    <span><i style="background:#8C8F9C"></i>Heavy: destroyed by the charge</span>
+    <span><i style="background:#4A4F5C"></i>Fixed: stops the charge</span>
+    <span><i style="background:#E9A15B"></i>Medium and <i style="background:#F3D58A;margin-left:4px"></i>light: knocked aside</span>
+    <span><i style="background:#F2B8C6;border-radius:50%"></i>Bystander: knocked aside</span>
+    <span><i style="background:#9EDDC4"></i>Survivor</span>
+  </div>
+  <div class="cp-tune">
+    <h4>Numbers still to define</h4>
+    <label>Wind-up time <output id="opO1"></output><input type="range" id="opS1" min="2" max="20" value="10"></label>
+    <label>Charge distance <output id="opO2"></output><input type="range" id="opS2" min="120" max="420" step="10" value="260"></label>
+    <label>Bar used by a charge <output id="opO3"></output><input type="range" id="opS3" min="10" max="100" step="5" value="50"></label>
+    <label>Bar recharge <output id="opO4"></output><input type="range" id="opS4" min="2" max="60" value="12"></label>
+  </div>
+  <div class="cp-rules">
+    <h4>What this room follows</h4>
+    <ul>
+      <li><b>Orb:</b> hold to plant, aim down a straight lane and wind up. Release once the wind-up is full to charge. Releasing early cancels it and uses no bar.</li>
+      <li>The first heavy obstacle the charge hits is destroyed and leaves nothing. Orb stops there for a moment.</li>
+      <li>A fixed obstacle or a wall stops the charge and is not destroyed.</li>
+      <li>Anything else in the lane, such as a chair or a bystander, is knocked aside and Orb keeps going.</li>
+      <li>Each destroyed obstacle adds 1 to property damage. <span class="tbd">What being knocked aside does to a person is still to define, so this room only counts it.</span></li>
+      <li><b>Another droid:</b> has no charge and cannot move the heavy table, so it has to take the long way around.</li>
+    </ul>
+    <p class="cp-note">On a phone: drag on the room to move and to aim, and hold the “Hold to charge” button.</p>
+  </div>
+</div>
+</div></section>
           <section class="lvpanel" data-lv="bee"><header class="lvhead"><h2>Bee</h2><p class="lvchips"><span class="lvchip">Droid</span><span class="lvchip">Ability defined</span><span class="lvchip">In Bypass Firewall</span></p></header><div class="lvtabs" role="tablist" aria-label="Sections of this level"><button type="button" role="tab" data-t="main" aria-selected="true">Profile</button><button type="button" role="tab" data-t="skill" aria-selected="false">Skill tree</button><button type="button" role="tab" data-t="lofi" aria-selected="false">Lo-fi</button></div><div class="lvpane on" data-t="main"><div class="dhero" style="--dc:#D9A514"><div class="dhtx"><span class="dteam">Patchbots · Player droid</span><h3 class="dname">Bee</h3><p class="dtag">The no-nonsense go-getter of the group</p><p class="dwas"><b>Before the team</b>A portable apiary, built to shelter animals caught in climate disasters</p></div><span class="dport has"><img src="droid-bee.png" alt="" loading="lazy"></span></div><div class="dabil" style="--dc:#D9A514"><span class="dlab">Ability</span><h4>Ability</h4><p>A swarm in a radius around Bee that pushes past and disperses crowds.</p><dl><div><dt>Ability bar</dt><dd>Drains while active. Recharges faster if the bar was not fully emptied, and slower if it was.</dd></div><div><dt>Activation</dt><dd>Tap to toggle on or off</dd></div></dl></div>
           <div class="dstory" style="--dc:#D9A514"><span class="dlab">Story</span><p>The no-nonsense go-getter of the group, Bee makes sure the Patchbots are always on track towards their shared dream.</p><p>Bee is a portable apiary. They were part of a line of droids designed to evacuate and temporarily shelter animals that get caught within climate disasters. However, Bee ended up forming an unusual connection with the colony, and now they’re sticking together like honey through thick and thin.</p><p>Bee is an avatar of justice, especially in matters of trade. Despite being more stand-offish in nature, they strongly believe in community living and symbiotic relationships between all species living together in harmony.</p><p>Now, Bee carries their hive of friends everywhere the team goes, saving lives no matter how big or small, while spreading their pragmatic philosophy to the world.</p><p class="dnote">Story from the Characters &amp; Lore section of the InnovSpur FigJam board, read on 26 Nov 2026. Picture from the game’s character sprites in the Unity project.</p></div>
           <h3 class="dsub">Details</h3>
@@ -3014,6 +3067,185 @@ document.querySelectorAll(".fgr").forEach(b=>{b.onclick=()=>{
     const sl=el(s),out=el(o),set=()=>{tune[k]=+sl.value;out.textContent=sl.value+u};sl.oninput=set;set()});
   S=fresh();draw();
   window.crabProto={state:()=>S,step,keys,reset,setMode:m=>{mode=m;reset()},tune}; // for tests
+})();
+
+/* ===== Orb's Charge: playable lo-fi =====
+   A top-down room on a canvas. World units are canvas pixels (760 x 460). */
+(function(){
+  const root=document.getElementById("orbProto");if(!root)return;
+  const cv=root.querySelector("#opCanvas"),g=cv.getContext("2d"),W=cv.width,H=cv.height;
+  const el=id=>root.querySelector("#"+id);
+  const SPEED=150,R=17,CHARGE_SPEED=560,RECOVER=.35;   // walking speed, droid radius, charge speed (px/s), pause after a hit (s)
+  const COL={light:"#F3D58A",medium:"#E9A15B",heavy:"#8C8F9C",fixed:"#4A4F5C",person:"#F2B8C6"};
+  const tune={windup:1.0,dist:260,cost:50,recharge:12};  // seconds, pixels, % of the bar, % of the bar per second
+  let mode="orb",S;
+
+  /* the room: walls, things in it, the droid and the goal */
+  function fresh(){
+    return {
+      droid:{x:110,y:230},face:{x:1,y:0},bar:100,t:0,done:false,started:false,
+      aiming:false,wind:0,charge:null,recover:0,flash:0,dmg:0,ppl:0,
+      walls:[{x:0,y:0,w:W,h:14},{x:0,y:H-14,w:W,h:14},{x:0,y:0,w:14,h:H},{x:W-14,y:0,w:14,h:H},
+             {x:372,y:14,w:22,h:156},{x:372,y:290,w:22,h:104},      // middle wall, with the doorway and a gap at the bottom
+             {x:120,y:380,w:252,h:14},{x:394,y:380,w:216,h:14}],   // the long way around runs under these
+      goal:{x:600,y:150,r:22},
+      objs:[
+        {n:"Long table",k:"heavy",x:360,y:172,w:46,h:116,vx:0,vy:0},
+        {n:"Chair",k:"medium",x:290,y:206,w:36,h:36,vx:0,vy:0},
+        {n:"Bystander",k:"person",x:318,y:256,w:24,h:24,vx:0,vy:0},
+        {n:"Crate",k:"heavy",x:500,y:210,w:50,h:50,vx:0,vy:0},
+        {n:"Hawker stall",k:"fixed",x:440,y:60,w:60,h:120,vx:0,vy:0},
+        {n:"Tool box",k:"light",x:200,y:110,w:22,h:22,vx:0,vy:0}]
+    };
+  }
+  const hit=(a,b)=>a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;
+  const box=d=>({x:d.x-R,y:d.y-R,w:R*2,h:R*2});
+  const blocked=(r,skip)=>S.walls.some(w=>hit(r,w))||S.objs.some(o=>o!==skip&&hit(r,o));
+  /* walking: an object knocked onto the droid's own spot does not trap it */
+  const walkBlocked=nd=>{const now=box(S.droid),r=box(nd);return S.walls.some(w=>hit(r,w))||S.objs.some(o=>hit(r,o)&&!hit(now,o))};
+
+  /* input: keys while the room has focus, a drag on the room as a stick, and the charge button */
+  const keys={};let stick=null,btnHeld=false;
+  cv.addEventListener("keydown",e=>{const k=e.key.toLowerCase();
+    if(["arrowup","arrowdown","arrowleft","arrowright"," ","w","a","s","d"].includes(k)){keys[k]=true;e.preventDefault()}});
+  cv.addEventListener("keyup",e=>{keys[e.key.toLowerCase()]=false});
+  cv.addEventListener("blur",()=>{for(const k in keys)keys[k]=false});
+  cv.addEventListener("pointerdown",e=>{cv.focus();stick={id:e.pointerId,x:e.clientX,y:e.clientY,dx:0,dy:0};cv.setPointerCapture(e.pointerId)});
+  cv.addEventListener("pointermove",e=>{if(stick&&e.pointerId===stick.id){stick.dx=e.clientX-stick.x;stick.dy=e.clientY-stick.y}});
+  const endStick=e=>{if(stick&&e.pointerId===stick.id)stick=null};
+  cv.addEventListener("pointerup",endStick);cv.addEventListener("pointercancel",endStick);
+  const gb=el("opGrip");
+  gb.addEventListener("pointerdown",e=>{btnHeld=true;gb.classList.add("on");gb.setPointerCapture(e.pointerId);e.preventDefault()});
+  const endBtn=()=>{btnHeld=false;gb.classList.remove("on")};
+  gb.addEventListener("pointerup",endBtn);gb.addEventListener("pointercancel",endBtn);
+  function wish(){
+    let x=(keys.arrowright||keys.d?1:0)-(keys.arrowleft||keys.a?1:0),y=(keys.arrowdown||keys.s?1:0)-(keys.arrowup||keys.w?1:0);
+    if(stick&&Math.hypot(stick.dx,stick.dy)>8){x=stick.dx;y=stick.dy}
+    const m=Math.hypot(x,y);return m?{x:x/m,y:y/m}:{x:0,y:0};
+  }
+  function say(t,c){const m=el("opMsg");if(m.textContent!==t)m.textContent=t;m.className="cp-msg"+(c?" "+c:"")}
+
+  /* the lane a charge would take from where Orb stands: how far it gets, and what stops it */
+  function lane(){
+    const d=S.droid,f=S.face;let stop=null,len=tune.dist;
+    for(let s=4;s<=tune.dist;s+=4){
+      const r=box({x:d.x+f.x*s,y:d.y+f.y*s});
+      if(S.walls.some(w=>hit(r,w))){stop={k:"wall"};len=s-4;break}
+      const o=S.objs.find(o=>(o.k==="heavy"||o.k==="fixed")&&hit(r,o));
+      if(o){stop=o;len=s;break}
+    }
+    return {len,stop};
+  }
+
+  /* knock a light or medium object, or a person, out of the lane */
+  function knock(o){
+    const f=S.face,d=S.droid,side=((o.x+o.w/2-d.x)*-f.y+(o.y+o.h/2-d.y)*f.x)>=0?1:-1;
+    o.vx=f.x*230+-f.y*side*210;o.vy=f.y*230+f.x*side*210;o.hitBy=S.charge;
+    if(o.k==="person"){S.ppl++;say("The bystander was knocked aside.","bad")}
+  }
+  function slide(dt){
+    for(const o of S.objs){
+      if(!o.vx&&!o.vy)continue;
+      for(const ax of ["x","y"]){const v=ax==="x"?o.vx:o.vy,n={x:o.x,y:o.y,w:o.w,h:o.h};n[ax]+=v*dt;
+        if(blocked(n,o)){if(ax==="x")o.vx=0;else o.vy=0}else o[ax]=n[ax]}
+      const k=Math.pow(.02,dt);o.vx*=k;o.vy*=k;if(Math.hypot(o.vx,o.vy)<8){o.vx=o.vy=0}
+    }
+  }
+
+  /* one step of the room */
+  function step(dt){
+    if(S.done)return;
+    const want=wish(),holding=(keys[" "]||btnHeld),d=S.droid;
+    if(want.x||want.y||holding)S.started=true;
+    if(S.started)S.t+=dt;
+    if(S.flash>0)S.flash-=dt;
+    slide(dt);
+    if(S.charge){ // charging: move along the lane in small steps
+      let left=CHARGE_SPEED*dt;
+      while(left>0&&S.charge){
+        const s=Math.min(4,left);left-=s;
+        const nd={x:d.x+S.face.x*s,y:d.y+S.face.y*s},nb=box(nd);
+        if(S.walls.some(w=>hit(nb,w))){endCharge("Orb hit a wall and stopped.");break}
+        const o=S.objs.find(o=>hit(nb,o));
+        if(o){
+          if(o.k==="heavy"){S.objs.splice(S.objs.indexOf(o),1);S.dmg++;S.flash=.25;S.boom={x:o.x+o.w/2,y:o.y+o.h/2,t:.35};endCharge("The "+o.n.toLowerCase()+" was destroyed. Nothing is left, and it counts as property damage.","good");break}
+          if(o.k==="fixed"){endCharge("The "+o.n.toLowerCase()+" is fixed. It stopped the charge and was not destroyed.","bad");break}
+          if(o.hitBy!==S.charge)knock(o);
+        }
+        d.x=nd.x;d.y=nd.y;S.charge.left-=s;if(S.charge.left<=0)endCharge("The charge ran its full distance.");
+      }
+    }else if(S.recover>0){S.recover-=dt}
+    else if(mode==="orb"&&holding){ // planted: aim and wind up
+      if(!S.aiming){if(S.bar<tune.cost){say("Not enough bar for a charge yet.","bad")}else{S.aiming=true;S.wind=0;say("Aiming. Hold until the ring is full, then release to charge.")}}
+      if(S.aiming){if(want.x||want.y)S.face=want;S.wind=Math.min(1,S.wind+dt/tune.windup)}
+    }else{
+      if(S.aiming){ // released
+        S.aiming=false;
+        if(S.wind>=1){S.bar-=tune.cost;S.charge={left:tune.dist};say("Charge!")}
+        else say("Released early, so the charge was cancelled. No bar was used.");
+        S.wind=0;
+      }else{
+        for(const ax of ["x","y"]){const mv=want[ax]*SPEED*dt;if(!mv)continue;const nd={x:d.x,y:d.y};nd[ax]+=mv;if(!walkBlocked(nd))d[ax]=nd[ax]}
+        if(want.x||want.y)S.face=want;
+      }
+    }
+    if(!S.aiming&&!S.charge)S.bar=Math.min(100,S.bar+tune.recharge*dt);
+    if(S.boom){S.boom.t-=dt;if(S.boom.t<=0)S.boom=null}
+    if(Math.hypot(d.x-S.goal.x,d.y-S.goal.y)<S.goal.r+R){S.done=true;S.charge=null;
+      say("Reached the survivor in "+S.t.toFixed(1)+"s as "+(mode==="orb"?"Orb":"another droid")+", with "+S.dmg+" property damage and "+S.ppl+" people knocked. Reset the room to try again.","good")}
+  }
+  function endCharge(msg,c){S.charge=null;S.recover=RECOVER;say(msg,c)}
+
+  /* drawing */
+  function rr(x,y,w,h,r){g.beginPath();g.roundRect(x,y,w,h,r);g.fill()}
+  function draw(){
+    g.clearRect(0,0,W,H);g.fillStyle="#F4F1E6";g.fillRect(0,0,W,H);
+    g.strokeStyle="rgba(34,48,43,.06)";g.lineWidth=1;g.beginPath();
+    for(let x=14;x<W;x+=40){g.moveTo(x,14);g.lineTo(x,H-14)}for(let y=14;y<H;y+=40){g.moveTo(14,y);g.lineTo(W-14,y)}g.stroke();
+    g.fillStyle="rgba(34,48,43,.5)";g.font="700 11px system-ui,sans-serif";g.textAlign="center";g.fillText("The long way around",250,424);
+    g.fillStyle="rgba(158,221,196,.35)";g.beginPath();g.arc(S.goal.x,S.goal.y,S.goal.r+16,0,7);g.fill();
+    g.fillStyle="#9EDDC4";g.beginPath();g.arc(S.goal.x,S.goal.y,S.goal.r-6,0,7);g.fill();
+    g.fillStyle="#22302B";g.font="700 12px system-ui,sans-serif";g.fillText("Survivor",S.goal.x,S.goal.y-S.goal.r-14);
+    const d=S.droid,L=S.aiming?lane():null;
+    if(L){ // the lane, and what it will hit first
+      g.save();g.translate(d.x,d.y);g.rotate(Math.atan2(S.face.y,S.face.x));
+      g.fillStyle="rgba(123,79,207,.16)";g.fillRect(0,-R,L.len+R,R*2);
+      g.strokeStyle="rgba(123,79,207,.8)";g.lineWidth=2;g.setLineDash([8,6]);g.strokeRect(0,-R,L.len+R,R*2);g.setLineDash([]);
+      g.fillStyle="#7B4FCF";g.beginPath();g.moveTo(L.len+R+14,0);g.lineTo(L.len+R-2,-10);g.lineTo(L.len+R-2,10);g.fill();g.restore();
+    }
+    g.fillStyle="#22302B";for(const w of S.walls)g.fillRect(w.x,w.y,w.w,w.h);
+    for(const o of S.objs){
+      g.fillStyle=COL[o.k];
+      if(o.k==="person"){g.beginPath();g.arc(o.x+o.w/2,o.y+o.h/2,o.w/2,0,7);g.fill();g.strokeStyle="rgba(0,0,0,.4)";g.lineWidth=1.5;g.stroke();continue}
+      rr(o.x,o.y,o.w,o.h,6);
+      const target=L&&L.stop===o;
+      g.lineWidth=target?4:1.5;g.strokeStyle=target?(o.k==="heavy"?"#7B4FCF":"#B3342B"):"rgba(0,0,0,.3)";
+      g.beginPath();g.roundRect(o.x,o.y,o.w,o.h,6);g.stroke();
+      if(o.h>=100||o.w>=100){g.save();g.translate(o.x+o.w/2,o.y+o.h/2);if(o.h>o.w)g.rotate(-Math.PI/2);g.fillStyle=o.k==="fixed"?"#fff":"#22302B";g.font="700 11px system-ui,sans-serif";g.fillText(o.n,0,4);g.restore()}
+    }
+    if(S.boom){const a=S.boom.t/.35;g.strokeStyle="rgba(123,79,207,"+a+")";g.lineWidth=5;g.beginPath();g.arc(S.boom.x,S.boom.y,(1-a)*70+10,0,7);g.stroke()}
+    g.fillStyle=mode==="orb"?"#7B4FCF":"#5B7C99";g.beginPath();g.arc(d.x,d.y,R,0,7);g.fill();
+    g.strokeStyle="#22302B";g.lineWidth=2.5;g.beginPath();g.arc(d.x,d.y,R,0,7);g.stroke();
+    g.fillStyle="#fff";g.font="800 13px system-ui,sans-serif";g.fillText(mode==="orb"?"O":"D",d.x,d.y+5);
+    if(S.aiming){g.strokeStyle=S.wind>=1?"#2E8B57":"#EE8A2B";g.lineWidth=5;g.beginPath();g.arc(d.x,d.y,R+7,-Math.PI/2,-Math.PI/2+Math.PI*2*S.wind);g.stroke()}
+    const b=el("opBar");b.style.width=S.bar.toFixed(1)+"%";b.classList.toggle("low",S.bar<tune.cost);
+    el("opTime").textContent=S.t.toFixed(1)+"s";el("opDmg").textContent=S.dmg;el("opPpl").textContent=S.ppl;
+  }
+
+  /* the loop runs only while the room is on screen */
+  let raf=0,last=0,visible=false;
+  function frame(ts){raf=0;if(!visible)return;const dt=Math.min(.05,(ts-last)/1000||0);last=ts;step(dt);draw();raf=requestAnimationFrame(frame)}
+  new IntersectionObserver(es=>{visible=es[0].isIntersecting;if(visible&&!raf){last=performance.now();raf=requestAnimationFrame(frame)}}).observe(cv);
+
+  /* controls around the room */
+  function reset(){S=fresh();say(mode==="orb"?"Orb: hold to aim and wind up, release to charge through the heavy table.":"Another droid: it cannot move the heavy table, so it has to take the long way around.");draw()}
+  el("opReset").onclick=()=>{reset();cv.focus()};
+  root.querySelectorAll(".cp-seg button").forEach(b=>b.onclick=()=>{mode=b.dataset.mode;root.querySelectorAll(".cp-seg button").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));reset()});
+  [["opS1","opO1",v=>{tune.windup=v/10;return (v/10).toFixed(1)+"s"}],["opS2","opO2",v=>{tune.dist=v;return v+" px"}],
+   ["opS3","opO3",v=>{tune.cost=v;return v+"% of the bar"}],["opS4","opO4",v=>{tune.recharge=v;return v+"% a second"}]].forEach(([s,o,f])=>{
+    const sl=el(s),out=el(o),set=()=>{out.textContent=f(+sl.value)};sl.oninput=set;set()});
+  S=fresh();draw();
+  window.orbProto={state:()=>S,step,reset,tune,lane}; // for tests
 })();
 fullReset();fillDocs();paintShell(false);fromHash();
 </script>
