@@ -2238,6 +2238,7 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
     <label>Bar recharge <output id="rpO4"></output><input type="range" id="rpS4" min="2" max="40" value="10"></label>
     <label>Calm minigame, another droid <output id="rpO5"></output><input type="range" id="rpS5" min="10" max="100" value="40"></label>
     <label>An event happens <output id="rpO6"></output><input type="range" id="rpS6" min="0" max="30" value="12"></label>
+    <label>An event sets an interaction back by <output id="rpO7"></output><input type="range" id="rpS7" min="0" max="100" step="10" value="50"></label>
     <label class="rp-check"><input type="checkbox" id="rpShow"> Show the hidden agitation meters (for testing only: the player never sees them)</label>
   </div>
   <div class="cp-rules">
@@ -2248,6 +2249,7 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
       <li>A victim can only be diagnosed once calm. <span class="tbd">Diagnosis is a short hold here, standing in for the diagnosis minigames.</span></li>
       <li>Each agitated victim has a hidden meter. The player never sees it, and reads it from how much the victim shakes.</li>
       <li>When an event happens, every calm victim who is not diagnosed yet becomes agitated again. <span class="tbd">Which events count is still to define, so this room uses a timer and a button. Whether a diagnosed victim can become agitated again is also still to define, so here they stay as they are.</span></li>
+      <li><b>An event interrupts a droid.</b> If an event happens while a droid is in the middle of the calm minigame, a diagnosis or CPR, that progress is set back. <span class="tbd">Stated on 27 Nov as “reset or reduce”. How much is still to choose, so there is a slider for it: 50% here, and 100% is a full reset.</span></li>
       <li><b>Another droid:</b> has no aura. It calms one victim at a time through a minigame. <span class="tbd">The form of the minigame is still to define, so here it is a longer hold next to the victim.</span></li>
       <li><b>Super agitated victim:</b> runs about the room and crashes into the walls and the furniture. Every hit injures them, shown by the bar over their head, and at zero they collapse. Red’s aura does not hold them. Any droid can catch one by getting next to them and holding E, which stops them and calms them through the minigame. <span class="tbd">Stated on 26 Nov. What makes a victim super agitated, how much a hit hurts and how they are stopped without a skill are still to define, so those parts are stand-ins.</span></li>
       <li><b>Unconscious victim who is not breathing:</b> needs CPR before anything else. <span class="tbd">Here CPR is a long hold next to them, standing in for the CPR minigame.</span></li>
@@ -3945,7 +3947,7 @@ function protoLine(t,onChange){
   // speed with a full carry (x), speed walking someone out (x), vitality lost per second by anyone not at the ambulance, vitality lost at a bump,
   // vitality lost at each jolt on rough ground, seconds between those jolts, seconds before another bump counts
   const RED="#E2513C";
-  const tune={radius:110,settle:3.0,drain:15,recharge:10,mini:4.0,event:12};  // pixels, seconds, % of the bar per second (x2), seconds, seconds (0 = off)
+  const tune={radius:110,settle:3.0,drain:15,recharge:10,mini:4.0,event:12,knock:.5};  // pixels, seconds, % of the bar per second (x2), seconds, seconds (0 = off), share of an interaction's progress an event takes away (1 = reset)
   let mode="red",room="plain",show=false,S;
   /* the skill tree is linear: each upgrade includes the ones before it. They only apply to Red */
   const ORDER=["wide","cradle","steady","tranq","pulse"],NAME={wide:"Wider aura",cradle:"Cradle carry",steady:"Steadying aura",tranq:"Tranquilizer",pulse:"Reviving pulse"};
@@ -4042,6 +4044,10 @@ function protoLine(t,onChange){
   function event(){
     if(S.done)return;
     let n=0,kept=0;S.ev++;S.flash=.5;S.evT=tune.event;S.started=true;
+    // whatever a droid is in the middle of is set back: the calm minigame, a diagnosis, CPR
+    let cut="";const keep=1-tune.knock;
+    for(const v of S.victims){if(v.diag)continue;const was=v.cp||v.cpr||v.prog;if(was>0&&tune.knock>0){v.cp*=keep;v.cpr*=keep;v.prog*=keep;v.jolt=.6;
+      cut=tune.knock>=1?" It broke off what the droid was doing, which starts again.":" It set back what the droid was doing."}}
     const c=S.carry;let fell="";
     if(c&&c.type==="agitated"&&!c.sedated){
       if(cradle()){c.shield=.9;fell=" The cradle kept victim "+c.n+" calm."}
@@ -4051,7 +4057,7 @@ function protoLine(t,onChange){
       if(v.calm&&sk("steady")&&S.aura&&dist(v,S.droid)<radius()){v.shield=.9;kept++;continue}
       if(v.calm)n++;v.calm=false;v.m=100;v.prog=0;v.bang=.9;
     }
-    say("An event happened. "+(n?n+" calm victim"+(n>1?"s are":" is")+" agitated again.":kept?"":fell?"":"No calm victim was waiting to be diagnosed.")+(kept?" The Steadying aura kept "+kept+" calm.":"")+fell,n||(fell&&!S.carry)?"bad":kept||fell?"good":"");
+    say(("An event happened. "+(n?n+" calm victim"+(n>1?"s are":" is")+" agitated again.":kept?"":fell||cut?"":"No calm victim was waiting to be diagnosed.")+(kept?" The Steadying aura kept "+kept+" calm.":"")+fell+cut).replace("  "," "),n||cut||(fell&&!S.carry)?"bad":kept||fell?"good":"");
   }
   function worse(v,why){if(v.late)return;v.late=true;S.late++;say(why,"bad")}
 
@@ -4268,7 +4274,8 @@ function protoLine(t,onChange){
       if(run){g.fillStyle="#fff";g.fillRect(v.x-20,v.y-VR-16,40,6);g.fillStyle=v.cond<35?"#B3342B":"#2E8B57";g.fillRect(v.x-20,v.y-VR-16,40*v.cond/100,6);g.strokeStyle="#22302B";g.lineWidth=1;g.strokeRect(v.x-20,v.y-VR-16,40,6);
         if(v.sed>0){g.strokeStyle="#5B7C99";g.lineWidth=4;g.beginPath();g.arc(v.x,v.y,VR+6,-Math.PI/2,-Math.PI/2+Math.PI*2*Math.min(1,v.sed/SEDATE));g.stroke()}}
       const p=v.prog||v.cp||v.cpr;
-      if(p>0){g.strokeStyle=v.prog?"#2E8B57":"#EE8A2B";g.lineWidth=5;g.beginPath();g.arc(v.x,v.y,VR+6,-Math.PI/2,-Math.PI/2+Math.PI*2*p);g.stroke()}
+      if(v.jolt>0)v.jolt-=1/60;
+      if(p>0){g.strokeStyle=v.jolt>0?"#B3342B":v.prog?"#2E8B57":"#EE8A2B";g.lineWidth=5;g.beginPath();g.arc(v.x,v.y,VR+6,-Math.PI/2,-Math.PI/2+Math.PI*2*p);g.stroke()}
       if(show&&(v.type==="agitated"||v.type==="super")&&!v.diag){ // the hidden meter, for testing only
         const my=run?32:22;g.fillStyle="#fff";g.fillRect(v.x-20,v.y-VR-my,40,6);g.fillStyle="#B3342B";g.fillRect(v.x-20,v.y-VR-my,40*v.m/100,6);
         g.strokeStyle="#22302B";g.lineWidth=1;g.strokeRect(v.x-20,v.y-VR-my,40,6)}
@@ -4321,7 +4328,8 @@ function protoLine(t,onChange){
   [["rpS1","rpO1",v=>{tune.radius=v;return v+" px"}],["rpS2","rpO2",v=>{tune.settle=v/10;return (v/10).toFixed(1)+"s"}],
    ["rpS3","rpO3",v=>{tune.drain=v;return v+"% a second"}],["rpS4","rpO4",v=>{tune.recharge=v;return v+"% a second"}],
    ["rpS5","rpO5",v=>{tune.mini=v/10;return (v/10).toFixed(1)+"s"}],
-   ["rpS6","rpO6",v=>{tune.event=v;if(S)S.evT=v;return v?"every "+v+"s":"only by the button"}]].forEach(([s,o,f])=>{
+   ["rpS6","rpO6",v=>{tune.event=v;if(S)S.evT=v;return v?"every "+v+"s":"only by the button"}],
+   ["rpS7","rpO7",v=>{tune.knock=v/100;return v>=100?"all of it: reset":v?v+"%":"nothing"}]].forEach(([s,o,f])=>{
     const sl=el(s),out=el(o),set=()=>{out.textContent=f(+sl.value)};sl.oninput=set;set()});
   S=fresh();draw();
   window.redProto={state:()=>S,step,reset,tune,event,toggleAura,fire,carry,tree,keys,setRoom:r=>{const b=root.querySelector('.cp-seg button[data-room="'+r+'"]');if(b)b.click()}}; // for tests
