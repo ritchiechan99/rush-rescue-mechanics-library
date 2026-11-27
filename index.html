@@ -2793,7 +2793,8 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
   <div class="cp-legend">
     <span><i style="background:#F25C2A"></i>Fire: Fish</span>
     <span><i style="background:#8C8F9C"></i>Heavy crate: Orb</span>
-    <span><i style="background:#E9A15B"></i>Rubble: Crab</span>
+    <span><i style="background:#F3D58A"></i>Box, light</span>
+    <span><i style="background:#E9A15B"></i>Crate, medium: Crab</span>
     <span><i style="background:#F2B8C6;border-radius:50%"></i>Crowd: Bee</span>
     <span><i style="background:#D9483B;border-radius:50%"></i>Agitated victim: Red</span>
     <span><i style="background:#3B4A45"></i>Smoke and a locked shutter: Cam</span>
@@ -2813,6 +2814,9 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
       <li><b>Bee:</b> a crowd stands in the doorway. Press Space or the Swarm button, and people inside the swarm walk away from Bee. Q drops a hive, E switches to Lead and F draws a swarm wall, once they are upgraded. Any other droid can honk with E, or squeeze through slowly.</li>
       <li><b>Red:</b> an agitated victim blocks the doorway. Press F for the aura. A victim inside it settles over a few seconds, then steps aside. Q aims the tranquilizer, once it is upgraded. Any other droid can stand next to the victim and hold E to calm them by hand.</li>
       <li><b>Cam:</b> the room is full of smoke, drawn as in Cam’s room: dark where nothing has been seen yet. The shutter needs a key card that lies somewhere in it. Press F for the highlight. T is the Tracker, Q the Infrared pulse and R Replay, once they are upgraded. Any droid can find the card by walking until it comes into view. Cam sees a little further.</li>
+      <li><b>Clutter.</b> Boxes (light) and crates (medium) lie about: a row in front of most doorways, a ring around the extinguisher and the key card, a second row behind Crab’s crates, and some loose ones. Crab carries a box and drags a crate out of the way. Any other droid has to push them: a box at three quarters of walking speed, a crate at half, and slower for each further one in the line. They also stop Fish’s stream.</li>
+      <li><b>Stumbling.</b> A droid that bumps into a box or a crate has a 10% chance to stumble and is off its feet for a moment. While it keeps pushing, the chance comes again every second. An object Crab is holding does not count.</li>
+      <li><b>Fire spreads.</b> As in Fish’s room, a fire that is left burning spreads to the spot beside it every few seconds, once the droid has first moved.</li>
       <li><b>The party does not have to fit.</b> The four droids and the four doorways are picked separately, so a doorway may be for a droid that was not brought. Every doorway can still be passed by any droid, the way “another droid” can in that droid’s own room, only more slowly: walk into the crates to push them at half speed, or into the heavy crate to push it slowly. Carry the extinguisher to the fire and hold E. Squeeze through the crowd slowly, or honk with E. Hold E next to the victim to calm them by hand. Search the smoke for the card. Orb’s charge also knocks crates and people aside.</li>
       <li><span class="tbd">Asked for on 27 Nov 2026. What fills each doorway, the way the floor is cut up, the crowd leaving once it is through the doorway and a victim who steps aside when calm are stand-ins. In the smoke room only the key card is hidden by the smoke: crates, people and fires that happen to be in it still show. Asked for on 27 Nov and not built yet: doorways that chain like an escape room, for example a fire whose extinguisher is blocked by something Crab has to move.</span></li>
     </ul>
@@ -6136,13 +6140,13 @@ window.FishDroid=function(Ho){
   // c is the droid’s colour on the dark HUD. f and l are its body colour and letter, as its own room draws it
   const DR={red:{n:"Red",c:"#FF8A75",f:"#E2513C",l:"R"},cam:{n:"Cam",c:"#6FD3C2",f:"#3FA796",l:"C"},crab:{n:"Crab",c:"#FFB066",f:"#EE8A2B",l:"C"},orb:{n:"Orb",c:"#B79BF2",f:"#7B4FCF",l:"O"},fish:{n:"Fish",c:"#7CC4EC",f:"#2F8FC4",l:"F"},bee:{n:"Bee",c:"#F2CB57",f:"#D9A514",l:"B",ink:"#22302B"}};
   const ALL=Object.keys(DR),WT=12,GAP=36,SPEED=150,PR=8,VR=12,FR=13;
-  const COL={medium:"#E9A15B",heavy:"#8C8F9C"},VB=22;   // VB: how close a droid gets to an agitated victim. Near enough to reach them by hand
+  const COL={light:"#F3D58A",medium:"#E9A15B",heavy:"#8C8F9C"},VB=22,STUMBLE={chance:.1,time:.7,every:1};   // STUMBLE: the chance at each bump into a light or medium object, how long the droid is off its feet (s), and how often it is rolled again while the droid keeps pushing (s)   // VB: how close a droid gets to an agitated victim. Near enough to reach them by hand
  let R=15;   // the active droid's radius: each droid keeps the size it has in its own room
   // every number below is the one the droid's own room uses
   const T={
     crab:{reach:16,drag:20,recharge:18,dragSpeed:.55,min:15},
     orb:{windup:1.0,dist:260,cost:30,recharge:12,stun:1.5,slow:.45,speed:560,recover:.35},
-    push:{medium:.5},aim:{cone:.42,turn:5}};
+    push:{light:.75,medium:.5},aim:{cone:.42,turn:5}};
   function rng(seed){let a=seed>>>0;return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
   let seed=1+Math.floor(Math.random()*999999),other=true,S=null,stick={x:0,y:0},qHeld=false,eHeld=false,qTap=false,eTap=false,aTap=false,mouse=null,qDrag=null;
   const keys={},io={mouse:null};
@@ -6181,7 +6185,7 @@ window.FishDroid=function(Ho){
       let from=ln.a;gaps.concat([null]).forEach(gp=>{const to=gp===null?ln.b:gp-GAP;if(to>from)walls.push(ln.v?{x:ln.pos-h,y:from,w:WT,h:to-from}:{x:from,y:ln.pos-h,w:to-from,h:WT});from=gp+GAP});
       const a1=P(c,-34,70),a2=P(c,-34,-70);c.sg=inR(room,a1.x,a1.y,16)?(inR(room,a2.x,a2.y,16)&&r()<.5?-1:1):-1;
       const spot=()=>{let best=null,bd=-1;for(let n=0;n<30;n++){const x=room.x+28+r()*(room.w-56),y=room.y+28+r()*(room.h-56),d=Math.hypot(x-c.x,y-c.y);if(d>bd){bd=d;best={x:x,y:y}}if(d>110&&n>3)break}return best};
-      if(k==="fish"){c.fires=[-24,0,24].map(b=>{const p=P(c,0,b);return M.fish.F("plain",p.x,p.y,FR,[],{c:c})});c.ext=spot()}
+      if(k==="fish"){c.fires=[-24,0,24].map(b=>{const p=P(c,0,b),kids=(b?[[-34,b*1.9]]:[[-42,0],[-84,0]]).map(o=>P(c,o[0],o[1])).filter(o=>inR(room,o.x,o.y,26)).map(o=>[o.x,o.y]);return M.fish.F("plain",p.x,p.y,FR,kids,{c:c})});c.ext=spot()}
       if(k==="crab"){const n=2,hh=GAP*2/n;r();c.n=n;for(let j=0;j<n;j++)objs.push(slab(c,-GAP+hh*(j+.5),hh-1,24,"medium","Crate"))}
       if(k==="orb"){c.crate=slab(c,0,GAP*2-2,26,"heavy","Heavy crate");objs.push(c.crate)}
       if(k==="bee"){c.ppl=[];const n=6+Math.floor(r()*4),pos=[];[-27,-9,9,27].forEach(b=>pos.push(P(c,-15,b)));[-9,9,-27,27].forEach(b=>pos.push(P(c,-32,b)));[0].forEach(b=>pos.push(P(c,-49,b)));
@@ -6192,6 +6196,16 @@ window.FishDroid=function(Ho){
     const r0=L.rooms[0],fin=L.rooms[4],d3=ch[3];let sv={x:fin.x+fin.w/2,y:fin.y+fin.h/2};
     for(let n=0;n<30;n++){const x=fin.x+34+r()*(fin.w-68),y=fin.y+34+r()*(fin.h-68);if(Math.hypot(x-d3.x,y-d3.y)>90){sv={x:x,y:y};break}}
     let st={x:r0.x+r0.w/2,y:r0.y+r0.h/2};for(let n=0;n<30;n++){const x=r0.x+30+r()*(r0.w-60),y=r0.y+30+r()*(r0.h-60);if(Math.hypot(x-ch[0].x,y-ch[0].y)>100){st={x:x,y:y};break}}
+    // clutter, so there is more to clear than the doorways: rubble in front of doorways, a pen around each thing to pick up, a second row behind Crab's crates, and loose boxes
+    const keep=[st,sv].concat(ch.map(c=>P(c,36,0))),free=(q,m)=>!walls.some(w=>hit({x:q.x-m,y:q.y-m,w:q.w+m*2,h:q.h+m*2},w))&&!objs.some(o=>hit(q,o))&&!keep.some(p=>Math.hypot(p.x-q.x-q.w/2,p.y-q.y-q.h/2)<48);
+    const box1=(x,y,k)=>{const s=k==="light"?20:24,q={k:k,n:k==="light"?"Box":"Crate",x:x-s/2,y:y-s/2,w:s,h:s,vx:0,vy:0,held:false,carried:false,sup:false,gone:false,fly:false,c:null};if(free(q,3)){objs.push(q);return true}return false};
+    const kind=()=>r()<.55?"light":"medium";
+    ch.forEach(c=>{
+      if(c.k==="crab")[-25,0,25].forEach(b=>{const p=P(c,-36,b);box1(p.x,p.y,"light")});
+      else if(c.k!=="bee"&&r()<.8)[-26,0,26].forEach(b=>{const p=P(c,-66,b);box1(p.x,p.y,kind())});
+      const pen=p=>[[22,0],[-22,0],[0,22],[0,-22]].forEach(o=>box1(p.x+o[0],p.y+o[1],"light"));
+      if(c.k==="fish")pen(c.ext);if(c.k==="cam")pen(c.card)});
+    for(let n=5+Math.floor(r()*5),t=0;n>0&&t<80;t++){const q=L.rooms[Math.floor(r()*5)];if(box1(q.x+24+r()*(q.w-48),q.y+24+r()*(q.h-48),kind()))n--}
     S={seed:sd,party:party,ch:ch,rooms:L.rooms,walls:walls,objs:objs,act:0,bars:{},x:st.x,y:st.y,face:{x:ch[0].nx,y:ch[0].ny},t:0,started:false,win:false,dmg:0,knocked:0,
       hold:null,sv:sv};
     party.forEach(k=>S.bars[k]=100);
@@ -6231,10 +6245,14 @@ window.FishDroid=function(Ho){
       if(S.hold){const o=S.hold.o,nx={x:nd.x+S.hold.off.x,y:nd.y+S.hold.off.y,w:o.w,h:o.h};if(solid(nb)||solid(nx,o))continue;S[ax]=nd[ax];o.x=nx.x;o.y=nx.y}
       else{if(S.walls.some(w=>hit(nb,w))||shutters().some(w=>hit(nb,w)))continue;
         const hits=S.objs.filter(o=>hit(nb,o));
-        if(hits.length){if(!other)continue;const kk=Math.min.apply(null,hits.map(o=>T.push[o.k]||0));if(!kk)continue;
-          const next=hits.map(o=>{const q={x:o.x,y:o.y,w:o.w,h:o.h};q[ax]+=mv*kk;return q});
-          if(next.some((q,i)=>S.walls.some(w=>hit(q,w))||shutters().some(w=>hit(q,w))||S.objs.some(o=>hits.indexOf(o)<0&&hit(q,o))))continue;
-          hits.forEach((o,i)=>{o[ax]=next[i][ax];if(o.c){o.c.alt=true}});const half={x:S.x,y:S.y};half[ax]+=mv*kk;if(!solid(box(half)))S[ax]=half[ax];S.pushing=.2}
+        if(hits.length){
+          // what is pushed pushes what is behind it. Each further object makes the push slower. A heavy crate, a wall or a shutter stops it all
+          const set=hits.slice();let ok=true;
+          for(let i=0;i<set.length&&ok;i++){const o=set[i];if(!T.push[o.k]){ok=false;break}const pq={x:o.x,y:o.y,w:o.w,h:o.h};pq[ax]+=mv;S.objs.forEach(p=>{if(set.indexOf(p)<0&&!p.held&&hit(pq,p))set.push(p)})}
+          if(!ok)continue;const kk=Math.min.apply(null,set.map(o=>T.push[o.k]))*Math.pow(.75,set.length-1);
+          const next=set.map(o=>{const q={x:o.x,y:o.y,w:o.w,h:o.h};q[ax]+=mv*kk;return q});
+          if(next.some(q=>S.walls.some(w=>hit(q,w))||shutters().some(w=>hit(q,w))))continue;
+          set.forEach((o,i)=>{o[ax]=next[i][ax];if(o.c){o.c.alt=true}});const half={x:S.x,y:S.y};half[ax]+=mv*kk;if(!S.walls.some(w=>hit(box(half),w))&&!S.objs.some(o=>!o.held&&hit(box(half),o)))S[ax]=half[ax];S.pushing=.2}
         else S[ax]=nd[ax]}
       if(!roundsOut()&&!inside){S.x=ox;S.y=oy;if(S.hold){S.hold.o.x=S.x+S.hold.off.x;S.hold.o.y=S.y+S.hold.off.y}}
       else if(S.hold){const o=S.hold.o,q={x:S.x+S.hold.off.x,y:S.y+S.hold.off.y,w:o.w,h:o.h};if(solid(q,o)||solid(box(S))){S.x=ox;S.y=oy}else{o.x=q.x;o.y=q.y}}}}
@@ -6301,6 +6319,7 @@ window.FishDroid=function(Ho){
   function fireHands(){const fs=S.st.fish;S.dr.x=S.x;S.dr.y=S.y;fs.face=S.face;fs.started=S.started;M.fish.use(fs);reachF=M.fish.reach();M.fish.hold("e",!!reachF&&eHeld);
     const rs=S.st.red;rs.face=S.face;M.red.use(rs);reachV=reachF?null:M.red.target();M.red.holdE(!!reachV&&eHeld)}
   function fireWorld(dt){const fs=S.st.fish;if(A()!=="fish"){S.dr.x=S.x;S.dr.y=S.y;fs.face=S.face;M.fish.use(fs);M.fish.before(dt);M.fish.after(dt)}
+    fs.fires.forEach(f=>{if(!f.c){const c=S.ch.filter(c=>c.k==="fish").sort((p,q)=>Math.hypot(p.x-f.x,p.y-f.y)-Math.hypot(q.x-f.x,q.y-f.y))[0];if(c){f.c=c;c.fires.push(f);c.out=false}}});
     if(fs.using&&fs.useAt&&fs.useAt.c)fs.useAt.c.alt=true;
     if(fs.jet&&A()==="fish")fs.fires.forEach(f=>{if(f.c&&f.hit>.15)f.c.ab=true});
     S.ch.forEach(c=>{if(c.k==="fish"&&!c.out&&c.fires.every(M.fish.gone)){c.out=true;if(A()==="fish"&&!c.alt)c.ab=true}})}
@@ -6328,7 +6347,10 @@ window.FishDroid=function(Ho){
   const dmg=()=>S.dmg+(S.st.orb?S.st.orb.dmg:0);
   function step(dt){if(!S)return;
     if(S.win){qTap=eTap=false;return}
-    const want=wish(),k=A();if(want.m)S.started=true;if(S.started)S.t+=dt;
+    let want=wish();const k=A();if(want.m)S.started=true;if(S.started)S.t+=dt;
+    // a bump into a light or medium object can trip the droid. It is rolled when the bump starts, and again while the droid keeps pushing
+    if(S.pushing>0){const roll=!S.wasPush||(S.pushT+=dt)>=STUMBLE.every;if(roll){S.pushT=0;if(!(S.stumble>0)&&Math.random()<STUMBLE.chance){S.stumble=STUMBLE.time;S.stumbles=(S.stumbles||0)+1;say(DR[k].n+" stumbled on what it bumped into.","bad")}}S.wasPush=true}else{S.wasPush=false;S.pushT=0}
+    if(S.stumble>0){S.stumble-=dt;want={x:0,y:0,m:0}}
     let busy=false,draining=false;fireHands();
     if(M[k]){if(k!=="orb"){C.use(S.cr);C.slide(dt)}mod(k,want,dt);draining=true;const o=S.st.orb;if(!(k==="orb"&&(o.charge||o.stun>0||o.recover>0)))interact(dt)}
     S.party.forEach(p=>{if(!(p===k&&draining))S.bars[p]=Math.min(100,S.bars[p]+(M[p]?M[p].tune.recharge:T[p].recharge)*dt)});
@@ -6373,6 +6395,7 @@ window.FishDroid=function(Ho){
     if(M[k])M[k].drawDroid(g);
     else{const sx=0;g.fillStyle=DR[k].f;g.beginPath();g.arc(S.x+sx,S.y,R,0,7);g.fill();g.strokeStyle="#22302B";g.lineWidth=2.5;g.beginPath();g.arc(S.x+sx,S.y,R,0,7);g.stroke();
       g.fillStyle=DR[k].ink||"#fff";g.font="800 13px system-ui,sans-serif";g.textAlign="center";g.fillText(DR[k].l,S.x+sx,S.y+5)}
+    if(S.stumble>0){g.fillStyle="#B3342B";g.font="800 12px system-ui,sans-serif";g.textAlign="center";g.fillText("Stumbled",S.x+Math.sin(S.t*40)*2,S.y-R-8)}
     M.fish.use(S.st.fish);M.fish.drawHands(g);if(k==="fish")M.fish.drawStatus(g);
     if(k==="cam"){M.cam.use(S.st.cam);M.cam.drawArrows(g)}
     const cc=chOf("cam");if(cc&&cc.card.found&&!cc.open){g.fillStyle="#FFE08A";g.strokeStyle="#22302B";g.lineWidth=1.5;g.beginPath();g.rect(S.x-17,S.y-17,11,7);g.fill();g.stroke()}
