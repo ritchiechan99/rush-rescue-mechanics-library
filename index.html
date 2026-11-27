@@ -2789,7 +2789,7 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
       <button type="button" class="cp-grip" id="spDrop" hidden><kbd>X</kbd><span>Drop</span></button>
     </div>
   </div>
-  <p class="cp-msg" id="spMsg" aria-live="polite">Click the room, then move with the arrow keys or WASD. Keys 1 to 4, or the party column on the right, switch droids. Q is the active droid’s ability, used the same way as in that droid’s own room.</p>
+  <p class="cp-msg" id="spMsg" aria-live="polite">Click the room, then move with the arrow keys or WASD. Keys 1 to 4, or the party column on the right, switch droids. Each droid has the buttons and keys of its own room. The keys are written on the buttons.</p>
   <div class="cp-legend">
     <span><i style="background:#F25C2A"></i>Fire: Fish</span>
     <span><i style="background:#8C8F9C"></i>Heavy crate: Orb</span>
@@ -2806,20 +2806,19 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
       <li><b>The layout:</b> four strips are cut off the floor one after another, each from a random side and with a random depth. That gives five rooms of different sizes, and a way through that turns. Each doorway sits at a random spot on its wall.</li>
       <li><b>The party</b> is the column on the right of the room, where a droid is picked. Each button shows that droid’s ability bar.</li>
       <li><b>Switching</b> is instant and the new droid stands where the last one stood, as in the GDD. Switching turns off an ability that was on. Each droid keeps its own ability bar, which refills while it is not in use.</li>
-      <li><b>Each droid works as it does in its own room</b>, with that room’s numbers.</li>
-      <li><b>Fish:</b> three fires burn in the doorway. Hold Q to spray. The stream is aimed: an assist points it at the nearest fire, and a drag from the button, the mouse or I J K L steers it. It stops at the first fire it reaches and cools it. A fire that is not put out fully grows back.</li>
-      <li><b>Orb:</b> a heavy crate fills the doorway. Hold Q to aim and wind up, which takes a second, then release to charge. Orb can keep moving, slower, while it winds up. The charge destroys the first heavy obstacle in its lane, which counts as property damage. Charging into a wall stuns Orb.</li>
+      <li><b>Each droid is the same droid as in its own room.</b> The room and this floor run one piece of code for each droid, so it has the same look, the same buttons, the same keys, the same numbers and the same skill tree. The keys are written on the buttons. The skill tree panel beside the floor is the active droid’s, and each droid keeps its own level.</li>
+      <li><b>Fish:</b> three fires burn in the doorway. Hold Q to spray, aimed as in Fish’s room. F is foam, R the bubble and B the deluge, once they are upgraded. Any droid can instead pick up the fire extinguisher with E, stand next to a fire and hold E. X drops it.</li>
+      <li><b>Orb:</b> a heavy crate fills the doorway. Hold Q to aim and wind up, then release to charge. F is the shield and B the brace, once they are upgraded. Any droid can instead push the crate slowly by walking into it.</li>
       <li><b>Crab:</b> two crates fill the doorway. Press the Grip button or Space next to one to grip it, drag it wherever it should go, and press again to let go. Dragging is slower than walking and drains the bar.</li>
-      <li><b>Bee:</b> a crowd stands in the doorway. Press Q for the swarm, and people inside it walk away from Bee and keep walking for a moment. Come at them from behind, and they walk on through the doorway and leave.</li>
-      <li><b>Red:</b> an agitated victim blocks the doorway. Press Q for the aura. A victim inside it settles over a few seconds, then steps aside.</li>
-      <li><b>Cam:</b> the room is full of smoke, where a droid only sees a short way, and the shutter needs a key card that lies somewhere in it. Cam sees a little further in smoke. Press Q for the highlight, which shows the card anywhere inside its ring.</li>
+      <li><b>Bee:</b> a crowd stands in the doorway. Press Space or the Swarm button, and people inside the swarm walk away from Bee. Q drops a hive, E switches to Lead and F draws a swarm wall, once they are upgraded. Any other droid can honk with E, or squeeze through slowly.</li>
+      <li><b>Red:</b> an agitated victim blocks the doorway. Press F for the aura. A victim inside it settles over a few seconds, then steps aside. Q aims the tranquilizer, once it is upgraded. Any other droid can stand next to the victim and hold E to calm them by hand.</li>
+      <li><b>Cam:</b> the room is full of smoke, drawn as in Cam’s room: dark where nothing has been seen yet. The shutter needs a key card that lies somewhere in it. Press F for the highlight. T is the Tracker, Q the Infrared pulse and R Replay, once they are upgraded. Any droid can find the card by walking until it comes into view. Cam sees a little further.</li>
       <li><b>The party does not have to fit.</b> The four droids and the four doorways are picked separately, so a doorway may be for a droid that was not brought. Every doorway can still be passed by any droid, the way “another droid” can in that droid’s own room, only more slowly: walk into the crates to push them at half speed, or into the heavy crate to push it slowly. Carry the extinguisher to the fire and hold E. Squeeze through the crowd slowly, or honk with E. Hold E next to the victim to calm them by hand. Search the smoke for the card. Orb’s charge also knocks crates and people aside.</li>
-      <li><b>Crab is the same droid as in its own room</b>: both run one piece of code. It has the same look, the same Grip, Aim line and Aim toss buttons, the same keys (Space grips, Q aims the line, F aims a toss, I J K L steer) and the same numbers. Its skill tree is the panel beside the room. The other five droids still use a copy of their basic ability and have no skill tree here yet.</li>
-      <li><span class="tbd">Asked for on 27 Nov 2026. What fills each doorway, the way the floor is cut up, the crowd leaving through the doorway and a victim who blocks a doorway are stand-ins. Asked for on 27 Nov and not built yet: every droid as a shared module with its skill tree, and doorways that chain like an escape room, for example a fire whose extinguisher is blocked by something Crab has to move.</span></li>
+      <li><span class="tbd">Asked for on 27 Nov 2026. What fills each doorway, the way the floor is cut up, the crowd leaving once it is through the doorway and a victim who steps aside when calm are stand-ins. In the smoke room only the key card is hidden by the smoke: crates, people and fires that happen to be in it still show. Asked for on 27 Nov and not built yet: doorways that chain like an escape room, for example a fire whose extinguisher is blocked by something Crab has to move.</span></li>
     </ul>
   </div>
 </div>
-<aside class="cp-tree cp-line" id="squadCrabTree" aria-label="Skill tree" style="--n:3"><div class="sl-top"><h4>Skill tree</h4><span class="sl-tag">Candidates, not confirmed</span></div><div class="sl"><div class="sl-head"><b>Crab: Grip</b><span class="sl-lvl"></span></div><p class="sl-lab"><b>Set the level</b> Drag the handle, or click a stop. This changes the room.</p><div class="sl-groove"><div class="sl-track"><i class="sl-rail"></i><i class="sl-fill"></i><div class="sl-col"><span class="sl-stop" aria-hidden="true">0</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">1</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">2</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">3</span></div><input type="range" class="sl-range" min="0" max="3" step="1" value="0" aria-label="Crab: Grip: upgrade level"></div></div><div class="sl-names"><button type="button" class="sl-name" data-lvl="0" data-name="Crab: Grip" data-what="Tap next to a light or medium object to grip it, and tap again to set it down. A light object is carried and a medium one is dragged. The bar drains while Crab holds something.">Basic</button><button type="button" class="sl-name" data-skill="tow" data-lvl="1" aria-pressed="false" data-name="Tow line" data-status="Set aside for the skill tree on 26 Nov" data-what="Crab aims and fires a hook on a line, the same way Red aims its tranquilizer. The object it hits is hooked and reeled in, with Crab’s hands free. Aiming has an assist: it starts on the nearest object in sight that can be gripped, supplies first, and locks on when the aim is close to one." data-how="Choose the “Out of reach” situation: the first aid bag lies across broken floor, and the line pulls it over. Hold Q or the “Hold: aim line” button and release to fire. Crab can keep moving while aiming. The assist aims by itself until you steer with I J K L, the mouse or a drag from the button. A green line means the aim is locked on. Walls, and heavy or fixed objects, stop the hook. Tap Space or “Let go” to release the line."><span class="sl-full">Tow line</span><span class="sl-short" aria-hidden="true">Tow</span></button><button type="button" class="sl-name" data-skill="stack" data-lvl="2" aria-pressed="false" data-name="Stack and haul" data-status="Set aside for the skill tree on 26 Nov" data-what="Pick up as many as three objects at once. Each one slows Crab and drains the bar faster. It works with the Tow line: while Crab holds fewer than three, the line can be fired again, and what it reels in joins the stack." data-how="Choose the “Supply run” situation: three boxes go to the survivor in one trip instead of three. While gripping, walk up to more objects. Crab takes hold of as many as three. Each extra one slows Crab and adds its own bar drain. Or stay back and fire the Tow line at one box after another: each is reeled in and joins the stack."><span class="sl-full">Stack and haul</span><span class="sl-short" aria-hidden="true">Stack</span></button><button type="button" class="sl-name" data-skill="toss" data-lvl="3" aria-pressed="false" data-name="Lift and toss" data-status="Set aside for the skill tree on 26 Nov" data-what="Crab aims and throws what it holds a short distance, the same way Red aims its tranquilizer. Light objects fly further than medium ones. Aiming has an assist: when the survivor who needs the object is within throwing distance, the aim starts on them and locks on." data-how="Choose the “Across the gap” situation: the bag is thrown over the broken floor to the survivor. While holding something, hold F or the “Hold: aim toss” button and release to throw. Crab can keep moving while aiming. The assist aims by itself until you steer with I J K L, the mouse or a drag from the button. A green line means the aim is locked on the survivor. An object that is on the tow line can be thrown too."><span class="sl-full">Lift and toss</span><span class="sl-short" aria-hidden="true">Lift</span></button></div><p class="sl-lab sl-lab2"><b>Read about an upgrade</b> Click its name. This only changes the card below.</p></div><div class="sl-card" aria-live="polite"><div class="sl-cardtop"><div><span class="sl-step"></span><h5></h5></div><div class="sl-nav"><button type="button" class="sl-prev" aria-label="Look at the upgrade before">‹</button><button type="button" class="sl-next" aria-label="Look at the next upgrade">›</button></div></div><p class="sl-what"></p><p class="sl-inc"></p><p class="st-how sl-how"><b>Try it in this room</b><span></span></p><div class="sl-act"><span class="sl-state"></span><button type="button" class="sl-set"></button></div></div><p class="cp-note sl-foot">The tree is linear: each upgrade enhances the base ability and includes the ones before it. The order and the numbers are placeholders.</p></aside><aside class="cp-tree cp-line" id="squadOrbTree" aria-label="Skill tree" style="--n:4"><div class="sl-top"><h4>Skill tree</h4><span class="sl-tag">Candidates, not confirmed</span></div><div class="sl"><div class="sl-head"><b>Orb: Charge</b><span class="sl-lvl"></span></div><p class="sl-lab"><b>Set the level</b> Drag the handle, or click a stop. This changes the room.</p><div class="sl-groove"><div class="sl-track"><i class="sl-rail"></i><i class="sl-fill"></i><div class="sl-col"><span class="sl-stop" aria-hidden="true">0</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">1</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">2</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">3</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">4</span></div><input type="range" class="sl-range" min="0" max="4" step="1" value="0" aria-label="Orb: Charge: upgrade level"></div></div><div class="sl-names"><button type="button" class="sl-name" data-lvl="0" data-name="Orb: Charge" data-what="Press and hold to aim down a straight lane and wind up, then release to charge. The aim has an assist that locks on to a heavy obstacle, and Orb can keep moving while it winds up, only slower. The charge, also called the dash, destroys a heavy obstacle and knocks anything else aside. Charging into a wall stuns Orb.">Basic</button><button type="button" class="sl-name" data-skill="hitter" data-lvl="1" aria-pressed="false" data-name="Heavy hitter" data-status="Agreed on 27 Nov, not confirmed" data-what="Strong. The charge goes on through and destroys every heavy obstacle in its lane, not only the first." data-how="Choose the “Three in a row” situation. One charge from the doorway clears all three obstacles. Without it, Orb has to charge three times, or take the long way around."><span class="sl-full">Heavy hitter</span><span class="sl-short" aria-hidden="true">Heavy</span></button><button type="button" class="sl-name" data-skill="shield" data-lvl="2" aria-pressed="false" data-name="Shield" data-status="Agreed on 27 Nov, not confirmed" data-what="Shield. A toggle. A shield stands in front of Orb, the way it is facing, and blocks a hazard that comes from that side. The bar drains while it is up." data-how="Choose the “Heat blast” situation. Press F or the Shield button, then walk into the blast facing it. Without it, the blast blows a droid back, so the player waits for the gap between blasts or takes the long way around."><span class="sl-full">Shield</span><span class="sl-short" aria-hidden="true">Shield</span></button><button type="button" class="sl-name" data-skill="scharge" data-lvl="3" aria-pressed="false" data-name="Shield charge" data-status="Agreed on 27 Nov, not confirmed" data-what="Shield and strong together. A charge with the shield up is not stunned by a wall, and it breaks a cracked wall, which opens a shortcut. A broken wall counts as property damage." data-how="Choose the “Cracked wall” situation. Switch the shield on, then hold Q to aim at the cracked wall and release. Without it, charging the wall only stuns Orb, so the long way around is the way through."><span class="sl-full">Shield charge</span><span class="sl-short" aria-hidden="true">Shield</span></button><button type="button" class="sl-name" data-skill="brace" data-lvl="4" aria-pressed="false" data-name="Brace" data-status="Agreed on 27 Nov, not confirmed" data-what="Bulky. A toggle. Orb plants itself and cannot move. While it is braced under something that is giving way, it holds it up. The bar drains while it is braced." data-how="Choose the “Sagging beam” situation. Stand in the doorway under the beam and press B or the Brace button. The beam lifts and the three people waiting walk through. Without it, each person has to be walked the long way around, one at a time: touch them and they hold on and follow."><span class="sl-full">Brace</span><span class="sl-short" aria-hidden="true">Brace</span></button></div><p class="sl-lab sl-lab2"><b>Read about an upgrade</b> Click its name. This only changes the card below.</p></div><div class="sl-card" aria-live="polite"><div class="sl-cardtop"><div><span class="sl-step"></span><h5></h5></div><div class="sl-nav"><button type="button" class="sl-prev" aria-label="Look at the upgrade before">‹</button><button type="button" class="sl-next" aria-label="Look at the next upgrade">›</button></div></div><p class="sl-what"></p><p class="sl-inc"></p><p class="st-how sl-how"><b>Try it in this room</b><span></span></p><div class="sl-act"><span class="sl-state"></span><button type="button" class="sl-set"></button></div></div><p class="cp-note sl-foot">The tree is linear: each upgrade enhances the base ability and includes the ones before it. The order and the numbers are placeholders.</p></aside><aside class="cp-tree cp-line" id="squadFishTree" aria-label="Skill tree" style="--n:3"><div class="sl-top"><h4>Skill tree</h4><span class="sl-tag">Candidates, not confirmed</span></div><div class="sl"><div class="sl-head"><b>Fish: Water stream</b><span class="sl-lvl"></span></div><p class="sl-lab"><b>Set the level</b> Drag the handle, or click a stop. This changes the room.</p><div class="sl-groove"><div class="sl-track"><i class="sl-rail"></i><i class="sl-fill"></i><div class="sl-col"><span class="sl-stop" aria-hidden="true">0</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">1</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">2</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">3</span></div><input type="range" class="sl-range" min="0" max="3" step="1" value="0" aria-label="Fish: Water stream: upgrade level"></div></div><div class="sl-names"><button type="button" class="sl-name" data-lvl="0" data-name="Fish: Water stream" data-what="Press and hold to spray a stream of water the way Fish faces. It cools an ordinary fire until it is out. The aim has an assist that locks on to a fire, and Fish can keep moving while it sprays, only slower. The stream drains the bar while it runs.">Basic</button><button type="button" class="sl-name" data-skill="smother" data-lvl="1" aria-pressed="false" data-name="Smother" data-status="Described on 27 Nov, not confirmed" data-what="Removes air. A toggle that switches the stream from water to foam. Foam puts out an oil fire, which water only makes worse. Foam drains the bar faster than water." data-how="Choose the “Kitchen pan” situation. Press F or the Foam button, then hold Q and spray the pan. Without it, spraying water makes the oil flare and spread, so the lid has to be fetched from across the room."><span class="sl-full">Smother</span><span class="sl-short" aria-hidden="true">Smother</span></button><button type="button" class="sl-name" data-skill="starve" data-lvl="2" aria-pressed="false" data-name="Starve" data-status="Described on 27 Nov, not confirmed" data-what="Removes fuel. Aimed like Red’s tranquilizer: hold to aim, release to shoot a foam bubble that encases one fire. While it is encased the fire cannot spread and is safe to pass, and it weakens. The bubble pops after a few seconds. A fire whose breaker is on or whose valve is open relights when it pops." data-how="Choose the “Server room” or the “Leaking pipe” situation. Hold R, aim at the fire in the doorway and release. Drive past it to the breaker or the valve before the bubble pops. Without it, the way to the switch is the long way around."><span class="sl-full">Starve</span><span class="sl-short" aria-hidden="true">Starve</span></button><button type="button" class="sl-name" data-skill="deluge" data-lvl="3" aria-pressed="false" data-name="Deluge" data-status="Described on 27 Nov, not confirmed" data-what="For big fires. Hold to charge and aim a wide fan, then release a wave of water. Every ordinary fire in the fan goes out and the ground stays wet, so it cannot relight. It empties the bar. A victim in the fan is pushed back and injured." data-how="Choose the “Fire front” situation. A straight shot from the start also hits the victim, who is outlined in red while the wave charges. Move to the side first so the fan misses them. Without it, the front has to be cooled spot by spot from one end, or the hydrant reached the long way around."><span class="sl-full">Deluge</span><span class="sl-short" aria-hidden="true">Deluge</span></button></div><p class="sl-lab sl-lab2"><b>Read about an upgrade</b> Click its name. This only changes the card below.</p></div><div class="sl-card" aria-live="polite"><div class="sl-cardtop"><div><span class="sl-step"></span><h5></h5></div><div class="sl-nav"><button type="button" class="sl-prev" aria-label="Look at the upgrade before">‹</button><button type="button" class="sl-next" aria-label="Look at the next upgrade">›</button></div></div><p class="sl-what"></p><p class="sl-inc"></p><p class="st-how sl-how"><b>Try it in this room</b><span></span></p><div class="sl-act"><span class="sl-state"></span><button type="button" class="sl-set"></button></div></div><p class="cp-note sl-foot">The tree is linear: each upgrade enhances the base ability and includes the ones before it. The order and the numbers are placeholders.</p></aside></div></div></section>
+<aside class="cp-tree cp-line" id="squadCrabTree" aria-label="Skill tree" style="--n:3"><div class="sl-top"><h4>Skill tree</h4><span class="sl-tag">Candidates, not confirmed</span></div><div class="sl"><div class="sl-head"><b>Crab: Grip</b><span class="sl-lvl"></span></div><p class="sl-lab"><b>Set the level</b> Drag the handle, or click a stop. This changes the room.</p><div class="sl-groove"><div class="sl-track"><i class="sl-rail"></i><i class="sl-fill"></i><div class="sl-col"><span class="sl-stop" aria-hidden="true">0</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">1</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">2</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">3</span></div><input type="range" class="sl-range" min="0" max="3" step="1" value="0" aria-label="Crab: Grip: upgrade level"></div></div><div class="sl-names"><button type="button" class="sl-name" data-lvl="0" data-name="Crab: Grip" data-what="Tap next to a light or medium object to grip it, and tap again to set it down. A light object is carried and a medium one is dragged. The bar drains while Crab holds something.">Basic</button><button type="button" class="sl-name" data-skill="tow" data-lvl="1" aria-pressed="false" data-name="Tow line" data-status="Set aside for the skill tree on 26 Nov" data-what="Crab aims and fires a hook on a line, the same way Red aims its tranquilizer. The object it hits is hooked and reeled in, with Crab’s hands free. Aiming has an assist: it starts on the nearest object in sight that can be gripped, supplies first, and locks on when the aim is close to one." data-how="Choose the “Out of reach” situation: the first aid bag lies across broken floor, and the line pulls it over. Hold Q or the “Hold: aim line” button and release to fire. Crab can keep moving while aiming. The assist aims by itself until you steer with I J K L, the mouse or a drag from the button. A green line means the aim is locked on. Walls, and heavy or fixed objects, stop the hook. Tap Space or “Let go” to release the line."><span class="sl-full">Tow line</span><span class="sl-short" aria-hidden="true">Tow</span></button><button type="button" class="sl-name" data-skill="stack" data-lvl="2" aria-pressed="false" data-name="Stack and haul" data-status="Set aside for the skill tree on 26 Nov" data-what="Pick up as many as three objects at once. Each one slows Crab and drains the bar faster. It works with the Tow line: while Crab holds fewer than three, the line can be fired again, and what it reels in joins the stack." data-how="Choose the “Supply run” situation: three boxes go to the survivor in one trip instead of three. While gripping, walk up to more objects. Crab takes hold of as many as three. Each extra one slows Crab and adds its own bar drain. Or stay back and fire the Tow line at one box after another: each is reeled in and joins the stack."><span class="sl-full">Stack and haul</span><span class="sl-short" aria-hidden="true">Stack</span></button><button type="button" class="sl-name" data-skill="toss" data-lvl="3" aria-pressed="false" data-name="Lift and toss" data-status="Set aside for the skill tree on 26 Nov" data-what="Crab aims and throws what it holds a short distance, the same way Red aims its tranquilizer. Light objects fly further than medium ones. Aiming has an assist: when the survivor who needs the object is within throwing distance, the aim starts on them and locks on." data-how="Choose the “Across the gap” situation: the bag is thrown over the broken floor to the survivor. While holding something, hold F or the “Hold: aim toss” button and release to throw. Crab can keep moving while aiming. The assist aims by itself until you steer with I J K L, the mouse or a drag from the button. A green line means the aim is locked on the survivor. An object that is on the tow line can be thrown too."><span class="sl-full">Lift and toss</span><span class="sl-short" aria-hidden="true">Lift</span></button></div><p class="sl-lab sl-lab2"><b>Read about an upgrade</b> Click its name. This only changes the card below.</p></div><div class="sl-card" aria-live="polite"><div class="sl-cardtop"><div><span class="sl-step"></span><h5></h5></div><div class="sl-nav"><button type="button" class="sl-prev" aria-label="Look at the upgrade before">‹</button><button type="button" class="sl-next" aria-label="Look at the next upgrade">›</button></div></div><p class="sl-what"></p><p class="sl-inc"></p><p class="st-how sl-how"><b>Try it in this room</b><span></span></p><div class="sl-act"><span class="sl-state"></span><button type="button" class="sl-set"></button></div></div><p class="cp-note sl-foot">The tree is linear: each upgrade enhances the base ability and includes the ones before it. The order and the numbers are placeholders.</p></aside><aside class="cp-tree cp-line" id="squadOrbTree" aria-label="Skill tree" style="--n:4"><div class="sl-top"><h4>Skill tree</h4><span class="sl-tag">Candidates, not confirmed</span></div><div class="sl"><div class="sl-head"><b>Orb: Charge</b><span class="sl-lvl"></span></div><p class="sl-lab"><b>Set the level</b> Drag the handle, or click a stop. This changes the room.</p><div class="sl-groove"><div class="sl-track"><i class="sl-rail"></i><i class="sl-fill"></i><div class="sl-col"><span class="sl-stop" aria-hidden="true">0</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">1</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">2</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">3</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">4</span></div><input type="range" class="sl-range" min="0" max="4" step="1" value="0" aria-label="Orb: Charge: upgrade level"></div></div><div class="sl-names"><button type="button" class="sl-name" data-lvl="0" data-name="Orb: Charge" data-what="Press and hold to aim down a straight lane and wind up, then release to charge. The aim has an assist that locks on to a heavy obstacle, and Orb can keep moving while it winds up, only slower. The charge, also called the dash, destroys a heavy obstacle and knocks anything else aside. Charging into a wall stuns Orb.">Basic</button><button type="button" class="sl-name" data-skill="hitter" data-lvl="1" aria-pressed="false" data-name="Heavy hitter" data-status="Agreed on 27 Nov, not confirmed" data-what="Strong. The charge goes on through and destroys every heavy obstacle in its lane, not only the first." data-how="Choose the “Three in a row” situation. One charge from the doorway clears all three obstacles. Without it, Orb has to charge three times, or take the long way around."><span class="sl-full">Heavy hitter</span><span class="sl-short" aria-hidden="true">Heavy</span></button><button type="button" class="sl-name" data-skill="shield" data-lvl="2" aria-pressed="false" data-name="Shield" data-status="Agreed on 27 Nov, not confirmed" data-what="Shield. A toggle. A shield stands in front of Orb, the way it is facing, and blocks a hazard that comes from that side. The bar drains while it is up." data-how="Choose the “Heat blast” situation. Press F or the Shield button, then walk into the blast facing it. Without it, the blast blows a droid back, so the player waits for the gap between blasts or takes the long way around."><span class="sl-full">Shield</span><span class="sl-short" aria-hidden="true">Shield</span></button><button type="button" class="sl-name" data-skill="scharge" data-lvl="3" aria-pressed="false" data-name="Shield charge" data-status="Agreed on 27 Nov, not confirmed" data-what="Shield and strong together. A charge with the shield up is not stunned by a wall, and it breaks a cracked wall, which opens a shortcut. A broken wall counts as property damage." data-how="Choose the “Cracked wall” situation. Switch the shield on, then hold Q to aim at the cracked wall and release. Without it, charging the wall only stuns Orb, so the long way around is the way through."><span class="sl-full">Shield charge</span><span class="sl-short" aria-hidden="true">Shield</span></button><button type="button" class="sl-name" data-skill="brace" data-lvl="4" aria-pressed="false" data-name="Brace" data-status="Agreed on 27 Nov, not confirmed" data-what="Bulky. A toggle. Orb plants itself and cannot move. While it is braced under something that is giving way, it holds it up. The bar drains while it is braced." data-how="Choose the “Sagging beam” situation. Stand in the doorway under the beam and press B or the Brace button. The beam lifts and the three people waiting walk through. Without it, each person has to be walked the long way around, one at a time: touch them and they hold on and follow."><span class="sl-full">Brace</span><span class="sl-short" aria-hidden="true">Brace</span></button></div><p class="sl-lab sl-lab2"><b>Read about an upgrade</b> Click its name. This only changes the card below.</p></div><div class="sl-card" aria-live="polite"><div class="sl-cardtop"><div><span class="sl-step"></span><h5></h5></div><div class="sl-nav"><button type="button" class="sl-prev" aria-label="Look at the upgrade before">‹</button><button type="button" class="sl-next" aria-label="Look at the next upgrade">›</button></div></div><p class="sl-what"></p><p class="sl-inc"></p><p class="st-how sl-how"><b>Try it in this room</b><span></span></p><div class="sl-act"><span class="sl-state"></span><button type="button" class="sl-set"></button></div></div><p class="cp-note sl-foot">The tree is linear: each upgrade enhances the base ability and includes the ones before it. The order and the numbers are placeholders.</p></aside><aside class="cp-tree cp-line" id="squadFishTree" aria-label="Skill tree" style="--n:3"><div class="sl-top"><h4>Skill tree</h4><span class="sl-tag">Candidates, not confirmed</span></div><div class="sl"><div class="sl-head"><b>Fish: Water stream</b><span class="sl-lvl"></span></div><p class="sl-lab"><b>Set the level</b> Drag the handle, or click a stop. This changes the room.</p><div class="sl-groove"><div class="sl-track"><i class="sl-rail"></i><i class="sl-fill"></i><div class="sl-col"><span class="sl-stop" aria-hidden="true">0</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">1</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">2</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">3</span></div><input type="range" class="sl-range" min="0" max="3" step="1" value="0" aria-label="Fish: Water stream: upgrade level"></div></div><div class="sl-names"><button type="button" class="sl-name" data-lvl="0" data-name="Fish: Water stream" data-what="Press and hold to spray a stream of water the way Fish faces. It cools an ordinary fire until it is out. The aim has an assist that locks on to a fire, and Fish can keep moving while it sprays, only slower. The stream drains the bar while it runs.">Basic</button><button type="button" class="sl-name" data-skill="smother" data-lvl="1" aria-pressed="false" data-name="Smother" data-status="Described on 27 Nov, not confirmed" data-what="Removes air. A toggle that switches the stream from water to foam. Foam puts out an oil fire, which water only makes worse. Foam drains the bar faster than water." data-how="Choose the “Kitchen pan” situation. Press F or the Foam button, then hold Q and spray the pan. Without it, spraying water makes the oil flare and spread, so the lid has to be fetched from across the room."><span class="sl-full">Smother</span><span class="sl-short" aria-hidden="true">Smother</span></button><button type="button" class="sl-name" data-skill="starve" data-lvl="2" aria-pressed="false" data-name="Starve" data-status="Described on 27 Nov, not confirmed" data-what="Removes fuel. Aimed like Red’s tranquilizer: hold to aim, release to shoot a foam bubble that encases one fire. While it is encased the fire cannot spread and is safe to pass, and it weakens. The bubble pops after a few seconds. A fire whose breaker is on or whose valve is open relights when it pops." data-how="Choose the “Server room” or the “Leaking pipe” situation. Hold R, aim at the fire in the doorway and release. Drive past it to the breaker or the valve before the bubble pops. Without it, the way to the switch is the long way around."><span class="sl-full">Starve</span><span class="sl-short" aria-hidden="true">Starve</span></button><button type="button" class="sl-name" data-skill="deluge" data-lvl="3" aria-pressed="false" data-name="Deluge" data-status="Described on 27 Nov, not confirmed" data-what="For big fires. Hold to charge and aim a wide fan, then release a wave of water. Every ordinary fire in the fan goes out and the ground stays wet, so it cannot relight. It empties the bar. A victim in the fan is pushed back and injured." data-how="Choose the “Fire front” situation. A straight shot from the start also hits the victim, who is outlined in red while the wave charges. Move to the side first so the fan misses them. Without it, the front has to be cooled spot by spot from one end, or the hydrant reached the long way around."><span class="sl-full">Deluge</span><span class="sl-short" aria-hidden="true">Deluge</span></button></div><p class="sl-lab sl-lab2"><b>Read about an upgrade</b> Click its name. This only changes the card below.</p></div><div class="sl-card" aria-live="polite"><div class="sl-cardtop"><div><span class="sl-step"></span><h5></h5></div><div class="sl-nav"><button type="button" class="sl-prev" aria-label="Look at the upgrade before">‹</button><button type="button" class="sl-next" aria-label="Look at the next upgrade">›</button></div></div><p class="sl-what"></p><p class="sl-inc"></p><p class="st-how sl-how"><b>Try it in this room</b><span></span></p><div class="sl-act"><span class="sl-state"></span><button type="button" class="sl-set"></button></div></div><p class="cp-note sl-foot">The tree is linear: each upgrade enhances the base ability and includes the ones before it. The order and the numbers are placeholders.</p></aside><aside class="cp-tree cp-line" id="squadRedTree" aria-label="Skill tree" style="--n:5"><div class="sl-top"><h4>Skill tree</h4><span class="sl-tag">Candidates, not confirmed</span></div><div class="sl"><div class="sl-head"><b>Red: Calming aura</b><span class="sl-lvl"></span></div><p class="sl-lab"><b>Set the level</b> Drag the handle, or click a stop. This changes the room.</p><div class="sl-groove"><div class="sl-track"><i class="sl-rail"></i><i class="sl-fill"></i><div class="sl-col"><span class="sl-stop" aria-hidden="true">0</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">1</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">2</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">3</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">4</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">5</span></div><input type="range" class="sl-range" min="0" max="5" step="1" value="0" aria-label="Red: Calming aura: upgrade level"></div></div><div class="sl-names"><button type="button" class="sl-name" data-lvl="0" data-name="Red: Calming aura" data-what="Tap to switch the aura on or off. Agitated victims inside its radius settle over a few seconds and can then be diagnosed. The bar drains while it is on.">Basic</button><button type="button" class="sl-name" data-skill="wide" data-lvl="1" aria-pressed="false" data-name="Wider aura" data-status="Suggested on 26 Nov, not confirmed" data-what="The aura reaches further, so it settles more victims at once." data-how="Choose the “Spread out” situation. Five agitated victims stand too far apart for the basic aura. With this on, one spot covers all of them."><span class="sl-full">Wider aura</span><span class="sl-short" aria-hidden="true">Wider</span></button><button type="button" class="sl-name" data-skill="cradle" data-lvl="2" aria-pressed="false" data-name="Cradle carry" data-status="Suggested on 26 Nov, not confirmed" data-what="Red can keep the aura on while carrying, where other droids have their ability blocked. It is the same aura: it still settles the agitated victims around Red, and it also cradles the carried victim. They float beside Red, so Red moves at walking pace even with someone who cannot walk, bumps and rough ground no longer jolt them, and an event does not make them struggle. The bar drains as usual." data-how="Choose the “Carry out” situation. Switch the aura on with F, before or after picking a victim up with C. It stays on through the pick up. Take the straight way across the rubble and watch the bubble absorb each jolt. Then try the same carry as “Another droid”, or with the aura off."><span class="sl-full">Cradle carry</span><span class="sl-short" aria-hidden="true">Cradle</span></button><button type="button" class="sl-name" data-skill="steady" data-lvl="3" aria-pressed="false" data-name="Steadying aura" data-status="Suggested on 26 Nov, not confirmed" data-what="Calm victims inside the aura are not made agitated again by an event." data-how="Choose the “Aftershocks” situation. Events come every few seconds. With this on, keep the aura over the victims you have calmed and they stay calm while you diagnose them."><span class="sl-full">Steadying aura</span><span class="sl-short" aria-hidden="true">Steadying</span></button><button type="button" class="sl-name" data-skill="tranq" data-lvl="4" aria-pressed="false" data-name="Tranquilizer" data-status="Suggested on 26 Nov, not confirmed" data-what="Red aims and fires a tranquilizer dart. A super agitated victim who is hit slows down, stops and is calm. An ordinary agitated victim who is hit is calm at once. Either stays calm through events. Aiming has an assist: it starts on the nearest super agitated victim in sight and locks on when the aim is close to one. Steered by hand, it locks on to agitated victims too. It is a shot, not part of the aura, and each dart uses some of the bar." data-how="Choose the “Rampage” situation. Hold Q or the “Hold: aim dart” button and release to fire. Red can keep moving while aiming. The assist aims by itself until you steer with I J K L, the mouse or a drag from the button. A green line means the aim is locked on. Furniture stops a dart. Without it, the runner has to be caught and held while they keep crashing into things."><span class="sl-full">Tranquilizer</span><span class="sl-short" aria-hidden="true">Tranquilizer</span></button><button type="button" class="sl-name" data-skill="pulse" data-lvl="5" aria-pressed="false" data-name="Reviving pulse" data-status="Suggested on 26 Nov, not confirmed" data-what="A passive. When Red interacts with a victim who is unconscious and not breathing, a burst of the aura restarts them, so the first attempt works for sure. A normal droid draws from a bag of 50 marbles with 3 good ones. It is used automatically: there is no button for it, and it does nothing to a conscious victim." data-how="Choose the “Cardiac arrest” situation. Stand next to the unconscious victim and press E, as any droid would. As Red with this allocated, the pulse fires by itself and the first attempt works. Without it, every attempt draws a marble, with a 1 second cooldown: about thirteen attempts on average, 48 at the very worst, and sometimes the countdown runs out first."><span class="sl-full">Reviving pulse</span><span class="sl-short" aria-hidden="true">Reviving</span></button></div><p class="sl-lab sl-lab2"><b>Read about an upgrade</b> Click its name. This only changes the card below.</p></div><div class="sl-card" aria-live="polite"><div class="sl-cardtop"><div><span class="sl-step"></span><h5></h5></div><div class="sl-nav"><button type="button" class="sl-prev" aria-label="Look at the upgrade before">‹</button><button type="button" class="sl-next" aria-label="Look at the next upgrade">›</button></div></div><p class="sl-what"></p><p class="sl-inc"></p><p class="st-how sl-how"><b>Try it in this room</b><span></span></p><div class="sl-act"><span class="sl-state"></span><button type="button" class="sl-set"></button></div></div><p class="cp-note sl-foot">The tree is linear: each upgrade enhances the base ability and includes the ones before it. The order and the numbers are placeholders.</p></aside><aside class="cp-tree cp-line" id="squadBeeTree" aria-label="Skill tree" style="--n:3"><div class="sl-top"><h4>Skill tree</h4><span class="sl-tag">Candidates, not confirmed</span></div><div class="sl"><div class="sl-head"><b>Bee: Herd</b><span class="sl-lvl"></span></div><p class="sl-lab"><b>Set the level</b> Drag the handle, or click a stop. This changes the room.</p><div class="sl-groove"><div class="sl-track"><i class="sl-rail"></i><i class="sl-fill"></i><div class="sl-col"><span class="sl-stop" aria-hidden="true">0</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">1</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">2</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">3</span></div><input type="range" class="sl-range" min="0" max="3" step="1" value="0" aria-label="Bee: Herd: upgrade level"></div></div><div class="sl-names"><button type="button" class="sl-name" data-lvl="0" data-name="Bee: Herd" data-what="Tap to switch the swarm on or off. People inside its radius walk away from Bee, so a crowd is steered by where Bee stands. The bar drains while the swarm is on.">Basic</button><button type="button" class="sl-name" data-skill="bright" data-lvl="1" aria-pressed="false" data-name="Bright swarm" data-status="Passive, liked on 26 Nov, not confirmed" data-what="Answers a crowd in smoke that cannot see where to go. The swarm glows, so people in low visibility follow it." data-how="Choose the “In smoke” situation. With this on, people in the smoke see the swarm glow from further away and walk towards it. Bee stops pushing and leads instead: switch the swarm on, walk to the exit and they follow. Without it, the swarm’s radius in smoke is very small, so only people right next to Bee react. With Lead on as well, both work at once: the four people being led are pushed the way the arrow points, and everyone else keeps following the glow. Someone who was led stays where they were sent, shown by a dashed green ring, and does not walk back to the glow until Lead is switched off."><span class="sl-full">Bright swarm</span><span class="sl-short" aria-hidden="true">Bright</span></button><button type="button" class="sl-name" data-skill="hive" data-lvl="2" aria-pressed="false" data-name="Drop hive" data-status="Picked to try on 26 Nov, not confirmed" data-what="Plant a hive at a spot. It has a swarm of its own, apart from the swarm around Bee, and keeps herding there until it is recalled. Mainly used to keep stampeding people away from a spot. A planted hive drains the bar." data-how="Choose the “Stampede” situation. Walk onto the danger and press Q or the “Drop hive” button to plant the hive there. The runners bend around it. Bee still has its own swarm, so walk to the calm group in the corner and herd them out at the same time. Press Q again to recall the hive. It also answers the “Unsafe exit” situation: plant the hive in front of the unsafe exit, and people no longer head for it, so they go to the safe exit when Bee herds them. Without it, Bee has to stand guard on the danger with its own swarm until the stampede has passed, and only then move the group. At the unsafe exit, Bee has to push the bench across the opening first, as any droid can."><span class="sl-full">Drop hive</span><span class="sl-short" aria-hidden="true">Drop</span></button><button type="button" class="sl-name" data-skill="lead" data-lvl="3" aria-pressed="false" data-name="Lead" data-status="Picked to try on 26 Nov, not confirmed" data-what="The swarm pushes people from behind in the direction the player chooses. It only works on people who can walk. Around someone who cannot walk, the bees circle instead. The swarm does not find the exit: the player has to know the way." data-how="Press E or the “Mode” button to switch between Herd and Lead. In Lead, the bees push the four people nearest the swarm the way the green arrow points, at a slower walk. Aim the arrow by dragging the joystick that appears at the bottom left of the room, with I, J, K and L, or by clicking a spot in the room. It is separate from where Bee walks, so the keys move Bee while the joystick aims. Walk with the people being led: they stop when they leave the ring. Everyone else in the ring is left alone. The swarm does not know where the exit is, so it cannot be used to find one. Choose the “Dead end” situation: stand at the mouth of the passage, aim the arrow out of it and the bees bring people out four at a time, with no need to squeeze past them first. Once they are out of the passage, switch back to Herd and push everyone to the exit."><span class="sl-full">Lead</span><span class="sl-short" aria-hidden="true">Lead</span></button></div><p class="sl-lab sl-lab2"><b>Read about an upgrade</b> Click its name. This only changes the card below.</p></div><div class="sl-card" aria-live="polite"><div class="sl-cardtop"><div><span class="sl-step"></span><h5></h5></div><div class="sl-nav"><button type="button" class="sl-prev" aria-label="Look at the upgrade before">‹</button><button type="button" class="sl-next" aria-label="Look at the next upgrade">›</button></div></div><p class="sl-what"></p><p class="sl-inc"></p><p class="st-how sl-how"><b>Try it in this room</b><span></span></p><div class="sl-act"><span class="sl-state"></span><button type="button" class="sl-set"></button></div></div><p class="cp-note sl-foot">The tree is linear: each upgrade enhances the base ability and includes the ones before it. The order and the numbers are placeholders.</p></aside><aside class="cp-tree cp-line" id="squadCamTree" aria-label="Skill tree" style="--n:4"><div class="sl-top"><h4>Skill tree</h4><span class="sl-tag">Candidates, not confirmed</span></div><div class="sl"><div class="sl-head"><b>Cam: Highlight</b><span class="sl-lvl"></span></div><p class="sl-lab"><b>Set the level</b> Drag the handle, or click a stop. This changes the room.</p><div class="sl-groove"><div class="sl-track"><i class="sl-rail"></i><i class="sl-fill"></i><div class="sl-col"><span class="sl-stop" aria-hidden="true">0</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">1</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">2</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">3</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">4</span></div><input type="range" class="sl-range" min="0" max="4" step="1" value="0" aria-label="Cam: Highlight: upgrade level"></div></div><div class="sl-names"><button type="button" class="sl-name" data-lvl="0" data-name="Cam: Highlight" data-what="Press to switch the highlight on or off. It shows victims, interactables and key items around Cam that are in its line of sight, and each victim’s type. The bar drains while it is on. Cam also sees a little clearer in smoke than other droids.">Basic</button><button type="button" class="sl-name" data-skill="clear" data-lvl="1" aria-pressed="false" data-name="Clear lens" data-status="Stated on 27 Nov, not confirmed" data-what="A passive. The room Cam is in counts as explored: the fog of war over the whole room turns a lighter shade, spreading out from Cam as it steps in. There is still some fog, but the room and what is in it can be made out without walking into every corner. It works room by room. A room Cam has not gone into keeps its full fog, even when Cam looks in through a doorway. A room stays lighter after Cam leaves it." data-how="Choose the “Smoke-filled floor” situation and walk from room to room. Each room lightens as Cam steps in, and the victims in it show, without their type. Without it, Cam only uncovers what is inside its circle of sight, so every room has to be walked around."><span class="sl-full">Clear lens</span><span class="sl-short" aria-hidden="true">Clear</span></button><button type="button" class="sl-name" data-skill="track" data-lvl="2" aria-pressed="false" data-name="Tracker" data-status="Stated on 27 Nov, not confirmed" data-what="Two parts that come together. A passive, Tag: what the highlight shows is tagged, so it stays on the map, with each victim’s type, after the highlight goes off. And a ping: for a few seconds, arrows around Cam point to every tagged thing, with what it is and how far. It points at where the thing was last seen, and the ping uses some of the bar." data-how="For the tagging, choose the “Smoke-filled floor” situation: switch the highlight on, sweep a room and switch it off again, and everything it showed stays marked. For the ping, choose “Back to the valve”: the valve is tagged at the start. Fetch the key card on the far side of the floor, then press T or the Tracker button to find the way back. Without it, the player has to remember the way."><span class="sl-full">Tracker</span><span class="sl-short" aria-hidden="true">Tracker</span></button><button type="button" class="sl-name" data-skill="infra" data-lvl="3" aria-pressed="false" data-name="Infrared pulse" data-status="Stated on 27 Nov, not confirmed" data-what="Cam sends a pulse out in a wide fan, the way it is facing. A tap fires it, so it needs little aiming. It passes through walls. Everything in the cone shows as a heat shape for a few seconds and is tagged, and arrows point to it the way the Tracker’s do. If the cone is empty, “Nothing found” shows beside Cam. Each pulse uses some of the bar." data-how="Choose the “Which room?” situation. Face the way you want to look and tap Q or the “Infrared pulse” button. Holding it shows the fan before it fires, and Cam can keep moving. It can still be steered with I J K L or a drag from the button, but it does not have to be. Without it, every room has to be walked into."><span class="sl-full">Infrared pulse</span><span class="sl-short" aria-hidden="true">Infrared</span></button><button type="button" class="sl-name" data-skill="replay" data-lvl="4" aria-pressed="false" data-name="Replay" data-status="Picked on 27 Nov, not confirmed" data-what="A toggle. While it is on, Cam plays back where tagged things moved over the last few seconds, as a ghost trail, and the bar drains." data-how="Choose the “Wanderer” situation. A confused victim was last seen at the tag and has walked off. Press R or the Replay button to switch it on, follow the trail, and press again to switch it off. Without it, the rooms have to be searched while the victim keeps walking."><span class="sl-full">Replay</span><span class="sl-short" aria-hidden="true">Replay</span></button></div><p class="sl-lab sl-lab2"><b>Read about an upgrade</b> Click its name. This only changes the card below.</p></div><div class="sl-card" aria-live="polite"><div class="sl-cardtop"><div><span class="sl-step"></span><h5></h5></div><div class="sl-nav"><button type="button" class="sl-prev" aria-label="Look at the upgrade before">‹</button><button type="button" class="sl-next" aria-label="Look at the next upgrade">›</button></div></div><p class="sl-what"></p><p class="sl-inc"></p><p class="st-how sl-how"><b>Try it in this room</b><span></span></p><div class="sl-act"><span class="sl-state"></span><button type="button" class="sl-set"></button></div></div><p class="cp-note sl-foot">The tree is linear: each upgrade enhances the base ability and includes the ones before it. The order and the numbers are placeholders.</p></aside></div></div></section>
           <section class="lvpanel" data-lv="actions"><header class="lvhead"><h2>What every droid can do</h2><p class="lvchips"><span class="lvchip">Reference</span><span class="lvchip">GDD 3.1.4</span></p></header><div class="lvpane on" data-t="main"><p>Along with its own ability, every droid can do the following.</p>
           <div class="tw"><table class="camp def"><thead><tr><th scope="col">Interaction</th><th scope="col">What it does</th></tr></thead><tbody><tr><th scope="row">Tag</th><td>Survivors and hazards are tagged with a floating marker of their type once they come into the droid’s view. Tagging everything early lets the player plan, and counts towards the Thorough and Alert traits. Cam’s Tracker upgrade adds to this: what Cam’s highlight shows is tagged too.</td></tr><tr><th scope="row">Honk (proposed)</th><td>A weaker version of Bee’s ability that every droid has. NPCs in a small area around the droid move away from it. Players can clear crowds even without Bee in the party, and it counts towards the Purposeful trait.</td></tr><tr><th scope="row">Push</th><td>Moving into an obstacle pushes it, depending on its <a href="#obstacle-weights">weight</a>.</td></tr><tr><th scope="row">Carry</th><td>Droids pick up survivors to carry them to the ambulance, and pick up light obstacles and items. Droids can’t switch while carrying a survivor. The base rules for carrying a survivor are below.</td></tr><tr><th scope="row">Slide</th><td>On wet floors, a droid keeps moving in the direction it entered, faster but with less control. Hitting an obstacle while sliding can stun and damage it.</td></tr></tbody></table></div>
           <div class="callout chg"><h3>Carrying a survivor: base rules for every droid. Decided on 26 Nov 2026, not yet in the GDD</h3><p>Until now a survivor was simply carried. These rules are the base that a droid’s skill tree can then build on.</p><div class="tw"><table class="camp def"><thead><tr><th scope="col">Rule</th><th scope="col">What it means</th></tr></thead><tbody><tr><th scope="row">How they are moved depends on the victim</th><td>A calm victim who can walk is walked out with support, at near full speed. A victim who cannot walk or is unconscious is a full carry, which is slow.</td></tr><tr><th scope="row">Carrying has a cost</th><td>The droid is slower, and the victim’s vitality keeps dropping the whole way.</td></tr><tr><th scope="row">A rough ride hurts</th><td>Bumping into obstacles, or passing through a hazard or a crowd while carrying, jolts the victim and costs vitality.</td></tr><tr><th scope="row">Agitated victims cannot be carried</th><td>An <a href="#victim-agitated">agitated victim</a> has to be calm first. Trying to carry one makes them more agitated, and never fails the mission.</td></tr><tr><th scope="row">Putting down</th><td>A victim can be set down anywhere and picked up again. Their vitality only stops dropping at the ambulance or the triage tent.</td></tr></tbody></table></div><p class="tbd">Still to define: every number (how much slower, how much a jolt costs), whether being walked out with support is a victim state of its own beside unconscious, agitated and normal, and how these rules sit with the Soft Grip and Careful Carry example boons, which also change carrying. Red’s playable lo-fi has these rules in its Carry out situation. The other droids’ lo-fis do not have them yet.</p></div>
@@ -4418,12 +4417,14 @@ window.OrbDroid=function(Ho){
   window.orbProto={state:()=>S,stick:(dx,dy)=>{stick=dx||dy?{id:-9,x:0,y:0,dx,dy}:null},step,reset,tune,lane,targets,tree,keys,shield,brace,hold:on=>C.hold(on),setMode:m=>click("data-mode",m),setRoom:r=>click("data-room",r),droid:C}; // for tests
 })();
 
-/* ===== Red's Calming aura: playable lo-fi =====
-   A top-down room on a canvas. World units are canvas pixels (760 x 460). */
-(function(){
-  const root=document.getElementById("redProto");if(!root)return;
-  const cv=root.querySelector("#rpCanvas"),g=cv.getContext("2d"),W=cv.width,H=cv.height;
-  const el=id=>root.querySelector("#"+id);
+/* ===== Red, as a module =====
+   Everything that is Red: its numbers, the calming aura, the tranquilizer, the reviving pulse and the cradle, how it is drawn, and its buttons.
+   The victims are here too, with what any droid can do for them (calm by hand, diagnose, revive, carry),
+   because a victim behaves the same whoever stands next to them.
+   Red's own room and the Squad run both run this code, so Red and the victims are the same in both.
+   Ho is the host: {sk(k), has(k), say, keys, io:{mouse}, red():is the droid Red, W, H, show?():draw the hidden meters, walk?:walking rules of the host}.
+   The state S comes from the host with use(S): droid, face, bar, walls, objs, victims, amb, rough and the fields of fields(). */
+window.RedDroid=function(Ho){
   const SPEED=150,R=17,VR=13,REACH=18,DIAG=1.0;   // walking speed, droid radius, victim radius, gap for interacting, diagnosis stand-in (s)
   /* placeholders for what the upgrades and the new victim states do */
   const WIDE=1.45,SEDATE=1.2,RUN=130,HIT=8,REVIVE_WAIT=1,BAG=50,TRANQ={range:230,cost:25,speed:560,cone:.42,turn:5};
@@ -4436,43 +4437,16 @@ window.OrbDroid=function(Ho){
   // vitality lost at each jolt on rough ground, seconds between those jolts, seconds before another bump counts
   const RED="#E2513C";
   const tune={radius:110,settle:3.0,drain:15,recharge:10,mini:4.0,event:12,knock:.5,good:3};  // pixels, seconds, % of the bar per second (x2), seconds, seconds (0 = off), share of an interaction's progress an event takes away (1 = reset), good marbles in that bag
-  let mode="red",room="plain",show=false,S;
-  /* the skill tree is linear: each upgrade includes the ones before it. They only apply to Red */
   const ORDER=["wide","cradle","steady","tranq","pulse"],NAME={wide:"Wider aura",cradle:"Cradle carry",steady:"Steadying aura",tranq:"Tranquilizer",pulse:"Reviving pulse"};
-  const tree=window.protoTree("redProtoTree",onSkill),sk=k=>mode==="red"&&!!tree.on[k];
+  const W=Ho.W||760,H=Ho.H||460,sk=Ho.sk,say=Ho.say,keys=Ho.keys,io=Ho.io;let S=null,g=null,btnHeld=false,tranqHeld=false,tbDrag=null;
   const radius=()=>tune.radius*(sk("wide")?WIDE:1);
   /* the cradle is the aura itself: on while Red carries someone with the aura on and has Cradle carry */
   const cradle=()=>!!S.carry&&S.aura&&sk("cradle");
-
-  /* the situations: who is in the room, where Red starts, and how often an event happens (seconds, 0 = only by the button) */
-  const ROOMS={
-    plain:{ev:12,say:"Three agitated victims and one normal one.",at:[90,300],v:[["A",250,130,"agitated"],["B",305,180,"agitated"],["C",610,345,"agitated"],["D",590,105,"normal"]]},
-    spread:{ev:0,say:"Five agitated victims, too far apart for the basic aura to reach from one spot.",at:[90,300],v:[["A",675,270,"agitated"],["B",582,398,"agitated"],["C",431,349,"agitated"],["D",431,191,"agitated"],["E",582,142,"agitated"]]},
-    /* carry: everyone is already diagnosed except D. o is the furniture, rough the rubble, amb the ambulance. Each victim: name, x, y, type, countdown, {ready, walk, unc} */
-    carry:{ev:7,carry:true,say:"Carry everyone to the ambulance on the left. The straight way crosses the rubble.",at:[150,230],
-      amb:{x:14,y:150,w:74,h:160},rough:{x:236,y:96,w:104,h:268},
-      o:[{n:"Bench",x:440,y:215,w:120,h:30},{n:"Crate",x:380,y:120,w:42,h:42},{n:"Table",x:470,y:330,w:80,h:44},{n:"Drum",x:270,y:388,w:40,h:40}],
-      v:[["A",620,110,"normal",0,{ready:true,walk:false}],["B",660,330,"agitated",0,{ready:true,walk:true}],["C",600,250,"normal",0,{ready:true,walk:false,unc:true}],["D",520,70,"agitated",0,{walk:true}]]},
-    shocks:{ev:5,say:"Aftershocks: an event every few seconds.",at:[330,330],v:[["A",500,300,"agitated"],["B",548,338,"agitated"],["C",468,352,"agitated"],["D",522,388,"agitated"]]},
-    runner:{ev:12,say:"A super agitated victim is running about, crashing into things and injuring themselves.",at:[90,230],v:[["R",560,300,"super"],["A",250,110,"agitated"],["B",305,150,"agitated"]],
-      o:[{n:"Bench",x:390,y:215,w:120,h:30},{n:"Cabinet",x:170,y:330,w:50,h:70},{n:"Shelf",x:560,y:70,w:110,h:28},{n:"Table",x:420,y:340,w:80,h:44},{n:"Trolley",x:640,y:200,w:40,h:40},{n:"Chair",x:320,y:290,w:32,h:32},{n:"Crate",x:500,y:120,w:38,h:38}]},
-    arrest:{ev:12,say:"A victim is unconscious and not breathing. Their countdown is running.",at:[330,330],v:[["V",560,335,"arrest",16],["A",500,120,"agitated"],["B",565,112,"agitated"]]}
-  };
-
-  /* the room: walls, furniture, the victims and the droid.
-     m is a victim's hidden agitation meter (100 = fully agitated, 0 = calm) */
-  function fresh(){
-    const r=ROOMS[room];
-    const v=([n,x,y,type,crit,o={}])=>({n,x,y,type,m:(type==="agitated"&&!o.ready)||type==="super"?100:0,calm:type==="normal"||!!o.ready,diag:!!o.ready,walk:!!o.walk,unc:!!o.unc,vit:100,out:false,prog:0,cp:0,bang:0,
+  /* a victim. m is the hidden agitation meter (100 = fully agitated, 0 = calm) */
+  const V=([n,x,y,type,crit,o={}])=>({n,x,y,type,m:(type==="agitated"&&!o.ready)||type==="super"?100:0,calm:type==="normal"||!!o.ready,diag:!!o.ready,walk:!!o.walk,unc:!!o.unc,vit:100,out:false,prog:0,cp:0,bang:0,
       crit:crit||0,late:false,cond:100,vx:type==="super"?RUN*.8:0,vy:type==="super"?-RUN*.6:0,sed:0,darted:false,ouch:0,sedated:false,held:false,shield:0,
       down:type==="arrest",pulsed:false,tries:0,miss:0,bag:null});
-    return {
-      droid:{x:r.at[0],y:r.at[1]},bar:100,t:0,done:false,started:false,aura:false,ev:0,evT:tune.event,flash:0,tg:null,cool:0,carry:null,jolt:0,roughT:0,amb:r.amb||null,rough:r.rough||null,zap:0,late:0,
-      walls:[{x:0,y:0,w:W,h:14},{x:0,y:H-14,w:W,h:14},{x:0,y:0,w:14,h:H},{x:W-14,y:0,w:14,h:H}],
-      objs:(r.o||[{n:"Bench",x:390,y:215,w:120,h:30},{n:"Cabinet",x:170,y:330,w:50,h:70}]).map(o=>({...o,shake:0})),dart:null,hits:[],aim:null,lock:null,aimOff:false,aimMan:false,face:{x:1,y:0},
-      victims:r.v.map(v)
-    };
-  }
+  const fields=()=>({aura:false,ev:0,evT:tune.event,flash:0,tg:null,cool:0,carry:null,jolt:0,roughT:0,amb:null,rough:null,zap:0,late:0,dart:null,hits:[],aim:null,lock:null,aimOff:false,aimMan:false,victims:[]});
   const hit=(a,b)=>a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;
   const box=(d,r)=>({x:d.x-r,y:d.y-r,w:r*2,h:r*2});
   const solid=r=>S.walls.some(w=>hit(r,w))||S.objs.some(o=>hit(r,o));
@@ -4481,49 +4455,12 @@ window.OrbDroid=function(Ho){
   const dist=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
   /* the victim the droid would interact with: the nearest one in reach that is not diagnosed yet */
   function target(){let best=null,bd=R+VR+REACH;for(const v of S.victims){if(v.diag&&v.calm)continue;const d=dist(v,S.droid);if(d<bd){bd=d;best=v}}return best}
-
-  /* input: keys while the room has focus, a drag on the room as a stick, and the buttons */
-  const keys={};let stick=null,btnHeld=false;
-  cv.addEventListener("keydown",e=>{const k=e.key.toLowerCase();
-    if(["arrowup","arrowdown","arrowleft","arrowright","w","a","s","d","e","f","c","q","i","j","k","l"].includes(k)){
-      if(k==="c"&&!e.repeat)carry();
-      if(k==="f"&&!e.repeat)toggleAura();
-      keys[k]=true;e.preventDefault()}});
-  cv.addEventListener("keyup",e=>{keys[e.key.toLowerCase()]=false});
-  cv.addEventListener("blur",()=>{for(const k in keys)keys[k]=false});
-  cv.addEventListener("pointerdown",e=>{cv.focus();stick={id:e.pointerId,x:e.clientX,y:e.clientY,dx:0,dy:0};cv.setPointerCapture(e.pointerId)});
-  let mouse=null,tranqHeld=false,tbDrag=null;   // where the mouse is over the room, the aim button being held, and a drag from that button
-  cv.addEventListener("pointermove",e=>{if(stick&&e.pointerId===stick.id){stick.dx=e.clientX-stick.x;stick.dy=e.clientY-stick.y}
-    if(e.pointerType==="mouse"){const r=cv.getBoundingClientRect();mouse={x:(e.clientX-r.left)*W/r.width,y:(e.clientY-r.top)*H/r.height,fresh:true}}});
-  const endStick=e=>{if(stick&&e.pointerId===stick.id)stick=null};
-  cv.addEventListener("pointerup",endStick);cv.addEventListener("pointercancel",endStick);
-  const ab=el("rpAct"),ub=el("rpAura"),cb=el("rpCarry"),tb=el("rpTranq");
-  /* a button that counts as held while it is pressed */
-  const why=b=>{if(b.classList.contains("lock")){say(b.dataset.why||"Not available right now.","bad");return true}return false};   // a dimmed button says why it cannot be used
-  function holdBtn(b,set){
-    b.addEventListener("pointerdown",e=>{e.preventDefault();if(why(b))return;set(true);b.classList.add("on");b.setPointerCapture(e.pointerId);e.preventDefault()});
-    const end=()=>{set(false);b.classList.remove("on")};b.addEventListener("pointerup",end);b.addEventListener("pointercancel",end);
-  }
-  holdBtn(ab,v=>{btnHeld=v});
-  cb.addEventListener("pointerdown",e=>{e.preventDefault();if(!why(cb))carry()});
-  ub.addEventListener("pointerdown",e=>{e.preventDefault();if(!why(ub))toggleAura()});
-  /* the aim button: hold to aim, drag away from where it was pressed to steer, release to fire */
-  tb.addEventListener("pointerdown",e=>{e.preventDefault();if(why(tb))return;tranqHeld=true;tbDrag={x:e.clientX,y:e.clientY,dx:0,dy:0};tb.setPointerCapture(e.pointerId);e.preventDefault()});
-  tb.addEventListener("pointermove",e=>{if(tbDrag){tbDrag.dx=e.clientX-tbDrag.x;tbDrag.dy=e.clientY-tbDrag.y}});
-  const tbEnd=()=>{tranqHeld=false;tbDrag=null};tb.addEventListener("pointerup",tbEnd);tb.addEventListener("pointercancel",tbEnd);
-  function wish(){
-    let x=(keys.arrowright||keys.d?1:0)-(keys.arrowleft||keys.a?1:0),y=(keys.arrowdown||keys.s?1:0)-(keys.arrowup||keys.w?1:0);
-    if(stick&&Math.hypot(stick.dx,stick.dy)>8){x=stick.dx;y=stick.dy}
-    const m=Math.hypot(x,y);return m?{x:x/m,y:y/m}:{x:0,y:0};
-  }
-  function say(t,c){const m=el("rpMsg");if(m.textContent!==t)m.textContent=t;m.className="cp-msg"+(c?" "+c:"")}
-
   /* the aura is a toggle, and only Red has it */
   function toggleAura(){
     if(S.done)return;
     // while carrying, the ability is blocked. With Cradle carry, Red's aura stays usable, and also cradles the carried victim
-    if(S.carry&&(mode!=="red"||!sk("cradle"))){say("A droid cannot use its ability while carrying a survivor.","bad");return}
-    if(mode!=="red"){say("Another droid has no aura. Hold E next to an agitated victim to calm them, one at a time.","bad");return}
+    if(S.carry&&(!Ho.red()||!sk("cradle"))){say("A droid cannot use its ability while carrying a survivor.","bad");return}
+    if(!Ho.red()){say("Another droid has no aura. Hold E next to an agitated victim to calm them, one at a time.","bad");return}
     if(!S.aura&&S.bar<=0){say("The bar is empty. Wait for it to recharge.","bad");return}
     S.aura=!S.aura;S.started=true;
     say(S.aura?(S.carry?"Aura on. It cradles victim "+S.carry.n+", who floats beside Red: no jolts, and no struggling at an event. ":"Aura on. ")+"Agitated victims inside the circle are settling. The bar is draining.":S.carry?"Aura off. Red is carrying by hand again.":"Aura off. The bar is recharging.");
@@ -4577,16 +4514,16 @@ window.OrbDroid=function(Ho){
     if(held&&S.aim===null&&!S.aimOff){ // start aiming: on the nearest victim in sight, or the way Red is facing
       if(S.dart){S.aimOff=true;say("A dart is already on its way.");return}
       if(S.bar<TRANQ.cost){S.aimOff=true;say("Not enough bar for a dart. It needs "+TRANQ.cost+"%.","bad");return}
-      const v=shots(!S.victims.some(v=>running(v)&&!v.darted))[0];S.aim=v?ang(d,v):Math.atan2(S.face.y,S.face.x);S.aimMan=false;S.started=true;if(mouse)mouse.fresh=false;
+      const v=shots(!S.victims.some(v=>running(v)&&!v.darted))[0];S.aim=v?ang(d,v):Math.atan2(S.face.y,S.face.x);S.aimMan=false;S.started=true;if(io.mouse)io.mouse.fresh=false;
     }
     if(!held){S.aimOff=false;if(S.aim!==null){fire(S.lock?ang(d,S.lock):S.aim,S.lock);S.aim=null;S.lock=null}return}
     if(S.aim===null)return;
-    // Red can keep moving while aiming, so the aim has its own controls: a drag from the button, the I J K L keys, or the mouse.
+    // Red can keep moving while aiming, so the aim has its own controls: a drag from the button, the I J K L keys, or the io.mouse.
     // Until one of them is used, the assist does the aiming: at the nearest victim in sight, or else the way Red is facing
     const ax=(keys.l?1:0)-(keys.j?1:0),ay=(keys.k?1:0)-(keys.i?1:0);
     if(tbDrag&&Math.hypot(tbDrag.dx,tbDrag.dy)>14){S.aim=Math.atan2(tbDrag.dy,tbDrag.dx);S.aimMan=true}
     else if(ax||ay){const t=turnTo(S.aim,Math.atan2(ay,ax)),mv=TRANQ.turn*dt;S.aim+=Math.abs(t)<mv?t:Math.sign(t)*mv;S.aimMan=true}
-    else if(mouse&&mouse.fresh){S.aim=ang(d,mouse);S.aimMan=true}
+    else if(io.mouse&&io.mouse.fresh){S.aim=ang(d,io.mouse);S.aimMan=true}
     else if(!S.aimMan){const v=shots(!S.victims.some(v=>running(v)&&!v.darted))[0];S.aim=v?ang(d,v):Math.atan2(S.face.y,S.face.x)}
     S.lock=lockOn(S.aim);
     say(S.lock?"Locked on. Release to fire.":"Aiming. Keep moving to find a clear shot, or steer the aim with I J K L, the mouse or a drag from the button. Release to fire.",S.lock?"good":"");
@@ -4641,13 +4578,9 @@ window.OrbDroid=function(Ho){
     c.x+=(d.x+side.x*gap-c.x)*Math.min(1,dt*14);c.y+=(d.y+side.y*gap-c.y)*Math.min(1,dt*14);
     const a=S.amb;if(d.x>a.x&&d.x<a.x+a.w&&d.y>a.y&&d.y<a.y+a.h){c.out=true;S.carry=null;say("Victim "+c.n+" is at the ambulance with "+Math.round(c.vit)+"% vitality.","good")}
   }
-
-  /* one step of the room */
-  function step(dt){
-    if(S.done)return;
-    const want=wish(),hold=!!(keys.e||btnHeld)&&!S.carry,d=S.droid;
-    if(want.x||want.y||hold)S.started=true;
-    if(S.started){S.t+=dt;if(tune.event>0){S.evT-=dt;if(S.evT<=0)event()}}
+  /* one step of the droid and the victims */
+  function act(dt,want){
+    const hold=!!(keys.e||btnHeld)&&!S.carry,d=S.droid;
     if(S.flash>0)S.flash-=dt;if(S.zap>0)S.zap-=dt;if(S.cool>0)S.cool-=dt;
     for(const v of S.victims){
       if(v.bang>0)v.bang-=dt;if(v.shield>0)v.shield-=dt;v.held=false;
@@ -4686,7 +4619,7 @@ window.OrbDroid=function(Ho){
       }else if(running(tg)){ // caught: held still and calmed through the minigame, by any droid
         busy=true;tg.cp+=dt/tune.mini;say("Holding the running victim and calming them through the minigame. Keep holding.");
         if(tg.cp>=1){tg.cp=0;tg.m=0;tg.calm=true;say("Victim "+tg.n+" is calm and can be diagnosed.","good")}
-      }else if(mode==="red"){say("Victim "+tg.n+" is still agitated. Calm them with the aura first.","bad")}
+      }else if(Ho.red()){say("Victim "+tg.n+" is still agitated. Calm them with the aura first.","bad")}
       else{ // another droid: the calm minigame, one victim at a time
         busy=true;tg.cp+=dt/tune.mini;say("Calming victim "+tg.n+" through the minigame. Keep holding.");
         if(tg.cp>=1){tg.cp=0;tg.m=0;tg.calm=true;say("Victim "+tg.n+" is calm and can be diagnosed.","good")}
@@ -4694,35 +4627,32 @@ window.OrbDroid=function(Ho){
     }
     for(const v of S.victims)if(!hold||v!==tg){v.prog=0;v.cp=0}
     const c=S.carry,pace=!c?1:cradle()||c.walk?CARRY.walk:CARRY.full;let moved=false,bumped=false;
-    if(!busy)for(const ax of ["x","y"]){const mv=want[ax]*SPEED*pace*dt;if(!mv)continue;const nd={x:d.x,y:d.y};nd[ax]+=mv;if(!blocked(box(nd,R))){d[ax]=nd[ax];moved=true}else bumped=true}
+    S.busyE=busy;
+    if(!busy&&Ho.walk)Ho.walk(want,dt,pace,true);   // a host with walking rules of its own
+    else if(!busy)for(const ax of ["x","y"]){const mv=want[ax]*SPEED*pace*dt;if(!mv)continue;const nd={x:d.x,y:d.y};nd[ax]+=mv;if(!blocked(box(nd,R))){d[ax]=nd[ax];moved=true}else bumped=true}
     if(S.amb)carryStep(dt,moved,bumped);
-    if(S.amb){if(S.victims.every(v=>v.out)){S.done=true;S.aura=false;const left=S.victims.reduce((a,v)=>a+v.vit,0)/S.victims.length;
-        say("Everyone is at the ambulance in "+S.t.toFixed(1)+"s as "+(mode==="red"?"Red":"another droid")+", with "+Math.round(left)+"% vitality left on average"+(S.late?", and "+S.late+" got worse on the way":"")+". Reset the room to try again.",S.late?"":"good")}}
-    else if(S.victims.every(v=>v.diag)){S.done=true;S.aura=false;
-      say("Everyone is diagnosed in "+S.t.toFixed(1)+"s as "+(mode==="red"?"Red":"another droid")+", through "+S.ev+" event"+(S.ev===1?"":"s")+(S.late?", and "+S.late+" got worse on the way":"")+". Reset the room to try again.",S.late?"":"good")}
   }
+  function release(){if(!S)return;S.aura=false;S.aim=null;S.lock=null;btnHeld=false;tranqHeld=false;tbDrag=null}
 
-  /* drawing */
+  /* drawing, in the order a room needs it: under the walls, the furniture, the aim, the victims, what is in the air, Red, and an event's flash */
   function rr(x,y,w,h,r){g.beginPath();g.roundRect(x,y,w,h,r);g.fill()}
-  function draw(){
-    const now=performance.now()/1000,d=S.droid,rad=radius();
-    g.clearRect(0,0,W,H);g.fillStyle="#F4F1E6";g.fillRect(0,0,W,H);
-    g.strokeStyle="rgba(34,48,43,.06)";g.lineWidth=1;g.beginPath();
-    for(let x=14;x<W;x+=40){g.moveTo(x,14);g.lineTo(x,H-14)}for(let y=14;y<H;y+=40){g.moveTo(14,y);g.lineTo(W-14,y)}g.stroke();
-    g.textAlign="center";
+  function drawUnder(ctx){g=ctx;g.textAlign="center";const now=performance.now()/1000,d=S.droid,rad=radius();
     if(S.rough){const q=S.rough;g.fillStyle="#C9B79A";rr(q.x,q.y,q.w,q.h,10);g.save();g.beginPath();g.rect(q.x,q.y,q.w,q.h);g.clip();g.strokeStyle="rgba(110,86,52,.45)";g.lineWidth=2;
       for(let x=q.x-q.h;x<q.x+q.w;x+=16){g.beginPath();g.moveTo(x,q.y+q.h);g.lineTo(x+q.h,q.y);g.stroke()}g.restore();g.fillStyle="#5E4A2B";g.font="700 11px system-ui,sans-serif";g.fillText("Rubble",q.x+q.w/2,q.y+16)}
     if(S.amb){const a=S.amb;g.fillStyle="#fff";rr(a.x,a.y,a.w,a.h,8);g.strokeStyle="#C8372D";g.lineWidth=3;g.setLineDash([8,5]);g.strokeRect(a.x+3,a.y+3,a.w-6,a.h-6);g.setLineDash([]);
       g.fillStyle="#C8372D";const cx=a.x+a.w/2,cy=a.y+a.h/2-8;g.fillRect(cx-5,cy-16,10,32);g.fillRect(cx-16,cy-5,32,10);g.font="800 11px system-ui,sans-serif";g.fillText("Ambulance",cx,cy+34)}
-    if(mode==="red"&&(!S.carry||S.aura)){ // the aura: filled while on, an outline of its reach while off
+    if(Ho.red()&&(!S.carry||S.aura)){ // the aura: filled while on, an outline of its reach while off
       g.beginPath();g.arc(d.x,d.y,rad,0,7);
       if(S.aura){g.fillStyle="rgba(226,81,60,.16)";g.fill();g.strokeStyle="rgba(226,81,60,.85)";g.lineWidth=3;g.stroke();
         {const p=(now*.8)%1;g.strokeStyle="rgba(226,81,60,"+(.5*(1-p))+")";g.lineWidth=2;g.beginPath();g.arc(d.x,d.y,rad*p,0,7);g.stroke()}
       }else{g.strokeStyle="rgba(226,81,60,.35)";g.lineWidth=1.5;g.setLineDash([6,6]);g.stroke();g.setLineDash([])}
     }
-    g.fillStyle="#22302B";for(const w of S.walls)g.fillRect(w.x,w.y,w.w,w.h);
+  }
+  function drawFurniture(ctx){g=ctx;g.textAlign="center";const now=performance.now()/1000;
     for(const o of S.objs){const sx=o.shake>0?Math.sin(now*70)*3*o.shake/.3:0;g.save();g.translate(sx,0);g.fillStyle=o.shake>0?"#6B4F4F":"#4A4F5C";rr(o.x,o.y,o.w,o.h,6);g.fillStyle="#fff";g.font="700 11px system-ui,sans-serif";
       g.save();g.translate(o.x+o.w/2,o.y+o.h/2);if(o.h>o.w)g.rotate(-Math.PI/2);if(Math.max(o.w,o.h)>=44)g.fillText(o.n,0,4);g.restore();g.restore()}
+  }
+  function drawAim(ctx){g=ctx;g.textAlign="center";const d=S.droid;
     if(sk("tranq")&&S.aim!==null){ // aiming: the dart's reach, and the line it would fly. Green when the assist has locked on
       g.strokeStyle="rgba(91,124,153,.55)";g.lineWidth=1.5;g.setLineDash([3,7]);g.beginPath();g.arc(d.x,d.y,TRANQ.range,0,7);g.stroke();
       const a=S.lock?ang(d,S.lock):S.aim;let l=R;
@@ -4732,6 +4662,8 @@ window.OrbDroid=function(Ho){
       g.fillStyle=g.strokeStyle;g.beginPath();g.moveTo(ex+Math.cos(a)*10,ey+Math.sin(a)*10);g.lineTo(ex+Math.cos(a+2.5)*9,ey+Math.sin(a+2.5)*9);g.lineTo(ex+Math.cos(a-2.5)*9,ey+Math.sin(a-2.5)*9);g.fill();
       if(S.lock){const v=S.lock;g.strokeStyle="#1F9D55";g.lineWidth=3;for(let j=0;j<4;j++){const c=j*1.5708+.7854;g.beginPath();g.arc(v.x,v.y,VR+9,c-.45,c+.45);g.stroke()}}
       g.setLineDash([])}
+  }
+  function drawVictims(ctx){g=ctx;g.textAlign="center";const now=performance.now()/1000,d=S.droid;
     S.victims.forEach((v,i)=>{
       if(v.out)return;
       const run=running(v),k=v.down||(v.diag&&v.calm)?0:run?1:v.m/100,jx=Math.sin(now*38+i*2)*3*k,jy=Math.cos(now*31+i)*3*k,x=v.x+jx,y=v.y+jy;
@@ -4764,29 +4696,144 @@ window.OrbDroid=function(Ho){
       const p=v.prog||v.cp;
       if(v.jolt>0)v.jolt-=1/60;
       if(p>0){g.strokeStyle=v.jolt>0?"#B3342B":v.prog?"#2E8B57":"#EE8A2B";g.lineWidth=5;g.beginPath();g.arc(v.x,v.y,VR+6,-Math.PI/2,-Math.PI/2+Math.PI*2*p);g.stroke()}
-      if(show&&(v.type==="agitated"||v.type==="super")&&!v.diag){ // the hidden meter, for testing only
+      if(Ho.show&&Ho.show()&&(v.type==="agitated"||v.type==="super")&&!v.diag){ // the hidden meter, for testing only
         const my=run?32:22;g.fillStyle="#fff";g.fillRect(v.x-20,v.y-VR-my,40,6);g.fillStyle="#B3342B";g.fillRect(v.x-20,v.y-VR-my,40*v.m/100,6);
         g.strokeStyle="#22302B";g.lineWidth=1;g.strokeRect(v.x-20,v.y-VR-my,40,6)}
     });
+  }
+  function drawFx(ctx){g=ctx;g.textAlign="center";
     for(const h of S.hits){const k=1-h.t/.45;g.strokeStyle="rgba(179,52,43,"+(1-k)+")";g.lineWidth=3;for(let j=0;j<8;j++){const a=j*.785;g.beginPath();g.moveTo(h.x+Math.cos(a)*(VR+2+k*8),h.y+Math.sin(a)*(VR+2+k*8));g.lineTo(h.x+Math.cos(a)*(VR+8+k*16),h.y+Math.sin(a)*(VR+8+k*16));g.stroke()}}
     if(S.dart){const q=S.dart,a=q.a;g.strokeStyle="#2F5D8A";g.lineWidth=4;g.lineCap="round";g.beginPath();g.moveTo(q.x-Math.cos(a)*9,q.y-Math.sin(a)*9);g.lineTo(q.x+Math.cos(a)*9,q.y+Math.sin(a)*9);g.stroke();g.lineCap="butt"}
-    g.fillStyle=mode==="red"?RED:"#5B7C99";g.beginPath();g.arc(d.x,d.y,R,0,7);g.fill();
+  }
+  function drawDroid(ctx){g=ctx;g.textAlign="center";const d=S.droid;
+    g.fillStyle=Ho.red()?RED:"#5B7C99";g.beginPath();g.arc(d.x,d.y,R,0,7);g.fill();
     g.strokeStyle="#22302B";g.lineWidth=2.5;g.beginPath();g.arc(d.x,d.y,R,0,7);g.stroke();
-    g.fillStyle="#fff";g.font="800 13px system-ui,sans-serif";g.fillText(mode==="red"?"R":"D",d.x,d.y+5);
+    g.fillStyle="#fff";g.font="800 13px system-ui,sans-serif";g.fillText(Ho.red()?"R":"D",d.x,d.y+5);
     if(S.zap>0){const a=S.zap/.5;g.strokeStyle="rgba(226,81,60,"+a+")";g.lineWidth=6;g.beginPath();g.arc(d.x,d.y,(1-a)*90+16,0,7);g.stroke()}
+  }
+  function drawFlash(ctx){g=ctx;g.textAlign="center";
     if(S.flash>0){g.fillStyle="rgba(179,52,43,"+(S.flash*.5)+")";g.fillRect(0,0,W,H);
       g.fillStyle="#B3342B";g.font="900 22px system-ui,sans-serif";g.fillText("Event!",W/2,44)}
+  }
+  /* the buttons. All of them are always shown. One that cannot be used right now is dimmed, and says why when pressed */
+  const why=b=>{if(b.classList.contains("lock")){say(b.dataset.why||"Not available right now.","bad");return true}return false};   // a dimmed button says why it cannot be used
+  function holdBtn(b,set){
+    b.addEventListener("pointerdown",e=>{e.preventDefault();if(why(b))return;set(true);b.classList.add("on");try{b.setPointerCapture(e.pointerId)}catch(_){}});
+    const end=()=>{set(false);b.classList.remove("on")};b.addEventListener("pointerup",end);b.addEventListener("pointercancel",end);
+  }
+  function bindHands(ab,cb){holdBtn(ab,v=>{btnHeld=v});cb.addEventListener("pointerdown",e=>{e.preventDefault();if(!why(cb))carry()})}
+  function bind(ub,tb){
+    ub.addEventListener("pointerdown",e=>{e.preventDefault();if(!why(ub))toggleAura()});
+    /* the aim button: hold to aim, drag away from where it was pressed to steer, release to fire */
+    tb.addEventListener("pointerdown",e=>{e.preventDefault();if(why(tb))return;tranqHeld=true;tbDrag={x:e.clientX,y:e.clientY,dx:0,dy:0};try{tb.setPointerCapture(e.pointerId)}catch(_){}});
+    tb.addEventListener("pointermove",e=>{if(tbDrag){tbDrag.dx=e.clientX-tbDrag.x;tbDrag.dy=e.clientY-tbDrag.y}});
+    const tbEnd=()=>{tranqHeld=false;tbDrag=null};tb.addEventListener("pointerup",tbEnd);tb.addEventListener("pointercancel",tbEnd)}
+    const btn=(b,label,on,lock)=>{const sp=b.lastElementChild;if(sp.textContent!==label)sp.textContent=label;b.classList.toggle("on",!!on&&!lock);b.classList.toggle("lock",!!lock);b.dataset.why=lock||""};
+  function ui(ub,tb){const red=Ho.red();
+    if(S.carry)btn(ub,S.aura?"Aura: on (cradle)":"Aura: off",S.aura,!red?"A droid cannot use its ability while carrying a survivor.":!sk("cradle")?"While carrying, the ability is blocked. Upgrade 2, Cradle carry, lets Red keep the aura on while carrying.":"");
+    else btn(ub,S.aura?"Aura: on":"Aura: off",S.aura,red?"":"Another droid has no aura.");
+    btn(tb,"Hold: aim dart",S.aim!==null,!red?"Only Red has the tranquilizer.":!Ho.has("tranq")?"Needs upgrade 4, Tranquilizer.":S.carry?"A droid cannot use its ability while carrying a survivor.":"");
+  }
+  function uiHands(ab,cb){const red=Ho.red();
+    {const tg=S.carry?null:target();btn(ab,!tg?"Interact":tg.down?"Hold: revive":!tg.calm?"Hold: calm":"Hold: diagnose",btnHeld,S.carry?"Put the victim down first.":!tg?"Nobody in reach. Stand next to a victim.":"")}
+    btn(cb,S.carry?"Put down":"Carry",S.carry,S.amb?"":"Carrying is in the “Carry out” situation.");
+  }
+  return {R:R,VR:VR,REACH:REACH,BAG:BAG,TRANQ:TRANQ,ORDER:ORDER,NAME:NAME,tune:tune,V:V,fields:fields,use:s=>{S=s},act:act,release:release,radius:radius,target:target,
+    drawUnder:drawUnder,drawFurniture:drawFurniture,drawAim:drawAim,drawVictims:drawVictims,drawFx:drawFx,drawDroid:drawDroid,drawFlash:drawFlash,bind:bind,bindHands:bindHands,ui:ui,uiHands:uiHands,
+    event:event,toggleAura:toggleAura,fire:fire,carry:carry,holdE:on=>{btnHeld=!!on},holdQ:on=>{tranqHeld=!!on;if(!on)tbDrag=null},drag:(dx,dy)=>{tbDrag={x:0,y:0,dx:dx,dy:dy}},
+    holding:()=>!!(keys.e||btnHeld)&&!S.carry,busy:()=>!!(S&&(S.aura||S.aim!==null||S.busyE))};
+};
+
+/* ===== Red's Calming aura: playable lo-fi =====
+   A top-down room on a canvas. World units are canvas pixels (760 x 460). The droid and the victims are the Red module (red_mod). */
+(function(){
+  const root=document.getElementById("redProto");if(!root)return;
+  const cv=root.querySelector("#rpCanvas"),g=cv.getContext("2d"),W=cv.width,H=cv.height;
+  const el=id=>root.querySelector("#"+id);
+  let mode="red",room="plain",show=false,S;
+  /* the skill tree is linear: each upgrade includes the ones before it. They only apply to Red */
+  const tree=window.protoTree("redProtoTree",onSkill),sk=k=>mode==="red"&&!!tree.on[k];
+  const io={mouse:null},keys={};
+  const C=window.RedDroid({sk:sk,has:k=>!!tree.on[k],say:(t,c)=>say(t,c),keys:keys,io:io,red:()=>mode==="red",W:W,H:H,show:()=>show});
+  const tune=C.tune,ORDER=C.ORDER,NAME=C.NAME,BAG=C.BAG;
+  const event=()=>{C.use(S);C.event()},toggleAura=()=>{C.use(S);C.toggleAura()},fire=(a,l)=>{C.use(S);C.fire(a,l)},carry=()=>{C.use(S);C.carry()};
+
+  /* the situations: who is in the room, where Red starts, and how often an event happens (seconds, 0 = only by the button) */
+  const ROOMS={
+    plain:{ev:12,say:"Three agitated victims and one normal one.",at:[90,300],v:[["A",250,130,"agitated"],["B",305,180,"agitated"],["C",610,345,"agitated"],["D",590,105,"normal"]]},
+    spread:{ev:0,say:"Five agitated victims, too far apart for the basic aura to reach from one spot.",at:[90,300],v:[["A",675,270,"agitated"],["B",582,398,"agitated"],["C",431,349,"agitated"],["D",431,191,"agitated"],["E",582,142,"agitated"]]},
+    /* carry: everyone is already diagnosed except D. o is the furniture, rough the rubble, amb the ambulance. Each victim: name, x, y, type, countdown, {ready, walk, unc} */
+    carry:{ev:7,carry:true,say:"Carry everyone to the ambulance on the left. The straight way crosses the rubble.",at:[150,230],
+      amb:{x:14,y:150,w:74,h:160},rough:{x:236,y:96,w:104,h:268},
+      o:[{n:"Bench",x:440,y:215,w:120,h:30},{n:"Crate",x:380,y:120,w:42,h:42},{n:"Table",x:470,y:330,w:80,h:44},{n:"Drum",x:270,y:388,w:40,h:40}],
+      v:[["A",620,110,"normal",0,{ready:true,walk:false}],["B",660,330,"agitated",0,{ready:true,walk:true}],["C",600,250,"normal",0,{ready:true,walk:false,unc:true}],["D",520,70,"agitated",0,{walk:true}]]},
+    shocks:{ev:5,say:"Aftershocks: an event every few seconds.",at:[330,330],v:[["A",500,300,"agitated"],["B",548,338,"agitated"],["C",468,352,"agitated"],["D",522,388,"agitated"]]},
+    runner:{ev:12,say:"A super agitated victim is running about, crashing into things and injuring themselves.",at:[90,230],v:[["R",560,300,"super"],["A",250,110,"agitated"],["B",305,150,"agitated"]],
+      o:[{n:"Bench",x:390,y:215,w:120,h:30},{n:"Cabinet",x:170,y:330,w:50,h:70},{n:"Shelf",x:560,y:70,w:110,h:28},{n:"Table",x:420,y:340,w:80,h:44},{n:"Trolley",x:640,y:200,w:40,h:40},{n:"Chair",x:320,y:290,w:32,h:32},{n:"Crate",x:500,y:120,w:38,h:38}]},
+    arrest:{ev:12,say:"A victim is unconscious and not breathing. Their countdown is running.",at:[330,330],v:[["V",560,335,"arrest",16],["A",500,120,"agitated"],["B",565,112,"agitated"]]}
+  };
+
+  /* the room: walls, furniture, the victims and the droid.
+     m is a victim's hidden agitation meter (100 = fully agitated, 0 = calm) */
+  function fresh(){
+    const r=ROOMS[room];
+    const v=C.V;
+    return {
+      droid:{x:r.at[0],y:r.at[1]},bar:100,t:0,done:false,started:false,aura:false,ev:0,evT:tune.event,flash:0,tg:null,cool:0,carry:null,jolt:0,roughT:0,amb:r.amb||null,rough:r.rough||null,zap:0,late:0,
+      walls:[{x:0,y:0,w:W,h:14},{x:0,y:H-14,w:W,h:14},{x:0,y:0,w:14,h:H},{x:W-14,y:0,w:14,h:H}],
+      objs:(r.o||[{n:"Bench",x:390,y:215,w:120,h:30},{n:"Cabinet",x:170,y:330,w:50,h:70}]).map(o=>({...o,shake:0})),dart:null,hits:[],aim:null,lock:null,aimOff:false,aimMan:false,face:{x:1,y:0},
+      victims:r.v.map(v)
+    };
+  }
+  /* input: keys while the room has focus, a drag on the room as a stick, and the buttons */
+  let stick=null;
+  cv.addEventListener("keydown",e=>{const k=e.key.toLowerCase();
+    if(["arrowup","arrowdown","arrowleft","arrowright","w","a","s","d","e","f","c","q","i","j","k","l"].includes(k)){
+      if(k==="c"&&!e.repeat)carry();
+      if(k==="f"&&!e.repeat)toggleAura();
+      keys[k]=true;e.preventDefault()}});
+  cv.addEventListener("keyup",e=>{keys[e.key.toLowerCase()]=false});
+  cv.addEventListener("blur",()=>{for(const k in keys)keys[k]=false});
+  cv.addEventListener("pointerdown",e=>{cv.focus();stick={id:e.pointerId,x:e.clientX,y:e.clientY,dx:0,dy:0};cv.setPointerCapture(e.pointerId)});
+  cv.addEventListener("pointermove",e=>{if(stick&&e.pointerId===stick.id){stick.dx=e.clientX-stick.x;stick.dy=e.clientY-stick.y}
+    if(e.pointerType==="mouse"){const r=cv.getBoundingClientRect();io.mouse={x:(e.clientX-r.left)*W/r.width,y:(e.clientY-r.top)*H/r.height,fresh:true}}});
+  const endStick=e=>{if(stick&&e.pointerId===stick.id)stick=null};
+  cv.addEventListener("pointerup",endStick);cv.addEventListener("pointercancel",endStick);
+  const ab=el("rpAct"),ub=el("rpAura"),cb=el("rpCarry"),tb=el("rpTranq");
+  C.bindHands(ab,cb);C.bind(ub,tb);
+  function wish(){
+    let x=(keys.arrowright||keys.d?1:0)-(keys.arrowleft||keys.a?1:0),y=(keys.arrowdown||keys.s?1:0)-(keys.arrowup||keys.w?1:0);
+    if(stick&&Math.hypot(stick.dx,stick.dy)>8){x=stick.dx;y=stick.dy}
+    const m=Math.hypot(x,y);return m?{x:x/m,y:y/m}:{x:0,y:0};
+  }
+  function say(t,c){const m=el("rpMsg");if(m.textContent!==t)m.textContent=t;m.className="cp-msg"+(c?" "+c:"")}
+
+  /* one step of the room: an event if one is due, the droid and the victims act, then the room checks its goal */
+  function step(dt){
+    if(S.done)return;C.use(S);
+    const want=wish();
+    if(want.x||want.y||C.holding())S.started=true;
+    if(S.started){S.t+=dt;if(tune.event>0){S.evT-=dt;if(S.evT<=0)event()}}
+    C.act(dt,want);
+    if(S.amb){if(S.victims.every(v=>v.out)){S.done=true;S.aura=false;const left=S.victims.reduce((a,v)=>a+v.vit,0)/S.victims.length;
+        say("Everyone is at the ambulance in "+S.t.toFixed(1)+"s as "+(mode==="red"?"Red":"another droid")+", with "+Math.round(left)+"% vitality left on average"+(S.late?", and "+S.late+" got worse on the way":"")+". Reset the room to try again.",S.late?"":"good")}}
+    else if(S.victims.every(v=>v.diag)){S.done=true;S.aura=false;
+      say("Everyone is diagnosed in "+S.t.toFixed(1)+"s as "+(mode==="red"?"Red":"another droid")+", through "+S.ev+" event"+(S.ev===1?"":"s")+(S.late?", and "+S.late+" got worse on the way":"")+". Reset the room to try again.",S.late?"":"good")}
+  }
+
+  /* drawing */
+  function draw(){C.use(S);
+    g.clearRect(0,0,W,H);g.fillStyle="#F4F1E6";g.fillRect(0,0,W,H);
+    g.strokeStyle="rgba(34,48,43,.06)";g.lineWidth=1;g.beginPath();
+    for(let x=14;x<W;x+=40){g.moveTo(x,14);g.lineTo(x,H-14)}for(let y=14;y<H;y+=40){g.moveTo(14,y);g.lineTo(W-14,y)}g.stroke();
+    g.textAlign="center";
+    C.drawUnder(g);
+    g.fillStyle="#22302B";for(const w of S.walls)g.fillRect(w.x,w.y,w.w,w.h);
+    C.drawFurniture(g);C.drawAim(g);C.drawVictims(g);C.drawFx(g);C.drawDroid(g);C.drawFlash(g);
     const b=el("rpBar");b.style.width=S.bar.toFixed(1)+"%";b.classList.toggle("low",S.bar<20);
     el("rpTime").textContent=S.t.toFixed(1)+"s";el("rpEv").textContent=S.ev;el("rpLate").textContent=S.late;
     el("rpDiag").textContent=S.victims.filter(v=>v.diag).length+"/"+S.victims.length;
-    // the buttons: all of them are always shown. One that cannot be used right now is dimmed, and says why when pressed
-    const btn=(b,label,on,lock)=>{const sp=b.lastElementChild;if(sp.textContent!==label)sp.textContent=label;b.classList.toggle("on",!!on&&!lock);b.classList.toggle("lock",!!lock);b.dataset.why=lock||""},red=mode==="red";
-    if(S.carry)btn(ub,S.aura?"Aura: on (cradle)":"Aura: off",S.aura,!red?"A droid cannot use its ability while carrying a survivor.":!sk("cradle")?"While carrying, the ability is blocked. Upgrade 2, Cradle carry, lets Red keep the aura on while carrying.":"");
-    else btn(ub,S.aura?"Aura: on":"Aura: off",S.aura,red?"":"Another droid has no aura.");
-    {const tg=S.carry?null:target();btn(ab,!tg?"Interact":tg.down?"Hold: revive":!tg.calm?"Hold: calm":"Hold: diagnose",btnHeld,S.carry?"Put the victim down first.":!tg?"Nobody in reach. Stand next to a victim.":"")}
-    btn(cb,S.carry?"Put down":"Carry",S.carry,S.amb?"":"Carrying is in the “Carry out” situation.");
-    btn(tb,"Hold: aim dart",S.aim!==null,!red?"Only Red has the tranquilizer.":!tree.on.tranq?"Needs upgrade 4, Tranquilizer.":S.carry?"A droid cannot use its ability while carrying a survivor.":"");
-
+    C.uiHands(ab,cb);C.ui(ub,tb);
     el("rpResWrap").hidden=!S.amb;el("rpRes").textContent=S.victims.filter(v=>v.out).length+"/"+S.victims.length;
   }
 
@@ -4820,15 +4867,19 @@ window.OrbDroid=function(Ho){
    ["rpS8","rpO8",v=>{tune.good=v;return v+" of "+BAG}]].forEach(([s,o,f])=>{
     const sl=el(s),out=el(o),set=()=>{out.textContent=f(+sl.value)};sl.oninput=set;set()});
   S=fresh();draw();
-  window.redProto={state:()=>S,stick:(dx,dy)=>{stick=dx||dy?{id:-9,x:0,y:0,dx,dy}:null},step,reset,tune,event,toggleAura,fire,carry,tree,keys,setRoom:r=>{const b=root.querySelector('.cp-seg button[data-room="'+r+'"]');if(b)b.click()}}; // for tests
+  window.redProto={state:()=>S,stick:(dx,dy)=>{stick=dx||dy?{id:-9,x:0,y:0,dx,dy}:null},step,reset,tune,event,toggleAura,fire,carry,tree,keys,setRoom:r=>{const b=root.querySelector('.cp-seg button[data-room="'+r+'"]');if(b)b.click()},droid:C}; // for tests
 })();
 
-/* ===== Cam's Highlight: playable lo-fi, with fog of war =====
-   A top-down floor on a canvas. The floor (1400 x 860) is larger than the view (760 x 460), which follows the droid. */
-(function(){
-  const root=document.getElementById("camProto");if(!root)return;
-  const cv=root.querySelector("#kpCanvas"),g=cv.getContext("2d"),W=cv.width,H=cv.height,WW=1400,WH=860;
-  const el=id=>root.querySelector("#"+id);
+/* ===== Cam, as a module =====
+   Everything that is Cam: its numbers, the highlight, the Clear lens, the Tracker, the Infrared pulse and Replay, how it is drawn, and its buttons.
+   The smoke is here too, with what any droid can do in it (see a short way, tag what comes into view, pick up a key card, open what needs it),
+   because smoke hides things the same whoever walks into it.
+   Cam's own floor and the Squad run both run this code, so Cam and the smoke are the same in both.
+   Ho is the host: {sk(k), has(k), say, keys, io:{mouse}, cam():is the droid Cam, W, H:the view, WW, WH:the floor, rooms?:the rooms a Clear lens explores,
+   showAll?():draw the floor without smoke, walk?:walking rules of the host}.
+   The state S comes from the host with use(S): droid, face, bar, walls, things and the fields of fields(). floor(S) draws the floor once and clears what has been seen. */
+window.CamDroid=function(Ho){
+  const W=Ho.W||760,H=Ho.H||460,WW=Ho.WW||1400,WH=Ho.WH||860,sk=Ho.sk,say=Ho.say,keys=Ho.keys,io=Ho.io;let S=null,g=null,pulseHeld=false,pbDrag=null;
   const SPEED=150,R=17,TR=13,RAYS=360,CAM="#3FA796";   // walking speed, droid radius, thing radius, rays cast for the line of sight
   const TYPE={unconscious:["Unconscious","#9AA5B1"],agitated:["Agitated","#F08A5D"],normal:["Normal","#9EDDC4"]};
   const PING={cost:10,show:5},PULSE={near:120,far:560,cost:20,show:5,turn:4},REPLAY={drain:10,span:12,every:.25},REVEAL=1.1,WALK=60;
@@ -4836,67 +4887,33 @@ window.OrbDroid=function(Ho){
   // replay: bar it drains while on (% a second), seconds of movement it plays back, how often a position is kept. REVEAL: seconds a room takes to clear with Clear lens. WALK: a wandering victim's speed (px/s)
   const tune={sight:90,clear:1.3,fog:.5,hl:190,drain:12,recharge:10,pulse:560};  // pixels, times further (x2), pixels, % of the bar per second (x2), pixels
   const ORDER=["clear","track","infra","replay"],NAME={clear:"Clear lens",track:"Tracker",infra:"Infrared pulse",replay:"Replay"};
-  let mode="cam",room="smoke",showAll=false,S;
-  /* skill tree candidates switched on in the panel beside the floor. They only apply to Cam */
-  const tree=window.protoTree("camProtoTree",onSkill),sk=k=>mode==="cam"&&!!tree.on[k];
   /* three layers kept off screen: the floor and walls, what has been seen so far, and a scratch layer */
   const layer=()=>{const c=document.createElement("canvas");c.width=WW;c.height=WH;return c};
   const stat=layer(),mask=layer(),tmp=layer(),sx=stat.getContext("2d"),mx=mask.getContext("2d"),tx=tmp.getContext("2d");
-
-  /* the situations. Each is solvable by any droid: the upgrade it is made for only makes it quicker.
-     goal: "find" every victim and the key card, "valve" pick up the key card and bring it to the valve, "catch" reach the wandering victim */
+  /* a thing on the floor: a victim, a key item or something to use */
   const t=(k,n,x,y,type,more)=>Object.assign({k,n,x,y,type,seen:false,known:false,found:false,lx:x,ly:y,ir:0,hist:[],path:null,i:0},more||{});
-  const LOOP=[[760,600],[927,560],[1150,640],[1280,427],[1200,250],[927,320],[700,200],[520,427],[600,640]];
-  const ROOMS={
-    smoke:{goal:"find",at:[110,760],say:"Find the three victims and the key card.",
-      things:()=>[t("victim","A",130,120,"unconscious"),t("victim","B",700,150,"agitated"),t("victim","C",1200,700,"normal"),
-                  t("key","Key card",1300,90),t("use","Fire extinguisher",650,740),t("use","Valve",1150,220)]},
-    back:{goal:"valve",at:[1180,640],say:"The valve needs the key card. Fetch the key card from the far side of the floor, then come back to the valve.",
-      things:()=>[t("use","Valve",1250,740,null,{seen:true,goal:true}),t("key","Key card",130,120),t("use","Fire extinguisher",650,740)]},
-    rooms:{goal:"find",at:[680,640],say:"Two victims are somewhere on this floor. Find them.",
-      things:()=>[t("victim","A",130,120,"unconscious"),t("victim","B",1250,150,"agitated"),t("use","Fire extinguisher",200,700)]},
-    wander:{goal:"catch",at:[300,640],say:"A confused victim was last seen at the tag and has walked off. Reach them.",
-      things:()=>[t("victim","W",760,600,"normal",{seen:true,path:LOOP}),t("use","Valve",1150,220)]}
-  };
-  /* the floor: walls with doorways, the things hidden on it and the droid */
-  function fresh(){
-    const r=ROOMS[room];
-    const s={
-      droid:{x:r.at[0],y:r.at[1]},face:{x:1,y:0},bar:100,t:0,done:false,started:false,hl:false,poly:[],goal:r.goal,key:false,
-      ping:0,replay:false,rev:[null,null,null,null,null,null],pulse:null,none:0,lit:[false,false,false,false,false,false],aim:null,aimOff:false,aimMan:false,rec:0,
-      walls:[{x:0,y:0,w:WW,h:14},{x:0,y:WH-14,w:WW,h:14},{x:0,y:0,w:14,h:WH},{x:WW-14,y:0,w:14,h:WH},
-             {x:440,y:14,w:14,h:136},{x:440,y:230,w:14,h:370},{x:440,y:680,w:14,h:166},   // left wall, two doorways
-             {x:920,y:14,w:14,h:266},{x:920,y:360,w:14,h:160},{x:920,y:600,w:14,h:246},   // right wall, two doorways
-             {x:14,y:420,w:286,h:14},{x:380,y:420,w:60,h:14},                              // splits the left column
-             {x:454,y:420,w:26,h:14},{x:560,y:420,w:360,h:14},                             // splits the middle column
-             {x:934,y:420,w:306,h:14},{x:1320,y:420,w:66,h:14}],                           // splits the right column
-      things:r.things()
-    };
-    // a wandering victim has already been walking for a while, so there is a trail to play back
-    for(const th of s.things)if(th.seen)th.ever=true;
-    for(const th of s.things)if(th.path){for(let i=0;i<Math.round(14/REPLAY.every);i++){wander(th,REPLAY.every);th.hist.push([th.x,th.y])}th.hist=th.hist.slice(-Math.round(REPLAY.span/REPLAY.every))}
-    // the floor and its walls, drawn once
-    sx.fillStyle="#F4F1E6";sx.fillRect(0,0,WW,WH);
-    sx.strokeStyle="rgba(34,48,43,.07)";sx.lineWidth=1;sx.beginPath();
-    for(let x=14;x<WW;x+=40){sx.moveTo(x,14);sx.lineTo(x,WH-14)}for(let y=14;y<WH;y+=40){sx.moveTo(14,y);sx.lineTo(WW-14,y)}sx.stroke();
-    sx.fillStyle="#22302B";for(const w of s.walls)sx.fillRect(w.x,w.y,w.w,w.h);
-    mx.clearRect(0,0,WW,WH);
-    return s;
-  }
   const hit=(a,b)=>a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;
   const box=d=>({x:d.x-R,y:d.y-R,w:R*2,h:R*2});
   const dist=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
-  const sight=()=>mode==="cam"?tune.sight*tune.clear:tune.sight;
+  const sight=()=>Ho.cam()?tune.sight*tune.clear:tune.sight;
   const ang=(a,b)=>Math.atan2(b.y-a.y,b.x-a.x),turnTo=(a,b)=>{let d=b-a;while(d>Math.PI)d-=2*Math.PI;while(d<-Math.PI)d+=2*Math.PI;return d};
   const view=()=>({x:Math.max(0,Math.min(WW-W,S.droid.x-W/2)),y:Math.max(0,Math.min(WH-H,S.droid.y-H/2))});   // the corner of the view on the floor
   /* the six rooms the walls make. A point in a doorway is in no room */
-  const RM=[[14,14,426,406],[14,434,426,412],[454,14,466,406],[454,434,466,412],[934,14,452,406],[934,434,452,412]].map(([x,y,w,h])=>({x,y,w,h}));
+  const RM=Ho.rooms||[[14,14,426,406],[14,434,426,412],[454,14,466,406],[454,434,466,412],[934,14,452,406],[934,434,452,412]].map(([x,y,w,h])=>({x,y,w,h}));
   const inRoom=(p,r)=>p.x>=r.x&&p.x<=r.x+r.w&&p.y>=r.y&&p.y<=r.y+r.h,roomOf=p=>RM.findIndex(r=>inRoom(p,r));
   /* how far the clearing of an explored room has spread from where Cam came in. It eases in and out, and ends past the room's furthest corner */
   function reach(i){const q=S.rev[i],m=RM[i];if(!q)return 0;const far=Math.max(...[[m.x,m.y],[m.x+m.w,m.y],[m.x,m.y+m.h],[m.x+m.w,m.y+m.h]].map(c=>Math.hypot(c[0]-q.x,c[1]-q.y)))+4,k=Math.min(1,q.t/REVEAL);return far*k*k*(3-2*k)}
   /* a wandering victim walks its loop from point to point */
   function wander(th,dt){let mv=WALK*dt;while(mv>0){const p=th.path[th.i],m=Math.hypot(p[0]-th.x,p[1]-th.y);if(m<=mv){th.x=p[0];th.y=p[1];mv-=m;th.i=(th.i+1)%th.path.length;if(m<.01&&th.path.length<2)break}else{th.x+=(p[0]-th.x)/m*mv;th.y+=(p[1]-th.y)/m*mv;mv=0}}}
-
+  const fields=()=>({hl:false,poly:[],goal:null,key:false,ping:0,replay:false,rev:RM.map(()=>null),pulse:null,none:0,lit:RM.map(()=>false),aim:null,aimOff:false,aimMan:false,rec:0,things:[],here:-1});
+  /* the floor and its walls, drawn once. What has been seen so far is cleared */
+  function floor(s){
+    sx.fillStyle="#F4F1E6";sx.fillRect(0,0,WW,WH);
+    sx.strokeStyle="rgba(34,48,43,.07)";sx.lineWidth=1;sx.beginPath();
+    for(let x=14;x<WW;x+=40){sx.moveTo(x,14);sx.lineTo(x,WH-14)}for(let y=14;y<WH;y+=40){sx.moveTo(14,y);sx.lineTo(WW-14,y)}sx.stroke();
+    sx.fillStyle="#22302B";for(const w of s.walls)sx.fillRect(w.x,w.y,w.w,w.h);
+    mx.clearRect(0,0,WW,WH);
+  }
   /* how far a ray from (ox,oy) travels before it meets a wall */
   function ray(ox,oy,dx,dy){
     let best=1e9;
@@ -4934,40 +4951,10 @@ window.OrbDroid=function(Ho){
         th.seen=false;say("The victim is no longer where they were last seen. The tag is cleared.","bad")}
     }
   }
-
-  /* input: keys while the floor has focus, a drag on the floor as a stick, and the buttons under it */
-  const keys={};let stick=null,mouse=null,pulseHeld=false,pbDrag=null;
-  cv.addEventListener("keydown",e=>{const k=e.key.toLowerCase();
-    if(["arrowup","arrowdown","arrowleft","arrowright","w","a","s","d","f","t","q","r","i","j","k","l"].includes(k)){
-      if(!e.repeat){if(k==="f")toggle();if(k==="t")ping();if(k==="r")replay()}
-      keys[k]=true;e.preventDefault()}});
-  cv.addEventListener("keyup",e=>{keys[e.key.toLowerCase()]=false});
-  cv.addEventListener("blur",()=>{for(const k in keys)keys[k]=false});
-  cv.addEventListener("pointerdown",e=>{cv.focus();stick={id:e.pointerId,x:e.clientX,y:e.clientY,dx:0,dy:0};cv.setPointerCapture(e.pointerId)});
-  cv.addEventListener("pointermove",e=>{if(stick&&e.pointerId===stick.id){stick.dx=e.clientX-stick.x;stick.dy=e.clientY-stick.y}
-    else if(e.pointerType==="mouse"){const b=cv.getBoundingClientRect(),v=view();mouse={x:(e.clientX-b.left)*W/b.width+v.x,y:(e.clientY-b.top)*H/b.height+v.y,fresh:true}}});
-  const endStick=e=>{if(stick&&e.pointerId===stick.id)stick=null};
-  cv.addEventListener("pointerup",endStick);cv.addEventListener("pointercancel",endStick);
-  const hb=el("kpBtn"),gb=el("kpPing"),pb=el("kpPulse"),rb=el("kpReplay");
-  const why=b=>{if(b.classList.contains("lock")){say(b.dataset.why||"Not available right now.","bad");return true}return false};   // a dimmed button says why it cannot be used
-  hb.addEventListener("pointerdown",e=>{e.preventDefault();if(!why(hb))toggle()});
-  gb.addEventListener("pointerdown",e=>{e.preventDefault();if(!why(gb))ping()});
-  rb.addEventListener("pointerdown",e=>{e.preventDefault();if(!why(rb))replay()});
-  /* the pulse button: hold to aim, drag away from where it was pressed to steer, release to fire */
-  pb.addEventListener("pointerdown",e=>{e.preventDefault();if(why(pb))return;pulseHeld=true;pbDrag={x:e.clientX,y:e.clientY,dx:0,dy:0};pb.setPointerCapture(e.pointerId)});
-  pb.addEventListener("pointermove",e=>{if(pbDrag){pbDrag.dx=e.clientX-pbDrag.x;pbDrag.dy=e.clientY-pbDrag.y}});
-  const pbEnd=()=>{pulseHeld=false;pbDrag=null};pb.addEventListener("pointerup",pbEnd);pb.addEventListener("pointercancel",pbEnd);
-  function wish(){
-    let x=(keys.arrowright||keys.d?1:0)-(keys.arrowleft||keys.a?1:0),y=(keys.arrowdown||keys.s?1:0)-(keys.arrowup||keys.w?1:0);
-    if(stick&&Math.hypot(stick.dx,stick.dy)>8){x=stick.dx;y=stick.dy}
-    const m=Math.hypot(x,y);return m?{x:x/m,y:y/m}:{x:0,y:0};
-  }
-  function say(m,c){const p=el("kpMsg");if(p.textContent!==m)p.textContent=m;p.className="cp-msg"+(c?" "+c:"")}
-
   /* the highlight is a toggle, and only Cam has it */
   function toggle(){
     if(S.done)return;
-    if(mode!=="cam"){say("Another droid has no highlight. It has to find things by getting them into view.","bad");return}
+    if(!Ho.cam()){say("Another droid has no highlight. It has to find things by getting them into view.","bad");return}
     if(!S.hl&&S.bar<=0){say("The bar is empty. Wait for it to recharge.","bad");return}
     S.hl=!S.hl;S.started=true;
     say(S.hl?"Highlight on. Victims, interactables and key items around Cam, in its line of sight, are shown."+(sk("track")?" They are tagged, so they stay on the map.":""):"Highlight off. The bar is recharging.");
@@ -4988,7 +4975,7 @@ window.OrbDroid=function(Ho){
     const d=S.droid;
     if(held&&S.aim===null&&!S.aimOff){
       if(S.bar<PULSE.cost){S.aimOff=true;say("Not enough bar for a pulse. It needs "+PULSE.cost+"%.","bad");return}
-      S.aim=Math.atan2(S.face.y,S.face.x);S.aimMan=false;S.started=true;if(mouse)mouse.fresh=false;
+      S.aim=Math.atan2(S.face.y,S.face.x);S.aimMan=false;S.started=true;if(io.mouse)io.mouse.fresh=false;
     }
     if(!held){S.aimOff=false;if(S.aim!==null){fire(S.aim);S.aim=null}return}
     if(S.aim===null)return;
@@ -5016,14 +5003,14 @@ window.OrbDroid=function(Ho){
     if(!movers().length){say("Nothing tagged has moved, so there is nothing to play back.","bad");return}
     S.replay=true;S.started=true;say("Replay on. The trail shows where the victim walked over the last "+REPLAY.span+" seconds. Follow it to its bright end. The bar drains while it is on.","good");
   }
-
-  /* one step of the floor */
-  function step(dt){
-    if(S.done)return;
-    const want=wish(),d=S.droid;
-    if(want.x||want.y){S.started=true;S.face=want}
-    if(S.started)S.t+=dt;
+  /* one step of the droid, the smoke and the things in it */
+  function act(dt,want){
+    const d=S.droid;
+    if(want.x||want.y)S.face={x:want.x,y:want.y};
+    if(Ho.walk)Ho.walk(want,dt,1,true);   // a host with walking rules of its own
+    else{
     for(const ax of ["x","y"]){const mv=want[ax]*SPEED*dt;if(!mv)continue;const nd={x:d.x,y:d.y};nd[ax]+=mv;if(!S.walls.some(w=>hit(box(nd),w)))d[ax]=nd[ax]}
+    }
     if(S.replay&&!movers().length)S.replay=false;
     if(S.hl||S.replay){S.bar-=((S.hl?tune.drain:0)+(S.replay?REPLAY.drain:0))*dt;
       if(S.bar<=0){S.bar=0;const both=S.hl&&S.replay;say("The bar is empty, so "+(both?"the highlight and the replay":S.hl?"the highlight":"the replay")+" switched off.","bad");S.hl=false;S.replay=false}}
@@ -5041,14 +5028,11 @@ window.OrbDroid=function(Ho){
     if(S.hl&&sk("track"))for(const th of S.things)if(!th.found&&dist(th,d)<=tune.hl&&los(th)){th.known=true;mark(th)}
     for(const th of S.things){
       if(th.found||dist(th,d)>R+TR+4)continue;
-      if(th.k==="use"){if(th.goal&&S.key){th.found=true;say("The valve is opened with the key card.","good")}else if(th.goal&&!S.msgd){S.msgd=true;say("The valve needs the key card.","bad")}continue}
-      th.found=true;mark(th);if(th.k==="key")S.key=true;say(th.k==="victim"?"Victim "+th.n+" found.":"Key card picked up."+(S.goal==="valve"?" Now go back to the valve.":""),"good");
+      if(th.k==="use"){if(th.goal&&S.key){th.found=true;say("The "+th.n.toLowerCase()+" is opened with the key card.","good")}else if(th.goal&&!S.msgd){S.msgd=true;say("The "+th.n.toLowerCase()+" needs the key card.","bad")}continue}
+      th.found=true;mark(th);if(th.k==="key")S.key=true;say(th.k==="victim"?"Victim "+th.n+" found.":"Key card picked up."+(S.goal==="valve"?" Now go back to the "+((S.things.find(o=>o.goal)||{n:"valve"}).n.toLowerCase())+".":""),"good");
     }
-    const need=goals();
-    if(need.every(th=>th.found)){S.done=true;S.hl=false;S.replay=false;S.aim=null;
-      say("Done in "+S.t.toFixed(1)+"s as "+(mode==="cam"?"Cam":"another droid")+". Reset the floor to try again.","good")}
   }
-  const goals=()=>S.things.filter(th=>th.k!=="use"||th.goal);
+  function release(){if(!S)return;S.hl=false;S.replay=false;S.aim=null;pulseHeld=false;pbDrag=null}
 
   /* drawing */
   /* one thing at (x,y). known: its type is shown. ir: drawn as a heat shape instead */
@@ -5069,11 +5053,10 @@ window.OrbDroid=function(Ho){
   function chip(text,x,y,ir){g.font="800 11px system-ui,sans-serif";const tw=g.measureText(text).width+10;
     g.fillStyle=ir?"rgba(60,24,8,.9)":"rgba(17,54,47,.9)";g.beginPath();g.roundRect(x-tw/2,y,tw,17,5);g.fill();g.fillStyle=ir?"#FFD27A":"#C9F3EA";g.fillText(text,x,y+12.5)}
   const shown=th=>!(th.k==="key"&&th.found);
-  function draw(){
-    const now=performance.now()/1000,d=S.droid,p=S.poly,r=sight(),v=view();
-    g.textAlign="center";g.fillStyle="#262C2A";g.fillRect(0,0,W,H);
-    g.save();g.translate(-v.x,-v.y);
-    if(showAll){g.drawImage(stat,0,0);for(const th of S.things)if(shown(th))thing(th,th.x,th.y,true,false)}
+  /* the floor under its smoke: what has been seen, what is in view now, and explored rooms. Drawn in floor units, so a host moves the view first */
+  function drawFloor(ctx){g=ctx;g.textAlign="center";const now=performance.now()/1000,d=S.droid,p=S.poly,r=sight();
+    g.fillStyle="#262C2A";g.fillRect(0,0,WW,WH);
+    if(Ho.showAll&&Ho.showAll()){g.drawImage(stat,0,0);for(const th of S.things)if(shown(th))thing(th,th.x,th.y,true,false)}
     else{
       // places already seen, dimmed, with what was tagged there, where it was last seen
       tx.globalCompositeOperation="source-over";tx.clearRect(0,0,WW,WH);tx.drawImage(stat,0,0);
@@ -5100,6 +5083,9 @@ window.OrbDroid=function(Ho){
         g.restore();
       }
     }
+  }
+  /* what Cam's abilities show: the replay trail, the pulse, what the pulse found, the highlight and the pulse's aim */
+  function drawFx(ctx){g=ctx;g.textAlign="center";const now=performance.now()/1000,d=S.droid,r=sight();
     if(S.replay)for(const th of S.things){ // Replay: the ghost trail, brighter towards where the victim is now
       if(!th.path||th.found||!(th.seen||th.ever))continue;const h=th.hist,n=h.length;
       for(let i=0;i<n;i++){const k=(i+1)/n;g.fillStyle="rgba(120,220,255,"+(.15+.8*k)+")";g.beginPath();g.arc(h[i][0],h[i][1],2+3*k,0,7);g.fill()}
@@ -5124,11 +5110,16 @@ window.OrbDroid=function(Ho){
     if(S.aim!==null){ // aiming the pulse: its cone
       g.save();g.translate(d.x,d.y);g.rotate(S.aim);g.fillStyle="rgba(255,150,60,.13)";cone();g.fill();
       g.strokeStyle="rgba(255,176,46,.9)";g.lineWidth=2;g.setLineDash([8,6]);cone();g.stroke();g.setLineDash([]);g.restore()}
-    g.fillStyle=mode==="cam"?CAM:"#5B7C99";g.beginPath();g.arc(d.x,d.y,R,0,7);g.fill();
+  }
+  function drawDroid(ctx){g=ctx;g.textAlign="center";const d=S.droid;
+    g.fillStyle=Ho.cam()?CAM:"#5B7C99";g.beginPath();g.arc(d.x,d.y,R,0,7);g.fill();
     g.strokeStyle="#F4F1E6";g.lineWidth=2.5;g.beginPath();g.arc(d.x,d.y,R,0,7);g.stroke();
-    g.fillStyle="#fff";g.font="800 13px system-ui,sans-serif";g.fillText(mode==="cam"?"C":"D",d.x,d.y+5);
+    g.fillStyle="#fff";g.font="800 13px system-ui,sans-serif";g.fillText(Ho.cam()?"C":"D",d.x,d.y+5);
     if(sk("infra")&&!S.done){const fa=S.aim!==null?S.aim:Math.atan2(S.face.y,S.face.x);   // which way Cam faces, and so where a pulse would go
       g.save();g.translate(d.x+Math.cos(fa)*(R+9),d.y+Math.sin(fa)*(R+9));g.rotate(fa);g.fillStyle="#FFB02E";g.strokeStyle="#22302B";g.lineWidth=1.5;g.beginPath();g.moveTo(8,0);g.lineTo(-4,-6);g.lineTo(-4,6);g.closePath();g.fill();g.stroke();g.restore()}
+  }
+  /* the arrows beside the droid, and the pulse finding nothing */
+  function drawArrows(ctx){g=ctx;g.textAlign="center";const d=S.droid;
     /* an arrow beside Cam towards (x,y), with what is there and how far */
     const arrow=(th,x,y,ir)=>{const m=Math.hypot(x-d.x,y-d.y);if(m<70)return;
       const a=Math.atan2(y-d.y,x-d.x),ax=d.x+Math.cos(a)*52,ay=d.y+Math.sin(a)*52;
@@ -5139,15 +5130,124 @@ window.OrbDroid=function(Ho){
     for(const th of S.things)if(th.ir>0&&!th.found&&shown(th)&&!(S.ping>0)){g.globalAlpha=Math.min(1,th.ir);arrow(th,th.x,th.y,true);g.globalAlpha=1}   // Infrared pulse: the same arrows for what it found
     if(S.none>0){g.globalAlpha=Math.min(1,S.none*1.5);g.font="800 13px system-ui,sans-serif";const tw=g.measureText("Nothing found").width+18;
       g.fillStyle="rgba(60,24,8,.92)";g.beginPath();g.roundRect(d.x-tw/2,d.y-R-34,tw,24,7);g.fill();g.fillStyle="#FFD27A";g.fillText("Nothing found",d.x,d.y-R-17);g.globalAlpha=1}
-    g.restore();
+  }
+  /* the whole floor in the view that follows the droid */
+  function draw(ctx){g=ctx;const v=view();g.textAlign="center";g.fillStyle="#262C2A";g.fillRect(0,0,W,H);
+    g.save();g.translate(-v.x,-v.y);drawFloor(ctx);drawFx(ctx);drawDroid(ctx);drawArrows(ctx);g.restore()}
+  /* the buttons. A dimmed button says why it cannot be used */
+  const why=b=>{if(b.classList.contains("lock")){say(b.dataset.why||"Not available right now.","bad");return true}return false};   // a dimmed button says why it cannot be used
+  function bind(hb,gb,pb,rb){
+  hb.addEventListener("pointerdown",e=>{e.preventDefault();if(!why(hb))toggle()});
+  gb.addEventListener("pointerdown",e=>{e.preventDefault();if(!why(gb))ping()});
+  rb.addEventListener("pointerdown",e=>{e.preventDefault();if(!why(rb))replay()});
+  /* the pulse button: hold to aim, drag away from where it was pressed to steer, release to fire */
+    pb.addEventListener("pointerdown",e=>{e.preventDefault();if(why(pb))return;pulseHeld=true;pbDrag={x:e.clientX,y:e.clientY,dx:0,dy:0};try{pb.setPointerCapture(e.pointerId)}catch(_){}});
+  pb.addEventListener("pointermove",e=>{if(pbDrag){pbDrag.dx=e.clientX-pbDrag.x;pbDrag.dy=e.clientY-pbDrag.y}});
+  const pbEnd=()=>{pulseHeld=false;pbDrag=null};pb.addEventListener("pointerup",pbEnd);pb.addEventListener("pointercancel",pbEnd);
+  }
+  function ui(hb,gb,pb,rb){
+    const btn=(bt,text,on,lock)=>{const sp=bt.lastElementChild;if(sp.textContent!==text)sp.textContent=text;bt.classList.toggle("on",!!on&&!lock);bt.classList.toggle("lock",!!lock);bt.dataset.why=lock||""},cam=Ho.cam();
+    btn(hb,S.hl?"Highlight: on":"Highlight: off",S.hl,cam?"":"Another droid has no highlight.");
+    btn(gb,"Tracker",S.ping>0,!cam?"Only Cam has the Tracker.":!Ho.has("track")?"Needs upgrade 2, Tracker.":"");
+    btn(pb,"Infrared pulse",S.aim!==null,!cam?"Only Cam has the Infrared pulse.":!Ho.has("infra")?"Needs upgrade 3, Infrared pulse.":"");
+    btn(rb,S.replay?"Replay: on":"Replay: off",S.replay,!cam?"Only Cam has Replay.":!Ho.has("replay")?"Needs upgrade 4, Replay.":"");
+  }
+  return {R:R,TR:TR,SPEED:SPEED,REPLAY:REPLAY,ORDER:ORDER,NAME:NAME,tune:tune,t:t,fields:fields,floor:floor,use:s=>{S=s},act:act,release:release,look:look,los:los,sight:sight,view:view,wander:wander,
+    toggle:toggle,ping:ping,fire:fire,replay:replay,aim:on=>{pulseHeld=!!on;if(!on)pbDrag=null},drag:(dx,dy)=>{pbDrag={x:0,y:0,dx:dx,dy:dy}},mark:mark,
+    draw:draw,drawFloor:drawFloor,drawFx:drawFx,drawDroid:drawDroid,drawArrows:drawArrows,bind:bind,ui:ui,busy:()=>!!(S&&(S.hl||S.replay||S.aim!==null))};
+};
+
+/* ===== Cam's Highlight: playable lo-fi, with fog of war =====
+   A top-down floor on a canvas. The floor (1400 x 860) is larger than the view (760 x 460), which follows the droid.
+   The droid and the smoke are the Cam module (cam_mod). */
+(function(){
+  const root=document.getElementById("camProto");if(!root)return;
+  const cv=root.querySelector("#kpCanvas"),g=cv.getContext("2d"),W=cv.width,H=cv.height,WW=1400,WH=860;
+  const el=id=>root.querySelector("#"+id);
+  let mode="cam",room="smoke",showAll=false,S;
+  /* skill tree candidates switched on in the panel beside the floor. They only apply to Cam */
+  const tree=window.protoTree("camProtoTree",onSkill),sk=k=>mode==="cam"&&!!tree.on[k];
+  const io={mouse:null},keys={};
+  const C=window.CamDroid({sk:sk,has:k=>!!tree.on[k],say:(t,c)=>say(t,c),keys:keys,io:io,cam:()=>mode==="cam",W:W,H:H,WW:WW,WH:WH,showAll:()=>showAll});
+  const tune=C.tune,t=C.t,REPLAY=C.REPLAY,ORDER=C.ORDER,NAME=C.NAME,wander=C.wander;
+  const look=()=>{C.use(S);C.look()},los=p=>{C.use(S);return C.los(p)},sight=()=>C.sight(),toggle=()=>{C.use(S);C.toggle()},ping=()=>{C.use(S);C.ping()},fire=a=>{C.use(S);C.fire(a)},replay=()=>{C.use(S);C.replay()};
+
+  /* the situations. Each is solvable by any droid: the upgrade it is made for only makes it quicker.
+     goal: "find" every victim and the key card, "valve" pick up the key card and bring it to the valve, "catch" reach the wandering victim */
+  const LOOP=[[760,600],[927,560],[1150,640],[1280,427],[1200,250],[927,320],[700,200],[520,427],[600,640]];
+  const ROOMS={
+    smoke:{goal:"find",at:[110,760],say:"Find the three victims and the key card.",
+      things:()=>[t("victim","A",130,120,"unconscious"),t("victim","B",700,150,"agitated"),t("victim","C",1200,700,"normal"),
+                  t("key","Key card",1300,90),t("use","Fire extinguisher",650,740),t("use","Valve",1150,220)]},
+    back:{goal:"valve",at:[1180,640],say:"The valve needs the key card. Fetch the key card from the far side of the floor, then come back to the valve.",
+      things:()=>[t("use","Valve",1250,740,null,{seen:true,goal:true}),t("key","Key card",130,120),t("use","Fire extinguisher",650,740)]},
+    rooms:{goal:"find",at:[680,640],say:"Two victims are somewhere on this floor. Find them.",
+      things:()=>[t("victim","A",130,120,"unconscious"),t("victim","B",1250,150,"agitated"),t("use","Fire extinguisher",200,700)]},
+    wander:{goal:"catch",at:[300,640],say:"A confused victim was last seen at the tag and has walked off. Reach them.",
+      things:()=>[t("victim","W",760,600,"normal",{seen:true,path:LOOP}),t("use","Valve",1150,220)]}
+  };
+  /* the floor: walls with doorways, the things hidden on it and the droid */
+  function fresh(){
+    const r=ROOMS[room];
+    const s={
+      droid:{x:r.at[0],y:r.at[1]},face:{x:1,y:0},bar:100,t:0,done:false,started:false,hl:false,poly:[],goal:r.goal,key:false,
+      ping:0,replay:false,rev:[null,null,null,null,null,null],pulse:null,none:0,lit:[false,false,false,false,false,false],aim:null,aimOff:false,aimMan:false,rec:0,
+      walls:[{x:0,y:0,w:WW,h:14},{x:0,y:WH-14,w:WW,h:14},{x:0,y:0,w:14,h:WH},{x:WW-14,y:0,w:14,h:WH},
+             {x:440,y:14,w:14,h:136},{x:440,y:230,w:14,h:370},{x:440,y:680,w:14,h:166},   // left wall, two doorways
+             {x:920,y:14,w:14,h:266},{x:920,y:360,w:14,h:160},{x:920,y:600,w:14,h:246},   // right wall, two doorways
+             {x:14,y:420,w:286,h:14},{x:380,y:420,w:60,h:14},                              // splits the left column
+             {x:454,y:420,w:26,h:14},{x:560,y:420,w:360,h:14},                             // splits the middle column
+             {x:934,y:420,w:306,h:14},{x:1320,y:420,w:66,h:14}],                           // splits the right column
+      things:r.things(),here:-1
+    };
+    // a wandering victim has already been walking for a while, so there is a trail to play back
+    for(const th of s.things)if(th.seen)th.ever=true;
+    C.use(s);for(const th of s.things)if(th.path){for(let i=0;i<Math.round(14/REPLAY.every);i++){wander(th,REPLAY.every);th.hist.push([th.x,th.y])}th.hist=th.hist.slice(-Math.round(REPLAY.span/REPLAY.every))}
+    // the floor and its walls, drawn once
+    C.floor(s);
+    return s;
+  }
+  /* input: keys while the floor has focus, a drag on the floor as a stick, and the buttons under it */
+  let stick=null;
+  cv.addEventListener("keydown",e=>{const k=e.key.toLowerCase();
+    if(["arrowup","arrowdown","arrowleft","arrowright","w","a","s","d","f","t","q","r","i","j","k","l"].includes(k)){
+      if(!e.repeat){if(k==="f")toggle();if(k==="t")ping();if(k==="r")replay()}
+      keys[k]=true;e.preventDefault()}});
+  cv.addEventListener("keyup",e=>{keys[e.key.toLowerCase()]=false});
+  cv.addEventListener("blur",()=>{for(const k in keys)keys[k]=false});
+  cv.addEventListener("pointerdown",e=>{cv.focus();stick={id:e.pointerId,x:e.clientX,y:e.clientY,dx:0,dy:0};cv.setPointerCapture(e.pointerId)});
+  cv.addEventListener("pointermove",e=>{if(stick&&e.pointerId===stick.id){stick.dx=e.clientX-stick.x;stick.dy=e.clientY-stick.y}
+    else if(e.pointerType==="mouse"){const b=cv.getBoundingClientRect();C.use(S);const v=C.view();io.mouse={x:(e.clientX-b.left)*W/b.width+v.x,y:(e.clientY-b.top)*H/b.height+v.y,fresh:true}}});
+  const endStick=e=>{if(stick&&e.pointerId===stick.id)stick=null};
+  cv.addEventListener("pointerup",endStick);cv.addEventListener("pointercancel",endStick);
+  const hb=el("kpBtn"),gb=el("kpPing"),pb=el("kpPulse"),rb=el("kpReplay");
+  C.bind(hb,gb,pb,rb);
+  function wish(){
+    let x=(keys.arrowright||keys.d?1:0)-(keys.arrowleft||keys.a?1:0),y=(keys.arrowdown||keys.s?1:0)-(keys.arrowup||keys.w?1:0);
+    if(stick&&Math.hypot(stick.dx,stick.dy)>8){x=stick.dx;y=stick.dy}
+    const m=Math.hypot(x,y);return m?{x:x/m,y:y/m}:{x:0,y:0};
+  }
+  function say(m,c){const p=el("kpMsg");if(p.textContent!==m)p.textContent=m;p.className="cp-msg"+(c?" "+c:"")}
+
+  /* one step of the floor: the droid and the smoke act, then the floor checks its goal */
+  function step(dt){
+    if(S.done)return;C.use(S);
+    const want=wish();
+    if(want.x||want.y)S.started=true;
+    if(S.started)S.t+=dt;
+    C.act(dt,want);
+    const need=goals();
+    if(need.every(th=>th.found)){S.done=true;S.hl=false;S.replay=false;S.aim=null;
+      say("Done in "+S.t.toFixed(1)+"s as "+(mode==="cam"?"Cam":"another droid")+". Reset the floor to try again.","good")}
+  }
+  const goals=()=>S.things.filter(th=>th.k!=="use"||th.goal);
+
+  /* drawing */
+  function draw(){C.use(S);C.draw(g);
     const b=el("kpBar");b.style.width=S.bar.toFixed(1)+"%";b.classList.toggle("low",S.bar<20);
     el("kpTime").textContent=S.t.toFixed(1)+"s";
     const need=goals();el("kpFound").textContent=need.filter(th=>th.found).length+"/"+need.length;
-    const btn=(bt,text,on,lock)=>{const sp=bt.lastElementChild;if(sp.textContent!==text)sp.textContent=text;bt.classList.toggle("on",!!on&&!lock);bt.classList.toggle("lock",!!lock);bt.dataset.why=lock||""},cam=mode==="cam";
-    btn(hb,S.hl?"Highlight: on":"Highlight: off",S.hl,cam?"":"Another droid has no highlight.");
-    btn(gb,"Tracker",S.ping>0,!cam?"Only Cam has the Tracker.":!tree.on.track?"Needs upgrade 2, Tracker.":"");
-    btn(pb,"Infrared pulse",S.aim!==null,!cam?"Only Cam has the Infrared pulse.":!tree.on.infra?"Needs upgrade 3, Infrared pulse.":"");
-    btn(rb,S.replay?"Replay: on":"Replay: off",S.replay,!cam?"Only Cam has Replay.":!tree.on.replay?"Needs upgrade 4, Replay.":"");
+    C.ui(hb,gb,pb,rb);
   }
 
   /* the loop runs only while the floor is on screen */
@@ -5174,102 +5274,35 @@ window.OrbDroid=function(Ho){
     const sl=el(s),out=el(o),set=()=>{out.textContent=f(+sl.value)};sl.oninput=set;set()});
   S=fresh();look();draw();
   const click=(attr,v)=>{const b=root.querySelector('.cp-seg button['+attr+'="'+v+'"]');if(b)b.click()};
-  window.camProto={state:()=>S,stick:(dx,dy)=>{stick=dx||dy?{id:-9,x:0,y:0,dx,dy}:null},step,reset,tune,los,sight,toggle,ping,fire,replay,keys,tree,aim:on=>{pulseHeld=!!on},setMode:m=>click("data-mode",m),setRoom:r=>click("data-room",r)}; // for tests
+  window.camProto={state:()=>S,stick:(dx,dy)=>{stick=dx||dy?{id:-9,x:0,y:0,dx,dy}:null},step,reset,tune,los,sight,toggle,ping,fire,replay,keys,tree,aim:on=>C.aim(on),setMode:m=>click("data-mode",m),setRoom:r=>click("data-room",r),droid:C}; // for tests
 })();
 
-/* ===== Bee's swarm, played as Herd: playable lo-fi =====
-   A top-down room on a canvas with a moving crowd. World units are canvas pixels (760 x 460). */
-(function(){
-  const root=document.getElementById("beeProto");if(!root)return;
-  const cv=root.querySelector("#bpCanvas"),g=cv.getContext("2d"),W=cv.width,H=cv.height;
-  const el=id=>root.querySelector("#"+id);
+/* ===== Bee, as a module =====
+   Everything that is Bee: its numbers, the swarm, the hive, Lead and the swarm wall, how it is drawn, and its buttons.
+   The crowd is here too, with what any droid can do about it (a honk, squeezing through, talking a panicked person down),
+   because a crowd behaves the same whoever walks into it.
+   Bee's own room and the Squad run both run this code, so Bee and the crowd are the same in both.
+   Ho is the host: {sk(k), say, keys, bee():is the droid Bee, W, H, walk?:walking rules of the host, solid?(rect):anything else people cannot walk through,
+   geo?:{safeOut(p), via(p,t), hug(p,out,safe,walk), mid(p)} for a floor that is not Bee's room: where the way out is, how to get around the wall to it,
+   how to slide along a wall towards it, and which side is the open one}.
+   The state S comes from the host with use(S): droid, bar, walls, people, exit, and the fields of fields(). */
+window.BeeDroid=function(Ho){
   const SPEED=150,R=16,PR=8,N=14,RUN=105,SQUEEZE=.35;   // droid speed, droid radius, person radius, people, a panicked person's speed, droid speed inside a crowd
   const HONK={r:78,push:190,wait:1},SETTLE=.8,TALK={reach:26,time:1.3},KEEP=1.1,LEAN=.6,WALL={max:170,min:24,cost:.35},LEAD_COST=1,LEAD_MAX=4,LEAD_PACE=.75,DIM=.3,GLOW=1.5,GAP=52,SELF=85,STAMPEDE=1.25,HIVE_COST=.25; // the stand-in honk, how long the Steady swarm takes to settle a panicked person (s), how long a person keeps walking after leaving the swarm (s), how much a person leans towards the way out while walking away, the Swarm wall's length limits and its share of the bar drain, how much faster Lead drains the bar, how many people it escorts at once and at what share of the walking speed; in smoke: how much of the swarm's radius people notice, how much further its glow reaches with Bright swarm and how close its followers come; how fast people walk out by themselves
   const BEE="#D9A514";
   const tune={radius:110,walk:95,drain:8,recharge:20,slow:8};  // pixels, pixels a second, % of the bar per second (x3)
-  let mode="bee",room="calm",S;
-  /* skill tree candidates switched on in the panel beside the room. They only apply to Bee */
-  const tree=window.protoTree("beeProtoTree",onSkill),sk=k=>mode==="bee"&&!!tree.on[k];
-
-  /* the room: walls with a doorway, the exit, the crowd and the droid. The crowd is laid out the same way every time */
-  function fresh(){
-    let seed=11;const rnd=()=>(seed=seed*16807%2147483647)/2147483647;
-    const one=(x,y)=>({x,y,vx:0,vy:0,kx:0,ky:0,fx:0,fy:0,flee:0,led:0,ring:false,glow:false,sent:false,st:0,sw:0,sx:x,sy:y,jam:0,jx:0,jy:0,injured:false,panic:false,go:false,delay:0,side:1,hurt:false,calm:0,found:false,out:false,wa:rnd()*6.283,wt:rnd()});
-    const people=[];
-    if(room==="escape"){ // a stampede: fourteen people who run out by themselves, one after another, and a calm group of five in the corner
-      for(let i=0;i<14;i++){const p=one(56+(i%4)*40,150+Math.floor(i/4)*45+(i%2)*12);p.go=true;p.run=true;p.delay=1+i*.6;p.side=i%2?1:-1;people.push(p)}
-      for(let i=0;i<5;i++)people.push(one(392+i*26,392+(i%2)*18));
-    }else if(room==="dead"){ // ten people packed into a dead-end passage along the top wall
-      for(let i=0;i<10;i++)people.push(one(44+(i%5)*34+(i>4?10:0),44+Math.floor(i/5)*42));
-    }else for(let i=0;i<N;i++){const a=rnd()*6.283,r=Math.sqrt(rnd())*80;people.push(one(300+Math.cos(a)*r*1.15,230+Math.sin(a)*r))}
-    if(room==="panic")people.forEach((p,i)=>{p.panic=i%2===0});
-    if(room==="injured")[2,7,11].forEach(i=>{people[i].injured=true});
-    return {
-      droid:room==="escape"?{x:250,y:80}:{x:80,y:230},lost:false,bench:room==="door"?{x:90,y:22,w:132,h:18}:null,bar:100,emptied:false,on:false,hive:null,wall:null,draft:null,lead:false,escort:[],hold:null,aim:{x:1,y:0},t:0,done:false,started:false,honkWait:0,pulse:0,hurt:0,people,
-      walls:[{x:0,y:0,w:W,h:14},{x:0,y:H-14,w:W,h:14},{x:0,y:0,w:14,h:H},{x:W-14,y:0,w:14,h:H},
-             {x:520,y:14,w:20,h:156},{x:520,y:290,w:20,h:156}].concat(room==="dead"?[{x:14,y:112,w:236,h:14}]:[]),   // the wall before the exit, with a doorway
-      exit:{x:660,y:14,w:86,h:432},
-      smoke:room==="smoke"?{x:14,y:14,w:646,h:432}:null,          // the whole room, up to the exit
-      danger:room==="door"?{x:235,y:14,w:130,h:34}:null,          // an unsafe way out in the top wall, close to the crowd
-      fire:room==="escape"?{x:300,y:190,w:80,h:80}:null           // a danger on the straight line to the doorway
-    };
-  }
+  const W=Ho.W||760,H=Ho.H||460,sk=Ho.sk,say=Ho.say,keys=Ho.keys,G=Ho.geo||{};let S=null,g=null,wallHeld=false;
+  /* one person of a crowd. rnd gives numbers from 0 to 1 */
+  const one=(x,y,rnd)=>({x,y,vx:0,vy:0,kx:0,ky:0,fx:0,fy:0,flee:0,led:0,ring:false,glow:false,sent:false,st:0,sw:0,sx:x,sy:y,jam:0,jx:0,jy:0,injured:false,panic:false,go:false,delay:0,side:1,hurt:false,calm:0,found:false,out:false,wa:rnd()*6.283,wt:rnd()});
+  const fields=()=>({lost:false,bench:null,emptied:false,on:false,hive:null,wall:null,draft:null,lead:false,escort:[],hold:null,aim:{x:1,y:0},honkWait:0,pulse:0,hurt:0,people:[],exit:{x:-99,y:-99,w:1,h:1},smoke:null,danger:null,fire:null});
   const hit=(a,b)=>a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;
   const box=(d,r)=>({x:d.x-r,y:d.y-r,w:r*2,h:r*2});
-  const walled=(d,r)=>S.walls.some(w=>hit(box(d,r),w))||(S.bench&&hit(box(d,r),S.bench)),shut=()=>S.bench&&S.bench.x>=228;   // the bench is pushed across the unsafe exit
+  const walled=(d,r)=>S.walls.some(w=>hit(box(d,r),w))||(S.bench&&hit(box(d,r),S.bench))||!!(Ho.solid&&Ho.solid(box(d,r))),shut=()=>S.bench&&S.bench.x>=228;   // the bench is pushed across the unsafe exit
   const inside=(p,r)=>r&&p.x>r.x&&p.x<r.x+r.w&&p.y>r.y&&p.y<r.y+r.h;
-
-  /* input: keys while the room has focus, a drag on the room as a stick, and the swarm button */
-  const keys={};let stick=null;
-  cv.addEventListener("keydown",e=>{const k=e.key.toLowerCase();
-    if(["arrowup","arrowdown","arrowleft","arrowright"," ","w","a","s","d","q","e","f","i","j","k","l"].includes(k)){
-      if(!e.repeat){if(k===" ")act();if(k==="q")hive();if(k==="e")leadMode();if(k==="f")wallPress()}
-      keys[k]=true;e.preventDefault()}});
-  cv.addEventListener("keyup",e=>{const k=e.key.toLowerCase();keys[k]=false;if(k==="f")wallRelease()});
-  cv.addEventListener("blur",()=>{for(const k in keys)keys[k]=false;if(S)S.draft=null});
-  cv.addEventListener("pointerdown",e=>{cv.focus();stick={id:e.pointerId,x:e.clientX,y:e.clientY,dx:0,dy:0};cv.setPointerCapture(e.pointerId)});
-  cv.addEventListener("pointermove",e=>{if(stick&&e.pointerId===stick.id){stick.dx=e.clientX-stick.x;stick.dy=e.clientY-stick.y}});
-  const endStick=e=>{
-    if(!stick||e.pointerId!==stick.id)return;
-    if(e.type==="pointerup"&&Math.hypot(stick.dx,stick.dy)<=8&&S.lead&&sk("lead")){ // a click or tap, not a drag: point Lead at that spot
-      const r=cv.getBoundingClientRect(),c=S.droid,x=(e.clientX-r.left)*W/r.width-c.x,y=(e.clientY-r.top)*H/r.height-c.y,m=Math.hypot(x,y);
-      if(m>6){S.aim={x:x/m,y:y/m};say("Lead now points that way. Bee can walk anywhere.")}
-    }
-    stick=null;
-  };
-  cv.addEventListener("pointerup",endStick);cv.addEventListener("pointercancel",endStick);
-  const sb=el("bpBtn"),hb=el("bpHive"),lb=el("bpLead"),wb=el("bpWall");let wallHeld=false;
-  sb.addEventListener("pointerdown",e=>{act();e.preventDefault()});
-  hb.addEventListener("pointerdown",e=>{hive();e.preventDefault()});
-  { // Lead: a tap switches the mode, and a drag from the button aims it
-    let ld=null;
-    lb.addEventListener("pointerdown",e=>{e.preventDefault();ld={id:e.pointerId,x:e.clientX,y:e.clientY,drag:false};lb.setPointerCapture(e.pointerId)});
-    lb.addEventListener("pointermove",e=>{if(!ld||e.pointerId!==ld.id)return;const dx=e.clientX-ld.x,dy=e.clientY-ld.y,m=Math.hypot(dx,dy);
-      if(m>14){ld.drag=true;if(!(S.lead&&sk("lead")))leadMode();if(S.lead)S.aim={x:dx/m,y:dy/m}}});
-    const le=e=>{if(!ld||e.pointerId!==ld.id)return;if(!ld.drag&&e.type==="pointerup")leadMode();ld=null};
-    lb.addEventListener("pointerup",le);lb.addEventListener("pointercancel",le);
-  }
-  wb.addEventListener("pointerdown",e=>{wallHeld=true;wb.classList.add("on");wb.setPointerCapture(e.pointerId);wallPress();e.preventDefault()});
-  const endWall=()=>{if(!wallHeld)return;wallHeld=false;wb.classList.remove("on");wallRelease()};
-  /* the aim joystick: dragging its knob points Lead, apart from where Bee walks */
-  const js=el("bpStick"),knob=el("bpKnob");let jsId=null;
-  function jsAim(e){const r=js.getBoundingClientRect(),x=e.clientX-(r.left+r.width/2),y=e.clientY-(r.top+r.height/2),m=Math.hypot(x,y);if(m>6&&S)S.aim={x:x/m,y:y/m}}
-  js.addEventListener("pointerdown",e=>{jsId=e.pointerId;js.setPointerCapture(e.pointerId);js.classList.add("on");jsAim(e);cv.focus({preventScroll:true});e.preventDefault()});
-  js.addEventListener("pointermove",e=>{if(e.pointerId===jsId)jsAim(e)});
-  const endJs=e=>{if(e.pointerId===jsId){jsId=null;js.classList.remove("on")}};
-  js.addEventListener("pointerup",endJs);js.addEventListener("pointercancel",endJs);
-  wb.addEventListener("pointerup",endWall);wb.addEventListener("pointercancel",endWall);
-  function wish(){
-    let x=(keys.arrowright||keys.d?1:0)-(keys.arrowleft||keys.a?1:0),y=(keys.arrowdown||keys.s?1:0)-(keys.arrowup||keys.w?1:0);
-    if(stick&&Math.hypot(stick.dx,stick.dy)>8){x=stick.dx;y=stick.dy}
-    const m=Math.hypot(x,y);return m?{x:x/m,y:y/m}:{x:0,y:0};
-  }
-  function say(t,c){const m=el("bpMsg");if(m.textContent!==t)m.textContent=t;m.className="cp-msg"+(c?" "+c:"")}
-
   /* the action button: Bee toggles its swarm, another droid honks */
-  function act(){
+  function press(){
     if(S.done)return;S.started=true;
-    if(mode==="bee"){
+    if(Ho.bee()){
       if(!S.on&&S.bar<=8){say("The bar is too low. Wait for it to recharge.","bad");return}
       S.on=!S.on;say(S.on?(S.smoke&&sk("bright")&&S.lead&&sk("lead")?"Swarm on, glowing, in Lead. The "+LEAD_MAX+" nearest people are pushed the way the arrow points. Everyone else in the smoke follows the glow.":S.smoke&&sk("bright")?"Swarm on, and glowing. People in the smoke walk towards it, so lead them to the exit.":S.lead&&sk("lead")?"Swarm on, in Lead. Bees push the "+LEAD_MAX+" nearest people the way the arrow points.":"Swarm on. People inside the ring walk away from "+(S.hive?"the hive":"Bee")+". The bar is draining."):"Swarm off. The bar is recharging"+(S.emptied?", slowly, because it was fully emptied.":"."));
       return;
@@ -5319,16 +5352,15 @@ window.OrbDroid=function(Ho){
     const w=S.wall,vx=w.x2-w.x1,vy=w.y2-w.y1,t=Math.max(0,Math.min(1,((p.x-w.x1)*vx+(p.y-w.y1)*vy)/(vx*vx+vy*vy)));
     return Math.hypot(p.x-(w.x1+vx*t),p.y-(w.y1+vy*t));
   }
-
   /* the way to the exit: the doorway first, then the exit */
-  const safeOut=p=>p.x<545?DOOR:EXIT,DOOR={x:556,y:230},EXIT={x:720,y:230};
+  const safeOut=p=>G.safeOut?G.safeOut(p):p.x<545?DOOR:EXIT,DOOR={x:556,y:230},EXIT={x:720,y:230};
   /* do two line segments cross */
   function cross(a,b,c,d){const o=(p,q,r)=>(q.x-p.x)*(r.y-p.y)-(q.y-p.y)*(r.x-p.x);return o(a,b,c)*o(a,b,d)<0&&o(c,d,a)*o(c,d,b)<0}
   /* the way out a person can see and would head for: the nearest one, safe or not. A hive planted in front of the unsafe one hides it */
   function wayOut(p){
     const safe=safeOut(p),z=S.danger;if(!z||p.x>520||shut())return safe;
     const u={x:z.x+z.w/2,y:z.y+z.h/2};
-    if(S.hive&&mode==="bee"&&Math.hypot(S.hive.x-u.x,S.hive.y-u.y)<tune.radius)return safe;   // a hive planted in front of the unsafe exit keeps people from heading for it
+    if(S.hive&&Ho.bee()&&Math.hypot(S.hive.x-u.x,S.hive.y-u.y)<tune.radius)return safe;   // a hive planted in front of the unsafe exit keeps people from heading for it
     if(Math.hypot(u.x-p.x,u.y-p.y)>=Math.hypot(safe.x-p.x,safe.y-p.y))return safe;
     if(S.wall&&cross(p,u,{x:S.wall.x1,y:S.wall.y1},{x:S.wall.x2,y:S.wall.y2}))return safe;
     return u;
@@ -5336,17 +5368,17 @@ window.OrbDroid=function(Ho){
 
   /* the dividing wall has one doorway. Someone heading for a point on its other side goes to the doorway first, and is not stuck against the wall */
   function via(p,t){
+    if(G.via)return G.via(p,t);
     const left=q=>q.x<530;if(left(p)===left(t))return t;
     if(Math.abs(p.y-230)<50&&Math.abs(p.x-530)<44)return t;      // already in the doorway
     return {x:left(p)?498:562,y:230};
   }
-
   /* one person: where they want to go, then the move */
   function person(p,dt){
     const d=S.droid,dx=p.x-d.x,dy=p.y-d.y,dist=Math.hypot(dx,dy)||1,
           fogged=inside(p,S.smoke),blind=fogged&&!sk("bright"),leadOn=S.lead&&sk("lead"),reach=tune.radius*(blind?DIM:1),
-          hv=mode==="bee"?S.hive:null,hd=hv?Math.hypot(p.x-hv.x,p.y-hv.y)||1:1e9,           // the hive has a swarm of its own, apart from the one around Bee
-          swarm=S.on&&mode==="bee",byBee=swarm&&dist<reach,useHive=hd<reach&&(!byBee||hd<dist),
+          hv=Ho.bee()?S.hive:null,hd=hv?Math.hypot(p.x-hv.x,p.y-hv.y)||1:1e9,           // the hive has a swarm of its own, apart from the one around Bee
+          swarm=S.on&&Ho.bee(),byBee=swarm&&dist<reach,useHive=hd<reach&&(!byBee||hd<dist),
           c=useHive?hv:d,cx=p.x-c.x,cy=p.y-c.y,cd=Math.hypot(cx,cy)||1,
           glow=swarm&&!useHive&&fogged&&!blind&&!p.injured&&!p.panic&&dist<tune.radius*GLOW&&!(leadOn&&(p.sent||S.escort.includes(p))),   // Bright swarm: in smoke they walk towards the glow. With Lead on too, the few being led are pushed along the arrow while the rest keep following
           near=useHive||byBee,leading=byBee&&!useHive&&leadOn&&(p.injured||S.escort.includes(p)),inSwarm=useHive||(byBee&&(!leadOn||leading)),   // in Lead, Bee's swarm is busy with the few it escorts. The hive only herds
@@ -5389,12 +5421,13 @@ window.OrbDroid=function(Ho){
     }else if(p.flee>0&&!p.panic&&!p.injured){p.flee-=dt;const f=Math.min(1,p.flee/.4);tx=p.fx*tune.walk*f;ty=p.fy*tune.walk*f} // keeps walking the same way for a moment
     // a herded person pressed against a wall walks along it towards the exit, and is not stuck in a corner
     if((inSwarm||p.flee>0)&&!leading&&!glow&&!walking&&!p.panic&&!p.injured&&!blind&&!S.lost){
-      if(p.x>494&&p.x<522&&(p.y<178||p.y>282)){tx=tune.walk*.25;ty=Math.sign(230-p.y)*tune.walk}          // the wall beside the doorway
+      if(G.hug){const h=G.hug(p,out,safe,tune.walk);if(h){tx=h[0];ty=h[1]}}
+      else if(p.x>494&&p.x<522&&(p.y<178||p.y>282)){tx=tune.walk*.25;ty=Math.sign(230-p.y)*tune.walk}          // the wall beside the doorway
       else if((p.x<28||p.y<28||p.y>H-28)&&out===safe){const gx=safe.x-p.x,gy=safe.y-p.y,gm=Math.hypot(gx,gy)||1;tx=gx/gm*tune.walk;ty=gy/gm*tune.walk}   // an outer wall
     }
     // in smoke, a herded person who backs into an outer wall turns back into the room, so nobody is lost in a corner
     if((blind||S.lost)&&(inSwarm||p.flee>0)&&!p.panic&&!p.injured&&(p.x<30||p.y<30||p.y>H-30)){const gx=300-p.x,gy=230-p.y,gm=Math.hypot(gx,gy)||1;tx=gx/gm*tune.walk;ty=gy/gm*tune.walk}
-    if(leading&&!p.injured&&Math.abs(p.y-230)>50&&((p.x>494&&p.x<523&&S.aim.x>.2)||(p.x>537&&p.x<566&&S.aim.x<-.2))){tx=0;ty=Math.sign(230-p.y)*tune.walk*LEAD_PACE}   // led into the dividing wall: along it to the doorway
+    if(!G.hug&&leading&&!p.injured&&Math.abs(p.y-230)>50&&((p.x>494&&p.x<523&&S.aim.x>.2)||(p.x>537&&p.x<566&&S.aim.x<-.2))){tx=0;ty=Math.sign(230-p.y)*tune.walk*LEAD_PACE}   // led into the dividing wall: along it to the doorway
     if(p.jam>0){p.jam-=dt;tx=p.jx*tune.walk;ty=p.jy*tune.walk}                // sidestepping out of a jam
     const wantSp=Math.hypot(tx,ty),wx=tx,wy=ty;
     for(const q of S.people){ // people keep a little room between each other
@@ -5410,7 +5443,7 @@ window.OrbDroid=function(Ho){
     p.st+=dt;p.sw=Math.max(p.sw,wantSp);
     if(p.st>=.6){
       if(!p.injured&&!leading&&!(p.jam>0)&&p.sw>40&&Math.hypot(p.x-p.sx,p.y-p.sy)<5){
-        const m=Math.hypot(wx,wy)||1,px=-wy/m,py=wx/m,mid={x:p.x<530?270:600,y:230},sd=(px*(mid.x-p.x)+py*(mid.y-p.y))>=0?1:-1;p.jx=px*sd;p.jy=py*sd;p.jam=.55}
+        const m=Math.hypot(wx,wy)||1,px=-wy/m,py=wx/m,mid=G.mid?G.mid(p):{x:p.x<530?270:600,y:230},sd=(px*(mid.x-p.x)+py*(mid.y-p.y))>=0?1:-1;p.jx=px*sd;p.jy=py*sd;p.jam=.55}
       p.st=0;p.sw=0;p.sx=p.x;p.sy=p.y}
     if(dist<R+PR+4&&p.injured&&!p.found){p.found=true;say("This person is injured. Found.","good")}
     if(S.fire&&inside(p,S.fire)&&!p.hurt){p.hurt=true;S.hurt++;say("Someone ran straight through the danger.","bad")}
@@ -5418,12 +5451,9 @@ window.OrbDroid=function(Ho){
     if(hit(box(p,PR),S.exit)&&p.panic&&!inSwarm){p.x-=4;p.vx=-Math.abs(p.vx);p.wa=Math.PI+(Math.random()-.5);p.wt=.8}   // too panicked to leave without being herded out
     else if(hit(box(p,PR),S.exit)){p.out=true;if(S.hold===p)S.hold=null;if(p.injured){p.found=true;say("An injured person was pushed all the way to the exit.","bad")}}
   }
-
-  /* one step of the room */
-  function step(dt){
-    if(S.done)return;
-    const want=wish(),d=S.droid;
-    if(want.x||want.y)S.started=true;
+  /* one step of the droid and the crowd */
+  function act(dt,want){
+    const d=S.droid;
     { // Lead's direction is aimed on its own, apart from where Bee walks: I J K L here, or a click on the room
       const ax=(keys.l?1:0)-(keys.j?1:0),ay=(keys.k?1:0)-(keys.i?1:0),am=Math.hypot(ax,ay);if(am&&sk("lead"))S.aim={x:ax/am,y:ay/am};
     }
@@ -5433,44 +5463,43 @@ window.OrbDroid=function(Ho){
       S.bar-=((S.on?tune.drain*(S.lead&&sk("lead")?LEAD_COST:1):0)+(S.wall?tune.drain*WALL.cost:0)+(S.hive?tune.drain*HIVE_COST:0))*dt;
       if(S.bar<=0){S.bar=0;S.on=false;S.wall=null;S.hive=null;S.emptied=true;say("The bar is empty, so the swarm switched off and the hive is gone. It now recharges slowly.","bad")}
     }else{S.bar=Math.min(100,S.bar+(S.emptied?tune.slow:tune.recharge)*dt);if(S.bar>=100)S.emptied=false}
+    if(Ho.walk)Ho.walk(want,dt,1,true);   // a host with walking rules of its own
+    else{
     const crowded=S.people.some(p=>!p.out&&!p.glow&&Math.hypot(p.x-d.x,p.y-d.y)<R+PR),sp=SPEED*(crowded?SQUEEZE:1);
     for(const ax of ["x","y"]){let mv=want[ax]*sp*dt;if(!mv)continue;const nd={x:d.x,y:d.y};nd[ax]+=mv;const bn=S.bench;
       if(bn&&ax==="x"&&hit(box(nd,R),bn)&&!S.walls.some(w=>hit(box(nd,R),w))){ // walking into the bench pushes it along the wall, slowly
         mv*=SQUEEZE;const nx=Math.max(90,Math.min(234,bn.x+mv)),was=shut();if(nx!==bn.x){bn.x=nx;d.x+=mv;S.started=true;if(shut()&&!was)say("The bench is across the unsafe exit. Nobody can leave that way now.","good")}continue}
       if(!walled(nd,R))d[ax]=nd[ax]}
-    if(S.on&&mode==="bee"&&S.lead&&sk("lead")){ // Lead escorts only a few walkers: the ones it already has, then the nearest to the swarm
+    }
+    if(S.on&&Ho.bee()&&S.lead&&sk("lead")){ // Lead escorts only a few walkers: the ones it already has, then the nearest to the swarm
       const c=d,far=p=>Math.hypot(p.x-c.x,p.y-c.y),ok=p=>!p.out&&!p.injured&&far(p)<tune.radius*(inside(p,S.smoke)&&!sk("bright")?DIM:1);
       const kept=(S.escort||[]).filter(ok),rest=S.people.filter(p=>ok(p)&&!kept.includes(p)).sort((a,b)=>far(a)-far(b));
       S.escort=kept.concat(rest).slice(0,LEAD_MAX);
     }else S.escort=[];
     if(S.started)for(const p of S.people)if(!p.out)person(p,dt);
-    if(S.people.every(p=>p.out||(p.injured&&p.found))){S.done=true;S.on=false;
-      const inj=S.people.filter(p=>p.injured).length;
-      say((S.hurt?S.people.filter(p=>p.out&&!p.lost).length+" people are at the exit and "+S.hurt+" got hurt":"Everyone is at the exit"+(S.danger||S.fire?" and nobody got hurt":""))+(inj?", and all "+inj+" injured people are found,":"")+" in "+S.t.toFixed(1)+"s as "+(mode==="bee"?"Bee":"another droid")+". Reset the room to try again.","good")}
   }
+  function release(){if(!S)return;S.on=false;S.hive=null;S.wall=null;S.draft=null;wallHeld=false}
 
-  /* drawing */
-  function draw(){
-    const now=performance.now()/1000,d=S.droid;
-    g.clearRect(0,0,W,H);g.fillStyle="#F4F1E6";g.fillRect(0,0,W,H);
-    g.strokeStyle="rgba(34,48,43,.06)";g.lineWidth=1;g.beginPath();
-    for(let x=14;x<W;x+=40){g.moveTo(x,14);g.lineTo(x,H-14)}for(let y=14;y<H;y+=40){g.moveTo(14,y);g.lineTo(W-14,y)}g.stroke();
-    g.textAlign="center";
+  /* drawing, in the order a room needs it: the floor, what stands on it, the swarm, the swarm wall, the people, and the droid */
+  function drawFloor(ctx){g=ctx;g.textAlign="center";
     const e=S.exit;g.fillStyle="#8FD6A8";g.fillRect(e.x,e.y,e.w,e.h);g.fillStyle="#1F7A4D";g.font="800 12px system-ui,sans-serif";
     g.save();g.translate(e.x+e.w/2+8,e.y+e.h/2);g.rotate(-Math.PI/2);g.font="800 16px system-ui,sans-serif";g.fillText("EXIT",0,5);g.restore();
     if(S.fire){const f=S.fire;g.fillStyle="#E8695A";g.beginPath();g.roundRect(f.x,f.y,f.w,f.h,14);g.fill();g.strokeStyle="#B3342B";g.lineWidth=2;g.setLineDash([6,5]);g.stroke();g.setLineDash([]);
       g.fillStyle="#fff";g.font="800 12px system-ui,sans-serif";g.fillText("Danger",f.x+f.w/2,f.y+f.h/2+4)}
     if(S.smoke){const s=S.smoke;g.fillStyle="rgba(150,154,148,.5)";g.fillRect(s.x,s.y,s.w,s.h);
       g.fillStyle="rgba(34,48,43,.55)";g.font="700 12px system-ui,sans-serif";g.fillText("Smoke fills the room",s.x+s.w/2-70,s.y+20)}
-    g.fillStyle="#22302B";for(const w of S.walls)g.fillRect(w.x,w.y,w.w,w.h);
+  }
+  function drawThings(ctx){g=ctx;g.textAlign="center";
     if(S.danger){const z=S.danger;g.fillStyle="#E8695A";g.fillRect(z.x,z.y-14,z.w,z.h+14);g.fillStyle="#fff";g.font="800 12px system-ui,sans-serif";g.fillText("UNSAFE EXIT",z.x+z.w/2,z.y+(S.bench?-2:16))}
     if(S.bench){const b=S.bench;g.fillStyle="#8A5A3C";g.beginPath();g.roundRect(b.x,b.y,b.w,b.h,4);g.fill();g.strokeStyle="#22302B";g.lineWidth=2;g.stroke();g.fillStyle="#22302B";g.font="700 11px system-ui,sans-serif";g.fillText(shut()?"Bench: blocks the exit":"Bench: push it across",b.x+b.w/2,b.y+b.h+14)}
+  }
+  function drawSwarm(ctx){g=ctx;g.textAlign="center";const now=performance.now()/1000,d=S.droid;
     const c=d,lead=S.lead&&sk("lead");
-    if(mode==="bee"&&S.on&&S.smoke&&sk("bright")){ // Bright swarm: the glow people in smoke walk towards
+    if(Ho.bee()&&S.on&&S.smoke&&sk("bright")){ // Bright swarm: the glow people in smoke walk towards
       const gl=g.createRadialGradient(c.x,c.y,tune.radius*.3,c.x,c.y,tune.radius*GLOW);gl.addColorStop(0,"rgba(255,222,89,.55)");gl.addColorStop(1,"rgba(255,222,89,0)");
       g.fillStyle=gl;g.beginPath();g.arc(c.x,c.y,tune.radius*GLOW,0,7);g.fill()}
     if(S.hold&&!S.hold.out){g.strokeStyle="#5B7C99";g.lineWidth=3;g.beginPath();g.moveTo(d.x,d.y);g.lineTo(S.hold.x,S.hold.y);g.stroke()}
-    if(mode==="bee"){ // the swarm: its ring, filled while on, and the bees circling in it. Around Bee, or around its planted hive
+    if(Ho.bee()){ // the swarm: its ring, filled while on, and the bees circling in it. Around Bee, or around its planted hive
       const dim=S.smoke&&!sk("bright"),rad=tune.radius*(dim?DIM:1);     // in smoke without Bright swarm, the swarm only reaches a small ring around Bee
       if(dim){g.strokeStyle="rgba(34,48,43,.28)";g.lineWidth=1.2;g.setLineDash([3,6]);g.beginPath();g.arc(c.x,c.y,tune.radius,0,7);g.stroke();g.setLineDash([])}   // its reach in clear air, for comparison
       g.beginPath();g.arc(c.x,c.y,rad,0,7);
@@ -5489,12 +5518,16 @@ window.OrbDroid=function(Ho){
         g.fillStyle="#B98A0A";g.strokeStyle="#22302B";g.lineWidth=2;g.beginPath();for(let i=0;i<6;i++){const a=i*Math.PI/3+Math.PI/6;g.lineTo(h.x+Math.cos(a)*12,h.y+Math.sin(a)*12)}g.closePath();g.fill();g.stroke();
         g.fillStyle="#22302B";g.font="700 11px system-ui,sans-serif";g.fillText("Hive",h.x,h.y+26)}
     }
+  }
+  function drawWall(ctx){g=ctx;g.textAlign="center";const now=performance.now()/1000,d=S.droid;
     const wl=S.wall||(S.draft?{x1:S.draft.x,y1:S.draft.y,x2:d.x,y2:d.y}:null);
     if(wl){ // the swarm wall, or the line being drawn
       g.strokeStyle=S.wall?"rgba(185,138,10,.9)":"rgba(185,138,10,.45)";g.lineWidth=9;g.lineCap="round";g.beginPath();g.moveTo(wl.x1,wl.y1);g.lineTo(wl.x2,wl.y2);g.stroke();g.lineCap="butt";
       const n=Math.max(2,Math.round(Math.hypot(wl.x2-wl.x1,wl.y2-wl.y1)/12));g.fillStyle="#22302B";
       for(let i=0;i<=n;i++){const t=i/n,w=Math.sin(now*9+i*2)*3;g.beginPath();g.arc(wl.x1+(wl.x2-wl.x1)*t,wl.y1+(wl.y2-wl.y1)*t+w,2,0,7);g.fill()}
     }
+  }
+  function drawPeople(ctx){g=ctx;g.textAlign="center";const now=performance.now()/1000,d=S.droid;
     for(const p of S.people){
       if(p.out)continue;
       const j=p.panic?2.2:0,x=p.x+Math.sin(now*40+p.wa*9)*j,y=p.y+Math.cos(now*33+p.wa*5)*j,marked=p.injured&&p.found;
@@ -5513,21 +5546,139 @@ window.OrbDroid=function(Ho){
       if(p.ring){g.fillStyle="#22302B";for(let i=0;i<5;i++){const a=now*5+i*1.257;g.beginPath();g.arc(x+Math.cos(a)*(PR+7),y+Math.sin(a)*(PR+7),2,0,7);g.fill()}} // and circling one who cannot
     }
     if(S.pulse>0){const a=S.pulse/.35;g.strokeStyle="rgba(34,48,43,"+a+")";g.lineWidth=3;g.beginPath();g.arc(d.x,d.y,HONK.r*(1-a*.7),0,7);g.stroke()}
-    g.fillStyle=mode==="bee"?BEE:"#5B7C99";g.beginPath();g.arc(d.x,d.y,R,0,7);g.fill();
+  }
+  function drawDroid(ctx){g=ctx;g.textAlign="center";const d=S.droid;
+    g.fillStyle=Ho.bee()?BEE:"#5B7C99";g.beginPath();g.arc(d.x,d.y,R,0,7);g.fill();
     g.strokeStyle="#22302B";g.lineWidth=2.5;g.beginPath();g.arc(d.x,d.y,R,0,7);g.stroke();
-    g.fillStyle=mode==="bee"?"#22302B":"#fff";g.font="800 13px system-ui,sans-serif";g.fillText(mode==="bee"?"B":"D",d.x,d.y+5);
+    g.fillStyle=Ho.bee()?"#22302B":"#fff";g.font="800 13px system-ui,sans-serif";g.fillText(Ho.bee()?"B":"D",d.x,d.y+5);
+  }
+  /* the buttons */
+  function bind(sb,hb,lb,wb){
+    sb.addEventListener("pointerdown",e=>{press();e.preventDefault()});
+    hb.addEventListener("pointerdown",e=>{hive();e.preventDefault()});
+    { // Lead: a tap switches the mode, and a drag from the button aims it
+      let ld=null;
+      lb.addEventListener("pointerdown",e=>{e.preventDefault();ld={id:e.pointerId,x:e.clientX,y:e.clientY,drag:false};try{lb.setPointerCapture(e.pointerId)}catch(_){}});
+    lb.addEventListener("pointermove",e=>{if(!ld||e.pointerId!==ld.id)return;const dx=e.clientX-ld.x,dy=e.clientY-ld.y,m=Math.hypot(dx,dy);
+      if(m>14){ld.drag=true;if(!(S.lead&&sk("lead")))leadMode();if(S.lead)S.aim={x:dx/m,y:dy/m}}});
+    const le=e=>{if(!ld||e.pointerId!==ld.id)return;if(!ld.drag&&e.type==="pointerup")leadMode();ld=null};
+    lb.addEventListener("pointerup",le);lb.addEventListener("pointercancel",le);
+    }
+    wb.addEventListener("pointerdown",e=>{wallHeld=true;wb.classList.add("on");try{wb.setPointerCapture(e.pointerId)}catch(_){}wallPress();e.preventDefault()});
+    const endWall=()=>{if(!wallHeld)return;wallHeld=false;wb.classList.remove("on");wallRelease()};
+    wb.addEventListener("pointerup",endWall);wb.addEventListener("pointercancel",endWall);
+  }
+  function ui(sb,hb,lb,wb,js,knob){
+    sb.classList.toggle("on",S.on);sb.textContent=Ho.bee()?(S.on?"Swarm: on":"Swarm: off"):"Honk";
+    hb.hidden=!sk("hive");hb.textContent=S.hive?"Recall hive":"Drop hive";hb.classList.toggle("on",!!S.hive);
+    if(js){js.hidden=!(sk("lead")&&S.lead);
+    if(!js.hidden){const t=js.clientWidth/2-knob.offsetWidth/2-4;knob.style.transform="translate("+(S.aim.x*t).toFixed(1)+"px,"+(S.aim.y*t).toFixed(1)+"px)"}
+    }
+    lb.hidden=!sk("lead");lb.textContent=S.lead?"Mode: Lead":"Mode: Herd";lb.classList.toggle("on",S.lead);
+    wb.hidden=!sk("wall");wb.textContent=S.wall?"Take wall down":"Hold: draw wall";
+  }
+  return {R:R,PR:PR,N:N,SPEED:SPEED,SQUEEZE:SQUEEZE,HONK:HONK,tune:tune,one:one,fields:fields,use:s=>{S=s},act:act,release:release,press:press,hive:hive,leadMode:leadMode,wallPress:wallPress,wallRelease:wallRelease,
+    drawFloor:drawFloor,drawThings:drawThings,drawSwarm:drawSwarm,drawWall:drawWall,drawPeople:drawPeople,drawDroid:drawDroid,bind:bind,ui:ui,busy:()=>!!(S&&(S.on||S.draft))};
+};
+
+/* ===== Bee's swarm, played as Herd: playable lo-fi =====
+   A top-down room on a canvas with a moving crowd. World units are canvas pixels (760 x 460). The droid and the crowd are the Bee module (bee_mod). */
+(function(){
+  const root=document.getElementById("beeProto");if(!root)return;
+  const cv=root.querySelector("#bpCanvas"),g=cv.getContext("2d"),W=cv.width,H=cv.height;
+  const el=id=>root.querySelector("#"+id);
+  let mode="bee",room="calm",S;
+  /* skill tree candidates switched on in the panel beside the room. They only apply to Bee */
+  const tree=window.protoTree("beeProtoTree",onSkill),sk=k=>mode==="bee"&&!!tree.on[k];
+  const keys={};
+  const C=window.BeeDroid({sk:sk,say:(t,c)=>say(t,c),keys:keys,bee:()=>mode==="bee",W:W,H:H});
+  const tune=C.tune,N=C.N;
+  const act=()=>{C.use(S);C.press()},hive=()=>{C.use(S);C.hive()},leadMode=()=>{C.use(S);C.leadMode()},wallPress=()=>{C.use(S);C.wallPress()},wallRelease=()=>{C.use(S);C.wallRelease()};
+
+  /* the room: walls with a doorway, the exit, the crowd and the droid. The crowd is laid out the same way every time */
+  function fresh(){
+    let seed=11;const rnd=()=>(seed=seed*16807%2147483647)/2147483647;
+    const one=(x,y)=>C.one(x,y,rnd);
+    const people=[];
+    if(room==="escape"){ // a stampede: fourteen people who run out by themselves, one after another, and a calm group of five in the corner
+      for(let i=0;i<14;i++){const p=one(56+(i%4)*40,150+Math.floor(i/4)*45+(i%2)*12);p.go=true;p.run=true;p.delay=1+i*.6;p.side=i%2?1:-1;people.push(p)}
+      for(let i=0;i<5;i++)people.push(one(392+i*26,392+(i%2)*18));
+    }else if(room==="dead"){ // ten people packed into a dead-end passage along the top wall
+      for(let i=0;i<10;i++)people.push(one(44+(i%5)*34+(i>4?10:0),44+Math.floor(i/5)*42));
+    }else for(let i=0;i<N;i++){const a=rnd()*6.283,r=Math.sqrt(rnd())*80;people.push(one(300+Math.cos(a)*r*1.15,230+Math.sin(a)*r))}
+    if(room==="panic")people.forEach((p,i)=>{p.panic=i%2===0});
+    if(room==="injured")[2,7,11].forEach(i=>{people[i].injured=true});
+    return {
+      droid:room==="escape"?{x:250,y:80}:{x:80,y:230},lost:false,bench:room==="door"?{x:90,y:22,w:132,h:18}:null,bar:100,emptied:false,on:false,hive:null,wall:null,draft:null,lead:false,escort:[],hold:null,aim:{x:1,y:0},t:0,done:false,started:false,honkWait:0,pulse:0,hurt:0,people,
+      walls:[{x:0,y:0,w:W,h:14},{x:0,y:H-14,w:W,h:14},{x:0,y:0,w:14,h:H},{x:W-14,y:0,w:14,h:H},
+             {x:520,y:14,w:20,h:156},{x:520,y:290,w:20,h:156}].concat(room==="dead"?[{x:14,y:112,w:236,h:14}]:[]),   // the wall before the exit, with a doorway
+      exit:{x:660,y:14,w:86,h:432},
+      smoke:room==="smoke"?{x:14,y:14,w:646,h:432}:null,          // the whole room, up to the exit
+      danger:room==="door"?{x:235,y:14,w:130,h:34}:null,          // an unsafe way out in the top wall, close to the crowd
+      fire:room==="escape"?{x:300,y:190,w:80,h:80}:null           // a danger on the straight line to the doorway
+    };
+  }
+  /* input: keys while the room has focus, a drag on the room as a stick, and the buttons */
+  let stick=null;
+  cv.addEventListener("keydown",e=>{const k=e.key.toLowerCase();
+    if(["arrowup","arrowdown","arrowleft","arrowright"," ","w","a","s","d","q","e","f","i","j","k","l"].includes(k)){
+      if(!e.repeat){if(k===" ")act();if(k==="q")hive();if(k==="e")leadMode();if(k==="f")wallPress()}
+      keys[k]=true;e.preventDefault()}});
+  cv.addEventListener("keyup",e=>{const k=e.key.toLowerCase();keys[k]=false;if(k==="f")wallRelease()});
+  cv.addEventListener("blur",()=>{for(const k in keys)keys[k]=false;if(S)S.draft=null});
+  cv.addEventListener("pointerdown",e=>{cv.focus();stick={id:e.pointerId,x:e.clientX,y:e.clientY,dx:0,dy:0};cv.setPointerCapture(e.pointerId)});
+  cv.addEventListener("pointermove",e=>{if(stick&&e.pointerId===stick.id){stick.dx=e.clientX-stick.x;stick.dy=e.clientY-stick.y}});
+  const endStick=e=>{
+    if(!stick||e.pointerId!==stick.id)return;
+    if(e.type==="pointerup"&&Math.hypot(stick.dx,stick.dy)<=8&&S.lead&&sk("lead")){ // a click or tap, not a drag: point Lead at that spot
+      const r=cv.getBoundingClientRect(),c=S.droid,x=(e.clientX-r.left)*W/r.width-c.x,y=(e.clientY-r.top)*H/r.height-c.y,m=Math.hypot(x,y);
+      if(m>6){S.aim={x:x/m,y:y/m};say("Lead now points that way. Bee can walk anywhere.")}
+    }
+    stick=null;
+  };
+  cv.addEventListener("pointerup",endStick);cv.addEventListener("pointercancel",endStick);
+  const sb=el("bpBtn"),hb=el("bpHive"),lb=el("bpLead"),wb=el("bpWall");C.bind(sb,hb,lb,wb);
+  /* the aim joystick: dragging its knob points Lead, apart from where Bee walks */
+  const js=el("bpStick"),knob=el("bpKnob");let jsId=null;
+  function jsAim(e){const r=js.getBoundingClientRect(),x=e.clientX-(r.left+r.width/2),y=e.clientY-(r.top+r.height/2),m=Math.hypot(x,y);if(m>6&&S)S.aim={x:x/m,y:y/m}}
+  js.addEventListener("pointerdown",e=>{jsId=e.pointerId;js.setPointerCapture(e.pointerId);js.classList.add("on");jsAim(e);cv.focus({preventScroll:true});e.preventDefault()});
+  js.addEventListener("pointermove",e=>{if(e.pointerId===jsId)jsAim(e)});
+  const endJs=e=>{if(e.pointerId===jsId){jsId=null;js.classList.remove("on")}};
+  js.addEventListener("pointerup",endJs);js.addEventListener("pointercancel",endJs);
+  function wish(){
+    let x=(keys.arrowright||keys.d?1:0)-(keys.arrowleft||keys.a?1:0),y=(keys.arrowdown||keys.s?1:0)-(keys.arrowup||keys.w?1:0);
+    if(stick&&Math.hypot(stick.dx,stick.dy)>8){x=stick.dx;y=stick.dy}
+    const m=Math.hypot(x,y);return m?{x:x/m,y:y/m}:{x:0,y:0};
+  }
+  function say(t,c){const m=el("bpMsg");if(m.textContent!==t)m.textContent=t;m.className="cp-msg"+(c?" "+c:"")}
+
+  /* one step of the room: the droid and the crowd act, then the room checks its goal */
+  function step(dt){
+    if(S.done)return;C.use(S);
+    const want=wish();
+    if(want.x||want.y)S.started=true;
+    C.act(dt,want);
+    if(S.people.every(p=>p.out||(p.injured&&p.found))){S.done=true;S.on=false;
+      const inj=S.people.filter(p=>p.injured).length;
+      say((S.hurt?S.people.filter(p=>p.out&&!p.lost).length+" people are at the exit and "+S.hurt+" got hurt":"Everyone is at the exit"+(S.danger||S.fire?" and nobody got hurt":""))+(inj?", and all "+inj+" injured people are found,":"")+" in "+S.t.toFixed(1)+"s as "+(mode==="bee"?"Bee":"another droid")+". Reset the room to try again.","good")}
+  }
+
+  /* drawing */
+  function draw(){C.use(S);
+    g.clearRect(0,0,W,H);g.fillStyle="#F4F1E6";g.fillRect(0,0,W,H);
+    g.strokeStyle="rgba(34,48,43,.06)";g.lineWidth=1;g.beginPath();
+    for(let x=14;x<W;x+=40){g.moveTo(x,14);g.lineTo(x,H-14)}for(let y=14;y<H;y+=40){g.moveTo(14,y);g.lineTo(W-14,y)}g.stroke();
+    g.textAlign="center";
+    C.drawFloor(g);
+    g.fillStyle="#22302B";for(const w of S.walls)g.fillRect(w.x,w.y,w.w,w.h);
+    C.drawThings(g);C.drawSwarm(g);C.drawWall(g);C.drawPeople(g);C.drawDroid(g);
     const b=el("bpBar");b.style.width=S.bar.toFixed(1)+"%";b.classList.toggle("slow",S.emptied&&!S.on);
     el("bpTime").textContent=S.t.toFixed(1)+"s";
     const able=S.people.filter(p=>!p.injured),inj=S.people.filter(p=>p.injured);
     el("bpOut").textContent=able.filter(p=>p.out&&!p.lost).length+"/"+able.length;
     el("bpHurtWrap").hidden=!(S.danger||S.fire);el("bpHurt").textContent=S.hurt;
     el("bpInjWrap").hidden=!inj.length;el("bpInj").textContent=inj.filter(p=>p.found).length+"/"+inj.length;
-    sb.classList.toggle("on",S.on);sb.textContent=mode==="bee"?(S.on?"Swarm: on":"Swarm: off"):"Honk";
-    hb.hidden=!sk("hive");hb.textContent=S.hive?"Recall hive":"Drop hive";hb.classList.toggle("on",!!S.hive);
-    js.hidden=!(sk("lead")&&S.lead);
-    if(!js.hidden){const t=js.clientWidth/2-knob.offsetWidth/2-4;knob.style.transform="translate("+(S.aim.x*t).toFixed(1)+"px,"+(S.aim.y*t).toFixed(1)+"px)"}
-    lb.hidden=!sk("lead");lb.textContent=S.lead?"Mode: Lead":"Mode: Herd";lb.classList.toggle("on",S.lead);
-    wb.hidden=!sk("wall");wb.textContent=S.wall?"Take wall down":"Hold: draw wall";
+    C.ui(sb,hb,lb,wb,js,knob);
   }
 
   /* the loop runs only while the room is on screen */
@@ -5552,7 +5703,7 @@ window.OrbDroid=function(Ho){
   [["bpS1","bpO1","radius"," px"],["bpS2","bpO2","walk"," px a second"],["bpS3","bpO3","drain","% a second"],["bpS4","bpO4","recharge","% a second"],["bpS5","bpO5","slow","% a second"]].forEach(([s,o,k,u])=>{
     const sl=el(s),out=el(o),set=()=>{tune[k]=+sl.value;out.textContent=sl.value+u};sl.oninput=set;set()});
   S=fresh();draw();
-  window.beeProto={state:()=>S,stick:(dx,dy)=>{stick=dx||dy?{id:-9,x:0,y:0,dx,dy}:null},step,reset,tune,tree,act,keys,hive,leadMode,setRoom:r=>{room=r;reset()}}; // for tests
+  window.beeProto={state:()=>S,stick:(dx,dy)=>{stick=dx||dy?{id:-9,x:0,y:0,dx,dy}:null},step,reset,tune,tree,act,keys,hive,leadMode,setRoom:r=>{room=r;reset()},droid:C}; // for tests
 })();
 
 /* ===== Fish, as a module =====
@@ -5985,14 +6136,12 @@ window.FishDroid=function(Ho){
   // c is the droid’s colour on the dark HUD. f and l are its body colour and letter, as its own room draws it
   const DR={red:{n:"Red",c:"#FF8A75",f:"#E2513C",l:"R"},cam:{n:"Cam",c:"#6FD3C2",f:"#3FA796",l:"C"},crab:{n:"Crab",c:"#FFB066",f:"#EE8A2B",l:"C"},orb:{n:"Orb",c:"#B79BF2",f:"#7B4FCF",l:"O"},fish:{n:"Fish",c:"#7CC4EC",f:"#2F8FC4",l:"F"},bee:{n:"Bee",c:"#F2CB57",f:"#D9A514",l:"B",ink:"#22302B"}};
   const ALL=Object.keys(DR),WT=12,GAP=36,SPEED=150,PR=8,VR=12,FR=13;
-  const COL={medium:"#E9A15B",heavy:"#8C8F9C"};let R=15;   // the active droid's radius: each droid keeps the size it has in its own room
+  const COL={medium:"#E9A15B",heavy:"#8C8F9C"},VB=22;   // VB: how close a droid gets to an agitated victim. Near enough to reach them by hand
+ let R=15;   // the active droid's radius: each droid keeps the size it has in its own room
   // every number below is the one the droid's own room uses
   const T={
     crab:{reach:16,drag:20,recharge:18,dragSpeed:.55,min:15},
     orb:{windup:1.0,dist:260,cost:30,recharge:12,stun:1.5,slow:.45,speed:560,recover:.35},
-    bee:{radius:110,walk:95,drain:8,recharge:20,keep:1.1,squeeze:.35,honkR:78,honkPush:190,honkWait:1},
-    red:{radius:110,settle:3.0,drain:15,recharge:10,mini:4.0,reach:18},
-    cam:{sight:90,clear:1.3,hl:190,drain:12,recharge:10},
     push:{medium:.5,heavy:.2},aim:{cone:.42,turn:5}};
   function rng(seed){let a=seed>>>0;return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
   let seed=1+Math.floor(Math.random()*999999),other=true,S=null,stick={x:0,y:0},qHeld=false,eHeld=false,qTap=false,eTap=false,aTap=false,mouse=null,qDrag=null;
@@ -6033,19 +6182,25 @@ window.FishDroid=function(Ho){
       if(k==="crab"){const n=2,hh=GAP*2/n;r();c.n=n;for(let j=0;j<n;j++)objs.push(slab(c,-GAP+hh*(j+.5),hh-1,24,"medium","Crate"))}
       if(k==="orb"){c.crate=slab(c,0,GAP*2-2,26,"heavy","Heavy crate");objs.push(c.crate)}
       if(k==="bee"){c.ppl=[];const n=6+Math.floor(r()*4),pos=[];[-27,-9,9,27].forEach(b=>pos.push(P(c,-15,b)));[-9,9,-27,27].forEach(b=>pos.push(P(c,-32,b)));[0].forEach(b=>pos.push(P(c,-49,b)));
-        for(let j=0;j<n;j++)c.ppl.push({x:pos[j].x,y:pos[j].y,flee:0,fx:0,fy:0,vx:0,vy:0,id:j,c:c})}
-      if(k==="red"){const v=P(c,-18,0);c.vv={x:v.x,y:v.y,gx:v.x,gy:v.y,m:100,calm:false}}
-      if(k==="cam"){c.card=Object.assign(spot(),{got:false});c.shut=slab(c,0,GAP*2,18,"fixed","Shutter")}
+        for(let j=0;j<n;j++)c.ppl.push(Object.assign(M.bee.one(pos[j].x,pos[j].y,r),{id:j,c:c}))}
+      if(k==="red"){const v=P(c,-18,0);c.vv=Object.assign(M.red.V(["V",v.x,v.y,"agitated"]),{gx:v.x,gy:v.y})}
+      if(k==="cam"){const s=spot(),w=P(c,-16,0);c.card=M.cam.t("key","Key card",s.x,s.y);c.gate=M.cam.t("use","Shutter",w.x,w.y,null,{goal:true});c.shut=slab(c,0,GAP*2,18,"fixed","Shutter")}
       return c});
     const r0=L.rooms[0],fin=L.rooms[4],d3=ch[3];let sv={x:fin.x+fin.w/2,y:fin.y+fin.h/2};
     for(let n=0;n<30;n++){const x=fin.x+34+r()*(fin.w-68),y=fin.y+34+r()*(fin.h-68);if(Math.hypot(x-d3.x,y-d3.y)>90){sv={x:x,y:y};break}}
     let st={x:r0.x+r0.w/2,y:r0.y+r0.h/2};for(let n=0;n<30;n++){const x=r0.x+30+r()*(r0.w-60),y=r0.y+30+r()*(r0.h-60);if(Math.hypot(x-ch[0].x,y-ch[0].y)>100){st={x:x,y:y};break}}
     S={seed:sd,party:party,ch:ch,rooms:L.rooms,walls:walls,objs:objs,act:0,bars:{},x:st.x,y:st.y,face:{x:ch[0].nx,y:ch[0].ny},t:0,started:false,win:false,dmg:0,knocked:0,
-      hold:null,swarm:false,aura:false,hl:false,honk:0,honkFx:0,sv:sv};
+      hold:null,sv:sv};
     party.forEach(k=>S.bars[k]=100);
     // each droid module has its own state. They share the walls, the objects and the droid's place
-    S.st={};S.dr={x:S.x,y:S.y};Object.keys(M).forEach(k=>{S.st[k]=Object.assign({droid:S.dr,face:S.face,bar:100,walls:walls,objs:objs,pits:[],jets:[],fires:[],items:[],sw:[],vics:[],type:"squad",need:0,goal:null,got:0,done:false,started:false,t:0},M[k].fields())});S.cr=S.st.crab;
+    S.st={};S.dr={x:S.x,y:S.y};Object.keys(M).forEach(k=>{S.st[k]=Object.assign({droid:S.dr,face:S.face,bar:100,walls:walls,objs:objs,pits:[],jets:[],fires:[],items:[],sw:[],vics:[],victims:[],people:[],things:[],type:"squad",need:0,goal:null,got:0,done:false,started:false,t:0},M[k].fields())});S.cr=S.st.crab;
     // the fires and the extinguishers belong to the Fish module, whoever is in the party
+    // the smoke to the Cam module: the room it fills, the key card in it and the shutter the card opens
+    {const cs=S.st.cam,c=ch.find(c=>c.k==="cam");Object.assign(CAMR[0],c?c.room:{x:-9,y:-9,w:1,h:1});if(c){cs.things=[c.card,c.gate];cs.goal="valve"}M.cam.floor(cs)}
+    // the crowd to the Bee module, with the next room as the place people leave to
+    ch.forEach(c=>{if(c.k==="bee"){const bs=S.st.bee,n=c.next;c.ppl.forEach(p=>bs.people.push(p));bs.exit={x:n.x+14,y:n.y+14,w:n.w-28,h:n.h-28}}});
+    // and the victims to the Red module
+    ch.forEach(c=>{if(c.k==="red")S.st.red.victims.push(c.vv)});
     ch.forEach(c=>{if(c.k==="fish"){c.fires.forEach(f=>S.st.fish.fires.push(f));S.st.fish.items.push({k:"ext",x:c.ext.x,y:c.ext.y})}});
     setR();showTree();
     $("spSeed").value=sd;buildParty();
@@ -6053,7 +6208,7 @@ window.FishDroid=function(Ho){
   function buildParty(){const p=$("spParty");p.innerHTML="";S.party.forEach((k,i)=>{const b=document.createElement("button");b.type="button";b.style.setProperty("--c",DR[k].c);b.dataset.i=i;b.setAttribute("aria-label","Switch to "+DR[k].n);
       b.innerHTML="<kbd>"+(i+1)+"</kbd><span class='dot'></span><span class='nm'>"+DR[k].n+"</span><i><b></b></i>";b.addEventListener("click",()=>{sw(i);cv.focus()});p.appendChild(b)})}
   const A=()=>S.party[S.act],chOf=k=>S.ch.find(c=>c.k===k),cur=()=>S.ch.find(c=>!c.done);
-  function off(){if(S.st)Object.keys(M).forEach(k=>{M[k].use(S.st[k]);M[k].release()});S.swarm=S.aura=S.hl=false}
+  function off(){if(S.st)Object.keys(M).forEach(k=>{M[k].use(S.st[k]);M[k].release()})}
   function sw(i){if(!S||S.win||i<0||i>=S.party.length||i===S.act)return;const o=S.st.orb;if(A()==="orb"&&(o.charge||o.stun>0)){say("Not while Orb is "+(o.charge?"charging":"stunned")+".","bad");return}off();S.act=i;setR();showTree();say("Switched to "+DR[A()].n+".")}
   // a droid keeps the size it has in its own room. A bigger one that would overlap a wall is moved clear of it
   function setR(){R=M[A()]?M[A()].R:15;if(!solid(box(S)))return;for(let m=1;m<=8;m++)for(let a=0;a<8;a++){const p={x:S.x+Math.cos(a*.7854)*m,y:S.y+Math.sin(a*.7854)*m};if(!solid(box(p))){S.x=p.x;S.y=p.y;return}}}
@@ -6062,12 +6217,12 @@ window.FishDroid=function(Ho){
   const shutters=()=>S.ch.filter(c=>c.k==="cam"&&!c.open).map(c=>c.shut);
   const solid=(r,skip)=>S.walls.some(w=>hit(r,w))||shutters().some(w=>hit(r,w))||S.objs.some(o=>o!==skip&&!o.held&&hit(r,o));
   const fires=()=>S.st.fish.fires.filter(f=>M.fish.solid(f));   // a fire that is burning and not encased
-  const crowd=()=>{const o=[];S.ch.forEach(c=>{if(c.k==="bee")c.ppl.forEach(p=>{if(!p.out)o.push(p)})});return o};
+  const crowd=()=>S.st.bee.people.filter(p=>!p.out);
   // circles the droid cannot walk into: a burning fire, an agitated victim, and a crowd it cannot squeeze through
-  function rounds(){const o=fires().map(f=>[f.x,f.y,f.r-2]);S.ch.forEach(c=>{if(c.k==="red"&&!c.vv.calm)o.push([c.vv.x,c.vv.y,30])});if(!other)crowd().forEach(p=>o.push([p.x,p.y,PR]));return o}
+  function rounds(){const o=fires().map(f=>[f.x,f.y,f.r-2]);S.ch.forEach(c=>{if(c.k==="red"&&!c.vv.calm)o.push([c.vv.x,c.vv.y,VB])});if(!other)crowd().forEach(p=>o.push([p.x,p.y,PR]));return o}
   function roundsOut(){for(const q of rounds()){let dx=S.x-q[0],dy=S.y-q[1],d=Math.hypot(dx,dy),m=R+q[2];if(d<m){if(d<.001){dx=-S.face.x;dy=-S.face.y;d=1}const n={x:q[0]+dx/d*m,y:q[1]+dy/d*m};if(!solid(box(n))){S.x=n.x;S.y=n.y}else return false}}return true}
   // walking, one axis at a time, the way the droid rooms do it. A dragged object moves with Crab as one. With other ways on, any droid pushes what it walks into
-  function walk(want,dt,k){const sp=SPEED*(k||1)*(S.hold?T.crab.dragSpeed:1)*(other&&crowd().some(p=>Math.hypot(p.x-S.x,p.y-S.y)<R+PR)?T.bee.squeeze:1);
+  function walk(want,dt,k){const sp=SPEED*(k||1)*(S.hold?T.crab.dragSpeed:1)*(other&&crowd().some(p=>Math.hypot(p.x-S.x,p.y-S.y)<R+PR)?M.bee.SQUEEZE:1);
     const inside=rounds().some(q=>Math.hypot(S.x-q[0],S.y-q[1])<R+q[2]-1.5);   // something moved onto the droid: it may still walk out
     for(const ax of ["x","y"]){const mv=want[ax]*sp*dt;if(!mv)continue;const ox=S.x,oy=S.y,nd={x:S.x,y:S.y};nd[ax]+=mv;const nb=box(nd);
       if(S.hold){const o=S.hold.o,nx={x:nd.x+S.hold.off.x,y:nd.y+S.hold.off.y,w:o.w,h:o.h};if(solid(nb)||solid(nx,o))continue;S[ax]=nd[ax];o.x=nx.x;o.y=nx.y}
@@ -6084,7 +6239,7 @@ window.FishDroid=function(Ho){
   const side=c=>inR(c.room,S.x,S.y,-8)&&!inR(c.next,S.x,S.y,6);
   // ---------- Crab is the Crab module: the same code as Crab's own room. The floor lends it the walls and the objects
   const overlaps=(r,q)=>{const cx=Math.max(r.x,Math.min(q[0],r.x+r.w)),cy=Math.max(r.y,Math.min(q[1],r.y+r.h));return Math.hypot(q[0]-cx,q[1]-cy)<q[2]};
-  // M holds the droid modules and TR their skill trees. A droid that is not a module yet still runs on the copy further down
+  // M holds the droid modules and TR their skill trees
   const M={},TR={};
   const host=(k,more)=>Object.assign({sk:s=>!!S&&A()===k&&!!TR[k].on[s],has:s=>!!TR[k].on[s],say:(t,c)=>say(t,c),keys:keys,io:io,
     solid:r=>shutters().some(w=>hit(r,w))||(!S.inside&&rounds().some(q=>overlaps(r,q)))},more);
@@ -6095,20 +6250,53 @@ window.FishDroid=function(Ho){
   tree("orb");M.orb=window.OrbDroid(host("orb",{orb:()=>A()==="orb",W:FW,H:H,walk:hostWalk("orb"),
     // what else a charge runs into on this floor: a fire or an agitated victim stops it, and a person is knocked aside
     onCharge:(nd,c)=>{if(rounds().some(q=>Math.hypot(nd.x-q[0],nd.y-q[1])<R+q[2]))return "Something in the way stopped the charge.";
-      const f=S.st.orb.face;for(const p of crowd())if(p.hitBy!==c&&Math.hypot(nd.x-p.x,nd.y-p.y)<R+PR){const sd=((p.x-nd.x)*-f.y+(p.y-nd.y)*f.x)>=0?1:-1;p.vx=f.x*230+-f.y*sd*210;p.vy=f.y*230+f.x*sd*210;p.hitBy=c;S.knocked++;p.c.alt=true;say("A bystander was knocked aside.","bad")}
+      const f=S.st.orb.face;for(const p of crowd())if(p.hitBy!==c&&Math.hypot(nd.x-p.x,nd.y-p.y)<R+PR){const sd=((p.x-nd.x)*-f.y+(p.y-nd.y)*f.x)>=0?1:-1;p.kx=f.x*230+-f.y*sd*210;p.ky=f.y*230+f.x*sd*210;p.hitBy=c;S.knocked++;p.c.alt=true;say("A bystander was knocked aside.","bad")}
       return null}}));
   tree("fish");M.fish=window.FishDroid(host("fish",{fish:()=>A()==="fish",W:FW,H:H,walk:hostWalk("fish"),quietHands:true,blockPt:p=>shutters().some(w=>inRect(p,w))||S.objs.some(o=>inRect(p,o))}));
+  tree("red");M.red=window.RedDroid(host("red",{red:()=>A()==="red",W:FW,H:H,walk:hostWalk("red")}));
+  // the crowd's floor, for the Bee module: the way out is the doorway and then the room beyond it
+  const beeC=()=>S.ch.find(c=>c.k==="bee"),nor=(c,p)=>(p.x-c.x)*c.nx+(p.y-c.y)*c.ny,lat=(c,p)=>(p.x-c.x)*c.tx+(p.y-c.y)*c.ty;
+  tree("bee");M.bee=window.BeeDroid(host("bee",{bee:()=>A()==="bee",W:FW,H:H,walk:hostWalk("bee"),solid:r=>shutters().some(w=>hit(r,w))||S.objs.some(o=>hit(r,o)),
+    geo:{safeOut:p=>{const c=beeC();return nor(c,p)<10?P(c,12,0):P(c,90,0)},
+      via:(p,t)=>{const c=beeC(),a=nor(c,p),b=nor(c,t);if((a<0)===(b<0)||(Math.abs(a)<WT+PR&&Math.abs(lat(c,p))<GAP-PR))return t;return P(c,a<0?-(WT/2+PR+2):WT/2+PR+2,0)},
+      // pressed against the wall beside the doorway: walk along it to the doorway
+      hug:(p,out,safe,w)=>{const c=beeC(),a=nor(c,p),b=lat(c,p);if(a<0&&a>-(WT/2+PR+10)&&Math.abs(b)>GAP-PR-1){const s=-Math.sign(b);return[(c.tx*s+c.nx*.25)*w,(c.ty*s+c.ny*.25)*w]}return null},
+      mid:p=>{const c=beeC(),q=nor(c,p)<0?c.room:c.next;return{x:q.x+q.w/2,y:q.y+q.h/2}}}}));
+  // the smoke fills one room. CAMR is that room, for the Cam module's Clear lens
+  const CAMR=[{x:-9,y:-9,w:1,h:1}];
+  tree("cam");M.cam=window.CamDroid(host("cam",{cam:()=>A()==="cam",W:W,H:H,WW:W,WH:H,rooms:CAMR,walk:hostWalk("cam")}));
   // the four ability buttons, and each module's unseen copies of them: [key, label] for each button it has
   const SLOT=["spAbil","spB","spC","spD"].map(id=>$(id)),PX={};
-  const copies=(k,defs)=>{PX[k]=defs.map(d=>{const b=document.createElement("button");b.innerHTML=(d[0]?"<kbd>"+d[0]+"</kbd>":"")+"<span>"+d[1]+"</span>";return b});M[k].bind.apply(null,PX[k])};
+  // ORD: the order a module takes its buttons in, when it is not the order of the slots
+  const ORD={cam:[0,2,1,3]},args=k=>ORD[k]?ORD[k].map(i=>PX[k][i]):PX[k];
+  const copies=(k,defs)=>{PX[k]=defs.map(d=>{const b=document.createElement("button");b.innerHTML=(d[0]?"<kbd>"+d[0]+"</kbd>":"")+"<span>"+d[1]+"</span>";return b});M[k].bind.apply(null,args(k))};
   copies("crab",[["Space","Grip"],["Q","Hold: aim line"],["F","Hold: aim toss"]]);
   copies("orb",[["Q","Hold: charge"],["F","Shield: off"],["B","Brace: off"]]);
+  copies("cam",[["F","Highlight: off"],["Q","Infrared pulse"],["T","Tracker"],["R","Replay: off"]]);
+  copies("bee",[["Space","Swarm: off"],["Q","Drop hive"],["E","Mode: Herd"],["F","Hold: draw wall"]]);
+  copies("red",[["F","Aura: off"],["Q","Hold: aim dart"]]);
   copies("fish",[["Q","Hold: spray"],["F","Foam: off"],["R","Hold: aim bubble"],["B","Hold: deluge"]]);
   // the context button and the drop button are the Fish module's too, as any droid can use an extinguisher
   const HP=[["E","Interact"],["X","Drop"]].map(d=>{const b=document.createElement("button");b.innerHTML="<kbd>"+d[0]+"</kbd><span>"+d[1]+"</span>";return b});M.fish.bindHands(HP[0],HP[1]);
   // the fires run every step, whoever is active. reachF is what the context button would do about a fire or an extinguisher right now
-  let reachF=null;
-  function fireHands(){const fs=S.st.fish;S.dr.x=S.x;S.dr.y=S.y;fs.face=S.face;fs.started=S.started;M.fish.use(fs);reachF=M.fish.reach();M.fish.hold("e",!!reachF&&eHeld)}
+  // the victims are the Red module's too: any droid calms one by hand and diagnoses them. HV is its copy of the context button
+  const HV=[["E","Interact"],["C","Carry"]].map(d=>{const b=document.createElement("button");b.innerHTML="<kbd>"+d[0]+"</kbd><span>"+d[1]+"</span>";return b});M.red.bindHands(HV[0],HV[1]);
+  let reachF=null,reachV=null;
+  // the smoke works every step, whoever is active: a droid sees a short way in it, and what comes into view is tagged
+  function smokeWorld(dt){const cs=S.st.cam,c=S.ch.find(c=>c.k==="cam");if(A()!=="cam"){S.dr.x=S.x;S.dr.y=S.y;cs.face=S.face;cs.started=S.started;M.cam.use(cs);M.cam.act(dt,{x:0,y:0})}
+    if(!c)return;if(c.card.found&&!c.got){c.got=true;if(A()==="cam")c.ab=true;else c.alt=true}
+    if(c.gate.found&&!c.open){c.open=true;say("The shutter is open.","good")}}
+  // the crowd moves every step, whoever is active. Another droid honks through the same module
+  function crowdWorld(dt){const bs=S.st.bee,c=beeC();if(A()!=="bee"){S.dr.x=S.x;S.dr.y=S.y;bs.started=S.started;bs.t=S.t;M.bee.use(bs);M.bee.act(dt,{x:0,y:0})}
+    if(c&&A()==="bee"&&bs.on&&crowd().some(p=>Math.hypot(p.x-S.x,p.y-S.y)<M.bee.tune.radius))c.ab=true}
+  function victimWorld(dt){const rs=S.st.red;if(A()!=="red"){S.dr.x=S.x;S.dr.y=S.y;rs.face=S.face;rs.started=S.started;M.red.use(rs);M.red.act(dt,{x:0,y:0})}
+    S.ch.forEach(c=>{if(c.k!=="red")return;const v=c.vv;
+      if(!v.calm&&A()==="red"&&rs.aura&&dist(v,S)<M.red.radius())c.ab=true;if(v.cp>0)c.alt=true;if(v.sedated)c.ab=true;
+      if(v.calm&&!c.calmed){c.calmed=true;const q=P(c,-24,c.sg*66);v.gx=q.x;v.gy=q.y;say("The victim is calm and steps aside.","good")}
+      if(!v.calm&&c.calmed)c.calmed=false;
+      if(v.calm){const dx=v.gx-v.x,dy=v.gy-v.y,d=Math.hypot(dx,dy);if(d>.5){const s=Math.min(d,40*dt);v.x+=dx/d*s;v.y+=dy/d*s}}})}
+  function fireHands(){const fs=S.st.fish;S.dr.x=S.x;S.dr.y=S.y;fs.face=S.face;fs.started=S.started;M.fish.use(fs);reachF=M.fish.reach();M.fish.hold("e",!!reachF&&eHeld);
+    const rs=S.st.red;rs.face=S.face;M.red.use(rs);reachV=reachF?null:M.red.target();M.red.holdE(!!reachV&&eHeld)}
   function fireWorld(dt){const fs=S.st.fish;if(A()!=="fish"){S.dr.x=S.x;S.dr.y=S.y;fs.face=S.face;M.fish.use(fs);M.fish.before(dt);M.fish.after(dt)}
     if(fs.using&&fs.useAt&&fs.useAt.c)fs.useAt.c.alt=true;
     if(fs.jet&&A()==="fish")fs.fires.forEach(f=>{if(f.c&&f.hit>.15)f.c.ab=true});
@@ -6119,65 +6307,33 @@ window.FishDroid=function(Ho){
     m.act(dt,want);S.x=S.dr.x;S.y=S.dr.y;S.bars[k]=st.bar;S.face=st.face;if(m.busy())S.started=true;
     if(k==="orb")S.ch.forEach(c=>{if(c.k==="orb"&&c.crate&&S.objs.indexOf(c.crate)<0&&!c.alt)c.ab=true});
     S.objs.forEach(o=>{if(o.hitBy&&o.c&&!o.c.alt&&o.c.k!=="orb"){o.c.alt=true}})}
-  // ---------- toggles: Bee's swarm, Red's aura, Cam's highlight
-  function toggle(k,f,on,offm){if(qTap){S.started=true;if(!S[f]&&S.bars[k]<=0){say(DR[k].n+"’s bar is empty.","bad")}else{S[f]=!S[f];say(S[f]?on:offm)}}
-    if(S[f]){S.bars[k]-=T[k].drain*dt_;if(S.bars[k]<=0){S.bars[k]=0;S[f]=false;say(DR[k].n+"’s bar is empty, so it switched off.","bad")}return true}return false}
-  let dt_=0;
-  // ---------- people: herded by the swarm, as in Bee's room. They walk away from Bee, keep walking for a moment, and leave once they are through the doorway
-  function people(dt){const bee=S.swarm&&A()==="bee";
-    S.ch.forEach(c=>{if(c.k!=="bee")return;c.ppl=c.ppl.filter(p=>!(p.out>0&&(p.out-=dt)<=0));
-      c.ppl.forEach(p=>{if(!p.out&&inR(c.next,p.x,p.y,12))p.out=.7;if(p.out){p.x+=c.nx*T.bee.walk*dt;p.y+=c.ny*T.bee.walk*dt;return}
-        let tx=0,ty=0;const dx=p.x-S.x,dy=p.y-S.y,d=Math.hypot(dx,dy)||1;
-        if(p.vx||p.vy){tx=p.vx;ty=p.vy;const kk=Math.pow(.02,dt);p.vx*=kk;p.vy*=kk;if(Math.hypot(p.vx,p.vy)<8)p.vx=p.vy=0}
-        else if(bee&&d<T.bee.radius){tx=dx/d*T.bee.walk;ty=dy/d*T.bee.walk;p.fx=dx/d;p.fy=dy/d;p.flee=T.bee.keep;c.ab=true}
-        else if(p.flee>0){p.flee-=dt;const f=Math.min(1,p.flee/.4);tx=p.fx*T.bee.walk*f;ty=p.fy*T.bee.walk*f}
-        if(!tx&&!ty)return;const ox=p.x,oy=p.y;move(p,tx*dt,ty*dt);
-        // stopped by a wall: slide along it, towards the doorway
-        const want=Math.hypot(tx,ty)*dt,got=Math.hypot(p.x-ox,p.y-oy);if(got<want*.5){const m=Math.hypot(tx,ty),sx=-ty/m,sy=tx/m,sgn=(((c.x-p.x)*sx+(c.y-p.y)*sy)||(p.id%2?1:-1))>0?1:-1;move(p,sx*sgn*want*.8,sy*sgn*want*.8)}});
-      for(let a=0;a<c.ppl.length;a++)for(let b=a+1;b<c.ppl.length;b++){const p=c.ppl[a],q=c.ppl[b];if(p.out||q.out)continue;let dx=q.x-p.x,dy=q.y-p.y,d=Math.hypot(dx,dy);if(d<PR*2&&d>.001){const m=(PR*2-d)/2;dx/=d;dy/=d;move(p,-dx*m,-dy*m);move(q,dx*m,dy*m)}}})}
-  function move(p,dx,dy){const fits=(x,y)=>{const r={x:x-PR,y:y-PR,w:PR*2,h:PR*2};return!S.walls.some(w=>hit(r,w))&&!shutters().some(w=>hit(r,w))&&!S.objs.some(o=>hit(r,o))};if(fits(p.x+dx,p.y))p.x+=dx;if(fits(p.x,p.y+dy))p.y+=dy}
   function slide(dt){for(const o of S.objs){if(!o.vx&&!o.vy)continue;for(const ax of ["x","y"]){const v=ax==="x"?o.vx:o.vy,n={x:o.x,y:o.y,w:o.w,h:o.h};n[ax]+=v*dt;if(solid(n,o)||hit(n,box(S))){if(ax==="x")o.vx=0;else o.vy=0}else o[ax]=n[ax]}
       const k=Math.pow(.02,dt);o.vx*=k;o.vy*=k;if(Math.hypot(o.vx,o.vy)<8)o.vx=o.vy=0}}
   // ---------- what the E button would do right now: the ways any droid has, used when other ways are on
-  function ctx(){if(reachF)return{l:HP[0].lastElementChild.textContent,k:"fire"};for(const c of S.ch){
-      if(c.k==="red"&&!c.vv.calm&&Math.hypot(S.x-c.vv.x,S.y-c.vv.y)<R+30+T.red.reach)return{l:"Hold: calm",k:"calm",c:c}}
+  function ctx(){if(reachF)return{l:HP[0].lastElementChild.textContent,k:"fire"};if(reachV)return{l:HV[0].lastElementChild.textContent,k:"fire"};
     // a honk comes last, so people standing about never hide another thing in reach
-    for(const c of S.ch)if(c.k==="bee"&&A()!=="bee"&&c.ppl.some(p=>!p.out&&Math.hypot(p.x-S.x,p.y-S.y)<T.bee.honkR))return{l:"Honk",k:"honk",c:c};
+    for(const c of S.ch)if(c.k==="bee"&&A()!=="bee"&&c.ppl.some(p=>!p.out&&Math.hypot(p.x-S.x,p.y-S.y)<M.bee.HONK.r))return{l:"Honk",k:"honk",c:c};
     return null}
-  function interact(dt){const x=ctx();S.honk=Math.max(0,S.honk-dt);
-    if(!x){S.ch.forEach(c=>{if(c.k==="red"&&!c.vv.calm)c.p=0});return}
+  function interact(dt){const x=ctx();
+    if(!x)return;
     if(!(eHeld||eTap))return;
     if(!other){if(eTap)say("Other ways through are off. Only "+DR[x.c.k].n+" can clear this doorway.","bad");return}
     if(x.k==="fire"){S.started=true;return}   // the Fish module does it
     const c=x.c;S.started=true;
-    if(x.k==="honk"&&eTap){if(S.honk>0){say("The honk is not ready yet.","bad");return}S.honk=T.bee.honkWait;S.honkFx=.35;c.alt=true;c.ppl.forEach(p=>{const dx=p.x-S.x,dy=p.y-S.y,d=Math.hypot(dx,dy)||1;if(!p.out&&d<T.bee.honkR){p.vx=dx/d*T.bee.honkPush;p.vy=dy/d*T.bee.honkPush}});say("Honk! The people next to the droid step back.")}
-    if(x.k==="calm"&&eHeld){c.p+=dt/T.red.mini;c.alt=true;if(c.p>=1)calmed(c)}}
-  function calmed(c){c.vv.calm=true;c.vv.m=0;const q=P(c,-24,c.sg*66);c.vv.gx=q.x;c.vv.gy=q.y;say("The victim is calm and steps aside.","good")}
+    if(x.k==="honk"&&eTap){c.alt=true;S.dr.x=S.x;S.dr.y=S.y;M.bee.use(S.st.bee);M.bee.press()}
+    }
   const dmg=()=>S.dmg+(S.st.orb?S.st.orb.dmg:0);
-  function step(dt){if(!S)return;dt_=dt;
+  function step(dt){if(!S)return;
     if(S.win){qTap=eTap=false;return}
     const want=wish(),k=A();if(want.m)S.started=true;if(S.started)S.t+=dt;
     let busy=false,draining=false;fireHands();
     if(M[k]){if(k!=="orb"){C.use(S.cr);C.slide(dt)}mod(k,want,dt);draining=true;const o=S.st.orb;if(!(k==="orb"&&(o.charge||o.stun>0||o.recover>0)))interact(dt)}
-    else{C.use(S.cr);C.slide(dt);
-      if(k==="bee")draining=toggle("bee","swarm","Swarm on. People inside it walk away from Bee.","Swarm off.");
-      if(k==="red"){draining=toggle("red","aura","Aura on. Agitated victims inside it settle over a few seconds.","Aura off.");
-        if(S.aura)S.ch.forEach(c=>{if(c.k==="red"&&!c.vv.calm&&dist(c.vv,S)<T.red.radius){c.vv.m-=100/T.red.settle*dt;c.ab=true;if(c.vv.m<=0)calmed(c)}})}
-      if(k==="cam")draining=toggle("cam","hl","Highlight on. It shows key items around Cam.","Highlight off.");
-      if(want.m)S.face={x:want.x,y:want.y};walk(want,dt,want.m)
-      interact(dt)}
     S.party.forEach(p=>{if(!(p===k&&draining))S.bars[p]=Math.min(100,S.bars[p]+(M[p]?M[p].tune.recharge:T[p].recharge)*dt)});
-    fireWorld(dt);
-    people(dt);
+    fireWorld(dt);victimWorld(dt);crowdWorld(dt);smokeWorld(dt);
     S.ch.forEach(c=>{
-      if(c.k==="red"){const dx=c.vv.gx-c.vv.x,dy=c.vv.gy-c.vv.y,d=Math.hypot(dx,dy);if(d>.5){const s=Math.min(d,40*dt);c.vv.x+=dx/d*s;c.vv.y+=dy/d*s}}
-      if(c.k==="cam"&&!c.open){const d=Math.hypot(S.x-c.card.x,S.y-c.card.y),inS=inR(c.room,S.x,S.y),sight=T.cam.sight*(k==="cam"?T.cam.clear:1),hl=S.hl&&k==="cam"&&d<T.cam.hl;
-        c.vis=hl||(inS&&d<sight&&(other||k==="cam"));
-        if(!c.card.got&&c.vis&&d<R+10){c.card.got=true;if(k==="cam")c.ab=true;else c.alt=true;say("Found the key card. Take it to the shutter.","good")}
-        if(c.card.got){const q=P(c,-16,0);if(Math.hypot(S.x-q.x,S.y-q.y)<34){c.open=true;say("The shutter is open.","good")}}}
       if(!c.done&&inR(c.next,S.x,S.y,6)){c.done=true;if(c.k==="bee"&&other&&!c.ab)c.alt=true;const nx=cur();
         say("Through doorway "+(c.i+1)+", by "+(c.alt||!c.ab?"another way":DR[c.k].n+"’s ability")+"."+(nx?" Doorway "+(nx.i+1)+" suits "+DR[nx.k].n+(S.party.indexOf(nx.k)<0?", who is not in the party.":"."):" Reach the survivor."),"good")}});
-    S.honkFx=Math.max(0,S.honkFx-dt);S.pushing=Math.max(0,(S.pushing||0)-dt);
+    S.pushing=Math.max(0,(S.pushing||0)-dt);
     if(Math.hypot(S.x-S.sv.x,S.y-S.sv.y)<R+16&&!cur()){S.win=true;off();const ab=S.ch.filter(c=>c.ab&&!c.alt).length;
       say("Reached the survivor in "+S.t.toFixed(1)+"s. "+ab+" of 4 doorways were cleared by the matching droid’s ability"+(dmg()?", with "+dmg()+" property damage":"")+(S.knocked?" and "+S.knocked+" people knocked":"")+".","good")}
     qTap=eTap=aTap=false}
@@ -6186,52 +6342,48 @@ window.FishDroid=function(Ho){
     g.fillStyle="#22302B";g.fillRect(0,0,W,H);
     const clip=q=>[Math.max(8,q.x),Math.max(8,q.y),Math.min(FW-8,q.x+q.w)-Math.max(8,q.x),Math.min(H-8,q.y+q.h)-Math.max(8,q.y)];
     S.rooms.forEach((q,i)=>{g.fillStyle=i%2?"#E6DFD0":"#EDE7DA";const c=clip(q);g.fillRect(c[0],c[1],c[2],c[3])});
-    // the smoke room: a droid sees a short way in it, and Cam a little further
-    S.ch.forEach(c=>{if(c.k!=="cam")return;const q=clip(c.room),inC=inR(c.room,S.x,S.y),sight=T.cam.sight*(k==="cam"?T.cam.clear:1);
-      g.save();g.beginPath();g.rect(q[0],q[1],q[2],q[3]);g.clip();g.fillStyle=c.open?"rgba(59,74,69,.28)":"rgba(59,74,69,.85)";g.fillRect(q[0],q[1],q[2],q[3]);
-      if(inC&&!c.open){const gr=g.createRadialGradient(S.x,S.y,sight*.35,S.x,S.y,sight);gr.addColorStop(0,"rgba(237,231,218,.95)");gr.addColorStop(1,"rgba(237,231,218,0)");g.fillStyle=gr;g.fillRect(S.x-sight,S.y-sight,sight*2,sight*2)}
-      g.restore();
-      if(!c.card.got&&(c.vis||c.open)){g.fillStyle="#FFE08A";g.strokeStyle="#22302B";g.lineWidth=2;g.beginPath();g.rect(c.card.x-8,c.card.y-5,16,10);g.fill();g.stroke();
-        if(S.hl&&k==="cam"){g.strokeStyle="#3FA796";g.lineWidth=3;g.beginPath();g.arc(c.card.x,c.card.y,15,0,7);g.stroke()}}});
+    // the smoke room, drawn by the Cam module: dark where nothing has been seen, dim where something has, clear in the droid's sight
+    S.dr.x=S.x;S.dr.y=S.y;S.ch.forEach(c=>{if(c.k!=="cam")return;const q=clip(c.room),cs=S.st.cam;if(k!=="cam")cs.face=S.face;
+      g.save();g.beginPath();g.rect(q[0],q[1],q[2],q[3]);g.clip();M.cam.use(cs);M.cam.drawFloor(g);g.restore();g.textAlign="center"});
     S.dr.x=S.x;S.dr.y=S.y;{const fs=S.st.fish;if(k!=="fish")fs.face=S.face;M.fish.use(fs);M.fish.drawUnder(g)}
+    if(k==="red"){M.red.use(S.st.red);M.red.drawUnder(g)}
     if(M[k]){const st=S.st[k];st.face=S.face;M[k].use(st);if(M[k].drawLane)M[k].drawLane(g)}
     g.fillStyle="#22302B";S.walls.forEach(w=>g.fillRect(w.x,w.y,w.w,w.h));
     S.ch.forEach(c=>{if(c.k==="cam"&&!c.open){const s=c.shut;g.fillStyle="#4A4F5C";g.fillRect(s.x,s.y,s.w,s.h);g.fillStyle="#FFE08A";g.fillRect(c.x-4,c.y-5,8,10)}});
     if(M[k]&&M[k].drawObjs)M[k].drawObjs(g);else S.objs.forEach(o=>{g.fillStyle=COL[o.k];g.strokeStyle="#22302B";g.lineWidth=o.held?3:2;g.beginPath();g.rect(o.x+1,o.y+1,o.w-2,o.h-2);g.fill();g.stroke();
       if(o.k==="heavy"){g.beginPath();g.moveTo(o.x+2,o.y+2);g.lineTo(o.x+o.w-2,o.y+o.h-2);g.moveTo(o.x+o.w-2,o.y+2);g.lineTo(o.x+2,o.y+o.h-2);g.stroke()}});
     S.ch.forEach(c=>{
-      if(c.k==="bee")c.ppl.forEach(p=>{g.globalAlpha=p.out?Math.max(0,p.out/.7):1;g.fillStyle="#F2B8C6";g.strokeStyle="#22302B";g.lineWidth=1.5;g.beginPath();g.arc(p.x,p.y,PR,0,7);g.fill();g.stroke();g.globalAlpha=1});
-      if(c.k==="red"){const v=c.vv,ag=!v.calm,j=ag?Math.sin(S.t*22)*2:0;if(ag){g.fillStyle="rgba(217,72,59,.16)";g.beginPath();g.arc(v.x,v.y,30,0,7);g.fill()}
-        g.fillStyle=ag?"#D9483B":"#F2B8C6";g.strokeStyle="#22302B";g.lineWidth=2;g.beginPath();g.arc(v.x+j,v.y,VR-3,0,7);g.fill();g.stroke();
-        const pr=ag?(c.p>0?c.p:(v.m<100?1-v.m/100:0)):0;if(pr>0){g.fillStyle="#fff";g.fillRect(v.x-22,v.y-26,44,6);g.fillStyle="#22302B";g.fillRect(v.x-22,v.y-26,44*Math.min(1,pr),6)}}});
+    });
+    M.red.use(S.st.red);if(k!=="red")S.st.red.face=S.face;M.red.drawVictims(g);M.red.drawFx(g);
+    {const bs=S.st.bee;M.bee.use(bs);if(k==="bee"){M.bee.drawSwarm(g);M.bee.drawWall(g)}M.bee.drawPeople(g)}
     // whose doorway it is: a tag on the wall beside it, on the side the droid comes from
     S.ch.forEach(c=>{const d=DR[c.k];g.font="800 12px system-ui,sans-serif";const tx=(c.i+1)+" "+d.n+(c.done?" ✓":""),tw=g.measureText(tx).width+14;
       let q=P(c,-17,-c.sg*(GAP+12+(c.v?10:tw/2)));q.x=Math.max(10+tw/2,Math.min(FW-10-tw/2,q.x));q.y=Math.max(20,Math.min(H-14,q.y));
       g.fillStyle=c.done?"#C9D3CD":d.c;g.strokeStyle="#22302B";g.lineWidth=2;g.beginPath();g.rect(q.x-tw/2,q.y-10,tw,18);g.fill();g.stroke();g.fillStyle="#22302B";g.textAlign="center";g.fillText(tx,q.x,q.y+3)});
     g.fillStyle="#4FB286";g.strokeStyle="#22302B";g.lineWidth=2;g.beginPath();g.arc(S.sv.x,S.sv.y,11,0,7);g.fill();g.stroke();g.fillStyle="#22302B";g.font="800 11px system-ui,sans-serif";g.textAlign="center";g.fillText("Survivor",S.sv.x,S.sv.y-18);
     // ability effects
-    if(S.swarm&&k==="bee"){g.fillStyle="rgba(242,203,87,.14)";g.strokeStyle="#C99A12";g.lineWidth=2;g.setLineDash([5,5]);g.beginPath();g.arc(S.x,S.y,T.bee.radius,0,7);g.fill();g.stroke();g.setLineDash([]);g.fillStyle="#C99A12";for(let j=0;j<14;j++){const a=S.t*3+j*.45,rr=T.bee.radius*(.4+.55*((j*37)%10)/10);g.beginPath();g.arc(S.x+Math.cos(a)*rr,S.y+Math.sin(a)*rr,2.2,0,7);g.fill()}}
-    if(S.aura&&k==="red"){g.fillStyle="rgba(255,138,117,.2)";g.strokeStyle="#FF8A75";g.lineWidth=2;g.beginPath();g.arc(S.x,S.y,T.red.radius,0,7);g.fill();g.stroke()}
-    if(S.hl&&k==="cam"){g.strokeStyle="rgba(63,167,150,.9)";g.lineWidth=2;g.setLineDash([10,7]);g.lineDashOffset=-S.t*18;g.beginPath();g.arc(S.x,S.y,T.cam.hl,0,7);g.stroke();g.setLineDash([]);const s=(S.t*.7)%1;g.strokeStyle="rgba(63,167,150,"+(.55*(1-s))+")";g.lineWidth=3;g.beginPath();g.arc(S.x,S.y,T.cam.hl*s,0,7);g.stroke()}
-    if(S.honkFx>0){g.strokeStyle="#22302B";g.lineWidth=2;g.beginPath();g.arc(S.x,S.y,T.bee.honkR*(1-S.honkFx/.35),0,7);g.stroke()}
     // the droid, drawn the way its own room draws it: its body colour and its letter
     M.fish.use(S.st.fish);M.fish.drawWorld(g);M.fish.drawFx(g);if(M[k])M[k].use(S.st[k]);
+    if(k==="red")M.red.drawAim(g);
+    if(k==="cam"){M.cam.use(S.st.cam);M.cam.drawFx(g)}
     if(M[k])M[k].drawDroid(g);
     else{const sx=0;g.fillStyle=DR[k].f;g.beginPath();g.arc(S.x+sx,S.y,R,0,7);g.fill();g.strokeStyle="#22302B";g.lineWidth=2.5;g.beginPath();g.arc(S.x+sx,S.y,R,0,7);g.stroke();
       g.fillStyle=DR[k].ink||"#fff";g.font="800 13px system-ui,sans-serif";g.textAlign="center";g.fillText(DR[k].l,S.x+sx,S.y+5)}
     M.fish.use(S.st.fish);M.fish.drawHands(g);if(k==="fish")M.fish.drawStatus(g);
-    const cc=chOf("cam");if(cc&&cc.card.got&&!cc.open){g.fillStyle="#FFE08A";g.strokeStyle="#22302B";g.lineWidth=1.5;g.beginPath();g.rect(S.x-17,S.y-17,11,7);g.fill();g.stroke()}
+    if(k==="cam"){M.cam.use(S.st.cam);M.cam.drawArrows(g)}
+    const cc=chOf("cam");if(cc&&cc.card.found&&!cc.open){g.fillStyle="#FFE08A";g.strokeStyle="#22302B";g.lineWidth=1.5;g.beginPath();g.rect(S.x-17,S.y-17,11,7);g.fill();g.stroke()}
     hud()}
   let lastHud="";
   function hud(){const k=A(),d=DR[k];
     M.fish.use(S.st.fish);M.fish.uiHands(HP[0],HP[1]);{const b=$("spDrop"),p=HP[1];b.hidden=p.hidden;if(b.innerHTML!==p.innerHTML)b.innerHTML=p.innerHTML}
+    M.red.use(S.st.red);M.red.uiHands(HV[0],HV[1]);
     const x=ctx();
-    const lab={bee:"Swarm: "+(S.swarm?"on":"off"),red:"Aura: "+(S.aura?"on":"off"),cam:"Highlight: "+(S.hl?"on":"off")}[k];
-    const on=(k==="bee"&&S.swarm)||(k==="red"&&S.aura)||(k==="cam"&&S.hl);
-    $("spAct").classList.toggle("on",!!S.st.fish.using);
+    const lab="";
+    const on=false;
+    $("spAct").classList.toggle("on",!!S.st.fish.using||(!!reachV&&eHeld));
     const sig=[S.seed,k,lab,!!on,x&&x.l,other,S.ch.map(c=>c.done?1:0).join(""),dmg()].join("|");
     // a module labels its own unseen copies of the buttons. The real buttons show the active droid's copies
-    const px=PX[k];if(px){M[k].use(S.st[k]);M[k].ui.apply(null,px);
+    const px=PX[k];if(px){M[k].use(S.st[k]);M[k].ui.apply(null,args(k));
       SLOT.forEach((b,i)=>{const p=px[i];b.hidden=!p||p.hidden;if(!p)return;if(b.innerHTML!==p.innerHTML)b.innerHTML=p.innerHTML;b.classList.toggle("on",p.classList.contains("on"));b.classList.toggle("lock",p.classList.contains("lock"));b.dataset.why=p.dataset.why||""})}
     $("spBar").style.width=S.bars[k]+"%";$("spBar").style.background=d.c;$("spTime").textContent=S.t.toFixed(1)+"s";
     root.querySelectorAll("#spParty button").forEach((b,i)=>{b.querySelector("i b").style.width=S.bars[S.party[i]]+"%"});
@@ -6245,16 +6397,19 @@ window.FishDroid=function(Ho){
   cv.addEventListener("keydown",e=>{const k=e.key.toLowerCase();if(["arrowup","arrowdown","arrowleft","arrowright"," "].includes(k))e.preventDefault();
     if(k>="1"&&k<="4"&&k.length===1){sw(+k-1);return}
     if(k===" "&&!e.repeat&&S&&A()==="crab"){C.use(S.cr);C.grip()}
+    if(!e.repeat&&S&&A()==="cam"){const c=M.cam;c.use(S.st.cam);if(k==="f")c.toggle();if(k==="t")c.ping();if(k==="r")c.replay()}
+    if(!e.repeat&&S&&A()==="bee"){const b=M.bee;b.use(S.st.bee);if(k===" ")b.press();if(k==="q")b.hive();if(k==="f")b.wallPress();if(k==="e"&&!reachF&&!reachV)b.leadMode()}
+    if(!e.repeat&&S&&A()==="red"&&k==="f"){M.red.use(S.st.red);M.red.toggleAura()}
     if(!e.repeat&&S&&A()==="fish"&&k==="f"){M.fish.use(S.st.fish);M.fish.foam()}
     if(!e.repeat&&S&&k==="x"){M.fish.use(S.st.fish);M.fish.drop()}
     if(!e.repeat&&S&&A()==="orb"&&(k==="f"||k==="b")){M.orb.use(S.st.orb);if(k==="f")M.orb.shield();else M.orb.brace()}
-    if(["f","q","r","b","x","i","j","k","l"," "].includes(k))e.preventDefault();keys[k]=true;
+    if(["f","q","r","b","x","t","i","j","k","l"," "].includes(k))e.preventDefault();keys[k]=true;
     if(k==="q"){if(!qHeld)qTap=true;qHeld=true}else if(k==="e"){if(!eHeld)eTap=true;eHeld=true}});
-  cv.addEventListener("keyup",e=>{const k=e.key.toLowerCase();keys[k]=false;if(k==="q")qHeld=false;else if(k==="e")eHeld=false});
+  cv.addEventListener("keyup",e=>{const k=e.key.toLowerCase();keys[k]=false;if(k==="f"&&S&&A()==="bee"){M.bee.use(S.st.bee);M.bee.wallRelease()}if(k==="q")qHeld=false;else if(k==="e")eHeld=false});
   cv.addEventListener("blur",()=>{for(const k in keys)keys[k]=false;qHeld=eHeld=false});
   cv.addEventListener("mousemove",e=>{const r=cv.getBoundingClientRect();mouse=io.mouse={x:(e.clientX-r.left)*W/r.width,y:(e.clientY-r.top)*H/r.height,fresh:true}});
   cv.addEventListener("mouseleave",()=>{mouse=io.mouse=null});
-  function hold(k,on){if(k==="q"&&S&&A()==="orb"){M.orb.hold(on);return}if(k==="q"&&S&&A()==="fish"){M.fish.hold("q",on);return}if(k==="q"){if(on&&!qHeld)qTap=true;qHeld=on;if(!on)qDrag=null}else{if(on&&!eHeld)eTap=true;eHeld=on}}
+  function hold(k,on){if(k==="q"&&S&&A()==="orb"){M.orb.hold(on);return}if(k==="q"&&S&&A()==="fish"){M.fish.hold("q",on);return}if(k==="f"&&S&&A()==="red"){if(on){M.red.use(S.st.red);M.red.toggleAura()}return}if(k==="q"&&S&&A()==="cam"){if(on){M.cam.use(S.st.cam);M.cam.toggle()}return}if(k==="q"&&S&&A()==="bee"){if(on){M.bee.use(S.st.bee);M.bee.press()}return}if(k==="q"){if(on&&!qHeld)qTap=true;qHeld=on;if(!on)qDrag=null}else{if(on&&!eHeld)eTap=true;eHeld=on}}
   (function(){
     // a press on a real button goes to the active droid's copy of it. A droid that is not a module yet has the one button, held for Q
     SLOT.forEach((b,i)=>{let id=null,p=null,ox=0,oy=0;const pass=(t,e)=>p.dispatchEvent(new PointerEvent(t,{pointerId:e.pointerId,clientX:e.clientX,clientY:e.clientY,cancelable:true}));
