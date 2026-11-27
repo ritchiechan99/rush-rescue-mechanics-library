@@ -2808,7 +2808,7 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
       <li><b>Switching</b> is instant and the new droid stands where the last one stood, as in the GDD. Switching turns off an ability that was on. Each droid keeps its own ability bar, which refills while it is not in use.</li>
       <li><b>Each droid is the same droid as in its own room.</b> The room and this floor run one piece of code for each droid, so it has the same look, the same buttons, the same keys, the same numbers and the same skill tree. The keys are written on the buttons. The skill tree panel beside the floor is the active droid’s, and each droid keeps its own level.</li>
       <li><b>Fish:</b> three fires burn in the doorway. Hold Q to spray, aimed as in Fish’s room. F is foam, R the bubble and B the deluge, once they are upgraded. Any droid can instead pick up the fire extinguisher with E, stand next to a fire and hold E. X drops it.</li>
-      <li><b>Orb:</b> a heavy crate fills the doorway. Hold Q to aim and wind up, then release to charge. F is the shield and B the brace, once they are upgraded. Any droid can instead push the crate slowly by walking into it.</li>
+      <li><b>Orb:</b> a heavy crate fills the doorway. Hold Q to aim and wind up, then release to charge. F is the shield and B the brace, once they are upgraded. No other droid can move a heavy crate. As in Orb’s room, there is a long way round: a second doorway further along the same wall.</li>
       <li><b>Crab:</b> two crates fill the doorway. Press the Grip button or Space next to one to grip it, drag it wherever it should go, and press again to let go. Dragging is slower than walking and drains the bar.</li>
       <li><b>Bee:</b> a crowd stands in the doorway. Press Space or the Swarm button, and people inside the swarm walk away from Bee. Q drops a hive, E switches to Lead and F draws a swarm wall, once they are upgraded. Any other droid can honk with E, or squeeze through slowly.</li>
       <li><b>Red:</b> an agitated victim blocks the doorway. Press F for the aura. A victim inside it settles over a few seconds, then steps aside. Q aims the tranquilizer, once it is upgraded. Any other droid can stand next to the victim and hold E to calm them by hand.</li>
@@ -6142,7 +6142,7 @@ window.FishDroid=function(Ho){
   const T={
     crab:{reach:16,drag:20,recharge:18,dragSpeed:.55,min:15},
     orb:{windup:1.0,dist:260,cost:30,recharge:12,stun:1.5,slow:.45,speed:560,recover:.35},
-    push:{medium:.5,heavy:.2},aim:{cone:.42,turn:5}};
+    push:{medium:.5},aim:{cone:.42,turn:5}};
   function rng(seed){let a=seed>>>0;return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
   let seed=1+Math.floor(Math.random()*999999),other=true,S=null,stick={x:0,y:0},qHeld=false,eHeld=false,qTap=false,eTap=false,aTap=false,mouse=null,qDrag=null;
   const keys={},io={mouse:null};
@@ -6161,7 +6161,7 @@ window.FishDroid=function(Ho){
       prev=s}
     rooms.push(Q);
     for(let j=0;j<4;j++){const L=lines[j],n=rooms[j+1],lo=Math.max(L.a,L.v?n.y:n.x),hi=Math.min(L.b,L.v?n.y+n.h:n.x+n.w),m=GAP+26;if(hi-lo<2*m+4)return null;
-      L.c=Math.round(lo+m+r()*(hi-lo-2*m));L.x=L.v?L.pos:L.c;L.y=L.v?L.c:L.pos}
+      L.c=Math.round(lo+m+r()*(hi-lo-2*m));L.lo=lo;L.hi=hi;L.x=L.v?L.pos:L.c;L.y=L.v?L.c:L.pos}
     return{rooms:rooms,lines:lines}}
   const inR=(q,x,y,m)=>x>q.x+(m||0)&&x<q.x+q.w-(m||0)&&y>q.y+(m||0)&&y<q.y+q.h-(m||0);
   const P=(c,a,b)=>({x:c.x+c.nx*a+c.tx*b,y:c.y+c.ny*a+c.ty*b});
@@ -6172,10 +6172,13 @@ window.FishDroid=function(Ho){
   function slab(c,off,along,deep,k,n){const m=P(c,0,off),w=c.v?deep:along,h=c.v?along:deep;return{k:k,n:n,x:m.x-w/2,y:m.y-h/2,w:w,h:h,vx:0,vy:0,held:false,carried:false,sup:false,gone:false,fly:false,c:c}}
   function gen(sd){
     seed=sd;const r=rng(sd),party=shuffle(ALL.slice(),r).slice(0,4),order=shuffle(ALL.slice(),r).slice(0,4);   // what blocks the doorways is picked apart from the party
-    let L=null;for(let a=0;a<400&&!L;a++)L=layout(r);
+    let L=null;const oi=order.indexOf("orb"),far=ln=>{const m=GAP+14,c2=ln.c-ln.lo>ln.hi-ln.c?ln.lo+m:ln.hi-m;return Math.abs(c2-ln.c)>=GAP*2+30?c2:null};
+    for(let a=0;a<600&&!L;a++){L=layout(r);if(L&&oi>=0&&far(L.lines[oi])===null)L=null}
     const objs=[],walls=[{x:-20,y:-20,w:FW+40,h:28},{x:-20,y:H-8,w:FW+40,h:28},{x:-20,y:-20,w:28,h:H+40},{x:FW-8,y:-20,w:W,h:H+40}];
     const ch=order.map((k,i)=>{const ln=L.lines[i],room=L.rooms[i],c={k:k,i:i,x:ln.x,y:ln.y,nx:ln.nx,ny:ln.ny,tx:-ln.ny,ty:ln.nx,v:ln.v,ln:ln,room:room,next:L.rooms[i+1],done:false,ab:false,alt:false,p:0};
-      const h=WT/2;if(ln.v){walls.push({x:ln.pos-h,y:ln.a,w:WT,h:ln.c-GAP-ln.a},{x:ln.pos-h,y:ln.c+GAP,w:WT,h:ln.b-ln.c-GAP})}else{walls.push({x:ln.a,y:ln.pos-h,w:ln.c-GAP-ln.a,h:WT},{x:ln.c+GAP,y:ln.pos-h,w:ln.b-ln.c-GAP,h:WT})}
+      // the wall, with its doorway. A heavy crate's wall has a second doorway far along it: the long way round, as in Orb's room
+      const h=WT/2,gaps=[ln.c];if(k==="orb"){c.c2=far(ln);c.off2=(c.c2-ln.c)*(ln.v?c.ty:c.tx);gaps.push(c.c2)}gaps.sort((p,q)=>p-q);
+      let from=ln.a;gaps.concat([null]).forEach(gp=>{const to=gp===null?ln.b:gp-GAP;if(to>from)walls.push(ln.v?{x:ln.pos-h,y:from,w:WT,h:to-from}:{x:from,y:ln.pos-h,w:to-from,h:WT});from=gp+GAP});
       const a1=P(c,-34,70),a2=P(c,-34,-70);c.sg=inR(room,a1.x,a1.y,16)?(inR(room,a2.x,a2.y,16)&&r()<.5?-1:1):-1;
       const spot=()=>{let best=null,bd=-1;for(let n=0;n<30;n++){const x=room.x+28+r()*(room.w-56),y=room.y+28+r()*(room.h-56),d=Math.hypot(x-c.x,y-c.y);if(d>bd){bd=d;best={x:x,y:y}}if(d>110&&n>3)break}return best};
       if(k==="fish"){c.fires=[-24,0,24].map(b=>{const p=P(c,0,b);return M.fish.F("plain",p.x,p.y,FR,[],{c:c})});c.ext=spot()}
@@ -6246,7 +6249,7 @@ window.FishDroid=function(Ho){
   const tree=k=>{TR[k]=window.protoTree("squad"+DR[k].n+"Tree",()=>{if(S&&S.st){M[k].use(S.st[k]);M[k].release()}})};
   // walking for a module that has no walking rules of its own: the floor's rules, so any droid still pushes a crate and squeezes through a crowd
   const hostWalk=k=>(want,dt,f,keep)=>{const st=S.st[k];S.x=st.droid.x;S.y=st.droid.y;walk(want,dt,f||1);st.droid.x=S.x;st.droid.y=S.y;if(!keep&&(want.x||want.y))st.face={x:want.x,y:want.y}};
-  tree("crab");const C=M.crab=window.CrabDroid(host("crab",{crab:()=>A()==="crab",pushHeavy:T.push.heavy,pushed:o=>{if(o.c)o.c.alt=true;S.pushing=.2}}));
+  tree("crab");const C=M.crab=window.CrabDroid(host("crab",{crab:()=>A()==="crab",pushed:o=>{if(o.c)o.c.alt=true;S.pushing=.2}}));
   tree("orb");M.orb=window.OrbDroid(host("orb",{orb:()=>A()==="orb",W:FW,H:H,walk:hostWalk("orb"),
     // what else a charge runs into on this floor: a fire or an agitated victim stops it, and a person is knocked aside
     onCharge:(nd,c)=>{if(rounds().some(q=>Math.hypot(nd.x-q[0],nd.y-q[1])<R+q[2]))return "Something in the way stopped the charge.";
@@ -6360,6 +6363,7 @@ window.FishDroid=function(Ho){
     S.ch.forEach(c=>{const d=DR[c.k];g.font="800 12px system-ui,sans-serif";const tx=(c.i+1)+" "+d.n+(c.done?" ✓":""),tw=g.measureText(tx).width+14;
       let q=P(c,-17,-c.sg*(GAP+12+(c.v?10:tw/2)));q.x=Math.max(10+tw/2,Math.min(FW-10-tw/2,q.x));q.y=Math.max(20,Math.min(H-14,q.y));
       g.fillStyle=c.done?"#C9D3CD":d.c;g.strokeStyle="#22302B";g.lineWidth=2;g.beginPath();g.rect(q.x-tw/2,q.y-10,tw,18);g.fill();g.stroke();g.fillStyle="#22302B";g.textAlign="center";g.fillText(tx,q.x,q.y+3)});
+    S.ch.forEach(c=>{if(c.k!=="orb"||c.done)return;const q=P(c,-22,c.off2);g.fillStyle="rgba(34,48,43,.55)";g.font="700 11px system-ui,sans-serif";g.textAlign="center";g.fillText("Long way",Math.max(34,Math.min(FW-34,q.x)),Math.max(22,Math.min(H-14,q.y+4)))});
     g.fillStyle="#4FB286";g.strokeStyle="#22302B";g.lineWidth=2;g.beginPath();g.arc(S.sv.x,S.sv.y,11,0,7);g.fill();g.stroke();g.fillStyle="#22302B";g.font="800 11px system-ui,sans-serif";g.textAlign="center";g.fillText("Survivor",S.sv.x,S.sv.y-18);
     // ability effects
     // the droid, drawn the way its own room draws it: its body colour and its letter
