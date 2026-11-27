@@ -2763,9 +2763,9 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
           <section class="lvpanel" data-lv="party"><header class="lvhead"><h2>Party and switching</h2><p class="lvchips"><span class="lvchip">Reference</span><span class="lvchip">GDD 2.1.3, 3.4.2</span></p></header><div class="lvpane on" data-t="main"><p>Droids have no AI. The player controls one droid at a time and swaps between them instantly.</p>
           <div class="tw"><table class="camp def"><thead><tr><th scope="col">Rule</th><th scope="col">How it works</th></tr></thead><tbody><tr><th scope="row">Drafting</th><td>From the campaign map the player selects a stage, and a popup appears where they choose up to 4 droids to bring as their party.</td></tr><tr><th scope="row">Switching</th><td>During the mission the HUD lists the party, and tapping another droid swaps it in. There is no switch cooldown.</td></tr><tr><th scope="row">When it is blocked</th><td>During treatment minigames and while carrying a survivor.</td></tr><tr><th scope="row">Position</th><td>The new droid appears where the current droid is standing. Droids are never spread across the map.</td></tr><tr><th scope="row">Abilities</th><td>Switching turns off any active ability. Each droid keeps its own ability bar, which keeps recharging while that droid is out of play.</td></tr><tr><th scope="row">Health and effects</th><td>Each droid has its own health bar. Burning, slipping and stun effects stay with the droid that suffered them, and a burning droid keeps burning after it is switched out, until its burn timer runs out.</td></tr><tr><th scope="row">Droid down</th><td>When the droid being controlled reaches zero health, the game switches automatically to the next droid in the party. This continues until every droid in the party is down.</td></tr><tr><th scope="row">Why it matters</th><td>The skill is choosing the right droid for the moment, such as Fish for a spreading fire or Bee to move a crowd. The choice is made twice: when building the party and again in the field.</td></tr></tbody></table></div>
           <p>The full text is on the <a href="#droids">Droid rules</a> page.</p></div></section>
-          <section class="lvpanel" data-lv="squad"><header class="lvhead"><h2>Squad run</h2><p class="lvchips"><span class="lvchip">Playable lo-fi</span><span class="lvchip">Proposed on 27 Nov 2026</span></p></header><div class="lvpane on" data-t="main">
+          <section class="lvpanel" data-lv="squad"><header class="lvhead"><h2>Squad run</h2><p class="lvchips"><span class="lvchip">Playable lo-fi</span><span class="lvchip">Proposed on 27 Nov 2026</span></p></header><div class="lvpane on" data-t="main"><div class="cp-wrap">
 <div class="cproto sproto" id="squadProto">
-  <p class="lead">A floor of five rooms, made from a seed. The seed picks four of the six droids at random, lays the rooms out differently every time, and blocks each doorway with something one of the droids answers. Switch droids to get through all four doorways and reach the survivor. This is a flat sketch to try the idea, not the game’s look or physics.</p>
+  <p class="lead">A floor of five rooms, made from a seed. The seed picks four of the six droids at random, lays the rooms out differently every time, and blocks each doorway with something one of the six droids is best at. The party may or may not include that droid. Switch droids to get through all four doorways and reach the survivor. This is a flat sketch to try the idea, not the game’s look or physics.</p>
   <div class="cp-top">
     <div class="cp-bar" aria-hidden="true"><span>Ability bar</span><i><b id="spBar"></b></i></div>
     <div class="cp-time"><span>Time</span><b id="spTime">0.0s</b></div>
@@ -2776,17 +2776,14 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
     <button type="button" class="cp-reset" id="spNew">New scenario</button>
     <button type="button" class="cp-reset" id="spReset">Replay this one</button>
     <label class="sp-seed"><span>Seed</span><input type="number" id="spSeed" min="1" max="999999" step="1" inputmode="numeric"></label>
-    <span class="cp-lab">Other ways through</span>
-    <div class="cp-seg" role="group" aria-label="Other ways through">
-      <button type="button" data-other="0" aria-pressed="true">Off: needs all four</button>
-      <button type="button" data-other="1" aria-pressed="false">On: slower without</button>
-    </div>
   </div>
   <div class="cp-stage">
     <canvas id="spCanvas" width="760" height="460" tabindex="0" role="img" aria-label="A floor of five rooms of different sizes, joined one after another by four doorways. The droid starts in the first room and a survivor waits in the last. The party is in a column on the right."></canvas>
     <div class="sp-party" id="spParty" role="group" aria-label="Party: switch droid"></div>
     <div class="rp-btns">
       <button type="button" class="cp-grip" id="spAbil"><kbd>Q</kbd><span>Ability</span></button>
+      <button type="button" class="cp-grip cp-toss" id="spB" hidden>Hold: aim line</button>
+      <button type="button" class="cp-grip cp-toss" id="spC" hidden>Hold: aim toss</button>
       <button type="button" class="cp-grip" id="spAct"><kbd>E</kbd><span>Interact</span></button>
     </div>
   </div>
@@ -2803,24 +2800,24 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
   <div class="cp-rules">
     <h3>Rules in this room</h3>
     <ul>
-      <li><b>The seed makes everything:</b> which four droids are in the party, which doorway each one answers, the layout of the floor, and the details of each blocker. The same seed always gives the same scenario.</li>
+      <li><b>The seed makes everything:</b> which four droids are in the party, what blocks each doorway, the layout of the floor, and the details of each blocker. The same seed always gives the same scenario.</li>
       <li><b>The layout:</b> four strips are cut off the floor one after another, each from a random side and with a random depth. That gives five rooms of different sizes, and a way through that turns. Each doorway sits at a random spot on its wall.</li>
       <li><b>The party</b> is the column on the right of the room, where a droid is picked. Each button shows that droid’s ability bar.</li>
       <li><b>Switching</b> is instant and the new droid stands where the last one stood, as in the GDD. Switching turns off an ability that was on. Each droid keeps its own ability bar, which refills while it is not in use.</li>
-      <li><b>Each droid works as it does in its own room</b>, with its basic ability and that room’s numbers. No skill tree upgrades are on.</li>
+      <li><b>Each droid works as it does in its own room</b>, with that room’s numbers.</li>
       <li><b>Fish:</b> three fires burn in the doorway. Hold Q to spray. The stream is aimed: an assist points it at the nearest fire, and a drag from the button, the mouse or I J K L steers it. It stops at the first fire it reaches and cools it. A fire that is not put out fully grows back.</li>
       <li><b>Orb:</b> a heavy crate fills the doorway. Hold Q to aim and wind up, which takes a second, then release to charge. Orb can keep moving, slower, while it winds up. The charge destroys the first heavy obstacle in its lane, which counts as property damage. Charging into a wall stuns Orb.</li>
-      <li><b>Crab:</b> two crates fill the doorway. Press Q next to one to grip it, drag it wherever it should go, and press Q again to let go. Dragging is slower than walking and drains the bar.</li>
+      <li><b>Crab:</b> two crates fill the doorway. Press the Grip button or Space next to one to grip it, drag it wherever it should go, and press again to let go. Dragging is slower than walking and drains the bar.</li>
       <li><b>Bee:</b> a crowd stands in the doorway. Press Q for the swarm, and people inside it walk away from Bee and keep walking for a moment. Come at them from behind, and they walk on through the doorway and leave.</li>
       <li><b>Red:</b> an agitated victim blocks the doorway. Press Q for the aura. A victim inside it settles over a few seconds, then steps aside.</li>
       <li><b>Cam:</b> the room is full of smoke, where a droid only sees a short way, and the shutter needs a key card that lies somewhere in it. Cam sees a little further in smoke. Press Q for the highlight, which shows the card anywhere inside its ring.</li>
-      <li><b>Other ways through, off:</b> only the matching droid can clear each doorway, so the scenario needs all four. The crates are wedged, the crowd is too tight to squeeze through, and only Cam can make out the card.</li>
-      <li><b>Other ways through, on:</b> any droid can get through each doorway the way “another droid” can in that droid’s own room, only more slowly. Walk into the crates to push them at half speed, or into the heavy crate to push it slowly. Carry the extinguisher to the fire and hold E. Squeeze through the crowd slowly, or honk with E. Hold E next to the victim to calm them by hand. Search the smoke for the card. Orb’s charge also knocks crates and people aside. This is the “always solvable” hazard rule.</li>
-      <li><span class="tbd">Asked for on 27 Nov 2026. The abilities and their numbers are the ones from each droid’s own room. What fills each doorway, the way the floor is cut up, the crowd leaving through the doorway and a victim who blocks a doorway are stand-ins. “Off” is the default because the ask was a scenario that requires four droids. It goes against the rule that a normal droid can always solve a situation, which “On” follows. Which of the two the game uses for a squad scenario is open.</span></li>
+      <li><b>The party does not have to fit.</b> The four droids and the four doorways are picked separately, so a doorway may be for a droid that was not brought. Every doorway can still be passed by any droid, the way “another droid” can in that droid’s own room, only more slowly: walk into the crates to push them at half speed, or into the heavy crate to push it slowly. Carry the extinguisher to the fire and hold E. Squeeze through the crowd slowly, or honk with E. Hold E next to the victim to calm them by hand. Search the smoke for the card. Orb’s charge also knocks crates and people aside.</li>
+      <li><b>Crab is the same droid as in its own room</b>: both run one piece of code. It has the same look, the same Grip, Aim line and Aim toss buttons, the same keys (Space grips, Q aims the line, F aims a toss, I J K L steer) and the same numbers. Its skill tree is the panel beside the room. The other five droids still use a copy of their basic ability and have no skill tree here yet.</li>
+      <li><span class="tbd">Asked for on 27 Nov 2026. What fills each doorway, the way the floor is cut up, the crowd leaving through the doorway and a victim who blocks a doorway are stand-ins. Asked for on 27 Nov and not built yet: every droid as a shared module with its skill tree, and doorways that chain like an escape room, for example a fire whose extinguisher is blocked by something Crab has to move.</span></li>
     </ul>
   </div>
 </div>
-</div></section>
+<aside class="cp-tree cp-line" id="squadCrabTree" aria-label="Skill tree" style="--n:3"><div class="sl-top"><h4>Skill tree</h4><span class="sl-tag">Candidates, not confirmed</span></div><div class="sl"><div class="sl-head"><b>Crab: Grip</b><span class="sl-lvl"></span></div><p class="sl-lab"><b>Set the level</b> Drag the handle, or click a stop. This changes the room.</p><div class="sl-groove"><div class="sl-track"><i class="sl-rail"></i><i class="sl-fill"></i><div class="sl-col"><span class="sl-stop" aria-hidden="true">0</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">1</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">2</span></div><div class="sl-col"><span class="sl-stop" aria-hidden="true">3</span></div><input type="range" class="sl-range" min="0" max="3" step="1" value="0" aria-label="Crab: Grip: upgrade level"></div></div><div class="sl-names"><button type="button" class="sl-name" data-lvl="0" data-name="Crab: Grip" data-what="Tap next to a light or medium object to grip it, and tap again to set it down. A light object is carried and a medium one is dragged. The bar drains while Crab holds something.">Basic</button><button type="button" class="sl-name" data-skill="tow" data-lvl="1" aria-pressed="false" data-name="Tow line" data-status="Set aside for the skill tree on 26 Nov" data-what="Crab aims and fires a hook on a line, the same way Red aims its tranquilizer. The object it hits is hooked and reeled in, with Crab’s hands free. Aiming has an assist: it starts on the nearest object in sight that can be gripped, supplies first, and locks on when the aim is close to one." data-how="Choose the “Out of reach” situation: the first aid bag lies across broken floor, and the line pulls it over. Hold Q or the “Hold: aim line” button and release to fire. Crab can keep moving while aiming. The assist aims by itself until you steer with I J K L, the mouse or a drag from the button. A green line means the aim is locked on. Walls, and heavy or fixed objects, stop the hook. Tap Space or “Let go” to release the line."><span class="sl-full">Tow line</span><span class="sl-short" aria-hidden="true">Tow</span></button><button type="button" class="sl-name" data-skill="stack" data-lvl="2" aria-pressed="false" data-name="Stack and haul" data-status="Set aside for the skill tree on 26 Nov" data-what="Pick up as many as three objects at once. Each one slows Crab and drains the bar faster. It works with the Tow line: while Crab holds fewer than three, the line can be fired again, and what it reels in joins the stack." data-how="Choose the “Supply run” situation: three boxes go to the survivor in one trip instead of three. While gripping, walk up to more objects. Crab takes hold of as many as three. Each extra one slows Crab and adds its own bar drain. Or stay back and fire the Tow line at one box after another: each is reeled in and joins the stack."><span class="sl-full">Stack and haul</span><span class="sl-short" aria-hidden="true">Stack</span></button><button type="button" class="sl-name" data-skill="toss" data-lvl="3" aria-pressed="false" data-name="Lift and toss" data-status="Set aside for the skill tree on 26 Nov" data-what="Crab aims and throws what it holds a short distance, the same way Red aims its tranquilizer. Light objects fly further than medium ones. Aiming has an assist: when the survivor who needs the object is within throwing distance, the aim starts on them and locks on." data-how="Choose the “Across the gap” situation: the bag is thrown over the broken floor to the survivor. While holding something, hold F or the “Hold: aim toss” button and release to throw. Crab can keep moving while aiming. The assist aims by itself until you steer with I J K L, the mouse or a drag from the button. A green line means the aim is locked on the survivor. An object that is on the tow line can be thrown too."><span class="sl-full">Lift and toss</span><span class="sl-short" aria-hidden="true">Lift</span></button></div><p class="sl-lab sl-lab2"><b>Read about an upgrade</b> Click its name. This only changes the card below.</p></div><div class="sl-card" aria-live="polite"><div class="sl-cardtop"><div><span class="sl-step"></span><h5></h5></div><div class="sl-nav"><button type="button" class="sl-prev" aria-label="Look at the upgrade before">‹</button><button type="button" class="sl-next" aria-label="Look at the next upgrade">›</button></div></div><p class="sl-what"></p><p class="sl-inc"></p><p class="st-how sl-how"><b>Try it in this room</b><span></span></p><div class="sl-act"><span class="sl-state"></span><button type="button" class="sl-set"></button></div></div><p class="cp-note sl-foot">The tree is linear: each upgrade enhances the base ability and includes the ones before it. The order and the numbers are placeholders.</p></aside></div></div></section>
           <section class="lvpanel" data-lv="actions"><header class="lvhead"><h2>What every droid can do</h2><p class="lvchips"><span class="lvchip">Reference</span><span class="lvchip">GDD 3.1.4</span></p></header><div class="lvpane on" data-t="main"><p>Along with its own ability, every droid can do the following.</p>
           <div class="tw"><table class="camp def"><thead><tr><th scope="col">Interaction</th><th scope="col">What it does</th></tr></thead><tbody><tr><th scope="row">Tag</th><td>Survivors and hazards are tagged with a floating marker of their type once they come into the droid’s view. Tagging everything early lets the player plan, and counts towards the Thorough and Alert traits. Cam’s Tracker upgrade adds to this: what Cam’s highlight shows is tagged too.</td></tr><tr><th scope="row">Honk (proposed)</th><td>A weaker version of Bee’s ability that every droid has. NPCs in a small area around the droid move away from it. Players can clear crowds even without Bee in the party, and it counts towards the Purposeful trait.</td></tr><tr><th scope="row">Push</th><td>Moving into an obstacle pushes it, depending on its <a href="#obstacle-weights">weight</a>.</td></tr><tr><th scope="row">Carry</th><td>Droids pick up survivors to carry them to the ambulance, and pick up light obstacles and items. Droids can’t switch while carrying a survivor. The base rules for carrying a survivor are below.</td></tr><tr><th scope="row">Slide</th><td>On wet floors, a droid keeps moving in the direction it entered, faster but with less control. Hitting an obstacle while sliding can stun and damage it.</td></tr></tbody></table></div>
           <div class="callout chg"><h3>Carrying a survivor: base rules for every droid. Decided on 26 Nov 2026, not yet in the GDD</h3><p>Until now a survivor was simply carried. These rules are the base that a droid’s skill tree can then build on.</p><div class="tw"><table class="camp def"><thead><tr><th scope="col">Rule</th><th scope="col">What it means</th></tr></thead><tbody><tr><th scope="row">How they are moved depends on the victim</th><td>A calm victim who can walk is walked out with support, at near full speed. A victim who cannot walk or is unconscious is a full carry, which is slow.</td></tr><tr><th scope="row">Carrying has a cost</th><td>The droid is slower, and the victim’s vitality keeps dropping the whole way.</td></tr><tr><th scope="row">A rough ride hurts</th><td>Bumping into obstacles, or passing through a hazard or a crowd while carrying, jolts the victim and costs vitality.</td></tr><tr><th scope="row">Agitated victims cannot be carried</th><td>An <a href="#victim-agitated">agitated victim</a> has to be calm first. Trying to carry one makes them more agitated, and never fails the mission.</td></tr><tr><th scope="row">Putting down</th><td>A victim can be set down anywhere and picked up again. Their vitality only stops dropping at the ambulance or the triage tent.</td></tr></tbody></table></div><p class="tbd">Still to define: every number (how much slower, how much a jolt costs), whether being walked out with support is a victim state of its own beside unconscious, agitated and normal, and how these rules sit with the Soft Grip and Careful Carry example boons, which also change carrying. Red’s playable lo-fi has these rules in its Carry out situation. The other droids’ lo-fis do not have them yet.</p></div>
@@ -3650,93 +3647,28 @@ function protoLine(t,onChange){
   return {on,linear:true,level:()=>lvl,set(k,v){const i=keys.indexOf(k);if(i<0)return;if(v&&lvl<i+1)lvl=i+1;if(!v&&lvl>i)lvl=i;view=lvl;draw()}};
 }
 
-/* ===== Crab's Grip: playable lo-fi =====
-   A top-down room on a canvas. World units are canvas pixels (760 x 460). */
-(function(){
-  const root=document.getElementById("crabProto");if(!root)return;
-  const cv=root.querySelector("#cpCanvas"),g=cv.getContext("2d"),W=cv.width,H=cv.height;
-  const el=id=>root.querySelector("#"+id);
+/* ===== Crab, as a module =====
+   Everything that is Crab: its numbers, the grip, the three skill tree candidates, how it and what it holds are drawn, and its buttons.
+   Crab's own room and the Squad run both run this code, so Crab is the same in both.
+   H is the host: {sk(k), say(text,cls), keys, io:{mouse}, crab():is the droid Crab, solid(rect,skip):anything else that blocks}.
+   The state S comes from the host with use(S): droid, face, bar, walls, objs, pits, need, goal and the fields of fresh(). */
+window.CrabDroid=function(H){
   const SPEED=150,REACH=16,R=15,REEL=220;                 // droid speed (px/s), grip reach, droid radius, tow reel-in speed
   const HOOK={speed:520,cone:.42,turn:5};                 // the tow line's hook: how fast it flies (px/s), how close the aim has to be to an object to lock on (radians), how fast the keys turn the aim (radians/s)
   const TOSS={light:430,medium:250},STACK_SLOW=.85;       // throw speed by weight (px/s), speed kept for each extra object held
   const COL={light:"#F3D58A",medium:"#E9A15B",heavy:"#8C8F9C",fixed:"#4A4F5C"};
   const tune={carry:10,drag:20,recharge:18,dragSpeed:55,tow:150}; // % of the bar per second (x3), % of full speed, pixels
-  let mode="crab",S;
-  /* skill tree candidates switched on in the panel beside the room. They only apply to Crab */
-  const tree=window.protoTree("crabProtoTree",onSkill),sk=k=>mode==="crab"&&!!tree.on[k];
-
-  /* the situations. Each is solvable by any droid: the upgrade it is made for only makes it quicker.
-     pits is broken floor, which no droid can cross and objects can. need is how many supplies the survivor has to be brought */
-  let room="door";
-  const o=(n,k,x,y,w,h,sup)=>({n,k,x,y,w,h,vx:0,vy:0,held:false,carried:false,sup:!!sup,gone:false});
-  const PIT={x:340,y:14,w:70,h:346};   // broken floor from the top wall down, with a way round at the bottom
-  const ROOMS={
-    door:{say:"Clear the doorway and reach the survivor.",at:[110,230],goal:[640,230],need:0,pits:[],
-      walls:[{x:372,y:14,w:22,h:156},{x:372,y:290,w:22,h:156}],
-      objs:()=>[o("Chair","medium",356,180,40,40),o("Bench","medium",330,232,84,30),o("Fire extinguisher","light",300,192,22,22),
-            o("Chair","medium",200,330,40,40),o("Long table","heavy",470,70,120,44),o("Hawker stall","fixed",470,350,130,60),
-            o("Tool box","light",150,90,22,22),o("First aid bag","light",120,330,22,22)]},
-    reach:{say:"The survivor needs the first aid bag, which lies across the broken floor. The long way round is at the bottom.",at:[110,110],goal:[120,350],need:1,pits:[PIT],walls:[],
-      objs:()=>[o("First aid bag","light",425,90,22,22,true),o("Shelf","fixed",520,170,120,40),o("Chair","medium",200,220,40,40)]},
-    run:{say:"The survivor needs all three supply boxes.",at:[170,230],goal:[100,230],need:3,pits:[],walls:[],
-      objs:()=>[o("Supply box","light",400,190,22,22,true),o("Supply box","light",430,222,22,22,true),o("Supply box","light",400,254,22,22,true),
-            o("Hawker stall","fixed",230,60,130,60),o("Long table","heavy",240,350,120,44),o("Chair","medium",560,120,40,40)]},
-    gap:{say:"The survivor is across the broken floor and needs the first aid bag. The long way round is at the bottom.",at:[110,120],goal:[500,120],need:1,pits:[PIT],walls:[],
-      objs:()=>[o("First aid bag","light",190,109,22,22,true),o("Bench","medium",520,250,84,30),o("Chair","medium",200,300,40,40)]}
-  };
-  /* the room: walls, objects, the droid and the goal. holds is what Crab has hold of, tow is what is on its line */
-  function fresh(){
-    const r=ROOMS[room];
-    return {
-      droid:{x:r.at[0],y:r.at[1]},face:{x:1,y:0},bar:100,holds:[],tow:null,hook:null,aim:null,lock:null,aimOff:false,aimMan:false,tAim:null,tLock:false,tOff:false,tMan:false,grip:false,locked:false,t:0,done:false,started:false,shake:0,
-      walls:[{x:0,y:0,w:W,h:14},{x:0,y:H-14,w:W,h:14},{x:0,y:0,w:14,h:H},{x:W-14,y:0,w:14,h:H}].concat(r.walls),
-      pits:r.pits,need:r.need,got:0,
-      goal:{x:r.goal[0],y:r.goal[1],r:22},
-      objs:r.objs()
-    };
-  }
+  const sk=H.sk,say=H.say,keys=H.keys,io=H.io;let S=null,g=null;
+  let gripAsk=false,tossAsk=false,aimHeld=false,abDrag=null,tossHeld=false,tbDrag=null;
   const hit=(a,b)=>a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;
   const box=d=>({x:d.x-R,y:d.y-R,w:R*2,h:R*2});
-  /* what is in the way: walls and every object Crab is not holding */
-  const blocked=(r,skip)=>S.walls.some(w=>hit(r,w))||S.objs.some(o=>o!==skip&&!o.held&&hit(r,o));
-  const pit=r=>S.pits.some(p=>hit(r,p));   // broken floor stops a droid, never an object
+  const blocked=(r,skip)=>S.walls.some(w=>hit(r,w))||S.objs.some(o=>o!==skip&&!o.held&&hit(r,o))||!!(H.solid&&H.solid(r,skip));
+  const pit=r=>(S.pits||[]).some(p=>hit(r,p));   // broken floor stops a droid, never an object
   const mid=o=>({x:o.x+o.w/2,y:o.y+o.h/2});
-  const can=o=>o.k==="light"||(o.k==="medium"&&mode==="crab");   // can this droid grip it
+  const can=o=>o.k==="light"||(o.k==="medium"&&H.crab());   // can this droid grip it
   const maxHold=()=>sk("stack")?3:1;
-
-  /* input: keys while the room has focus, a drag on the room as a stick, and the buttons */
-  const keys={};let stick=null,gripAsk=false,tossAsk=false;
-  cv.addEventListener("keydown",e=>{const k=e.key.toLowerCase();
-    if(["arrowup","arrowdown","arrowleft","arrowright"," ","w","a","s","d","f","q","i","j","k","l"].includes(k)){if(k===" "&&!e.repeat)gripAsk=true;keys[k]=true;e.preventDefault()}});
-  cv.addEventListener("keyup",e=>{keys[e.key.toLowerCase()]=false});
-  cv.addEventListener("blur",()=>{for(const k in keys)keys[k]=false});
-  cv.addEventListener("pointerdown",e=>{cv.focus();stick={id:e.pointerId,x:e.clientX,y:e.clientY,dx:0,dy:0};cv.setPointerCapture(e.pointerId)});
-  let mouse=null,aimHeld=false,abDrag=null;   // where the mouse is over the room, the aim button being held, and a drag from that button
-  cv.addEventListener("pointermove",e=>{if(stick&&e.pointerId===stick.id){stick.dx=e.clientX-stick.x;stick.dy=e.clientY-stick.y}
-    else if(e.pointerType==="mouse"){const b=cv.getBoundingClientRect();mouse={x:(e.clientX-b.left)*W/b.width,y:(e.clientY-b.top)*H/b.height,fresh:true}}});
-  const endStick=e=>{if(stick&&e.pointerId===stick.id)stick=null};
-  cv.addEventListener("pointerup",endStick);cv.addEventListener("pointercancel",endStick);
-  const gb=el("cpGrip"),tb=el("cpToss");
-  gb.addEventListener("pointerdown",e=>{gripAsk=true;e.preventDefault()});
-  let tossHeld=false,tbDrag=null;   // the toss button being held, and a drag from it
-  tb.addEventListener("pointerdown",e=>{e.preventDefault();tossHeld=true;tbDrag={x:e.clientX,y:e.clientY,dx:0,dy:0};tb.setPointerCapture(e.pointerId)});
-  tb.addEventListener("pointermove",e=>{if(tbDrag){tbDrag.dx=e.clientX-tbDrag.x;tbDrag.dy=e.clientY-tbDrag.y}});
-  const tbEnd=()=>{tossHeld=false;tbDrag=null};tb.addEventListener("pointerup",tbEnd);tb.addEventListener("pointercancel",tbEnd);
-  /* the aim button: hold to aim, drag away from where it was pressed to steer, release to fire */
-  const ab=el("cpAim");
-  ab.addEventListener("pointerdown",e=>{e.preventDefault();aimHeld=true;abDrag={x:e.clientX,y:e.clientY,dx:0,dy:0};ab.setPointerCapture(e.pointerId)});
-  ab.addEventListener("pointermove",e=>{if(abDrag){abDrag.dx=e.clientX-abDrag.x;abDrag.dy=e.clientY-abDrag.y}});
-  const abEnd=()=>{aimHeld=false;abDrag=null};ab.addEventListener("pointerup",abEnd);ab.addEventListener("pointercancel",abEnd);
-  function wish(){
-    let x=(keys.arrowright||keys.d?1:0)-(keys.arrowleft||keys.a?1:0),y=(keys.arrowdown||keys.s?1:0)-(keys.arrowup||keys.w?1:0);
-    if(stick&&Math.hypot(stick.dx,stick.dy)>8){x=stick.dx;y=stick.dy}
-    const m=Math.hypot(x,y);return m?{x:x/m,y:y/m}:{x:0,y:0};
-  }
-
-  /* messages under the room */
-  function say(t,c){const m=el("cpMsg");if(m.textContent!==t){m.textContent=t}m.className="cp-msg"+(c?" "+c:"")}
-
-  /* grip: find the nearest free object in reach and take hold of it, or say why not */
+  /* the fields Crab keeps in the state */
+  const fields=()=>({holds:[],tow:null,hook:null,aim:null,lock:null,aimOff:false,aimMan:false,tAim:null,tLock:false,tOff:false,tMan:false,grip:false,locked:false,shake:0});
   function nearest(){
     const d=S.droid;let best=null,bd=1e9;
     for(const o of S.objs){if(o.held||o===S.tow)continue;
@@ -3752,7 +3684,7 @@ function protoLine(t,onChange){
   function tryGrip(){
     const o=nearest();
     if(!o)return;
-    if(o.k==="heavy"||o.k==="fixed"){S.shake=.25;say(o.n+" is "+o.k+". "+(mode==="crab"?"Crab":"This droid")+" cannot grip it.","bad");S.locked=true;return}
+    if(o.k==="heavy"||o.k==="fixed"){S.shake=.25;say(o.n+" is "+o.k+". "+(H.crab()?"Crab":"This droid")+" cannot grip it.","bad");S.locked=true;return}
     if(!can(o)){S.shake=.25;say("Only Crab can grip a medium object. Another droid has to push it.","bad");S.locked=true;return}
     take(o);
   }
@@ -3776,7 +3708,6 @@ function protoLine(t,onChange){
     if(keep.length)say("No room to set it down here.","bad");else if(out.length)say(why||"Set down.");
     return out;
   }
-
   /* skill, Tow line: aimed like Red's tranquilizer. Hold to aim, release to fire a hook. What it hits is hooked and reeled in */
   function clearLine(a,b){const n=Math.ceil(Math.hypot(b.x-a.x,b.y-a.y)/6);
     for(let i=1;i<n;i++){const p={x:a.x+(b.x-a.x)*i/n-1,y:a.y+(b.y-a.y)*i/n-1,w:2,h:2};if(S.walls.some(w=>hit(p,w)))return false}return true}
@@ -3796,19 +3727,19 @@ function protoLine(t,onChange){
     if(held&&S.aim===null&&!S.aimOff){ // start aiming: at the best object in sight, or the way Crab is facing
       if(S.hook){S.aimOff=true;return}
       if(S.bar<=15){S.aimOff=true;say("The bar is too low for the tow line.","bad");return}
-      const o=hooks()[0];S.aim=o?ang(d,mid(o)):Math.atan2(S.face.y,S.face.x);S.aimMan=false;S.started=true;if(mouse)mouse.fresh=false;
+      const o=hooks()[0];S.aim=o?ang(d,mid(o)):Math.atan2(S.face.y,S.face.x);S.aimMan=false;S.started=true;if(io.mouse)io.mouse.fresh=false;
     }
     if(!held){S.aimOff=false;if(S.aim!==null){fire(S.lock?ang(d,mid(S.lock)):S.aim,S.lock);S.aim=null;S.lock=null}return}
     if(S.aim===null)return;
-    // Crab can keep moving while aiming, so the aim has its own controls: a drag from the button, the I J K L keys, or the mouse.
+    // Crab can keep moving while aiming, so the aim has its own controls: a drag from the button, the I J K L keys, or the io.mouse.
     // Until one of them is used, the assist does the aiming
     const ax=(keys.l?1:0)-(keys.j?1:0),ay=(keys.k?1:0)-(keys.i?1:0);
     if(abDrag&&Math.hypot(abDrag.dx,abDrag.dy)>14){S.aim=Math.atan2(abDrag.dy,abDrag.dx);S.aimMan=true}
     else if(ax||ay){const t=turnTo(S.aim,Math.atan2(ay,ax)),mv=HOOK.turn*dt;S.aim+=Math.abs(t)<mv?t:Math.sign(t)*mv;S.aimMan=true}
-    else if(mouse&&mouse.fresh){S.aim=ang(d,mouse);S.aimMan=true}
+    else if(io.mouse&&io.mouse.fresh){S.aim=ang(d,io.mouse);S.aimMan=true}
     else if(!S.aimMan){const o=hooks()[0];S.aim=o?ang(d,mid(o)):Math.atan2(S.face.y,S.face.x)}
     S.lock=lockOn(S.aim);
-    say(S.lock?"Locked on the "+S.lock.n.toLowerCase()+". Release to fire.":"Aiming the tow line. Keep moving to find a clear line, or steer the aim with I J K L, the mouse or a drag from the button. Release to fire.",S.lock?"good":"");
+    say(S.lock?"Locked on the "+S.lock.n.toLowerCase()+". Release to fire.":"Aiming the tow line. Keep moving to find a clear line, or steer the aim with I J K L, the io.mouse or a drag from the button. Release to fire.",S.lock?"good":"");
   }
   function fire(a,lock){if(S.done||S.hook)return;S.hook={x:S.droid.x,y:S.droid.y,a,left:tune.tow+(lock?30:0),tg:lock||null};say("Hook fired.")}
   /* the hook in flight. A locked hook bends towards its target. It hooks the first light or medium object it touches */
@@ -3845,16 +3776,16 @@ function protoLine(t,onChange){
   function tossStep(held,dt){
     const d=S.droid;
     if(!sk("toss")||!inHand().length){S.tAim=null;S.tLock=false;if(!held)S.tOff=false;return}
-    if(held&&S.tAim===null&&!S.tOff){const a=tossTarget();S.tAim=a!==null?a:Math.atan2(S.face.y,S.face.x);S.tMan=false;if(mouse)mouse.fresh=false}
+    if(held&&S.tAim===null&&!S.tOff){const a=tossTarget();S.tAim=a!==null?a:Math.atan2(S.face.y,S.face.x);S.tMan=false;if(io.mouse)io.mouse.fresh=false}
     if(!held){S.tOff=false;if(S.tAim!==null){const a=S.tLock?tossTarget():S.tAim;S.tAim=null;S.tLock=false;toss(a)}return}
     if(S.tAim===null)return;
     const ax=(keys.l?1:0)-(keys.j?1:0),ay=(keys.k?1:0)-(keys.i?1:0),ta=tossTarget();
     if(tbDrag&&Math.hypot(tbDrag.dx,tbDrag.dy)>14){S.tAim=Math.atan2(tbDrag.dy,tbDrag.dx);S.tMan=true}
     else if(ax||ay){const t=turnTo(S.tAim,Math.atan2(ay,ax)),mv=HOOK.turn*dt;S.tAim+=Math.abs(t)<mv?t:Math.sign(t)*mv;S.tMan=true}
-    else if(mouse&&mouse.fresh){S.tAim=ang(d,mouse);S.tMan=true}
+    else if(io.mouse&&io.mouse.fresh){S.tAim=ang(d,io.mouse);S.tMan=true}
     else if(!S.tMan)S.tAim=ta!==null?ta:Math.atan2(S.face.y,S.face.x);
     S.tLock=ta!==null&&Math.abs(turnTo(S.tAim,ta))<HOOK.cone;
-    say(S.tLock?"Locked on the survivor. Release to throw.":"Aiming the toss. Keep moving, or steer the aim with I J K L, the mouse or a drag from the button. Release to throw.",S.tLock?"good":"");
+    say(S.tLock?"Locked on the survivor. Release to throw.":"Aiming the toss. Keep moving, or steer the aim with I J K L, the io.mouse or a drag from the button. Release to throw.",S.tLock?"good":"");
   }
   function toss(a){
     if(!sk("toss")||!inHand().length)return;
@@ -3881,16 +3812,11 @@ function protoLine(t,onChange){
       const k=Math.pow(FRICTION,dt);o.vx*=k;o.vy*=k;if(Math.hypot(o.vx,o.vy)<10){o.vx=o.vy=0;o.fly=false}
     }
   }
-
-  /* one step of the room */
-  function step(dt){
-    if(S.done)return;
-    const want=wish(),d=S.droid;
+  /* one step of the droid: the grip, the skills, the bar, walking, pushing and dragging. want is the way the player is steering */
+  function act(dt,want){
+    const d=S.droid;
     if(gripAsk){gripAsk=false;S.grip=!S.grip;S.started=true}   // a tap switches the grip on or off
     let holding=S.grip;
-    if(want.x||want.y)S.started=true;
-    if(want.x||want.y)S.face=want;
-    if(S.started)S.t+=dt;
     if(!holding)S.locked=false;
     if(holding&&!S.locked){
       if(!S.holds.length&&!S.tow){if(S.bar>15)tryGrip()}
@@ -3921,13 +3847,14 @@ function protoLine(t,onChange){
         if(pit(nb)||blocked(nb)||next.some(r=>blocked(r)))continue;
         d[ax]=nd[ax];dragged.forEach((h,i)=>{h.o.x=next[i].x;h.o.y=next[i].y});continue;
       }
-      if(pit(nb)||S.walls.some(w=>hit(nb,w)))continue;
+      if(pit(nb)||S.walls.some(w=>hit(nb,w))||(H.solid&&H.solid(nb)))continue;
       const hitObj=S.objs.find(o=>!o.held&&hit(nb,o));
       if(hitObj){ // every droid can push a medium object by walking into it, at half speed
-        if(hitObj.k!=="medium")continue;
-        const po={x:hitObj.x,y:hitObj.y,w:hitObj.w,h:hitObj.h};po[ax]+=mv*.5;
+        const pk=hitObj.k==="medium"?.5:hitObj.k==="heavy"&&H.pushHeavy?H.pushHeavy:0;   // a host may let a droid push a heavy object, slowly
+        if(!pk)continue;
+        const po={x:hitObj.x,y:hitObj.y,w:hitObj.w,h:hitObj.h};po[ax]+=mv*pk;
         if(blocked(po,hitObj))continue;
-        hitObj[ax]=po[ax];const half={x:d.x,y:d.y};half[ax]+=mv*.5;
+        hitObj[ax]=po[ax];if(H.pushed)H.pushed(hitObj);const half={x:d.x,y:d.y};half[ax]+=mv*pk;
         if(!blocked(box(half))&&!pit(box(half)))d[ax]=half[ax];
         continue;
       }
@@ -3935,6 +3862,129 @@ function protoLine(t,onChange){
     }
     for(const h of S.holds)if(h.o.carried){h.o.x=d.x-h.o.w/2;h.o.y=d.y-h.o.h/2}
     if(S.shake>0)S.shake-=dt;
+  }
+  /* let go of everything, for when the droid is switched or a skill changes */
+  function release(){if(!S)return;S.tow=null;S.hook=null;S.aim=null;S.lock=null;S.tAim=null;S.tLock=false;drop();S.grip=false;S.locked=true;gripAsk=tossAsk=false}
+  function rr(x,y,w,h,r){g.beginPath();g.roundRect(x,y,w,h,r);g.fill()}
+  function drawObjs(ctx){g=ctx;g.textAlign="center";
+    const d=S.droid,free=!S.holds.length&&!S.tow&&!S.done,near=!S.done&&S.holds.length<maxHold()&&!S.tow?nearest():null,
+          hook=S.lock;
+    if(sk("tow")&&S.aim!==null){g.strokeStyle="rgba(184,95,16,.45)";g.lineWidth=1.5;g.setLineDash([5,7]);g.beginPath();g.arc(d.x,d.y,tune.tow,0,7);g.stroke();g.setLineDash([])}
+    for(const o of S.objs){if(o.carried)continue;
+      g.fillStyle=COL[o.k];rr(o.x,o.y,o.w,o.h,6);
+      const bad=o.k==="heavy"||o.k==="fixed"||!can(o);
+      g.lineWidth=o.held||o===near||o===S.tow||o===hook?3:1.5;
+      g.strokeStyle=o.held||o===S.tow?"#B85F10":o===near?(bad?"#B3342B":"#22302B"):o===hook?"#1F7A4D":"rgba(0,0,0,.3)";
+      if(o===hook)g.setLineDash([5,4]);
+      g.beginPath();g.roundRect(o.x,o.y,o.w,o.h,6);g.stroke();g.setLineDash([]);
+      if(o.w>=60){g.fillStyle=o.k==="fixed"?"#fff":"#22302B";g.font="700 11px system-ui,sans-serif";g.fillText(o.n,o.x+o.w/2,o.y+o.h/2+4)}}
+  }
+  function drawDroid(ctx){g=ctx;g.textAlign="center";const d=S.droid;
+    const sx=S.shake>0?Math.sin(S.shake*90)*3:0;
+    for(const h of S.holds)if(!h.o.carried){const m=mid(h.o);g.strokeStyle="#B85F10";g.lineWidth=4;g.beginPath();g.moveTo(d.x,d.y);g.lineTo(m.x,m.y);g.stroke()}
+    if(S.tow){const m=mid(S.tow);g.strokeStyle="#B85F10";g.lineWidth=2;g.setLineDash([7,5]);g.beginPath();g.moveTo(d.x,d.y);g.lineTo(m.x,m.y);g.stroke();g.setLineDash([])}
+    if(sk("tow")&&S.aim!==null){ // the line the hook would fly. Green when the assist has locked on
+      const a=S.lock?ang(d,mid(S.lock)):S.aim;let l=R;
+      if(S.lock)l=Math.hypot(mid(S.lock).x-d.x,mid(S.lock).y-d.y);else for(;l<tune.tow;l+=4){const p={x:d.x+Math.cos(a)*l-1,y:d.y+Math.sin(a)*l-1,w:2,h:2};if(S.walls.some(w=>hit(p,w))||S.objs.some(o=>!o.held&&hit(p,o)))break}
+      g.strokeStyle=S.lock?"#1F7A4D":"#B85F10";g.lineWidth=S.lock?3:2;g.setLineDash(S.lock?[]:[6,6]);g.beginPath();g.moveTo(d.x,d.y);g.lineTo(d.x+Math.cos(a)*l,d.y+Math.sin(a)*l);g.stroke();g.setLineDash([])}
+    if(S.hook){g.strokeStyle="#B85F10";g.lineWidth=2;g.beginPath();g.moveTo(d.x,d.y);g.lineTo(S.hook.x,S.hook.y);g.stroke();g.fillStyle="#B85F10";g.beginPath();g.arc(S.hook.x,S.hook.y,4,0,7);g.fill()}
+    g.fillStyle=H.crab()?"#EE8A2B":"#5B7C99";g.beginPath();g.arc(d.x+sx,d.y,R,0,7);g.fill();
+    g.strokeStyle="#22302B";g.lineWidth=2.5;g.beginPath();g.arc(d.x+sx,d.y,R,0,7);g.stroke();
+    g.fillStyle="#fff";g.font="800 13px system-ui,sans-serif";g.fillText(H.crab()?"C":"D",d.x+sx,d.y+5);
+    let up=0;for(const h of S.holds)if(h.o.carried){const o=h.o,y=d.y-R-o.h+2-up*(o.h-5);up++;
+      g.fillStyle=COL.light;rr(d.x-o.w/2,y,o.w,o.h,5);g.strokeStyle="#B85F10";g.lineWidth=2.5;g.beginPath();g.roundRect(d.x-o.w/2,y,o.w,o.h,5);g.stroke()}
+    if(sk("toss")&&inHand().length){ // which way a toss would go. While aiming: how far, green when locked on the survivor
+      const a=S.tAim===null?Math.atan2(S.face.y,S.face.x):S.tLock?tossTarget():S.tAim;
+      if(S.tAim!==null){const l=R+Math.max(...inHand().map(flight));g.strokeStyle=S.tLock?"#1F7A4D":"#B85F10";g.lineWidth=S.tLock?3:2;g.setLineDash(S.tLock?[]:[6,6]);
+        g.beginPath();g.moveTo(d.x,d.y);g.lineTo(d.x+Math.cos(a)*l,d.y+Math.sin(a)*l);g.stroke();g.setLineDash([])}
+      g.fillStyle=S.tLock?"#1F7A4D":"#B85F10";g.save();g.translate(d.x+Math.cos(a)*(R+16),d.y+Math.sin(a)*(R+16));g.rotate(a);
+      g.beginPath();g.moveTo(9,0);g.lineTo(-4,-7);g.lineTo(-4,7);g.fill();g.restore()}
+  }
+  /* the three buttons. A drag away from where the aim or toss button was pressed steers that aim */
+  function bind(gb,ab,tb){
+    gb.addEventListener("pointerdown",e=>{gripAsk=true;e.preventDefault()});
+    tb.addEventListener("pointerdown",e=>{e.preventDefault();tossHeld=true;tbDrag={x:e.clientX,y:e.clientY,dx:0,dy:0};try{tb.setPointerCapture(e.pointerId)}catch(_){}});
+    tb.addEventListener("pointermove",e=>{if(tbDrag){tbDrag.dx=e.clientX-tbDrag.x;tbDrag.dy=e.clientY-tbDrag.y}});
+    const tbEnd=()=>{tossHeld=false;tbDrag=null};tb.addEventListener("pointerup",tbEnd);tb.addEventListener("pointercancel",tbEnd);
+    ab.addEventListener("pointerdown",e=>{e.preventDefault();aimHeld=true;abDrag={x:e.clientX,y:e.clientY,dx:0,dy:0};try{ab.setPointerCapture(e.pointerId)}catch(_){}});
+    ab.addEventListener("pointermove",e=>{if(abDrag){abDrag.dx=e.clientX-abDrag.x;abDrag.dy=e.clientY-abDrag.y}});
+    const abEnd=()=>{aimHeld=false;abDrag=null};ab.addEventListener("pointerup",abEnd);ab.addEventListener("pointercancel",abEnd)}
+  /* what the three buttons read and whether they show */
+  function ui(gb,ab,tb){tb.hidden=!sk("toss");tb.classList.toggle("on",S.tAim!==null);ab.hidden=!sk("tow");ab.classList.toggle("on",S.aim!==null);const t=S.grip?"Let go":"Grip",sp=gb.querySelector("span")||gb;if(sp.textContent!==t)sp.textContent=t;gb.classList.toggle("on",S.grip)}
+  return {R:R,SPEED:SPEED,COL:COL,tune:tune,fields:fields,use:s=>{S=s},act:act,slide:slide,release:release,drawObjs:drawObjs,drawDroid:drawDroid,bind:bind,ui:ui,mid:mid,hit:hit,box:box,nearest:nearest,
+    grip:()=>{gripAsk=true},aimHold:on=>{aimHeld=!!on},tossHold:on=>{tossHeld=!!on},tossNow:()=>{tossAsk=true},fire:fire,hooks:hooks,busy:()=>!!(S&&(S.holds.length||S.tow||S.hook||S.aim!==null||S.tAim!==null))};
+};
+
+/* ===== Crab's Grip: playable lo-fi =====
+   A top-down room on a canvas. World units are canvas pixels (760 x 460). The droid itself is the Crab module (crab_mod). */
+(function(){
+  const root=document.getElementById("crabProto");if(!root)return;
+  const cv=root.querySelector("#cpCanvas"),g=cv.getContext("2d"),W=cv.width,H=cv.height;
+  const el=id=>root.querySelector("#"+id);
+  let mode="crab",S;
+  /* skill tree candidates switched on in the panel beside the room. They only apply to Crab */
+  const tree=window.protoTree("crabProtoTree",onSkill),sk=k=>mode==="crab"&&!!tree.on[k];
+  const io={mouse:null},keys={};
+  const C=window.CrabDroid({sk:sk,say:(t,c)=>say(t,c),keys:keys,io:io,crab:()=>mode==="crab"}),tune=C.tune,R=C.R,mid=C.mid;
+  /* the situations. Each is solvable by any droid: the upgrade it is made for only makes it quicker.
+     pits is broken floor, which no droid can cross and objects can. need is how many supplies the survivor has to be brought */
+  let room="door";
+  const o=(n,k,x,y,w,h,sup)=>({n,k,x,y,w,h,vx:0,vy:0,held:false,carried:false,sup:!!sup,gone:false});
+  const PIT={x:340,y:14,w:70,h:346};   // broken floor from the top wall down, with a way round at the bottom
+  const ROOMS={
+    door:{say:"Clear the doorway and reach the survivor.",at:[110,230],goal:[640,230],need:0,pits:[],
+      walls:[{x:372,y:14,w:22,h:156},{x:372,y:290,w:22,h:156}],
+      objs:()=>[o("Chair","medium",356,180,40,40),o("Bench","medium",330,232,84,30),o("Fire extinguisher","light",300,192,22,22),
+            o("Chair","medium",200,330,40,40),o("Long table","heavy",470,70,120,44),o("Hawker stall","fixed",470,350,130,60),
+            o("Tool box","light",150,90,22,22),o("First aid bag","light",120,330,22,22)]},
+    reach:{say:"The survivor needs the first aid bag, which lies across the broken floor. The long way round is at the bottom.",at:[110,110],goal:[120,350],need:1,pits:[PIT],walls:[],
+      objs:()=>[o("First aid bag","light",425,90,22,22,true),o("Shelf","fixed",520,170,120,40),o("Chair","medium",200,220,40,40)]},
+    run:{say:"The survivor needs all three supply boxes.",at:[170,230],goal:[100,230],need:3,pits:[],walls:[],
+      objs:()=>[o("Supply box","light",400,190,22,22,true),o("Supply box","light",430,222,22,22,true),o("Supply box","light",400,254,22,22,true),
+            o("Hawker stall","fixed",230,60,130,60),o("Long table","heavy",240,350,120,44),o("Chair","medium",560,120,40,40)]},
+    gap:{say:"The survivor is across the broken floor and needs the first aid bag. The long way round is at the bottom.",at:[110,120],goal:[500,120],need:1,pits:[PIT],walls:[],
+      objs:()=>[o("First aid bag","light",190,109,22,22,true),o("Bench","medium",520,250,84,30),o("Chair","medium",200,300,40,40)]}
+  };
+  /* the room: walls, objects, the droid and the goal. holds is what Crab has hold of, tow is what is on its line */
+  function fresh(){
+    const r=ROOMS[room];
+    return {
+      droid:{x:r.at[0],y:r.at[1]},face:{x:1,y:0},bar:100,holds:[],tow:null,hook:null,aim:null,lock:null,aimOff:false,aimMan:false,tAim:null,tLock:false,tOff:false,tMan:false,grip:false,locked:false,t:0,done:false,started:false,shake:0,
+      walls:[{x:0,y:0,w:W,h:14},{x:0,y:H-14,w:W,h:14},{x:0,y:0,w:14,h:H},{x:W-14,y:0,w:14,h:H}].concat(r.walls),
+      pits:r.pits,need:r.need,got:0,
+      goal:{x:r.goal[0],y:r.goal[1],r:22},
+      objs:r.objs()
+    };
+  }
+  /* input: keys while the room has focus, a drag on the room as a stick, and the buttons */
+  let stick=null;
+  cv.addEventListener("keydown",e=>{const k=e.key.toLowerCase();
+    if(["arrowup","arrowdown","arrowleft","arrowright"," ","w","a","s","d","f","q","i","j","k","l"].includes(k)){if(k===" "&&!e.repeat)C.grip();keys[k]=true;e.preventDefault()}});
+  cv.addEventListener("keyup",e=>{keys[e.key.toLowerCase()]=false});
+  cv.addEventListener("blur",()=>{for(const k in keys)keys[k]=false});
+  cv.addEventListener("pointerdown",e=>{cv.focus();stick={id:e.pointerId,x:e.clientX,y:e.clientY,dx:0,dy:0};cv.setPointerCapture(e.pointerId)});
+  cv.addEventListener("pointermove",e=>{if(stick&&e.pointerId===stick.id){stick.dx=e.clientX-stick.x;stick.dy=e.clientY-stick.y}
+    else if(e.pointerType==="mouse"){const b=cv.getBoundingClientRect();io.mouse={x:(e.clientX-b.left)*W/b.width,y:(e.clientY-b.top)*H/b.height,fresh:true}}});
+  const endStick=e=>{if(stick&&e.pointerId===stick.id)stick=null};
+  cv.addEventListener("pointerup",endStick);cv.addEventListener("pointercancel",endStick);
+  const gb=el("cpGrip"),tb=el("cpToss"),ab=el("cpAim");C.bind(gb,ab,tb);
+  function wish(){
+    let x=(keys.arrowright||keys.d?1:0)-(keys.arrowleft||keys.a?1:0),y=(keys.arrowdown||keys.s?1:0)-(keys.arrowup||keys.w?1:0);
+    if(stick&&Math.hypot(stick.dx,stick.dy)>8){x=stick.dx;y=stick.dy}
+    const m=Math.hypot(x,y);return m?{x:x/m,y:y/m}:{x:0,y:0};
+  }
+
+  /* messages under the room */
+  function say(t,c){const m=el("cpMsg");if(m.textContent!==t){m.textContent=t}m.className="cp-msg"+(c?" "+c:"")}
+
+  /* one step of the room: the droid acts, then the room checks its goal */
+  function step(dt){
+    if(S.done)return;
+    const want=wish(),d=S.droid;C.use(S);
+    if(want.x||want.y)S.started=true;
+    if(want.x||want.y)S.face=want;
+    if(S.started)S.t+=dt;
+    C.act(dt,want);
     const who=mode==="crab"?"Crab":"another droid";
     if(S.need){ // supplies count once they are within reach of the survivor, however they got there: carried, pulled or thrown
       for(const o of S.objs){if(!o.sup||o.gone)continue;const m=o.carried?d:mid(o);
@@ -3947,8 +3997,7 @@ function protoLine(t,onChange){
   }
 
   /* drawing */
-  function rr(x,y,w,h,r){g.beginPath();g.roundRect(x,y,w,h,r);g.fill()}
-  function draw(){
+  function draw(){C.use(S);
     g.clearRect(0,0,W,H);g.fillStyle="#F4F1E6";g.fillRect(0,0,W,H);
     g.strokeStyle="rgba(34,48,43,.06)";g.lineWidth=1;g.beginPath();
     for(let x=14;x<W;x+=40){g.moveTo(x,14);g.lineTo(x,H-14)}for(let y=14;y<H;y+=40){g.moveTo(14,y);g.lineTo(W-14,y)}g.stroke();
@@ -3959,41 +4008,11 @@ function protoLine(t,onChange){
     g.fillStyle="#9EDDC4";g.beginPath();g.arc(S.goal.x,S.goal.y,S.goal.r-6,0,7);g.fill();
     g.fillStyle="#22302B";g.font="700 12px system-ui,sans-serif";g.textAlign="center";g.fillText(S.need?"Survivor: needs "+(S.need-S.got)+" more":"Survivor",S.goal.x,S.goal.y+S.goal.r+(S.need?48:26));
     g.fillStyle="#22302B";for(const w of S.walls)g.fillRect(w.x,w.y,w.w,w.h);
-    const d=S.droid,free=!S.holds.length&&!S.tow&&!S.done,near=!S.done&&S.holds.length<maxHold()&&!S.tow?nearest():null,
-          hook=S.lock;
-    if(sk("tow")&&S.aim!==null){g.strokeStyle="rgba(184,95,16,.45)";g.lineWidth=1.5;g.setLineDash([5,7]);g.beginPath();g.arc(d.x,d.y,tune.tow,0,7);g.stroke();g.setLineDash([])}
-    for(const o of S.objs){if(o.carried)continue;
-      g.fillStyle=COL[o.k];rr(o.x,o.y,o.w,o.h,6);
-      const bad=o.k==="heavy"||o.k==="fixed"||!can(o);
-      g.lineWidth=o.held||o===near||o===S.tow||o===hook?3:1.5;
-      g.strokeStyle=o.held||o===S.tow?"#B85F10":o===near?(bad?"#B3342B":"#22302B"):o===hook?"#1F7A4D":"rgba(0,0,0,.3)";
-      if(o===hook)g.setLineDash([5,4]);
-      g.beginPath();g.roundRect(o.x,o.y,o.w,o.h,6);g.stroke();g.setLineDash([]);
-      if(o.w>=60){g.fillStyle=o.k==="fixed"?"#fff":"#22302B";g.font="700 11px system-ui,sans-serif";g.fillText(o.n,o.x+o.w/2,o.y+o.h/2+4)}}
-    const sx=S.shake>0?Math.sin(S.shake*90)*3:0;
-    for(const h of S.holds)if(!h.o.carried){const m=mid(h.o);g.strokeStyle="#B85F10";g.lineWidth=4;g.beginPath();g.moveTo(d.x,d.y);g.lineTo(m.x,m.y);g.stroke()}
-    if(S.tow){const m=mid(S.tow);g.strokeStyle="#B85F10";g.lineWidth=2;g.setLineDash([7,5]);g.beginPath();g.moveTo(d.x,d.y);g.lineTo(m.x,m.y);g.stroke();g.setLineDash([])}
-    if(sk("tow")&&S.aim!==null){ // the line the hook would fly. Green when the assist has locked on
-      const a=S.lock?ang(d,mid(S.lock)):S.aim;let l=R;
-      if(S.lock)l=Math.hypot(mid(S.lock).x-d.x,mid(S.lock).y-d.y);else for(;l<tune.tow;l+=4){const p={x:d.x+Math.cos(a)*l-1,y:d.y+Math.sin(a)*l-1,w:2,h:2};if(S.walls.some(w=>hit(p,w))||S.objs.some(o=>!o.held&&hit(p,o)))break}
-      g.strokeStyle=S.lock?"#1F7A4D":"#B85F10";g.lineWidth=S.lock?3:2;g.setLineDash(S.lock?[]:[6,6]);g.beginPath();g.moveTo(d.x,d.y);g.lineTo(d.x+Math.cos(a)*l,d.y+Math.sin(a)*l);g.stroke();g.setLineDash([])}
-    if(S.hook){g.strokeStyle="#B85F10";g.lineWidth=2;g.beginPath();g.moveTo(d.x,d.y);g.lineTo(S.hook.x,S.hook.y);g.stroke();g.fillStyle="#B85F10";g.beginPath();g.arc(S.hook.x,S.hook.y,4,0,7);g.fill()}
-    g.fillStyle=mode==="crab"?"#EE8A2B":"#5B7C99";g.beginPath();g.arc(d.x+sx,d.y,R,0,7);g.fill();
-    g.strokeStyle="#22302B";g.lineWidth=2.5;g.beginPath();g.arc(d.x+sx,d.y,R,0,7);g.stroke();
-    g.fillStyle="#fff";g.font="800 13px system-ui,sans-serif";g.fillText(mode==="crab"?"C":"D",d.x+sx,d.y+5);
-    let up=0;for(const h of S.holds)if(h.o.carried){const o=h.o,y=d.y-R-o.h+2-up*(o.h-5);up++;
-      g.fillStyle=COL.light;rr(d.x-o.w/2,y,o.w,o.h,5);g.strokeStyle="#B85F10";g.lineWidth=2.5;g.beginPath();g.roundRect(d.x-o.w/2,y,o.w,o.h,5);g.stroke()}
-    if(sk("toss")&&inHand().length){ // which way a toss would go. While aiming: how far, green when locked on the survivor
-      const a=S.tAim===null?Math.atan2(S.face.y,S.face.x):S.tLock?tossTarget():S.tAim;
-      if(S.tAim!==null){const l=R+Math.max(...inHand().map(flight));g.strokeStyle=S.tLock?"#1F7A4D":"#B85F10";g.lineWidth=S.tLock?3:2;g.setLineDash(S.tLock?[]:[6,6]);
-        g.beginPath();g.moveTo(d.x,d.y);g.lineTo(d.x+Math.cos(a)*l,d.y+Math.sin(a)*l);g.stroke();g.setLineDash([])}
-      g.fillStyle=S.tLock?"#1F7A4D":"#B85F10";g.save();g.translate(d.x+Math.cos(a)*(R+16),d.y+Math.sin(a)*(R+16));g.rotate(a);
-      g.beginPath();g.moveTo(9,0);g.lineTo(-4,-7);g.lineTo(-4,7);g.fill();g.restore()}
+    C.drawObjs(g);C.drawDroid(g);
     const b=el("cpBar");b.style.width=S.bar.toFixed(1)+"%";b.classList.toggle("low",S.bar<=15);
     el("cpTime").textContent=S.t.toFixed(1)+"s";el("cpGotWrap").hidden=!S.need;el("cpGot").textContent=S.got+"/"+S.need;
-    tb.hidden=!sk("toss");tb.classList.toggle("on",S.tAim!==null);ab.hidden=!sk("tow");ab.classList.toggle("on",S.aim!==null);gb.textContent=S.grip?"Let go":"Grip";gb.classList.toggle("on",S.grip);
+    C.ui(gb,ab,tb);
   }
-
   /* the loop runs only while the room is on screen */
   let raf=0,last=0,visible=false;
   function frame(ts){raf=0;if(!visible)return;const dt=Math.min(.05,(ts-last)/1000||0);last=ts;step(dt);draw();raf=requestAnimationFrame(frame)}
@@ -4003,7 +4022,7 @@ function protoLine(t,onChange){
   function reset(){S=fresh();say(ROOMS[room].say+" "+(mode==="crab"?"Crab: press Grip to grip, and press it again to let go. Light objects are carried and medium objects are dragged.":"Another droid: it can carry light objects, and has to push medium ones by walking into them."));draw()}
   /* a skill was switched on or off in the panel: let go of everything, so the room is never left half in a skill */
   function onSkill(k,on){
-    if(!S)return;S.tow=null;S.hook=null;S.aim=null;S.lock=null;S.tAim=null;S.tLock=false;drop();S.locked=true;
+    if(!S)return;C.use(S);C.release();
     const name={tow:"Tow line",stack:"Stack and haul",toss:"Lift and toss"}[k];
     say(name+(on[k]?" is on."+(mode==="crab"?"":" It only applies to Crab."):" is off."));draw();
   }
@@ -4014,7 +4033,7 @@ function protoLine(t,onChange){
   [["cpS1","cpO1","carry","% a second"],["cpS2","cpO2","drag","% a second"],["cpS3","cpO3","recharge","% a second"],["cpS4","cpO4","dragSpeed","% of full speed"],["cpS5","cpO5","tow"," px"]].forEach(([s,o,k,u])=>{
     const sl=el(s),out=el(o),set=()=>{tune[k]=+sl.value;out.textContent=sl.value+u};sl.oninput=set;set()});
   S=fresh();draw();
-  window.crabProto={state:()=>S,stick:(dx,dy)=>{stick=dx||dy?{id:-9,x:0,y:0,dx,dy}:null},step,keys,reset,setMode:m=>{const b=root.querySelector('.cp-seg button[data-mode="'+m+'"]');if(b)b.click()},setRoom:r=>{const b=root.querySelector('.cp-seg button[data-room="'+r+'"]');if(b)b.click()},grip:()=>{gripAsk=true},aim:on=>{aimHeld=!!on},fire,hooks,tune,tree,toss:()=>{tossAsk=true},tossAim:on=>{tossHeld=!!on}}; // for tests
+  window.crabProto={state:()=>S,stick:(dx,dy)=>{stick=dx||dy?{id:-9,x:0,y:0,dx,dy}:null},step,keys,reset,setMode:m=>{const b=root.querySelector('.cp-seg button[data-mode="'+m+'"]');if(b)b.click()},setRoom:r=>{const b=root.querySelector('.cp-seg button[data-room="'+r+'"]');if(b)b.click()},grip:()=>C.grip(),aim:on=>C.aimHold(on),fire:C.fire,hooks:C.hooks,tune,tree,toss:()=>C.tossNow(),tossAim:on=>C.tossHold(on),droid:C}; // for tests
 })();
 
 /* ===== Orb's Charge: playable lo-fi =====
@@ -5870,8 +5889,9 @@ function protoLine(t,onChange){
 (function(){
   const root=document.getElementById("squadProto");if(!root)return;
   const cv=root.querySelector("#spCanvas"),g=cv.getContext("2d"),W=760,H=460,FW=664,$=id=>root.querySelector("#"+id);
-  const DR={red:{n:"Red",c:"#FF8A75"},cam:{n:"Cam",c:"#6FD3C2"},crab:{n:"Crab",c:"#FFB066"},orb:{n:"Orb",c:"#B79BF2"},fish:{n:"Fish",c:"#7CC4EC"},bee:{n:"Bee",c:"#F2CB57"}};
-  const ALL=Object.keys(DR),WT=12,GAP=30,R=12,SPEED=150,PR=8,VR=12,FR=13;
+  // c is the droid’s colour on the dark HUD. f and l are its body colour and letter, as its own room draws it
+  const DR={red:{n:"Red",c:"#FF8A75",f:"#E2513C",l:"R"},cam:{n:"Cam",c:"#6FD3C2",f:"#3FA796",l:"C"},crab:{n:"Crab",c:"#FFB066",f:"#EE8A2B",l:"C"},orb:{n:"Orb",c:"#B79BF2",f:"#7B4FCF",l:"O"},fish:{n:"Fish",c:"#7CC4EC",f:"#2F8FC4",l:"F"},bee:{n:"Bee",c:"#F2CB57",f:"#D9A514",l:"B",ink:"#22302B"}};
+  const ALL=Object.keys(DR),WT=12,GAP=36,R=15,SPEED=150,PR=8,VR=12,FR=13;
   const COL={medium:"#E9A15B",heavy:"#8C8F9C"};
   // every number below is the one the droid's own room uses
   const T={
@@ -5883,7 +5903,8 @@ function protoLine(t,onChange){
     cam:{sight:90,clear:1.3,hl:190,drain:12,recharge:10},
     push:{medium:.5,heavy:.2},aim:{cone:.42,turn:5}};
   function rng(seed){let a=seed>>>0;return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
-  let seed=1+Math.floor(Math.random()*999999),other=false,S=null,keys={},stick={x:0,y:0},qHeld=false,eHeld=false,qTap=false,eTap=false,mouse=null,qDrag=null;
+  let seed=1+Math.floor(Math.random()*999999),other=true,S=null,stick={x:0,y:0},qHeld=false,eHeld=false,qTap=false,eTap=false,aTap=false,mouse=null,qDrag=null;
+  const keys={},io={mouse:null};
   const msg=$("spMsg");function say(t,c){if(msg.textContent!==t)msg.textContent=t;msg.className="cp-msg"+(c?" "+c:"")}
   function shuffle(a,r){for(let i=a.length-1;i>0;i--){const j=Math.floor(r()*(i+1));const t=a[i];a[i]=a[j];a[j]=t}return a}
   // the floor: four strips are cut off the field one after another, from a random side each time, so the five rooms differ in size and the way through turns
@@ -5907,19 +5928,19 @@ function protoLine(t,onChange){
   const dist=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y),ang=(a,b)=>Math.atan2(b.y-a.y,b.x-a.x),turnTo=(a,b)=>{let t=b-a;while(t>Math.PI)t-=2*Math.PI;while(t<-Math.PI)t+=2*Math.PI;return t};
   const inRect=(p,w)=>p.x>=w.x&&p.x<=w.x+w.w&&p.y>=w.y&&p.y<=w.y+w.h;
   // a box across a doorway: along is its size along the wall, deep is its size through it. off is where it sits along the wall
-  function slab(c,off,along,deep,k,n){const m=P(c,0,off),w=c.v?deep:along,h=c.v?along:deep;return{k:k,n:n,x:m.x-w/2,y:m.y-h/2,w:w,h:h,vx:0,vy:0,held:false,c:c}}
+  function slab(c,off,along,deep,k,n){const m=P(c,0,off),w=c.v?deep:along,h=c.v?along:deep;return{k:k,n:n,x:m.x-w/2,y:m.y-h/2,w:w,h:h,vx:0,vy:0,held:false,carried:false,sup:false,gone:false,fly:false,c:c}}
   function gen(sd){
-    seed=sd;const r=rng(sd),party=shuffle(ALL.slice(),r).slice(0,4),order=shuffle(party.slice(),r);
+    seed=sd;const r=rng(sd),party=shuffle(ALL.slice(),r).slice(0,4),order=shuffle(ALL.slice(),r).slice(0,4);   // what blocks the doorways is picked apart from the party
     let L=null;for(let a=0;a<400&&!L;a++)L=layout(r);
     const objs=[],walls=[{x:-20,y:-20,w:FW+40,h:28},{x:-20,y:H-8,w:FW+40,h:28},{x:-20,y:-20,w:28,h:H+40},{x:FW-8,y:-20,w:W,h:H+40}];
     const ch=order.map((k,i)=>{const ln=L.lines[i],room=L.rooms[i],c={k:k,i:i,x:ln.x,y:ln.y,nx:ln.nx,ny:ln.ny,tx:-ln.ny,ty:ln.nx,v:ln.v,ln:ln,room:room,next:L.rooms[i+1],done:false,ab:false,alt:false,p:0};
       const h=WT/2;if(ln.v){walls.push({x:ln.pos-h,y:ln.a,w:WT,h:ln.c-GAP-ln.a},{x:ln.pos-h,y:ln.c+GAP,w:WT,h:ln.b-ln.c-GAP})}else{walls.push({x:ln.a,y:ln.pos-h,w:ln.c-GAP-ln.a,h:WT},{x:ln.c+GAP,y:ln.pos-h,w:ln.b-ln.c-GAP,h:WT})}
       const a1=P(c,-34,70),a2=P(c,-34,-70);c.sg=inR(room,a1.x,a1.y,16)?(inR(room,a2.x,a2.y,16)&&r()<.5?-1:1):-1;
       const spot=()=>{let best=null,bd=-1;for(let n=0;n<30;n++){const x=room.x+28+r()*(room.w-56),y=room.y+28+r()*(room.h-56),d=Math.hypot(x-c.x,y-c.y);if(d>bd){bd=d;best={x:x,y:y}}if(d>110&&n>3)break}return best};
-      if(k==="fish"){c.fires=[-20,0,20].map(b=>Object.assign(P(c,0,b),{r:FR,heat:100,hit:0}));c.ext=Object.assign(spot(),{held:false})}
+      if(k==="fish"){c.fires=[-24,0,24].map(b=>Object.assign(P(c,0,b),{r:FR,heat:100,hit:0,c:c}));c.ext=Object.assign(spot(),{held:false})}
       if(k==="crab"){const n=2,hh=GAP*2/n;r();c.n=n;for(let j=0;j<n;j++)objs.push(slab(c,-GAP+hh*(j+.5),hh-1,24,"medium","Crate"))}
       if(k==="orb"){objs.push(slab(c,0,GAP*2-2,26,"heavy","Heavy crate"))}
-      if(k==="bee"){c.ppl=[];const n=6+Math.floor(r()*4),pos=[];[-22,-7,8,23].forEach(b=>pos.push(P(c,-15,b)));[-7,8,-22,23].forEach(b=>pos.push(P(c,-32,b)));[0].forEach(b=>pos.push(P(c,-49,b)));
+      if(k==="bee"){c.ppl=[];const n=6+Math.floor(r()*4),pos=[];[-27,-9,9,27].forEach(b=>pos.push(P(c,-15,b)));[-9,9,-27,27].forEach(b=>pos.push(P(c,-32,b)));[0].forEach(b=>pos.push(P(c,-49,b)));
         for(let j=0;j<n;j++)c.ppl.push({x:pos[j].x,y:pos[j].y,flee:0,fx:0,fy:0,vx:0,vy:0,id:j,c:c})}
       if(k==="red"){const v=P(c,-18,0);c.vv={x:v.x,y:v.y,gx:v.x,gy:v.y,m:100,calm:false}}
       if(k==="cam"){c.card=Object.assign(spot(),{got:false});c.shut=slab(c,0,GAP*2,18,"fixed","Shutter")}
@@ -5930,14 +5951,15 @@ function protoLine(t,onChange){
     S={seed:sd,party:party,ch:ch,rooms:L.rooms,walls:walls,objs:objs,act:0,bars:{},x:st.x,y:st.y,face:{x:ch[0].nx,y:ch[0].ny},t:0,started:false,win:false,dmg:0,knocked:0,item:null,
       grip:false,hold:null,swarm:false,aura:false,hl:false,spray:null,aiming:false,wind:0,aimA:0,aimMan:false,lock:null,charge:null,stun:0,recover:0,honk:0,honkFx:0,boom:null,sv:sv};
     party.forEach(k=>S.bars[k]=100);
-    S.act=Math.max(0,party.findIndex(k=>k!==ch[0].k));   // start on a droid the first doorway does not need
+    // Crab's own state, for the Crab module. It shares the walls and the objects with the floor
+    S.cr=Object.assign({droid:{x:S.x,y:S.y},face:S.face,bar:100,walls:walls,objs:objs,pits:[],need:0,goal:null,got:0,done:false,started:false,t:0},C.fields());
+    const tp=document.getElementById("squadCrabTree");if(tp)tp.hidden=party.indexOf("crab")<0;
     $("spSeed").value=sd;buildParty();
-    say("Seed "+sd+". The party is "+party.map(k=>DR[k].n).join(", ")+". Doorway 1 is for "+DR[ch[0].k].n+".");draw();return S}
+    say("Seed "+sd+". The party is "+party.map(k=>DR[k].n).join(", ")+". Doorway 1 suits "+DR[ch[0].k].n+(party.indexOf(ch[0].k)<0?", who is not in the party.":"."));draw();return S}
   function buildParty(){const p=$("spParty");p.innerHTML="";S.party.forEach((k,i)=>{const b=document.createElement("button");b.type="button";b.style.setProperty("--c",DR[k].c);b.dataset.i=i;b.setAttribute("aria-label","Switch to "+DR[k].n);
       b.innerHTML="<kbd>"+(i+1)+"</kbd><span class='dot'></span><span class='nm'>"+DR[k].n+"</span><i><b></b></i>";b.addEventListener("click",()=>{sw(i);cv.focus()});p.appendChild(b)})}
   const A=()=>S.party[S.act],chOf=k=>S.ch.find(c=>c.k===k),cur=()=>S.ch.find(c=>!c.done);
-  function letGo(why){if(S.hold){S.hold.o.held=false;S.hold=null;if(why)say(why)}S.grip=false}
-  function off(){letGo();S.swarm=S.aura=S.hl=false;S.spray=null;S.aiming=false;S.wind=0;S.lock=null}
+  function off(){if(S.cr){C.use(S.cr);C.release()}S.swarm=S.aura=S.hl=false;S.spray=null;S.aiming=false;S.wind=0;S.lock=null}
   function sw(i){if(!S||S.win||i<0||i>=S.party.length||i===S.act)return;if(S.charge||S.stun>0){say("Not while "+DR[A()].n+" is "+(S.charge?"charging":"stunned")+".","bad");return}off();S.act=i;say("Switched to "+DR[A()].n+".")}
   // ---------- what is in the way
   const shutters=()=>S.ch.filter(c=>c.k==="cam"&&!c.open).map(c=>c.shut);
@@ -5963,15 +5985,14 @@ function protoLine(t,onChange){
       else if(S.hold){const o=S.hold.o,q={x:S.x+S.hold.off.x,y:S.y+S.hold.off.y,w:o.w,h:o.h};if(solid(q,o)||solid(box(S))){S.x=ox;S.y=oy}else{o.x=q.x;o.y=q.y}}}}
   const wish=()=>{let x=(keys.arrowright||keys.d?1:0)-(keys.arrowleft||keys.a?1:0)+stick.x,y=(keys.arrowdown||keys.s?1:0)-(keys.arrowup||keys.w?1:0)+stick.y;const m=Math.hypot(x,y);return m>.05?{x:x/m,y:y/m,m:Math.min(1,m)}:{x:0,y:0,m:0}};
   const side=c=>inR(c.room,S.x,S.y,-8)&&!inR(c.next,S.x,S.y,6);
-  // ---------- Crab: the grip, as in Crab's room. A tap takes hold of the medium object in reach and it is dragged; a tap lets go
-  function nearestObj(){let best=null,bd=1e9;for(const o of S.objs){const cx=Math.max(o.x,Math.min(S.x,o.x+o.w)),cy=Math.max(o.y,Math.min(S.y,o.y+o.h)),d=Math.hypot(S.x-cx,S.y-cy)-R;if(d<=T.crab.reach&&d<bd){best=o;bd=d}}return best}
-  function crab(dt){
-    if(qTap){S.started=true;
-      if(S.grip)letGo("Crab let go.");
-      else if(S.bars.crab<=T.crab.min)say("The bar is too low to grip.","bad");
-      else{const o=nearestObj();if(!o)say("Nothing in reach to grip.","bad");else if(o.k!=="medium")say(o.n+" is "+o.k+". Crab cannot grip it.","bad");
-        else{S.grip=true;o.held=true;S.hold={o:o,off:{x:o.x-S.x,y:o.y-S.y}};if(o.c)o.c.ab=true;say("Dragging the "+o.n.toLowerCase()+". It moves with Crab in any direction.")}}}
-    if(S.hold){S.bars.crab-=T.crab.drag*dt;if(S.bars.crab<=0){S.bars.crab=0;letGo("The bar ran out, so Crab let go.")}return true}return false}
+  // ---------- Crab is the Crab module: the same code as Crab's own room. The floor lends it the walls and the objects
+  const overlaps=(r,q)=>{const cx=Math.max(r.x,Math.min(q[0],r.x+r.w)),cy=Math.max(r.y,Math.min(q[1],r.y+r.h));return Math.hypot(q[0]-cx,q[1]-cy)<q[2]};
+  const crabTree=window.protoTree("squadCrabTree",()=>{if(S&&S.cr){C.use(S.cr);C.release()}});
+  const C=window.CrabDroid({sk:k=>!!S&&A()==="crab"&&!!crabTree.on[k],say:(t,c)=>say(t,c),keys:keys,io:io,crab:()=>A()==="crab",pushHeavy:T.push.heavy,pushed:o=>{if(o.c)o.c.alt=true;S.pushing=.2},
+    solid:r=>shutters().some(w=>hit(r,w))||(!S.inside&&rounds().some(q=>overlaps(r,q)))});
+  function crab(want,dt){const cr=S.cr;cr.droid.x=S.x;cr.droid.y=S.y;cr.face=S.face;cr.bar=S.bars.crab;cr.started=S.started;
+    S.inside=rounds().some(q=>Math.hypot(S.x-q[0],S.y-q[1])<R+q[2]-1.5);C.use(cr);if(aTap)C.grip();if(want.m)cr.face={x:want.x,y:want.y};
+    C.act(dt,want);S.x=cr.droid.x;S.y=cr.droid.y;S.bars.crab=cr.bar;S.face=cr.face;if(C.busy())S.started=true}
   // ---------- aiming, shared by Orb and Fish, as in their rooms: an assist aims at the nearest target, and I J K L, the mouse or a drag from the button steers
   function aimStart(tg){const t=tg()[0];S.aimA=t?ang(S,t):Math.atan2(S.face.y,S.face.x);S.aimMan=false;if(mouse)mouse.fresh=false}
   function aimStep(tg,want,dt,noLock){const ax=(keys.l?1:0)-(keys.j?1:0),ay=(keys.k?1:0)-(keys.i?1:0);
@@ -6011,7 +6032,7 @@ function protoLine(t,onChange){
   function fish(want,dt){
     if(qHeld&&S.bars.fish>0){if(!S.spray){S.spray={};S.started=true;aimStart(fishTargets)}
       walk(want,dt,T.fish.slow*want.m);const a=aimStep(fishTargets,want,dt),q=ray(a);S.spray={a:a,len:q.len};S.bars.fish=Math.max(0,S.bars.fish-T.fish.water*dt);
-      if(q.f){q.f.heat=Math.max(0,q.f.heat-T.fish.cool*dt);q.f.hit=.2;const c=chOf("fish");c.ab=true;if(q.f.heat<=0)say(fires().length?"One fire is out.":"The fire is out.","good")}
+      if(q.f){q.f.heat=Math.max(0,q.f.heat-T.fish.cool*dt);q.f.hit=.2;q.f.c.ab=true;if(q.f.heat<=0)say(fires().length?"One fire is out.":"The fire is out.","good")}
       if(S.bars.fish<=0)say("Fish’s bar is empty. It refills while it is not spraying.","bad");return true}
     if(S.spray){S.spray=null;S.lock=null}if(qTap&&S.bars.fish<=0)say("Fish’s bar is empty. It refills while it is not spraying.","bad");return false}
   // ---------- toggles: Bee's swarm, Red's aura, Cam's highlight
@@ -6054,12 +6075,12 @@ function protoLine(t,onChange){
   function step(dt){if(!S)return;dt_=dt;
     if(S.win){qTap=eTap=false;return}
     const want=wish(),k=A();if(want.m)S.started=true;if(S.started)S.t+=dt;
-    slide(dt);let busy=false,draining=false;
+    C.use(S.cr);C.slide(dt);let busy=false,draining=false;
     if(S.charge)charging(dt);
     else if(S.stun>0){S.stun-=dt;S.aiming=false;S.wind=0;if(S.stun<=0)say("Orb has recovered.")}
     else if(S.recover>0)S.recover-=dt;
     else{
-      if(k==="crab")draining=crab(dt);
+      if(k==="crab"){crab(want,dt);busy=draining=true}
       if(k==="orb"){busy=orb(want,dt);draining=busy}
       if(k==="fish"){busy=fish(want,dt);draining=busy}
       if(k==="bee")draining=toggle("bee","swarm","Swarm on. People inside it walk away from Bee.","Swarm off.");
@@ -6078,11 +6099,11 @@ function protoLine(t,onChange){
         if(!c.card.got&&c.vis&&d<R+10){c.card.got=true;if(k==="cam")c.ab=true;else c.alt=true;say("Found the key card. Take it to the shutter.","good")}
         if(c.card.got){const q=P(c,-16,0);if(Math.hypot(S.x-q.x,S.y-q.y)<34){c.open=true;say("The shutter is open.","good")}}}
       if(!c.done&&inR(c.next,S.x,S.y,6)){c.done=true;if(c.k==="bee"&&other&&!c.ab)c.alt=true;const nx=cur();
-        say("Through doorway "+(c.i+1)+", by "+(c.alt?"another way":DR[c.k].n+"’s ability")+"."+(nx?" Doorway "+(nx.i+1)+" is for "+DR[nx.k].n+".":" Reach the survivor."),"good")}});
+        say("Through doorway "+(c.i+1)+", by "+(c.alt||!c.ab?"another way":DR[c.k].n+"’s ability")+"."+(nx?" Doorway "+(nx.i+1)+" suits "+DR[nx.k].n+(S.party.indexOf(nx.k)<0?", who is not in the party.":"."):" Reach the survivor."),"good")}});
     S.honkFx=Math.max(0,S.honkFx-dt);if(S.boom){S.boom.t-=dt;if(S.boom.t<=0)S.boom=null}if(S.useFx){S.useFx.t-=dt;if(S.useFx.t<=0)S.useFx=null}S.pushing=Math.max(0,(S.pushing||0)-dt);
-    if(Math.hypot(S.x-S.sv.x,S.y-S.sv.y)<R+16&&!cur()){S.win=true;off();const ab=S.ch.filter(c=>!c.alt).length;
+    if(Math.hypot(S.x-S.sv.x,S.y-S.sv.y)<R+16&&!cur()){S.win=true;off();const ab=S.ch.filter(c=>c.ab&&!c.alt).length;
       say("Reached the survivor in "+S.t.toFixed(1)+"s. "+ab+" of 4 doorways were cleared by the matching droid’s ability"+(S.dmg?", with "+S.dmg+" property damage":"")+(S.knocked?" and "+S.knocked+" people knocked":"")+".","good")}
-    qTap=eTap=false}
+    qTap=eTap=aTap=false}
   // ---------- drawing
   function draw(){if(!S)return;const k=A();
     g.fillStyle="#22302B";g.fillRect(0,0,W,H);
@@ -6097,7 +6118,7 @@ function protoLine(t,onChange){
         if(S.hl&&k==="cam"){g.strokeStyle="#3FA796";g.lineWidth=3;g.beginPath();g.arc(c.card.x,c.card.y,15,0,7);g.stroke()}}});
     g.fillStyle="#22302B";S.walls.forEach(w=>g.fillRect(w.x,w.y,w.w,w.h));
     S.ch.forEach(c=>{if(c.k==="cam"&&!c.open){const s=c.shut;g.fillStyle="#4A4F5C";g.fillRect(s.x,s.y,s.w,s.h);g.fillStyle="#FFE08A";g.fillRect(c.x-4,c.y-5,8,10)}});
-    S.objs.forEach(o=>{g.fillStyle=COL[o.k];g.strokeStyle="#22302B";g.lineWidth=o.held?3:2;g.beginPath();g.rect(o.x+1,o.y+1,o.w-2,o.h-2);g.fill();g.stroke();
+    if(k==="crab"){S.cr.droid.x=S.x;S.cr.droid.y=S.y;C.use(S.cr);C.drawObjs(g)}else S.objs.forEach(o=>{g.fillStyle=COL[o.k];g.strokeStyle="#22302B";g.lineWidth=o.held?3:2;g.beginPath();g.rect(o.x+1,o.y+1,o.w-2,o.h-2);g.fill();g.stroke();
       if(o.k==="heavy"){g.beginPath();g.moveTo(o.x+2,o.y+2);g.lineTo(o.x+o.w-2,o.y+o.h-2);g.moveTo(o.x+o.w-2,o.y+2);g.lineTo(o.x+2,o.y+o.h-2);g.stroke()}});
     S.ch.forEach(c=>{
       if(c.k==="fish"){c.fires.forEach((f,j)=>{if(f.heat<=0){g.fillStyle="rgba(34,48,43,.25)";g.beginPath();g.arc(f.x,f.y,6,0,7);g.fill();return}const s=.45+.55*f.heat/100;g.fillStyle="#F25C2A";g.beginPath();g.arc(f.x,f.y,(f.r+2*Math.sin(S.t*9+j*2))*s,0,7);g.fill();g.fillStyle="#FFC24A";g.beginPath();g.arc(f.x,f.y,f.r*.45*s,0,7);g.fill()});
@@ -6122,10 +6143,10 @@ function protoLine(t,onChange){
     if(S.useFx){g.strokeStyle="#fff";g.lineWidth=5;g.lineCap="round";g.beginPath();g.moveTo(S.x,S.y);g.lineTo(S.useFx.x,S.useFx.y);g.stroke();g.lineCap="butt"}
     if(S.honkFx>0){g.strokeStyle="#22302B";g.lineWidth=2;g.beginPath();g.arc(S.x,S.y,T.bee.honkR*(1-S.honkFx/.35),0,7);g.stroke()}
     if(S.boom){g.fillStyle="rgba(140,143,156,"+S.boom.t*2+")";g.beginPath();g.arc(S.boom.x,S.boom.y,44*(1.2-S.boom.t),0,7);g.fill()}
-    // the droid
-    const sx=S.stun>0?Math.sin(S.t*40)*2:0;g.fillStyle=DR[k].c;g.strokeStyle="#22302B";g.lineWidth=2.5;g.beginPath();g.arc(S.x+sx,S.y,R,0,7);g.fill();g.stroke();
-    g.fillStyle="#22302B";g.beginPath();g.arc(S.x+S.face.x*6.5,S.y+S.face.y*6.5,2.8,0,7);g.fill();
-    if(S.hold){const m=ctr(S.hold.o);g.strokeStyle="#22302B";g.lineWidth=3;g.beginPath();g.moveTo(S.x,S.y);g.lineTo(m.x,m.y);g.stroke()}
+    // the droid, drawn the way its own room draws it: its body colour and its letter
+    if(k==="crab")C.drawDroid(g);
+    else{const sx=S.stun>0?Math.sin(S.t*40)*2:0;g.fillStyle=DR[k].f;g.beginPath();g.arc(S.x+sx,S.y,R,0,7);g.fill();g.strokeStyle="#22302B";g.lineWidth=2.5;g.beginPath();g.arc(S.x+sx,S.y,R,0,7);g.stroke();
+      g.fillStyle=DR[k].ink||"#fff";g.font="800 13px system-ui,sans-serif";g.textAlign="center";g.fillText(DR[k].l,S.x+sx,S.y+5)}
     if(S.stun>0){g.fillStyle="#22302B";g.font="800 12px system-ui,sans-serif";g.textAlign="center";g.fillText("Stunned",S.x,S.y-R-8)}
     if(S.item==="ext"){g.fillStyle="#D9483B";g.strokeStyle="#22302B";g.lineWidth=1.5;g.beginPath();g.rect(S.x+8,S.y-18,7,13);g.fill();g.stroke()}
     const cc=chOf("cam");if(cc&&cc.card.got&&!cc.open){g.fillStyle="#FFE08A";g.strokeStyle="#22302B";g.lineWidth=1.5;g.beginPath();g.rect(S.x-17,S.y-17,11,7);g.fill();g.stroke()}
@@ -6135,10 +6156,11 @@ function protoLine(t,onChange){
     const lab={fish:"Hold: spray",orb:S.aiming?"Release: charge":"Hold: charge",crab:S.grip?"Let go":"Grip",bee:"Swarm: "+(S.swarm?"on":"off"),red:"Aura: "+(S.aura?"on":"off"),cam:"Highlight: "+(S.hl?"on":"off")}[k];
     const on=(k==="bee"&&S.swarm)||(k==="red"&&S.aura)||(k==="cam"&&S.hl)||(k==="fish"&&S.spray)||(k==="crab"&&S.grip)||(k==="orb"&&S.aiming);
     const sig=[S.seed,k,lab,!!on,x&&x.l,other,S.ch.map(c=>c.done?1:0).join(""),S.dmg].join("|");
+    if(k==="crab"){C.use(S.cr);C.ui($("spAbil"),$("spB"),$("spC"))}
     $("spBar").style.width=S.bars[k]+"%";$("spBar").style.background=d.c;$("spTime").textContent=S.t.toFixed(1)+"s";
     root.querySelectorAll("#spParty button").forEach((b,i)=>{b.querySelector("i b").style.width=S.bars[S.party[i]]+"%"});
     if(sig===lastHud)return;lastHud=sig;
-    const ab=$("spAbil"),ac=$("spAct");ab.querySelector("span").textContent=lab;ab.classList.toggle("on",!!on);
+    const ab=$("spAbil"),ac=$("spAct");if(k!=="crab"){ab.querySelector("span").textContent=lab;ab.classList.toggle("on",!!on);$("spB").hidden=$("spC").hidden=true}ab.querySelector("kbd").textContent=k==="crab"?"Space":"Q";
     ac.querySelector("span").textContent=x?x.l:"Interact";ac.classList.toggle("lock",!x||!other);
     $("spDone").textContent=S.ch.filter(c=>c.done).length+"/4";$("spDmg").textContent=S.dmg;
     root.querySelectorAll("#spParty button").forEach((b,i)=>b.setAttribute("aria-pressed",i===S.act?"true":"false"));
@@ -6146,16 +6168,19 @@ function protoLine(t,onChange){
   // ---------- input
   cv.addEventListener("keydown",e=>{const k=e.key.toLowerCase();if(["arrowup","arrowdown","arrowleft","arrowright"," "].includes(k))e.preventDefault();
     if(k>="1"&&k<="4"&&k.length===1){sw(+k-1);return}
-    if(k==="q"){if(!qHeld)qTap=true;qHeld=true}else if(k==="e"){if(!eHeld)eTap=true;eHeld=true}else keys[k]=true});
-  cv.addEventListener("keyup",e=>{const k=e.key.toLowerCase();if(k==="q")qHeld=false;else if(k==="e")eHeld=false;else keys[k]=false});
-  cv.addEventListener("blur",()=>{keys={};qHeld=eHeld=false});
-  cv.addEventListener("mousemove",e=>{const r=cv.getBoundingClientRect();mouse={x:(e.clientX-r.left)*W/r.width,y:(e.clientY-r.top)*H/r.height,fresh:true}});
-  cv.addEventListener("mouseleave",()=>{mouse=null});
+    if(k===" "&&!e.repeat&&S&&A()==="crab"){C.use(S.cr);C.grip()}
+    if(["f","q","i","j","k","l"," "].includes(k))e.preventDefault();keys[k]=true;
+    if(k==="q"){if(!qHeld)qTap=true;qHeld=true}else if(k==="e"){if(!eHeld)eTap=true;eHeld=true}});
+  cv.addEventListener("keyup",e=>{const k=e.key.toLowerCase();keys[k]=false;if(k==="q")qHeld=false;else if(k==="e")eHeld=false});
+  cv.addEventListener("blur",()=>{for(const k in keys)keys[k]=false;qHeld=eHeld=false});
+  cv.addEventListener("mousemove",e=>{const r=cv.getBoundingClientRect();mouse=io.mouse={x:(e.clientX-r.left)*W/r.width,y:(e.clientY-r.top)*H/r.height,fresh:true}});
+  cv.addEventListener("mouseleave",()=>{mouse=io.mouse=null});
   function hold(k,on){if(k==="q"){if(on&&!qHeld)qTap=true;qHeld=on;if(!on)qDrag=null}else{if(on&&!eHeld)eTap=true;eHeld=on}}
   (function(){const b=$("spAbil");let id=null,ox=0,oy=0;   // the ability button: a drag away from where it was pressed steers the aim
-    b.addEventListener("pointerdown",e=>{e.preventDefault();id=e.pointerId;try{b.setPointerCapture(id)}catch(_){}ox=e.clientX;oy=e.clientY;qDrag={dx:0,dy:0};hold("q",true)});
+    b.addEventListener("pointerdown",e=>{e.preventDefault();id=e.pointerId;try{b.setPointerCapture(id)}catch(_){}ox=e.clientX;oy=e.clientY;qDrag={dx:0,dy:0};aTap=true;if(!S||A()!=="crab")hold("q",true)});
     b.addEventListener("pointermove",e=>{if(e.pointerId===id&&qDrag){qDrag.dx=e.clientX-ox;qDrag.dy=e.clientY-oy}});
     ["pointerup","pointercancel"].forEach(ev=>b.addEventListener(ev,e=>{if(e.pointerId===id){id=null;hold("q",false)}}));
+    C.bind(document.createElement("button"),$("spB"),$("spC"));   // Crab’s Aim line and Aim toss buttons, wired by the Crab module
     const a=$("spAct");a.addEventListener("pointerdown",e=>{e.preventDefault();hold("e",true)});["pointerup","pointercancel","pointerleave"].forEach(ev=>a.addEventListener(ev,()=>hold("e",false)))})();
   $("spNew").addEventListener("click",()=>{gen(1+Math.floor(Math.random()*999999));cv.focus()});
   $("spReset").addEventListener("click",()=>{gen(seed);cv.focus()});
@@ -6166,7 +6191,7 @@ function protoLine(t,onChange){
   function frame(ts){raf=0;if(!visible)return;const dt=Math.min(.05,(ts-last)/1000||0);last=ts;step(dt);draw();raf=requestAnimationFrame(frame)}
   new IntersectionObserver(es=>{visible=es[0].isIntersecting;if(visible&&!raf){last=performance.now();raf=requestAnimationFrame(frame)}}).observe(cv);
   gen(seed);
-  window.squadProto={state:()=>S,gen:gen,step:step,draw:draw,T:T,sw:sw,hold:hold,ctx:ctx,drag:(dx,dy)=>{qDrag=dx===null?null:{dx:dx,dy:dy}},get keys(){return keys},stick:(dx,dy)=>{const m=Math.hypot(dx,dy);stick=m<4?{x:0,y:0}:{x:dx/40,y:dy/40}},other:on=>{other=!!on;gen(seed)},seed:()=>seed};
+  window.squadProto={state:()=>S,gen:gen,step:step,draw:draw,T:T,sw:sw,hold:hold,ctx:ctx,drag:(dx,dy)=>{qDrag=dx===null?null:{dx:dx,dy:dy}},get keys(){return keys},stick:(dx,dy)=>{const m=Math.hypot(dx,dy);stick=m<4?{x:0,y:0}:{x:dx/40,y:dy/40}},other:()=>{gen(seed)},seed:()=>seed,crab:C,grip:()=>{aTap=true}};
 })();
 
 /* ===== The mobile HUD: one fixed layout, filled from each room's own buttons =====
@@ -6212,7 +6237,7 @@ window.protoHud=function(rootId,cfg){
   protoHud("crabProto",{color:"#FFB066",bar:"cpBar",slots:["cpGrip","cpAim","cpToss",null],stick:S("crabProto"),keys:K("crabProto")});
   protoHud("orbProto",{color:"#B79BF2",bar:"opBar",slots:["opGrip","opShield","opBrace",null],stick:S("orbProto"),keys:K("orbProto")});
   protoHud("fishProto",{color:"#7CC4EC",bar:"fpBar",slots:["fpSpray","fpFoam","fpBub","fpDel"],ctx:"fpUse",chip:"fpDrop",stick:S("fishProto"),keys:K("fishProto")});
-  protoHud("squadProto",{color:"#FFFFFF",bar:"spBar",slots:["spAbil",null,null,null],ctx:"spAct",stick:S("squadProto"),keys:K("squadProto")});
+  protoHud("squadProto",{color:"#FFFFFF",bar:"spBar",slots:["spAbil","spB","spC",null],ctx:"spAct",stick:S("squadProto"),keys:K("squadProto")});
   protoHud("beeProto",{color:"#F2CB57",bar:"bpBar",slots:["bpBtn","bpHive","bpLead",null],stick:S("beeProto"),keys:K("beeProto")});
 })();
 fullReset();fillDocs();paintShell(false);fromHash();
