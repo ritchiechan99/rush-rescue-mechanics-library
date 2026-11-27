@@ -2790,7 +2790,7 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
       <button type="button" class="cp-grip" id="spAct"><kbd>E</kbd><span>Interact</span></button>
     </div>
   </div>
-  <p class="cp-msg" id="spMsg" aria-live="polite">Click the room, then move with the arrow keys or WASD. Keys 1 to 4, or the party column on the right, switch droids. Q is the active droid’s ability.</p>
+  <p class="cp-msg" id="spMsg" aria-live="polite">Click the room, then move with the arrow keys or WASD. Keys 1 to 4, or the party column on the right, switch droids. Q is the active droid’s ability, used the same way as in that droid’s own room.</p>
   <div class="cp-legend">
     <span><i style="background:#F25C2A"></i>Fire: Fish</span>
     <span><i style="background:#8C8F9C"></i>Heavy crate: Orb</span>
@@ -2807,15 +2807,16 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
       <li><b>The layout:</b> four strips are cut off the floor one after another, each from a random side and with a random depth. That gives five rooms of different sizes, and a way through that turns. Each doorway sits at a random spot on its wall.</li>
       <li><b>The party</b> is the column on the right of the room, where a droid is picked. Each button shows that droid’s ability bar.</li>
       <li><b>Switching</b> is instant and the new droid stands where the last one stood, as in the GDD. Switching turns off an ability that was on. Each droid keeps its own ability bar, which refills while it is not in use.</li>
-      <li><b>Fish:</b> a fire fills the doorway. Hold Q next to it to spray it out.</li>
-      <li><b>Orb:</b> a heavy crate fills the doorway. Line up with it and press Q to charge through it. It counts as property damage.</li>
-      <li><b>Crab:</b> rubble fills the doorway. Press Q next to it to grip a piece and put it aside, once for each piece.</li>
-      <li><b>Bee:</b> a crowd stands in the doorway. Press Q for the swarm, and people inside it walk away from Bee. Come at them from behind, and they walk on through the doorway and leave.</li>
-      <li><b>Red:</b> an agitated victim blocks the doorway. Press Q for the aura and stay close until they settle and step aside.</li>
-      <li><b>Cam:</b> the room is full of smoke and the shutter needs a key card that lies somewhere in it. Press Q for the highlight, which shows the card through the smoke.</li>
-      <li><b>Other ways through, off:</b> only the matching droid can clear each doorway, so the scenario needs all four.</li>
-      <li><b>Other ways through, on:</b> any droid can clear each doorway with the E button, only more slowly: carry the extinguisher to the fire, shove the crate aside, clear the rubble by hand, honk at the crowd, calm the victim by hand, or search the smoke for the card. This is the “always solvable” hazard rule.</li>
-      <li><span class="tbd">Asked for on 27 Nov 2026. Every blocker is a stand-in cut down from the droid’s own room to one input, the way the floor is cut up is a stand-in too, and every number is a placeholder. “Off” is the default because the ask was a scenario that requires four droids. It goes against the rule that a normal droid can always solve a situation, which “On” follows. Which of the two the game uses for a squad scenario is open.</span></li>
+      <li><b>Each droid works as it does in its own room</b>, with its basic ability and that room’s numbers. No skill tree upgrades are on.</li>
+      <li><b>Fish:</b> three fires burn in the doorway. Hold Q to spray. The stream is aimed: an assist points it at the nearest fire, and a drag from the button, the mouse or I J K L steers it. It stops at the first fire it reaches and cools it. A fire that is not put out fully grows back.</li>
+      <li><b>Orb:</b> a heavy crate fills the doorway. Hold Q to aim and wind up, which takes a second, then release to charge. Orb can keep moving, slower, while it winds up. The charge destroys the first heavy obstacle in its lane, which counts as property damage. Charging into a wall stuns Orb.</li>
+      <li><b>Crab:</b> two crates fill the doorway. Press Q next to one to grip it, drag it wherever it should go, and press Q again to let go. Dragging is slower than walking and drains the bar.</li>
+      <li><b>Bee:</b> a crowd stands in the doorway. Press Q for the swarm, and people inside it walk away from Bee and keep walking for a moment. Come at them from behind, and they walk on through the doorway and leave.</li>
+      <li><b>Red:</b> an agitated victim blocks the doorway. Press Q for the aura. A victim inside it settles over a few seconds, then steps aside.</li>
+      <li><b>Cam:</b> the room is full of smoke, where a droid only sees a short way, and the shutter needs a key card that lies somewhere in it. Cam sees a little further in smoke. Press Q for the highlight, which shows the card anywhere inside its ring.</li>
+      <li><b>Other ways through, off:</b> only the matching droid can clear each doorway, so the scenario needs all four. The crates are wedged, the crowd is too tight to squeeze through, and only Cam can make out the card.</li>
+      <li><b>Other ways through, on:</b> any droid can get through each doorway the way “another droid” can in that droid’s own room, only more slowly. Walk into the crates to push them at half speed, or into the heavy crate to push it slowly. Carry the extinguisher to the fire and hold E. Squeeze through the crowd slowly, or honk with E. Hold E next to the victim to calm them by hand. Search the smoke for the card. Orb’s charge also knocks crates and people aside. This is the “always solvable” hazard rule.</li>
+      <li><span class="tbd">Asked for on 27 Nov 2026. The abilities and their numbers are the ones from each droid’s own room. What fills each doorway, the way the floor is cut up, the crowd leaving through the doorway and a victim who blocks a doorway are stand-ins. “Off” is the default because the ask was a scenario that requires four droids. It goes against the rule that a normal droid can always solve a situation, which “On” follows. Which of the two the game uses for a squad scenario is open.</span></li>
     </ul>
   </div>
 </div>
@@ -5870,11 +5871,20 @@ function protoLine(t,onChange){
   const root=document.getElementById("squadProto");if(!root)return;
   const cv=root.querySelector("#spCanvas"),g=cv.getContext("2d"),W=760,H=460,FW=664,$=id=>root.querySelector("#"+id);
   const DR={red:{n:"Red",c:"#FF8A75"},cam:{n:"Cam",c:"#6FD3C2"},crab:{n:"Crab",c:"#FFB066"},orb:{n:"Orb",c:"#B79BF2"},fish:{n:"Fish",c:"#7CC4EC"},bee:{n:"Bee",c:"#F2CB57"}};
-  const ALL=Object.keys(DR),WT=12,GAP=30,R=11,SPD=150;
-  const tune={spray:60,sprayCost:12,ext:22,charge:30,shove:6,grip:8,clear:2.5,swarm:14,swarmR:75,flee:70,honkR:48,honkCd:1.2,aura:50,auraCost:12,auraR:95,calm:18,hl:10,see:55,refill:7};
+  const ALL=Object.keys(DR),WT=12,GAP=30,R=12,SPEED=150,PR=8,VR=12,FR=13;
+  const COL={medium:"#E9A15B",heavy:"#8C8F9C"};
+  // every number below is the one the droid's own room uses
+  const T={
+    crab:{reach:16,drag:20,recharge:18,dragSpeed:.55,min:15},
+    orb:{windup:1.0,dist:260,cost:30,recharge:12,stun:1.5,slow:.45,speed:560,recover:.35},
+    fish:{water:8,cool:80,len:220,slow:.55,recharge:12,regrow:4,ext:70,extReach:60},
+    bee:{radius:110,walk:95,drain:8,recharge:20,keep:1.1,squeeze:.35,honkR:78,honkPush:190,honkWait:1},
+    red:{radius:110,settle:3.0,drain:15,recharge:10,mini:4.0,reach:18},
+    cam:{sight:90,clear:1.3,hl:190,drain:12,recharge:10},
+    push:{medium:.5,heavy:.2},aim:{cone:.42,turn:5}};
   function rng(seed){let a=seed>>>0;return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
-  let seed=1+Math.floor(Math.random()*999999),other=false,S=null,keys={},stick={x:0,y:0},qHeld=false,eHeld=false,qTap=false,eTap=false;
-  const msg=$("spMsg");function say(t,c){msg.textContent=t;msg.className="cp-msg"+(c?" "+c:"")}
+  let seed=1+Math.floor(Math.random()*999999),other=false,S=null,keys={},stick={x:0,y:0},qHeld=false,eHeld=false,qTap=false,eTap=false,mouse=null,qDrag=null;
+  const msg=$("spMsg");function say(t,c){if(msg.textContent!==t)msg.textContent=t;msg.className="cp-msg"+(c?" "+c:"")}
   function shuffle(a,r){for(let i=a.length-1;i>0;i--){const j=Math.floor(r()*(i+1));const t=a[i];a[i]=a[j];a[j]=t}return a}
   // the floor: four strips are cut off the field one after another, from a random side each time, so the five rooms differ in size and the way through turns
   function layout(r){let Q={x:0,y:0,w:FW,h:H},prev=null;const rooms=[],lines=[],opp={L:"R",R:"L",T:"B",B:"T"};
@@ -5893,166 +5903,238 @@ function protoLine(t,onChange){
     return{rooms:rooms,lines:lines}}
   const inR=(q,x,y,m)=>x>q.x+(m||0)&&x<q.x+q.w-(m||0)&&y>q.y+(m||0)&&y<q.y+q.h-(m||0);
   const P=(c,a,b)=>({x:c.x+c.nx*a+c.tx*b,y:c.y+c.ny*a+c.ty*b});
+  const hit=(a,b)=>a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y,box=d=>({x:d.x-R,y:d.y-R,w:R*2,h:R*2}),ctr=o=>({x:o.x+o.w/2,y:o.y+o.h/2});
+  const dist=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y),ang=(a,b)=>Math.atan2(b.y-a.y,b.x-a.x),turnTo=(a,b)=>{let t=b-a;while(t>Math.PI)t-=2*Math.PI;while(t<-Math.PI)t+=2*Math.PI;return t};
+  const inRect=(p,w)=>p.x>=w.x&&p.x<=w.x+w.w&&p.y>=w.y&&p.y<=w.y+w.h;
+  // a box across a doorway: along is its size along the wall, deep is its size through it. off is where it sits along the wall
+  function slab(c,off,along,deep,k,n){const m=P(c,0,off),w=c.v?deep:along,h=c.v?along:deep;return{k:k,n:n,x:m.x-w/2,y:m.y-h/2,w:w,h:h,vx:0,vy:0,held:false,c:c}}
   function gen(sd){
     seed=sd;const r=rng(sd),party=shuffle(ALL.slice(),r).slice(0,4),order=shuffle(party.slice(),r);
     let L=null;for(let a=0;a<400&&!L;a++)L=layout(r);
+    const objs=[],walls=[{x:-20,y:-20,w:FW+40,h:28},{x:-20,y:H-8,w:FW+40,h:28},{x:-20,y:-20,w:28,h:H+40},{x:FW-8,y:-20,w:W,h:H+40}];
     const ch=order.map((k,i)=>{const ln=L.lines[i],room=L.rooms[i],c={k:k,i:i,x:ln.x,y:ln.y,nx:ln.nx,ny:ln.ny,tx:-ln.ny,ty:ln.nx,v:ln.v,ln:ln,room:room,next:L.rooms[i+1],done:false,ab:false,alt:false,p:0};
-      // which side of the doorway has room to put things aside
+      const h=WT/2;if(ln.v){walls.push({x:ln.pos-h,y:ln.a,w:WT,h:ln.c-GAP-ln.a},{x:ln.pos-h,y:ln.c+GAP,w:WT,h:ln.b-ln.c-GAP})}else{walls.push({x:ln.a,y:ln.pos-h,w:ln.c-GAP-ln.a,h:WT},{x:ln.c+GAP,y:ln.pos-h,w:ln.b-ln.c-GAP,h:WT})}
       const a1=P(c,-34,70),a2=P(c,-34,-70);c.sg=inR(room,a1.x,a1.y,16)?(inR(room,a2.x,a2.y,16)&&r()<.5?-1:1):-1;
-      const spot=()=>{let best=null,bd=-1;for(let n=0;n<30;n++){const x=room.x+26+r()*(room.w-52),y=room.y+26+r()*(room.h-52),d=Math.hypot(x-c.x,y-c.y);if(d>bd){bd=d;best={x:x,y:y}}if(d>110&&n>3)break}return best};
-      if(k==="fish"){c.heat=100;c.max=100;c.ext=Object.assign(spot(),{held:false})}
-      if(k==="crab"){c.n=2+Math.floor(r()*3);c.left=c.n;c.toss=[]}
-      if(k==="bee"){c.ppl=[];const n=5+Math.floor(r()*4),pos=[];[-24,-8,8,24].forEach(b=>pos.push(P(c,-14,b)));[-8,8,-24,24].forEach(b=>pos.push(P(c,-31,b)));
-        for(let j=0;j<n;j++)c.ppl.push({x:pos[j].x,y:pos[j].y,ft:0,fx:0,fy:0,id:j})}
-      if(k==="red"){const v=P(c,-18,0);c.agit=100;c.vv={x:v.x,y:v.y,gx:v.x,gy:v.y}}
-      if(k==="cam"){c.card=Object.assign(spot(),{got:false})}
+      const spot=()=>{let best=null,bd=-1;for(let n=0;n<30;n++){const x=room.x+28+r()*(room.w-56),y=room.y+28+r()*(room.h-56),d=Math.hypot(x-c.x,y-c.y);if(d>bd){bd=d;best={x:x,y:y}}if(d>110&&n>3)break}return best};
+      if(k==="fish"){c.fires=[-20,0,20].map(b=>Object.assign(P(c,0,b),{r:FR,heat:100,hit:0}));c.ext=Object.assign(spot(),{held:false})}
+      if(k==="crab"){const n=2,hh=GAP*2/n;r();c.n=n;for(let j=0;j<n;j++)objs.push(slab(c,-GAP+hh*(j+.5),hh-1,24,"medium","Crate"))}
+      if(k==="orb"){objs.push(slab(c,0,GAP*2-2,26,"heavy","Heavy crate"))}
+      if(k==="bee"){c.ppl=[];const n=6+Math.floor(r()*4),pos=[];[-22,-7,8,23].forEach(b=>pos.push(P(c,-15,b)));[-7,8,-22,23].forEach(b=>pos.push(P(c,-32,b)));[0].forEach(b=>pos.push(P(c,-49,b)));
+        for(let j=0;j<n;j++)c.ppl.push({x:pos[j].x,y:pos[j].y,flee:0,fx:0,fy:0,vx:0,vy:0,id:j,c:c})}
+      if(k==="red"){const v=P(c,-18,0);c.vv={x:v.x,y:v.y,gx:v.x,gy:v.y,m:100,calm:false}}
+      if(k==="cam"){c.card=Object.assign(spot(),{got:false});c.shut=slab(c,0,GAP*2,18,"fixed","Shutter")}
       return c});
     const r0=L.rooms[0],fin=L.rooms[4],d3=ch[3];let sv={x:fin.x+fin.w/2,y:fin.y+fin.h/2};
-    for(let n=0;n<30;n++){const x=fin.x+34+r()*(fin.w-68),y=fin.y+34+r()*(fin.h-68);if(Math.hypot(x-d3.x,y-d3.y)>80){sv={x:x,y:y};break}}
-    let st={x:r0.x+r0.w/2,y:r0.y+r0.h/2};for(let n=0;n<30;n++){const x=r0.x+30+r()*(r0.w-60),y=r0.y+30+r()*(r0.h-60);if(Math.hypot(x-ch[0].x,y-ch[0].y)>95){st={x:x,y:y};break}}
-    S={seed:sd,party:party,ch:ch,rooms:L.rooms,act:0,bars:{},x:st.x,y:st.y,fx:ch[0].nx,fy:ch[0].ny,t:0,started:false,win:false,dmg:0,item:null,swarm:false,aura:false,hl:false,spray:false,dash:null,honk:0,honkFx:0,sv:sv};
+    for(let n=0;n<30;n++){const x=fin.x+34+r()*(fin.w-68),y=fin.y+34+r()*(fin.h-68);if(Math.hypot(x-d3.x,y-d3.y)>90){sv={x:x,y:y};break}}
+    let st={x:r0.x+r0.w/2,y:r0.y+r0.h/2};for(let n=0;n<30;n++){const x=r0.x+30+r()*(r0.w-60),y=r0.y+30+r()*(r0.h-60);if(Math.hypot(x-ch[0].x,y-ch[0].y)>100){st={x:x,y:y};break}}
+    S={seed:sd,party:party,ch:ch,rooms:L.rooms,walls:walls,objs:objs,act:0,bars:{},x:st.x,y:st.y,face:{x:ch[0].nx,y:ch[0].ny},t:0,started:false,win:false,dmg:0,knocked:0,item:null,
+      grip:false,hold:null,swarm:false,aura:false,hl:false,spray:null,aiming:false,wind:0,aimA:0,aimMan:false,lock:null,charge:null,stun:0,recover:0,honk:0,honkFx:0,boom:null,sv:sv};
     party.forEach(k=>S.bars[k]=100);
-    // start on a droid the first doorway does not need, so the first thing the player does is switch
-    S.act=Math.max(0,party.findIndex(k=>k!==ch[0].k));
+    S.act=Math.max(0,party.findIndex(k=>k!==ch[0].k));   // start on a droid the first doorway does not need
     $("spSeed").value=sd;buildParty();
     say("Seed "+sd+". The party is "+party.map(k=>DR[k].n).join(", ")+". Doorway 1 is for "+DR[ch[0].k].n+".");draw();return S}
   function buildParty(){const p=$("spParty");p.innerHTML="";S.party.forEach((k,i)=>{const b=document.createElement("button");b.type="button";b.style.setProperty("--c",DR[k].c);b.dataset.i=i;b.setAttribute("aria-label","Switch to "+DR[k].n);
       b.innerHTML="<kbd>"+(i+1)+"</kbd><span class='dot'></span><span class='nm'>"+DR[k].n+"</span><i><b></b></i>";b.addEventListener("click",()=>{sw(i);cv.focus()});p.appendChild(b)})}
   const A=()=>S.party[S.act],chOf=k=>S.ch.find(c=>c.k===k),cur=()=>S.ch.find(c=>!c.done);
-  function sw(i){if(!S||i<0||i>=S.party.length||i===S.act||S.dash)return;S.act=i;S.swarm=S.aura=S.hl=S.spray=false;say("Switched to "+DR[A()].n+".")}
-  function off(){S.swarm=S.aura=S.hl=S.spray=false}
-  // what blocks the way: wall pieces, doorway blockers, people
-  function rects(){const o=[];S.ch.forEach(c=>{const l=c.ln,h=WT/2;
-      if(l.v){o.push([l.pos-h,l.a,WT,l.c-GAP-l.a],[l.pos-h,l.c+GAP,WT,l.b-l.c-GAP])}else{o.push([l.a,l.pos-h,l.c-GAP-l.a,WT],[l.c+GAP,l.pos-h,l.b-l.c-GAP,WT])}
-      if(!c.done&&(c.k==="fish"||c.k==="orb"||c.k==="crab"||c.k==="cam"))o.push(l.v?[l.pos-10,l.c-GAP,20,GAP*2]:[l.c-GAP,l.pos-10,GAP*2,20])});return o}
-  function circles(){const o=[];S.ch.forEach(c=>{if(c.k==="bee")c.ppl.forEach(p=>{if(!p.out)o.push([p.x,p.y,8])});if(c.k==="red")o.push(c.done?[c.vv.x,c.vv.y,9]:[c.vv.x,c.vv.y,30])});return o}
-  function pushOut(o,rad,rs){rs.forEach(q=>{const cx=Math.max(q[0],Math.min(o.x,q[0]+q[2])),cy=Math.max(q[1],Math.min(o.y,q[1]+q[3]));let dx=o.x-cx,dy=o.y-cy,d=Math.hypot(dx,dy);
-      if(d<rad){if(d<.001){dx=-1;dy=0;d=1}o.x=cx+dx/d*rad;o.y=cy+dy/d*rad}});
-    o.x=Math.max(8+rad,Math.min(FW-8-rad,o.x));o.y=Math.max(8+rad,Math.min(H-8-rad,o.y))}
-  function collide(){const rs=rects();
-    for(let n=0;n<2;n++){pushOut(S,R,rs);
-      circles().forEach(q=>{let dx=S.x-q[0],dy=S.y-q[1],d=Math.hypot(dx,dy),m=R+q[2];if(d<m){if(d<.001){dx=-1;dy=0;d=1}S.x=q[0]+dx/d*m;S.y=q[1]+dy/d*m}})}
-    pushOut(S,R,rs)}
-  const near=c=>{const a=P(c,-16,0);return Math.hypot(S.x-a.x,S.y-a.y)},side=c=>inR(c.room,S.x,S.y),lane=c=>Math.abs((S.x-c.x)*c.tx+(S.y-c.y)*c.ty);
-  function finish(c){if(c.done)return;c.done=true;const by=c.alt?"another way":DR[c.k].n+"’s ability";const nx=cur();
-    say("Doorway "+(c.i+1)+" is open, by "+by+"."+(nx?" Doorway "+(nx.i+1)+" is for "+DR[nx.k].n+".":" Reach the survivor."),"good")}
-  // a crowd is not held to its room: pushed from behind, it walks on through the doorway
-  function people(dt){const rs=rects();S.ch.forEach(c=>{if(c.k!=="bee")return;const bee=S.swarm&&A()==="bee";
-      c.ppl=c.ppl.filter(p=>!(p.out>0&&(p.out-=dt)<=0));
-      c.ppl.forEach(p=>{if(!p.out&&inR(c.next,p.x,p.y,12))p.out=.7;if(p.out){p.x+=c.nx*tune.flee*dt;p.y+=c.ny*tune.flee*dt;return}let vx=0,vy=0;const dx=p.x-S.x,dy=p.y-S.y,d=Math.hypot(dx,dy)||1;
-        if(bee&&d<tune.swarmR){vx=dx/d;vy=dy/d;c.ab=true}else if(p.ft>0){vx=p.fx;vy=p.fy;p.ft-=dt}
-        if(!vx&&!vy)return;const ox=p.x,oy=p.y;p.x+=vx*tune.flee*dt;p.y+=vy*tune.flee*dt;pushOut(p,8,rs);
-        // stopped by a wall: slide along it, away from the droid
-        const want=tune.flee*dt,got=Math.hypot(p.x-ox,p.y-oy);if(got<want*.5){const sx=-vy,sy=vx,sgn=(((c.x-p.x)*sx+(c.y-p.y)*sy)||(p.id%2?1:-1))>0?1:-1;p.x+=sx*sgn*want*.8;p.y+=sy*sgn*want*.8;pushOut(p,8,rs)}});
-      for(let a=0;a<c.ppl.length;a++)for(let b=a+1;b<c.ppl.length;b++){const p=c.ppl[a],q=c.ppl[b];let dx=q.x-p.x,dy=q.y-p.y,d=Math.hypot(dx,dy);if(!p.out&&!q.out&&d<16&&d>.001){const m=(16-d)/2;dx/=d;dy/=d;p.x-=dx*m;p.y-=dy*m;q.x+=dx*m;q.y+=dy*m}}
-      c.ppl.forEach(p=>{if(!p.out)pushOut(p,8,rs)})})}
-  function ability(dt){const k=A(),c=chOf(k);let drain=false;
-    if(k==="fish"){S.spray=qHeld&&S.bars.fish>0;if(S.spray){drain=true;S.bars.fish-=tune.sprayCost*dt;S.started=true;
-        if(c&&!c.done&&side(c)&&near(c)<115){c.heat-=tune.spray*dt;c.ab=true;if(c.heat<=0)finish(c)}}
-      if(qTap&&S.bars.fish<=0)say("Fish’s bar is empty. It refills while it is not spraying.","bad")}
-    if(k==="orb"&&qTap){if(c&&!c.done&&side(c)&&near(c)<130&&lane(c)<GAP+4){if(S.bars.orb>=tune.charge){S.bars.orb-=tune.charge;S.dash={c:c};S.started=true}else say("Orb’s bar is too low for a charge.","bad")}
-      else say("Nothing heavy in Orb’s lane. Line up with the crate first.","bad")}
-    if(k==="crab"&&qTap){if(c&&!c.done&&side(c)&&near(c)<60){if(S.bars.crab>=tune.grip){S.bars.crab-=tune.grip;c.ab=true;S.started=true;aside(c);if(c.left>0)say("Crab put a piece aside. "+c.left+" left.")}else say("Crab’s bar is too low to grip.","bad")}
-      else say("Nothing in reach for Crab to grip.","bad")}
-    if(k==="bee"){if(qTap){S.swarm=!S.swarm&&S.bars.bee>0;S.started=true;say(S.swarm?"Swarm on. People inside it walk away from Bee.":"Swarm off.")}
-      if(S.swarm){drain=true;S.bars.bee-=tune.swarm*dt;if(S.bars.bee<=0){S.swarm=false;say("Bee’s bar is empty, so the swarm is off.","bad")}}}
-    if(k==="red"){if(qTap){S.aura=!S.aura&&S.bars.red>0;S.started=true;say(S.aura?"Aura on. Stay close to the victim.":"Aura off.")}
-      if(S.aura){drain=true;S.bars.red-=tune.auraCost*dt;if(S.bars.red<=0){S.aura=false;say("Red’s bar is empty, so the aura is off.","bad")}
-        else if(c&&!c.done&&Math.hypot(S.x-c.vv.x,S.y-c.vv.y)<tune.auraR){c.agit-=tune.aura*dt;c.ab=true;if(c.agit<=0)calmed(c)}}}
-    if(k==="cam"){if(qTap){S.hl=!S.hl&&S.bars.cam>0;S.started=true;say(S.hl?"Highlight on. It shows the key card through the smoke.":"Highlight off.")}
-      if(S.hl){drain=true;S.bars.cam-=tune.hl*dt;if(S.bars.cam<=0){S.hl=false;say("Cam’s bar is empty, so the highlight is off.","bad")}}}
-    S.party.forEach(p=>{if(!(p===k&&drain))S.bars[p]=Math.min(100,S.bars[p]+tune.refill*dt);S.bars[p]=Math.max(0,S.bars[p])})}
-  function aside(c){c.left--;c.p=0;const q=P(c,-30-c.toss.length*15,c.sg*54);c.toss.push(q);if(c.left<=0)finish(c)}
-  function calmed(c){const q=P(c,-22,c.sg*66);c.vv.gx=q.x;c.vv.gy=q.y;finish(c)}
-  // what the E button would do right now
-  function ctx(){const c=cur();if(!c)return null;
-    if(c.k==="fish"){if(!S.item&&Math.hypot(S.x-c.ext.x,S.y-c.ext.y)<30)return{l:"Pick up",k:"take",c:c};if(S.item==="ext"&&side(c)&&near(c)<70)return{l:"Hold: use extinguisher",k:"ext",c:c}}
-    if(c.k==="orb"&&side(c)&&near(c)<46)return{l:"Hold: shove aside",k:"shove",c:c};
-    if(c.k==="crab"&&side(c)&&near(c)<50)return{l:"Hold: clear by hand",k:"clear",c:c};
-    if(c.k==="bee"&&c.ppl.some(p=>!p.out&&Math.hypot(p.x-S.x,p.y-S.y)<tune.honkR))return{l:"Honk",k:"honk",c:c};
-    if(c.k==="red"&&Math.hypot(S.x-c.vv.x,S.y-c.vv.y)<52)return{l:"Hold: calm",k:"calm",c:c};
+  function letGo(why){if(S.hold){S.hold.o.held=false;S.hold=null;if(why)say(why)}S.grip=false}
+  function off(){letGo();S.swarm=S.aura=S.hl=false;S.spray=null;S.aiming=false;S.wind=0;S.lock=null}
+  function sw(i){if(!S||S.win||i<0||i>=S.party.length||i===S.act)return;if(S.charge||S.stun>0){say("Not while "+DR[A()].n+" is "+(S.charge?"charging":"stunned")+".","bad");return}off();S.act=i;say("Switched to "+DR[A()].n+".")}
+  // ---------- what is in the way
+  const shutters=()=>S.ch.filter(c=>c.k==="cam"&&!c.open).map(c=>c.shut);
+  const solid=(r,skip)=>S.walls.some(w=>hit(r,w))||shutters().some(w=>hit(r,w))||S.objs.some(o=>o!==skip&&!o.held&&hit(r,o));
+  const fires=()=>{const o=[];S.ch.forEach(c=>{if(c.k==="fish")c.fires.forEach(f=>{if(f.heat>0)o.push(f)})});return o};
+  const crowd=()=>{const o=[];S.ch.forEach(c=>{if(c.k==="bee")c.ppl.forEach(p=>{if(!p.out)o.push(p)})});return o};
+  // circles the droid cannot walk into: a burning fire, an agitated victim, and a crowd it cannot squeeze through
+  function rounds(){const o=fires().map(f=>[f.x,f.y,f.r-2]);S.ch.forEach(c=>{if(c.k==="red"&&!c.vv.calm)o.push([c.vv.x,c.vv.y,30])});if(!other)crowd().forEach(p=>o.push([p.x,p.y,PR]));return o}
+  function roundsOut(){for(const q of rounds()){let dx=S.x-q[0],dy=S.y-q[1],d=Math.hypot(dx,dy),m=R+q[2];if(d<m){if(d<.001){dx=-S.face.x;dy=-S.face.y;d=1}const n={x:q[0]+dx/d*m,y:q[1]+dy/d*m};if(!solid(box(n))){S.x=n.x;S.y=n.y}else return false}}return true}
+  // walking, one axis at a time, the way the droid rooms do it. A dragged object moves with Crab as one. With other ways on, any droid pushes what it walks into
+  function walk(want,dt,k){const sp=SPEED*(k||1)*(S.hold?T.crab.dragSpeed:1)*(other&&crowd().some(p=>Math.hypot(p.x-S.x,p.y-S.y)<R+PR)?T.bee.squeeze:1);
+    const inside=rounds().some(q=>Math.hypot(S.x-q[0],S.y-q[1])<R+q[2]-1.5);   // something moved onto the droid: it may still walk out
+    for(const ax of ["x","y"]){const mv=want[ax]*sp*dt;if(!mv)continue;const ox=S.x,oy=S.y,nd={x:S.x,y:S.y};nd[ax]+=mv;const nb=box(nd);
+      if(S.hold){const o=S.hold.o,nx={x:nd.x+S.hold.off.x,y:nd.y+S.hold.off.y,w:o.w,h:o.h};if(solid(nb)||solid(nx,o))continue;S[ax]=nd[ax];o.x=nx.x;o.y=nx.y}
+      else{if(S.walls.some(w=>hit(nb,w))||shutters().some(w=>hit(nb,w)))continue;
+        const hits=S.objs.filter(o=>hit(nb,o));
+        if(hits.length){if(!other)continue;const kk=Math.min.apply(null,hits.map(o=>T.push[o.k]||0));if(!kk)continue;
+          const next=hits.map(o=>{const q={x:o.x,y:o.y,w:o.w,h:o.h};q[ax]+=mv*kk;return q});
+          if(next.some((q,i)=>S.walls.some(w=>hit(q,w))||shutters().some(w=>hit(q,w))||S.objs.some(o=>hits.indexOf(o)<0&&hit(q,o))))continue;
+          hits.forEach((o,i)=>{o[ax]=next[i][ax];if(o.c){o.c.alt=true}});const half={x:S.x,y:S.y};half[ax]+=mv*kk;if(!solid(box(half)))S[ax]=half[ax];S.pushing=.2}
+        else S[ax]=nd[ax]}
+      if(!roundsOut()&&!inside){S.x=ox;S.y=oy;if(S.hold){S.hold.o.x=S.x+S.hold.off.x;S.hold.o.y=S.y+S.hold.off.y}}
+      else if(S.hold){const o=S.hold.o,q={x:S.x+S.hold.off.x,y:S.y+S.hold.off.y,w:o.w,h:o.h};if(solid(q,o)||solid(box(S))){S.x=ox;S.y=oy}else{o.x=q.x;o.y=q.y}}}}
+  const wish=()=>{let x=(keys.arrowright||keys.d?1:0)-(keys.arrowleft||keys.a?1:0)+stick.x,y=(keys.arrowdown||keys.s?1:0)-(keys.arrowup||keys.w?1:0)+stick.y;const m=Math.hypot(x,y);return m>.05?{x:x/m,y:y/m,m:Math.min(1,m)}:{x:0,y:0,m:0}};
+  const side=c=>inR(c.room,S.x,S.y,-8)&&!inR(c.next,S.x,S.y,6);
+  // ---------- Crab: the grip, as in Crab's room. A tap takes hold of the medium object in reach and it is dragged; a tap lets go
+  function nearestObj(){let best=null,bd=1e9;for(const o of S.objs){const cx=Math.max(o.x,Math.min(S.x,o.x+o.w)),cy=Math.max(o.y,Math.min(S.y,o.y+o.h)),d=Math.hypot(S.x-cx,S.y-cy)-R;if(d<=T.crab.reach&&d<bd){best=o;bd=d}}return best}
+  function crab(dt){
+    if(qTap){S.started=true;
+      if(S.grip)letGo("Crab let go.");
+      else if(S.bars.crab<=T.crab.min)say("The bar is too low to grip.","bad");
+      else{const o=nearestObj();if(!o)say("Nothing in reach to grip.","bad");else if(o.k!=="medium")say(o.n+" is "+o.k+". Crab cannot grip it.","bad");
+        else{S.grip=true;o.held=true;S.hold={o:o,off:{x:o.x-S.x,y:o.y-S.y}};if(o.c)o.c.ab=true;say("Dragging the "+o.n.toLowerCase()+". It moves with Crab in any direction.")}}}
+    if(S.hold){S.bars.crab-=T.crab.drag*dt;if(S.bars.crab<=0){S.bars.crab=0;letGo("The bar ran out, so Crab let go.")}return true}return false}
+  // ---------- aiming, shared by Orb and Fish, as in their rooms: an assist aims at the nearest target, and I J K L, the mouse or a drag from the button steers
+  function aimStart(tg){const t=tg()[0];S.aimA=t?ang(S,t):Math.atan2(S.face.y,S.face.x);S.aimMan=false;if(mouse)mouse.fresh=false}
+  function aimStep(tg,want,dt,noLock){const ax=(keys.l?1:0)-(keys.j?1:0),ay=(keys.k?1:0)-(keys.i?1:0);
+    if(qDrag&&Math.hypot(qDrag.dx,qDrag.dy)>14){S.aimA=Math.atan2(qDrag.dy,qDrag.dx);S.aimMan=true}
+    else if(ax||ay){const t=turnTo(S.aimA,Math.atan2(ay,ax)),mv=T.aim.turn*dt;S.aimA+=Math.abs(t)<mv?t:Math.sign(t)*mv;S.aimMan=true}
+    else if(mouse&&mouse.fresh){S.aimA=ang(S,mouse);S.aimMan=true}
+    else if(!S.aimMan){const t=tg()[0];if(t)S.aimA=ang(S,t);else if(want.m)S.aimA=Math.atan2(want.y,want.x)}
+    S.lock=tg().filter(t=>Math.abs(turnTo(S.aimA,ang(S,t)))<T.aim.cone).sort((p,q)=>Math.abs(turnTo(S.aimA,ang(S,p)))-Math.abs(turnTo(S.aimA,ang(S,q))))[0]||null;
+    const a=S.lock?ang(S,S.lock):S.aimA;S.face={x:Math.cos(a),y:Math.sin(a)};return a}
+  // ---------- Orb: the aimed charge, as in Orb's room
+  function lane(f){let stop=null,len=T.orb.dist;for(let s=4;s<=T.orb.dist;s+=4){const r=box({x:S.x+f.x*s,y:S.y+f.y*s});
+      if(S.walls.some(w=>hit(r,w))||shutters().some(w=>hit(r,w))){stop="wall";len=s-4;break}const o=S.objs.find(o=>o.k==="heavy"&&hit(r,o));if(o){stop=o;len=s;break}}return{len:len,stop:stop}}
+  function orbTargets(){return S.objs.filter(o=>o.k==="heavy").map(o=>Object.assign(ctr(o),{o:o})).filter(t=>{const m=dist(t,S),half=Math.max(t.o.w,t.o.h)/2+R+6;if(m-half>T.orb.dist)return false;const a=ang(S,t),L=lane({x:Math.cos(a),y:Math.sin(a)});return L.stop===t.o||L.len>=m-half}).sort((p,q)=>dist(p,S)-dist(q,S))}
+  function knock(o){const f=S.face,c=o.w?ctr(o):o,sd=((c.x-S.x)*-f.y+(c.y-S.y)*f.x)>=0?1:-1;o.vx=f.x*230+-f.y*sd*210;o.vy=f.y*230+f.x*sd*210;o.hitBy=S.charge}
+  function endCharge(m,c){S.charge=null;S.recover=T.orb.recover;say(m,c)}
+  function charging(dt){let left=T.orb.speed*dt;
+    while(left>0&&S.charge){const c=S.charge,s=Math.min(4,left);left-=s;const nd={x:S.x+S.face.x*s,y:S.y+S.face.y*s},nb=box(nd);
+      if(S.walls.some(w=>hit(nb,w))||shutters().some(w=>hit(nb,w))){endCharge("Orb charged into a wall and is stunned.","bad");S.stun=T.orb.stun;break}
+      const o=S.objs.find(o=>hit(nb,o));
+      if(o){if(o.k==="heavy"){S.objs.splice(S.objs.indexOf(o),1);S.dmg++;S.boom={x:o.x+o.w/2,y:o.y+o.h/2,t:.35};if(o.c)o.c.ab=true;endCharge("The "+o.n.toLowerCase()+" was destroyed. Nothing is left, and it counts as property damage.","good");break}
+        if(!other){endCharge("The "+o.n.toLowerCase()+" is wedged in the doorway. It stopped the charge.","bad");break}
+        if(o.hitBy!==c){knock(o);if(o.c)o.c.alt=true}}
+      const rd=rounds().find(q=>Math.hypot(nd.x-q[0],nd.y-q[1])<R+q[2]);if(rd){endCharge("Something in the way stopped the charge.","bad");break}
+      if(other)for(const p of crowd())if(p.hitBy!==c&&Math.hypot(nd.x-p.x,nd.y-p.y)<R+PR){knock(p);S.knocked++;p.c.alt=true;say("A bystander was knocked aside.","bad")}
+      S.x=nd.x;S.y=nd.y;c.left-=s;if(c.left<=0)endCharge("The charge ran its full distance.")}}
+  function orb(want,dt){
+    if(qHeld){
+      if(!S.aiming){if(S.bars.orb<T.orb.cost){if(qTap)say("Not enough bar for a charge yet.","bad")}else{S.aiming=true;S.wind=0;S.started=true;aimStart(orbTargets)}}
+      if(S.aiming){walk(want,dt,T.orb.slow*want.m);aimStep(orbTargets,want,dt);S.wind=Math.min(1,S.wind+dt/T.orb.windup);
+        say(S.wind<1?"Winding up. Orb can keep moving, only slower."+(S.lock?" Locked on.":" Steer the aim with I J K L, the mouse or a drag from the button."):S.lock?"Locked on. Release to charge.":"Ready. Release to charge.",S.lock&&S.wind>=1?"good":"");return true}
+    }else if(S.aiming){S.aiming=false;S.lock=null;if(S.wind>=1){S.bars.orb-=T.orb.cost;S.charge={left:T.orb.dist};say("Charge!")}else say("Released early, so the charge was cancelled. No bar was used.");S.wind=0;return true}
+    return false}
+  // ---------- Fish: the water stream, as in Fish's room. Held, aimed, stopped by a wall or by the first fire it reaches
+  const fishTargets=()=>fires().filter(f=>dist(f,S)-f.r<=T.fish.len&&los(S,f,f.r)).sort((p,q)=>dist(p,S)-dist(q,S));
+  function los(a,b,br){const m=dist(a,b),n=Math.max(1,Math.ceil(m/6));for(let i=1;i<n;i++){const p={x:a.x+(b.x-a.x)*i/n,y:a.y+(b.y-a.y)*i/n};if(dist(p,b)<=(br||0))return true;if(S.walls.some(w=>inRect(p,w)))return false}return true}
+  function ray(a){let len=T.fish.len,f=null;for(let s=R;s<=T.fish.len;s+=4){const p={x:S.x+Math.cos(a)*s,y:S.y+Math.sin(a)*s};if(S.walls.some(w=>inRect(p,w))||shutters().some(w=>inRect(p,w))||S.objs.some(o=>inRect(p,o))){len=s;break}f=fires().find(f=>dist(p,f)<f.r*.8);if(f){len=s;break}}return{len:len,f:f}}
+  function fish(want,dt){
+    if(qHeld&&S.bars.fish>0){if(!S.spray){S.spray={};S.started=true;aimStart(fishTargets)}
+      walk(want,dt,T.fish.slow*want.m);const a=aimStep(fishTargets,want,dt),q=ray(a);S.spray={a:a,len:q.len};S.bars.fish=Math.max(0,S.bars.fish-T.fish.water*dt);
+      if(q.f){q.f.heat=Math.max(0,q.f.heat-T.fish.cool*dt);q.f.hit=.2;const c=chOf("fish");c.ab=true;if(q.f.heat<=0)say(fires().length?"One fire is out.":"The fire is out.","good")}
+      if(S.bars.fish<=0)say("Fish’s bar is empty. It refills while it is not spraying.","bad");return true}
+    if(S.spray){S.spray=null;S.lock=null}if(qTap&&S.bars.fish<=0)say("Fish’s bar is empty. It refills while it is not spraying.","bad");return false}
+  // ---------- toggles: Bee's swarm, Red's aura, Cam's highlight
+  function toggle(k,f,on,offm){if(qTap){S.started=true;if(!S[f]&&S.bars[k]<=0){say(DR[k].n+"’s bar is empty.","bad")}else{S[f]=!S[f];say(S[f]?on:offm)}}
+    if(S[f]){S.bars[k]-=T[k].drain*dt_;if(S.bars[k]<=0){S.bars[k]=0;S[f]=false;say(DR[k].n+"’s bar is empty, so it switched off.","bad")}return true}return false}
+  let dt_=0;
+  // ---------- people: herded by the swarm, as in Bee's room. They walk away from Bee, keep walking for a moment, and leave once they are through the doorway
+  function people(dt){const bee=S.swarm&&A()==="bee";
+    S.ch.forEach(c=>{if(c.k!=="bee")return;c.ppl=c.ppl.filter(p=>!(p.out>0&&(p.out-=dt)<=0));
+      c.ppl.forEach(p=>{if(!p.out&&inR(c.next,p.x,p.y,12))p.out=.7;if(p.out){p.x+=c.nx*T.bee.walk*dt;p.y+=c.ny*T.bee.walk*dt;return}
+        let tx=0,ty=0;const dx=p.x-S.x,dy=p.y-S.y,d=Math.hypot(dx,dy)||1;
+        if(p.vx||p.vy){tx=p.vx;ty=p.vy;const kk=Math.pow(.02,dt);p.vx*=kk;p.vy*=kk;if(Math.hypot(p.vx,p.vy)<8)p.vx=p.vy=0}
+        else if(bee&&d<T.bee.radius){tx=dx/d*T.bee.walk;ty=dy/d*T.bee.walk;p.fx=dx/d;p.fy=dy/d;p.flee=T.bee.keep;c.ab=true}
+        else if(p.flee>0){p.flee-=dt;const f=Math.min(1,p.flee/.4);tx=p.fx*T.bee.walk*f;ty=p.fy*T.bee.walk*f}
+        if(!tx&&!ty)return;const ox=p.x,oy=p.y;move(p,tx*dt,ty*dt);
+        // stopped by a wall: slide along it, towards the doorway
+        const want=Math.hypot(tx,ty)*dt,got=Math.hypot(p.x-ox,p.y-oy);if(got<want*.5){const m=Math.hypot(tx,ty),sx=-ty/m,sy=tx/m,sgn=(((c.x-p.x)*sx+(c.y-p.y)*sy)||(p.id%2?1:-1))>0?1:-1;move(p,sx*sgn*want*.8,sy*sgn*want*.8)}});
+      for(let a=0;a<c.ppl.length;a++)for(let b=a+1;b<c.ppl.length;b++){const p=c.ppl[a],q=c.ppl[b];if(p.out||q.out)continue;let dx=q.x-p.x,dy=q.y-p.y,d=Math.hypot(dx,dy);if(d<PR*2&&d>.001){const m=(PR*2-d)/2;dx/=d;dy/=d;move(p,-dx*m,-dy*m);move(q,dx*m,dy*m)}}})}
+  function move(p,dx,dy){const fits=(x,y)=>{const r={x:x-PR,y:y-PR,w:PR*2,h:PR*2};return!S.walls.some(w=>hit(r,w))&&!shutters().some(w=>hit(r,w))&&!S.objs.some(o=>hit(r,o))};if(fits(p.x+dx,p.y))p.x+=dx;if(fits(p.x,p.y+dy))p.y+=dy}
+  function slide(dt){for(const o of S.objs){if(!o.vx&&!o.vy)continue;for(const ax of ["x","y"]){const v=ax==="x"?o.vx:o.vy,n={x:o.x,y:o.y,w:o.w,h:o.h};n[ax]+=v*dt;if(solid(n,o)||hit(n,box(S))){if(ax==="x")o.vx=0;else o.vy=0}else o[ax]=n[ax]}
+      const k=Math.pow(.02,dt);o.vx*=k;o.vy*=k;if(Math.hypot(o.vx,o.vy)<8)o.vx=o.vy=0}}
+  // ---------- what the E button would do right now: the ways any droid has, used when other ways are on
+  function ctx(){for(const c of S.ch){
+      if(c.k==="fish"&&fires().length){if(!S.item&&!c.ext.held&&Math.hypot(S.x-c.ext.x,S.y-c.ext.y)<R+18)return{l:"Pick up",k:"take",c:c};
+        if(S.item==="ext"&&c.fires.some(f=>f.heat>0&&dist(f,S)-f.r<T.fish.extReach))return{l:"Hold: use extinguisher",k:"ext",c:c}}
+      if(c.k==="red"&&!c.vv.calm&&Math.hypot(S.x-c.vv.x,S.y-c.vv.y)<R+30+T.red.reach)return{l:"Hold: calm",k:"calm",c:c}}
+    // a honk comes last, so people standing about never hide another thing in reach
+    for(const c of S.ch)if(c.k==="bee"&&A()!=="bee"&&c.ppl.some(p=>!p.out&&Math.hypot(p.x-S.x,p.y-S.y)<T.bee.honkR))return{l:"Honk",k:"honk",c:c};
     return null}
   function interact(dt){const x=ctx();S.honk=Math.max(0,S.honk-dt);
-    if(!(eHeld||eTap)||!x)return;
+    if(!x){S.ch.forEach(c=>{if(c.k==="red"&&!c.vv.calm)c.p=0});return}
+    if(!(eHeld||eTap))return;
     if(!other){if(eTap)say("Other ways through are off. Only "+DR[x.c.k].n+" can clear this doorway.","bad");return}
     const c=x.c;S.started=true;
     if(x.k==="take"&&eTap){S.item="ext";c.ext.held=true;say("Picked up the fire extinguisher. Carry it to the fire and hold E.")}
-    if(x.k==="ext"&&eHeld){c.heat-=tune.ext*dt;c.alt=true;S.useFx=.15;if(c.heat<=0){S.item=null;finish(c)}}
-    if(x.k==="shove"&&eHeld){c.p+=dt/tune.shove;c.alt=true;if(c.p>=1)finish(c)}
-    if(x.k==="clear"&&eHeld){c.p+=dt/tune.clear;c.alt=true;if(c.p>=1)aside(c)}
-    if(x.k==="honk"&&eTap){if(S.honk>0)return;S.honk=tune.honkCd;S.honkFx=.35;c.alt=true;c.ppl.forEach(p=>{const dx=p.x-S.x,dy=p.y-S.y,d=Math.hypot(dx,dy)||1;if(d<tune.honkR){p.ft=.6;p.fx=dx/d;p.fy=dy/d}})}
-    if(x.k==="calm"&&eHeld){c.agit-=tune.calm*dt;c.alt=true;if(c.agit<=0)calmed(c)}}
-  function step(dt){if(!S)return;
+    if(x.k==="ext"&&eHeld){const f=c.fires.filter(f=>f.heat>0).sort((p,q)=>dist(p,S)-dist(q,S))[0];f.heat=Math.max(0,f.heat-T.fish.ext*dt);f.hit=.2;c.alt=true;S.useFx={x:f.x,y:f.y,t:.15};if(!fires().length){say("The fire is out.","good")}}
+    if(x.k==="honk"&&eTap){if(S.honk>0){say("The honk is not ready yet.","bad");return}S.honk=T.bee.honkWait;S.honkFx=.35;c.alt=true;c.ppl.forEach(p=>{const dx=p.x-S.x,dy=p.y-S.y,d=Math.hypot(dx,dy)||1;if(!p.out&&d<T.bee.honkR){p.vx=dx/d*T.bee.honkPush;p.vy=dy/d*T.bee.honkPush}});say("Honk! The people next to the droid step back.")}
+    if(x.k==="calm"&&eHeld){c.p+=dt/T.red.mini;c.alt=true;if(c.p>=1)calmed(c)}}
+  function calmed(c){c.vv.calm=true;c.vv.m=0;const q=P(c,-24,c.sg*66);c.vv.gx=q.x;c.vv.gy=q.y;say("The victim is calm and steps aside.","good")}
+  function step(dt){if(!S)return;dt_=dt;
     if(S.win){qTap=eTap=false;return}
-    if(S.started)S.t+=dt;
-    if(S.dash){const c=S.dash.c,q=P(c,-10-R,0),dx=q.x-S.x,dy=q.y-S.y,d=Math.hypot(dx,dy),st=520*dt;
-      if(d<=st){S.x=q.x;S.y=q.y;S.dash=null;S.dmg++;c.ab=true;S.boom=.3;finish(c)}else{S.x+=dx/d*st;S.y+=dy/d*st;S.fx=dx/d;S.fy=dy/d}}
-    else{let mx=(keys.arrowright||keys.d?1:0)-(keys.arrowleft||keys.a?1:0)+stick.x,my=(keys.arrowdown||keys.s?1:0)-(keys.arrowup||keys.w?1:0)+stick.y;const m=Math.hypot(mx,my);
-      if(m>.05){const q=Math.min(1,m);mx/=m;my/=m;S.fx=mx;S.fy=my;S.x+=mx*SPD*q*dt;S.y+=my*SPD*q*dt;S.started=true}
-      ability(dt);interact(dt)}
-    people(dt);collide();
+    const want=wish(),k=A();if(want.m)S.started=true;if(S.started)S.t+=dt;
+    slide(dt);let busy=false,draining=false;
+    if(S.charge)charging(dt);
+    else if(S.stun>0){S.stun-=dt;S.aiming=false;S.wind=0;if(S.stun<=0)say("Orb has recovered.")}
+    else if(S.recover>0)S.recover-=dt;
+    else{
+      if(k==="crab")draining=crab(dt);
+      if(k==="orb"){busy=orb(want,dt);draining=busy}
+      if(k==="fish"){busy=fish(want,dt);draining=busy}
+      if(k==="bee")draining=toggle("bee","swarm","Swarm on. People inside it walk away from Bee.","Swarm off.");
+      if(k==="red"){draining=toggle("red","aura","Aura on. Agitated victims inside it settle over a few seconds.","Aura off.");
+        if(S.aura)S.ch.forEach(c=>{if(c.k==="red"&&!c.vv.calm&&dist(c.vv,S)<T.red.radius){c.vv.m-=100/T.red.settle*dt;c.ab=true;if(c.vv.m<=0)calmed(c)}})}
+      if(k==="cam")draining=toggle("cam","hl","Highlight on. It shows key items around Cam.","Highlight off.");
+      if(!busy){if(want.m&&!S.aiming)S.face={x:want.x,y:want.y};walk(want,dt,want.m)}
+      interact(dt)}
+    S.party.forEach(p=>{if(!(p===k&&(draining||S.charge||S.aiming)))S.bars[p]=Math.min(100,S.bars[p]+T[p].recharge*dt)});
+    people(dt);
     S.ch.forEach(c=>{
+      if(c.k==="fish")c.fires.forEach(f=>{if(f.hit>0)f.hit-=dt;else if(f.heat>0&&f.heat<100)f.heat=Math.min(100,f.heat+T.fish.regrow*dt)});
       if(c.k==="red"){const dx=c.vv.gx-c.vv.x,dy=c.vv.gy-c.vv.y,d=Math.hypot(dx,dy);if(d>.5){const s=Math.min(d,40*dt);c.vv.x+=dx/d*s;c.vv.y+=dy/d*s}}
-      if(c.k==="cam"&&!c.done){const d=Math.hypot(S.x-c.card.x,S.y-c.card.y),vis=(S.hl&&A()==="cam")||(other&&d<tune.see);c.vis=vis;
-        if(!c.card.got&&vis&&d<20&&side(c)){c.card.got=true;if(S.hl&&A()==="cam")c.ab=true;else c.alt=true;say("Found the key card. Take it to the shutter.","good")}
-        if(c.card.got&&side(c)&&near(c)<34)finish(c)}
-      if(c.k==="bee"&&!c.done&&inR(c.next,S.x,S.y,4))finish(c)});
-    S.honkFx=Math.max(0,(S.honkFx||0)-dt);S.boom=Math.max(0,(S.boom||0)-dt);S.useFx=Math.max(0,(S.useFx||0)-dt);
-    if(Math.hypot(S.x-S.sv.x,S.y-S.sv.y)<26&&!cur()){S.win=true;off();const ab=S.ch.filter(c=>!c.alt).length;
-      say("Reached the survivor in "+S.t.toFixed(1)+"s. "+ab+" of 4 doorways were cleared by the matching droid’s ability"+(S.dmg?", with "+S.dmg+" property damage":"")+".","good")}
+      if(c.k==="cam"&&!c.open){const d=Math.hypot(S.x-c.card.x,S.y-c.card.y),inS=inR(c.room,S.x,S.y),sight=T.cam.sight*(k==="cam"?T.cam.clear:1),hl=S.hl&&k==="cam"&&d<T.cam.hl;
+        c.vis=hl||(inS&&d<sight&&(other||k==="cam"));
+        if(!c.card.got&&c.vis&&d<R+10){c.card.got=true;if(k==="cam")c.ab=true;else c.alt=true;say("Found the key card. Take it to the shutter.","good")}
+        if(c.card.got){const q=P(c,-16,0);if(Math.hypot(S.x-q.x,S.y-q.y)<34){c.open=true;say("The shutter is open.","good")}}}
+      if(!c.done&&inR(c.next,S.x,S.y,6)){c.done=true;if(c.k==="bee"&&other&&!c.ab)c.alt=true;const nx=cur();
+        say("Through doorway "+(c.i+1)+", by "+(c.alt?"another way":DR[c.k].n+"’s ability")+"."+(nx?" Doorway "+(nx.i+1)+" is for "+DR[nx.k].n+".":" Reach the survivor."),"good")}});
+    S.honkFx=Math.max(0,S.honkFx-dt);if(S.boom){S.boom.t-=dt;if(S.boom.t<=0)S.boom=null}if(S.useFx){S.useFx.t-=dt;if(S.useFx.t<=0)S.useFx=null}S.pushing=Math.max(0,(S.pushing||0)-dt);
+    if(Math.hypot(S.x-S.sv.x,S.y-S.sv.y)<R+16&&!cur()){S.win=true;off();const ab=S.ch.filter(c=>!c.alt).length;
+      say("Reached the survivor in "+S.t.toFixed(1)+"s. "+ab+" of 4 doorways were cleared by the matching droid’s ability"+(S.dmg?", with "+S.dmg+" property damage":"")+(S.knocked?" and "+S.knocked+" people knocked":"")+".","good")}
     qTap=eTap=false}
   // ---------- drawing
   function draw(){if(!S)return;const k=A();
     g.fillStyle="#22302B";g.fillRect(0,0,W,H);
-    S.rooms.forEach((q,i)=>{g.fillStyle=i%2?"#E6DFD0":"#EDE7DA";g.fillRect(Math.max(8,q.x),Math.max(8,q.y),Math.min(FW-8,q.x+q.w)-Math.max(8,q.x),Math.min(H-8,q.y+q.h)-Math.max(8,q.y))});
-    // the smoke room
-    S.ch.forEach(c=>{if(c.k!=="cam")return;const q=c.room,inC=side(c);
-      g.save();g.beginPath();g.rect(Math.max(8,q.x),Math.max(8,q.y),Math.min(FW-8,q.x+q.w)-Math.max(8,q.x),Math.min(H-8,q.y+q.h)-Math.max(8,q.y));g.clip();g.fillStyle=c.done?"rgba(59,74,69,.28)":"rgba(59,74,69,.82)";g.fillRect(q.x,q.y,q.w,q.h);
-      if(inC&&!c.done){const gr=g.createRadialGradient(S.x,S.y,10,S.x,S.y,tune.see+14);gr.addColorStop(0,"rgba(237,231,218,.95)");gr.addColorStop(1,"rgba(237,231,218,0)");g.fillStyle=gr;g.fillRect(S.x-90,S.y-90,180,180)}
+    const clip=q=>[Math.max(8,q.x),Math.max(8,q.y),Math.min(FW-8,q.x+q.w)-Math.max(8,q.x),Math.min(H-8,q.y+q.h)-Math.max(8,q.y)];
+    S.rooms.forEach((q,i)=>{g.fillStyle=i%2?"#E6DFD0":"#EDE7DA";const c=clip(q);g.fillRect(c[0],c[1],c[2],c[3])});
+    // the smoke room: a droid sees a short way in it, and Cam a little further
+    S.ch.forEach(c=>{if(c.k!=="cam")return;const q=clip(c.room),inC=inR(c.room,S.x,S.y),sight=T.cam.sight*(k==="cam"?T.cam.clear:1);
+      g.save();g.beginPath();g.rect(q[0],q[1],q[2],q[3]);g.clip();g.fillStyle=c.open?"rgba(59,74,69,.28)":"rgba(59,74,69,.85)";g.fillRect(q[0],q[1],q[2],q[3]);
+      if(inC&&!c.open){const gr=g.createRadialGradient(S.x,S.y,sight*.35,S.x,S.y,sight);gr.addColorStop(0,"rgba(237,231,218,.95)");gr.addColorStop(1,"rgba(237,231,218,0)");g.fillStyle=gr;g.fillRect(S.x-sight,S.y-sight,sight*2,sight*2)}
       g.restore();
-      if(!c.card.got&&(c.vis||c.done)){g.fillStyle="#FFE08A";g.strokeStyle="#22302B";g.lineWidth=2;g.beginPath();g.rect(c.card.x-8,c.card.y-5,16,10);g.fill();g.stroke();
-        if(S.hl&&k==="cam"){g.strokeStyle="#6FD3C2";g.lineWidth=3;g.beginPath();g.arc(c.card.x,c.card.y,15,0,7);g.stroke()}}});
-    // walls
-    g.fillStyle="#22302B";S.ch.forEach(c=>{const l=c.ln,h=WT/2;if(l.v){g.fillRect(l.pos-h,l.a,WT,l.c-GAP-l.a);g.fillRect(l.pos-h,l.c+GAP,WT,l.b-l.c-GAP)}else{g.fillRect(l.a,l.pos-h,l.c-GAP-l.a,WT);g.fillRect(l.c+GAP,l.pos-h,l.b-l.c-GAP,WT)}});
-    // what fills each doorway. Drawn in the doorway's own frame: x runs through it, y runs along the wall
-    S.ch.forEach(c=>{const top=-GAP,d=DR[c.k];
-      if(!c.done){g.save();g.translate(c.x,c.y);g.rotate(Math.atan2(c.ny,c.nx));
-        if(c.k==="fish"){const f=Math.max(.25,c.heat/c.max);g.fillStyle="#F25C2A";for(let j=0;j<4;j++){const y=top+8+j*15,w=(11+3*Math.sin(S.t*9+j*2))*f+4;g.beginPath();g.arc(0,y,w,0,7);g.fill()}g.fillStyle="#FFC24A";for(let j=0;j<4;j++){g.beginPath();g.arc(0,top+8+j*15,5*f+1,0,7);g.fill()}}
-        if(c.k==="orb"){const sl=c.p*GAP*1.9*c.sg;g.fillStyle="#8C8F9C";g.strokeStyle="#22302B";g.lineWidth=2;g.beginPath();g.rect(-13,top+3+sl,26,GAP*2-6);g.fill();g.stroke();g.beginPath();g.moveTo(-13,top+3+sl);g.lineTo(13,top+GAP*2-3+sl);g.moveTo(13,top+3+sl);g.lineTo(-13,top+GAP*2-3+sl);g.stroke()}
-        if(c.k==="crab"){for(let j=0;j<c.left;j++){const hh=(GAP*2-4)/c.n;g.fillStyle="#E9A15B";g.strokeStyle="#22302B";g.lineWidth=2;g.beginPath();g.rect(-11,top+2+j*hh,22,hh-3);g.fill();g.stroke()}}
-        if(c.k==="cam"){g.fillStyle="#4A4F5C";g.fillRect(-9,top,18,GAP*2);g.fillStyle="#FFE08A";g.fillRect(-4,-6,8,12)}
-        g.restore();
-        if(c.k==="red"){g.fillStyle="rgba(217,72,59,.16)";g.beginPath();g.arc(c.vv.x,c.vv.y,30,0,7);g.fill()}
-        const pr=c.k==="orb"?c.p:c.k==="crab"?c.p:c.k==="red"&&c.alt?1-c.agit/100:0;if(pr>0){const q=P(c,-34,0);g.fillStyle="#fff";g.fillRect(q.x-22,q.y-4,44,7);g.fillStyle="#22302B";g.fillRect(q.x-22,q.y-4,44*Math.min(1,pr),7)}}
-      if(c.k==="crab")c.toss.forEach(t=>{g.fillStyle="#E9A15B";g.strokeStyle="#22302B";g.lineWidth=2;g.beginPath();g.rect(t.x-8,t.y-7,16,14);g.fill();g.stroke()});
-      if(c.k==="fish"&&!c.ext.held){g.globalAlpha=other?1:.4;g.fillStyle="#D9483B";g.strokeStyle="#22302B";g.lineWidth=2;g.beginPath();g.rect(c.ext.x-5,c.ext.y-9,10,18);g.fill();g.stroke();g.fillStyle="#22302B";g.fillRect(c.ext.x-2,c.ext.y-13,4,4);g.globalAlpha=1}
-      if(c.k==="bee")c.ppl.forEach(p=>{g.globalAlpha=p.out?Math.max(0,p.out/.7):1;g.fillStyle="#F2B8C6";g.strokeStyle="#22302B";g.lineWidth=1.5;g.beginPath();g.arc(p.x,p.y,8,0,7);g.fill();g.stroke();g.globalAlpha=1});
-      if(c.k==="red"){const ag=!c.done,j=ag?Math.sin(S.t*22)*2:0;g.fillStyle=ag?"#D9483B":"#F2B8C6";g.strokeStyle="#22302B";g.lineWidth=2;g.beginPath();g.arc(c.vv.x+j,c.vv.y,9,0,7);g.fill();g.stroke()}});
+      if(!c.card.got&&(c.vis||c.open)){g.fillStyle="#FFE08A";g.strokeStyle="#22302B";g.lineWidth=2;g.beginPath();g.rect(c.card.x-8,c.card.y-5,16,10);g.fill();g.stroke();
+        if(S.hl&&k==="cam"){g.strokeStyle="#3FA796";g.lineWidth=3;g.beginPath();g.arc(c.card.x,c.card.y,15,0,7);g.stroke()}}});
+    g.fillStyle="#22302B";S.walls.forEach(w=>g.fillRect(w.x,w.y,w.w,w.h));
+    S.ch.forEach(c=>{if(c.k==="cam"&&!c.open){const s=c.shut;g.fillStyle="#4A4F5C";g.fillRect(s.x,s.y,s.w,s.h);g.fillStyle="#FFE08A";g.fillRect(c.x-4,c.y-5,8,10)}});
+    S.objs.forEach(o=>{g.fillStyle=COL[o.k];g.strokeStyle="#22302B";g.lineWidth=o.held?3:2;g.beginPath();g.rect(o.x+1,o.y+1,o.w-2,o.h-2);g.fill();g.stroke();
+      if(o.k==="heavy"){g.beginPath();g.moveTo(o.x+2,o.y+2);g.lineTo(o.x+o.w-2,o.y+o.h-2);g.moveTo(o.x+o.w-2,o.y+2);g.lineTo(o.x+2,o.y+o.h-2);g.stroke()}});
+    S.ch.forEach(c=>{
+      if(c.k==="fish"){c.fires.forEach((f,j)=>{if(f.heat<=0){g.fillStyle="rgba(34,48,43,.25)";g.beginPath();g.arc(f.x,f.y,6,0,7);g.fill();return}const s=.45+.55*f.heat/100;g.fillStyle="#F25C2A";g.beginPath();g.arc(f.x,f.y,(f.r+2*Math.sin(S.t*9+j*2))*s,0,7);g.fill();g.fillStyle="#FFC24A";g.beginPath();g.arc(f.x,f.y,f.r*.45*s,0,7);g.fill()});
+        if(!c.ext.held){g.globalAlpha=other?1:.4;g.fillStyle="#D9483B";g.strokeStyle="#22302B";g.lineWidth=2;g.beginPath();g.rect(c.ext.x-5,c.ext.y-9,10,18);g.fill();g.stroke();g.fillStyle="#22302B";g.fillRect(c.ext.x-2,c.ext.y-13,4,4);g.globalAlpha=1}}
+      if(c.k==="bee")c.ppl.forEach(p=>{g.globalAlpha=p.out?Math.max(0,p.out/.7):1;g.fillStyle="#F2B8C6";g.strokeStyle="#22302B";g.lineWidth=1.5;g.beginPath();g.arc(p.x,p.y,PR,0,7);g.fill();g.stroke();g.globalAlpha=1});
+      if(c.k==="red"){const v=c.vv,ag=!v.calm,j=ag?Math.sin(S.t*22)*2:0;if(ag){g.fillStyle="rgba(217,72,59,.16)";g.beginPath();g.arc(v.x,v.y,30,0,7);g.fill()}
+        g.fillStyle=ag?"#D9483B":"#F2B8C6";g.strokeStyle="#22302B";g.lineWidth=2;g.beginPath();g.arc(v.x+j,v.y,VR-3,0,7);g.fill();g.stroke();
+        const pr=ag?(c.p>0?c.p:(v.m<100?1-v.m/100:0)):0;if(pr>0){g.fillStyle="#fff";g.fillRect(v.x-22,v.y-26,44,6);g.fillStyle="#22302B";g.fillRect(v.x-22,v.y-26,44*Math.min(1,pr),6)}}});
     // whose doorway it is: a tag on the wall beside it, on the side the droid comes from
     S.ch.forEach(c=>{const d=DR[c.k];g.font="800 12px system-ui,sans-serif";const tx=(c.i+1)+" "+d.n+(c.done?" ✓":""),tw=g.measureText(tx).width+14;
       let q=P(c,-17,-c.sg*(GAP+12+(c.v?10:tw/2)));q.x=Math.max(10+tw/2,Math.min(FW-10-tw/2,q.x));q.y=Math.max(20,Math.min(H-14,q.y));
       g.fillStyle=c.done?"#C9D3CD":d.c;g.strokeStyle="#22302B";g.lineWidth=2;g.beginPath();g.rect(q.x-tw/2,q.y-10,tw,18);g.fill();g.stroke();g.fillStyle="#22302B";g.textAlign="center";g.fillText(tx,q.x,q.y+3)});
-    // the survivor
     g.fillStyle="#4FB286";g.strokeStyle="#22302B";g.lineWidth=2;g.beginPath();g.arc(S.sv.x,S.sv.y,11,0,7);g.fill();g.stroke();g.fillStyle="#22302B";g.font="800 11px system-ui,sans-serif";g.textAlign="center";g.fillText("Survivor",S.sv.x,S.sv.y-18);
     // ability effects
-    if(S.swarm&&k==="bee"){g.strokeStyle="#C99A12";g.lineWidth=2;g.setLineDash([5,5]);g.beginPath();g.arc(S.x,S.y,tune.swarmR,0,7);g.stroke();g.setLineDash([]);g.fillStyle="#C99A12";for(let j=0;j<10;j++){const a=S.t*3+j*.63,rr=tune.swarmR*(.45+.5*((j*37)%10)/10);g.beginPath();g.arc(S.x+Math.cos(a)*rr,S.y+Math.sin(a)*rr,2.2,0,7);g.fill()}}
-    if(S.aura&&k==="red"){g.fillStyle="rgba(255,138,117,.2)";g.strokeStyle="#FF8A75";g.lineWidth=2;g.beginPath();g.arc(S.x,S.y,tune.auraR,0,7);g.fill();g.stroke()}
-    if(S.hl&&k==="cam"){g.strokeStyle="#6FD3C2";g.lineWidth=2;g.setLineDash([3,6]);g.beginPath();g.arc(S.x,S.y,26+6*Math.sin(S.t*5),0,7);g.stroke();g.setLineDash([])}
-    if(S.spray&&k==="fish"){const c=chOf("fish"),hit=c&&!c.done&&side(c)&&near(c)<115,e=hit?P(c,-8,0):{x:S.x+S.fx*90,y:S.y+S.fy*90};g.strokeStyle="#7CC4EC";g.lineWidth=6;g.lineCap="round";g.beginPath();g.moveTo(S.x,S.y);g.lineTo(e.x,e.y);g.stroke();g.lineCap="butt"}
-    if(S.useFx>0){const c=chOf("fish");if(c){const e=P(c,-8,0);g.strokeStyle="#fff";g.lineWidth=5;g.lineCap="round";g.beginPath();g.moveTo(S.x,S.y);g.lineTo(e.x,e.y);g.stroke();g.lineCap="butt"}}
-    if(S.honkFx>0){g.strokeStyle="#22302B";g.lineWidth=2;g.beginPath();g.arc(S.x,S.y,tune.honkR*(1-S.honkFx/.35),0,7);g.stroke()}
-    if(S.boom>0){g.fillStyle="rgba(140,143,156,"+S.boom*2+")";g.beginPath();g.arc(S.x+S.fx*16,S.y+S.fy*16,34*(1.2-S.boom),0,7);g.fill()}
+    if(S.swarm&&k==="bee"){g.fillStyle="rgba(242,203,87,.14)";g.strokeStyle="#C99A12";g.lineWidth=2;g.setLineDash([5,5]);g.beginPath();g.arc(S.x,S.y,T.bee.radius,0,7);g.fill();g.stroke();g.setLineDash([]);g.fillStyle="#C99A12";for(let j=0;j<14;j++){const a=S.t*3+j*.45,rr=T.bee.radius*(.4+.55*((j*37)%10)/10);g.beginPath();g.arc(S.x+Math.cos(a)*rr,S.y+Math.sin(a)*rr,2.2,0,7);g.fill()}}
+    if(S.aura&&k==="red"){g.fillStyle="rgba(255,138,117,.2)";g.strokeStyle="#FF8A75";g.lineWidth=2;g.beginPath();g.arc(S.x,S.y,T.red.radius,0,7);g.fill();g.stroke()}
+    if(S.hl&&k==="cam"){g.strokeStyle="rgba(63,167,150,.9)";g.lineWidth=2;g.setLineDash([10,7]);g.lineDashOffset=-S.t*18;g.beginPath();g.arc(S.x,S.y,T.cam.hl,0,7);g.stroke();g.setLineDash([]);const s=(S.t*.7)%1;g.strokeStyle="rgba(63,167,150,"+(.55*(1-s))+")";g.lineWidth=3;g.beginPath();g.arc(S.x,S.y,T.cam.hl*s,0,7);g.stroke()}
+    if(S.spray&&S.spray.len){const a=S.spray.a;g.strokeStyle="#7CC4EC";g.lineWidth=6;g.lineCap="round";g.beginPath();g.moveTo(S.x+Math.cos(a)*R,S.y+Math.sin(a)*R);g.lineTo(S.x+Math.cos(a)*S.spray.len,S.y+Math.sin(a)*S.spray.len);g.stroke();g.lineCap="butt"}
+    if(S.aiming){const L=lane(S.face),col=S.lock?"#2F9E5B":"#7A5FC8";g.strokeStyle=col;g.globalAlpha=.3+.5*S.wind;g.lineWidth=R*2;g.beginPath();g.moveTo(S.x,S.y);g.lineTo(S.x+S.face.x*L.len,S.y+S.face.y*L.len);g.stroke();g.globalAlpha=1;
+      g.strokeStyle=col;g.lineWidth=3;g.beginPath();g.arc(S.x,S.y,R+6,-Math.PI/2,-Math.PI/2+Math.PI*2*S.wind);g.stroke();
+      if(S.lock){const o=S.lock.o;g.strokeStyle="#2F9E5B";g.lineWidth=3;g.strokeRect(o.x-3,o.y-3,o.w+6,o.h+6)}}
+    if(S.useFx){g.strokeStyle="#fff";g.lineWidth=5;g.lineCap="round";g.beginPath();g.moveTo(S.x,S.y);g.lineTo(S.useFx.x,S.useFx.y);g.stroke();g.lineCap="butt"}
+    if(S.honkFx>0){g.strokeStyle="#22302B";g.lineWidth=2;g.beginPath();g.arc(S.x,S.y,T.bee.honkR*(1-S.honkFx/.35),0,7);g.stroke()}
+    if(S.boom){g.fillStyle="rgba(140,143,156,"+S.boom.t*2+")";g.beginPath();g.arc(S.boom.x,S.boom.y,44*(1.2-S.boom.t),0,7);g.fill()}
     // the droid
-    g.fillStyle=DR[k].c;g.strokeStyle="#22302B";g.lineWidth=2.5;g.beginPath();g.arc(S.x,S.y,R,0,7);g.fill();g.stroke();
-    g.fillStyle="#22302B";g.beginPath();g.arc(S.x+S.fx*6,S.y+S.fy*6,2.6,0,7);g.fill();
-    if(S.item==="ext"){g.fillStyle="#D9483B";g.strokeStyle="#22302B";g.lineWidth=1.5;g.beginPath();g.rect(S.x+8,S.y-16,7,13);g.fill();g.stroke()}
-    const cc=chOf("cam");if(cc&&cc.card.got&&!cc.done){g.fillStyle="#FFE08A";g.strokeStyle="#22302B";g.lineWidth=1.5;g.beginPath();g.rect(S.x-16,S.y-16,11,7);g.fill();g.stroke()}
+    const sx=S.stun>0?Math.sin(S.t*40)*2:0;g.fillStyle=DR[k].c;g.strokeStyle="#22302B";g.lineWidth=2.5;g.beginPath();g.arc(S.x+sx,S.y,R,0,7);g.fill();g.stroke();
+    g.fillStyle="#22302B";g.beginPath();g.arc(S.x+S.face.x*6.5,S.y+S.face.y*6.5,2.8,0,7);g.fill();
+    if(S.hold){const m=ctr(S.hold.o);g.strokeStyle="#22302B";g.lineWidth=3;g.beginPath();g.moveTo(S.x,S.y);g.lineTo(m.x,m.y);g.stroke()}
+    if(S.stun>0){g.fillStyle="#22302B";g.font="800 12px system-ui,sans-serif";g.textAlign="center";g.fillText("Stunned",S.x,S.y-R-8)}
+    if(S.item==="ext"){g.fillStyle="#D9483B";g.strokeStyle="#22302B";g.lineWidth=1.5;g.beginPath();g.rect(S.x+8,S.y-18,7,13);g.fill();g.stroke()}
+    const cc=chOf("cam");if(cc&&cc.card.got&&!cc.open){g.fillStyle="#FFE08A";g.strokeStyle="#22302B";g.lineWidth=1.5;g.beginPath();g.rect(S.x-17,S.y-17,11,7);g.fill();g.stroke()}
     hud()}
   let lastHud="";
   function hud(){const k=A(),d=DR[k],x=ctx();
-    const lab={fish:"Hold: spray",orb:"Charge",crab:"Grip",bee:"Swarm: "+(S.swarm?"on":"off"),red:"Aura: "+(S.aura?"on":"off"),cam:"Highlight: "+(S.hl?"on":"off")}[k];
-    const on=(k==="bee"&&S.swarm)||(k==="red"&&S.aura)||(k==="cam"&&S.hl)||(k==="fish"&&S.spray);
-    const sig=[S.seed,k,lab,on,x&&x.l,other,S.ch.map(c=>c.done?1:0).join(""),S.dmg].join("|");
+    const lab={fish:"Hold: spray",orb:S.aiming?"Release: charge":"Hold: charge",crab:S.grip?"Let go":"Grip",bee:"Swarm: "+(S.swarm?"on":"off"),red:"Aura: "+(S.aura?"on":"off"),cam:"Highlight: "+(S.hl?"on":"off")}[k];
+    const on=(k==="bee"&&S.swarm)||(k==="red"&&S.aura)||(k==="cam"&&S.hl)||(k==="fish"&&S.spray)||(k==="crab"&&S.grip)||(k==="orb"&&S.aiming);
+    const sig=[S.seed,k,lab,!!on,x&&x.l,other,S.ch.map(c=>c.done?1:0).join(""),S.dmg].join("|");
     $("spBar").style.width=S.bars[k]+"%";$("spBar").style.background=d.c;$("spTime").textContent=S.t.toFixed(1)+"s";
     root.querySelectorAll("#spParty button").forEach((b,i)=>{b.querySelector("i b").style.width=S.bars[S.party[i]]+"%"});
     if(sig===lastHud)return;lastHud=sig;
@@ -6067,19 +6149,24 @@ function protoLine(t,onChange){
     if(k==="q"){if(!qHeld)qTap=true;qHeld=true}else if(k==="e"){if(!eHeld)eTap=true;eHeld=true}else keys[k]=true});
   cv.addEventListener("keyup",e=>{const k=e.key.toLowerCase();if(k==="q")qHeld=false;else if(k==="e")eHeld=false;else keys[k]=false});
   cv.addEventListener("blur",()=>{keys={};qHeld=eHeld=false});
-  function hold(k,on){if(k==="q"){if(on&&!qHeld)qTap=true;qHeld=on}else{if(on&&!eHeld)eTap=true;eHeld=on}}
-  [["spAbil","q"],["spAct","e"]].forEach(([id,k])=>{const b=$(id);b.addEventListener("pointerdown",e=>{e.preventDefault();hold(k,true)});
-    ["pointerup","pointercancel","pointerleave"].forEach(ev=>b.addEventListener(ev,()=>hold(k,false)))});
+  cv.addEventListener("mousemove",e=>{const r=cv.getBoundingClientRect();mouse={x:(e.clientX-r.left)*W/r.width,y:(e.clientY-r.top)*H/r.height,fresh:true}});
+  cv.addEventListener("mouseleave",()=>{mouse=null});
+  function hold(k,on){if(k==="q"){if(on&&!qHeld)qTap=true;qHeld=on;if(!on)qDrag=null}else{if(on&&!eHeld)eTap=true;eHeld=on}}
+  (function(){const b=$("spAbil");let id=null,ox=0,oy=0;   // the ability button: a drag away from where it was pressed steers the aim
+    b.addEventListener("pointerdown",e=>{e.preventDefault();id=e.pointerId;try{b.setPointerCapture(id)}catch(_){}ox=e.clientX;oy=e.clientY;qDrag={dx:0,dy:0};hold("q",true)});
+    b.addEventListener("pointermove",e=>{if(e.pointerId===id&&qDrag){qDrag.dx=e.clientX-ox;qDrag.dy=e.clientY-oy}});
+    ["pointerup","pointercancel"].forEach(ev=>b.addEventListener(ev,e=>{if(e.pointerId===id){id=null;hold("q",false)}}));
+    const a=$("spAct");a.addEventListener("pointerdown",e=>{e.preventDefault();hold("e",true)});["pointerup","pointercancel","pointerleave"].forEach(ev=>a.addEventListener(ev,()=>hold("e",false)))})();
   $("spNew").addEventListener("click",()=>{gen(1+Math.floor(Math.random()*999999));cv.focus()});
   $("spReset").addEventListener("click",()=>{gen(seed);cv.focus()});
   $("spSeed").addEventListener("change",e=>{const v=Math.max(1,Math.min(999999,parseInt(e.target.value,10)||1));gen(v)});
   root.querySelectorAll("[data-other]").forEach(b=>b.addEventListener("click",()=>{other=b.dataset.other==="1";root.querySelectorAll("[data-other]").forEach(o=>o.setAttribute("aria-pressed",o===b?"true":"false"));gen(seed);
-    say(other?"Other ways through are on: any droid can clear a doorway with E, only more slowly.":"Other ways through are off: each doorway needs its own droid.")}));
+    say(other?"Other ways through are on: any droid can get through each doorway, only more slowly.":"Other ways through are off: each doorway needs its own droid.")}));
   let raf=0,last=0,visible=false;
   function frame(ts){raf=0;if(!visible)return;const dt=Math.min(.05,(ts-last)/1000||0);last=ts;step(dt);draw();raf=requestAnimationFrame(frame)}
   new IntersectionObserver(es=>{visible=es[0].isIntersecting;if(visible&&!raf){last=performance.now();raf=requestAnimationFrame(frame)}}).observe(cv);
   gen(seed);
-  window.squadProto={state:()=>S,gen:gen,step:step,draw:draw,tune:tune,sw:sw,hold:hold,ctx:ctx,layout:sd=>layout(rng(sd)),get keys(){return keys},stick:(dx,dy)=>{const m=Math.hypot(dx,dy);stick=m<4?{x:0,y:0}:{x:dx/40,y:dy/40}},other:on=>{other=!!on;gen(seed)},seed:()=>seed};
+  window.squadProto={state:()=>S,gen:gen,step:step,draw:draw,T:T,sw:sw,hold:hold,ctx:ctx,drag:(dx,dy)=>{qDrag=dx===null?null:{dx:dx,dy:dy}},get keys(){return keys},stick:(dx,dy)=>{const m=Math.hypot(dx,dy);stick=m<4?{x:0,y:0}:{x:dx/40,y:dy/40}},other:on=>{other=!!on;gen(seed)},seed:()=>seed};
 })();
 
 /* ===== The mobile HUD: one fixed layout, filled from each room's own buttons =====
