@@ -2813,7 +2813,7 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
       <li><b>Fish:</b> three fires burn in the doorway. Hold Q to spray, aimed as in Fish’s room. F is foam, R the bubble and B the deluge, once they are upgraded. Any droid can instead pick up the fire extinguisher with E, stand next to a fire and hold E. X drops it.</li>
       <li><b>Orb:</b> a heavy crate fills the doorway. Hold Q to aim and wind up, then release to charge. F is the shield and B the brace, once they are upgraded. No other droid can move a heavy crate. As in Orb’s room, there is a long way round: a second doorway further along the same wall.</li>
       <li><b>Crab:</b> two crates fill the doorway. Press the Grip button or Space next to one to grip it, drag it wherever it should go, and press again to let go. Dragging is slower than walking and drains the bar.</li>
-      <li><b>Bee:</b> a crowd stands in the doorway. Press Space or the Swarm button, and people inside the swarm walk away from Bee. Q drops a hive, E switches to Lead and F draws a swarm wall, once they are upgraded. Any other droid can honk with E, or squeeze through slowly.</li>
+      <li><b>Bee:</b> a crowd stands in the doorway. Press Space or the Swarm button, and people inside the swarm walk away from Bee. Q drops a hive, E switches to Lead and F draws a swarm wall, once they are upgraded. Any other droid can honk with E, or squeeze through. A crowd is heavy for a droid: it moves at about a seventh of its speed inside one, slower still for each further person it is pressed against, and people only give way a little.</li>
       <li><b>Red:</b> an agitated victim blocks the doorway. Press F for the aura. A victim inside it settles over a few seconds, then steps aside. Q aims the tranquilizer, once it is upgraded. Any other droid can stand next to the victim and hold E to calm them by hand.</li>
       <li><b>Cam:</b> the room is full of smoke, drawn as in Cam’s room: dark where nothing has been seen yet. The shutter needs a key card that lies somewhere in it. Press F for the highlight. T is the Tracker, Q the Infrared pulse and R Replay, once they are upgraded. Any droid can find the card by walking until it comes into view. Cam sees a little further.</li>
       <li><b>Clutter.</b> Boxes (light) and crates (medium) lie about: a row in front of most doorways, a ring around the extinguisher and the key card, a second row behind Crab’s crates, and some loose ones. Crab carries a box and drags a crate out of the way. Any other droid has to push them: a box at three quarters of walking speed, a crate at half, and slower for each further one in the line. They also stop Fish’s stream.</li>
@@ -5294,10 +5294,12 @@ window.CamDroid=function(Ho){
    how to slide along a wall towards it, and which side is the open one}.
    The state S comes from the host with use(S): droid, bar, walls, people, exit, and the fields of fields(). */
 window.BeeDroid=function(Ho){
-  const SPEED=150,R=16,PR=8,N=14,RUN=105,SQUEEZE=.35;   // droid speed, droid radius, person radius, people, a panicked person's speed, droid speed inside a crowd
+  const SPEED=150,R=16,PR=8,N=14,RUN=105,SQUEEZE=.15,YIELD=3;   // droid speed, droid radius, person radius, people, a panicked person's speed, droid speed inside a crowd
   const HONK={r:78,push:190,wait:1},SETTLE=.8,TALK={reach:26,time:1.3},KEEP=1.1,LEAN=.6,WALL={max:170,min:24,cost:.35},LEAD_COST=1,LEAD_MAX=4,LEAD_PACE=.75,DIM=.3,GLOW=1.5,GAP=52,SELF=85,STAMPEDE=1.25,HIVE_COST=.25; // the stand-in honk, how long the Steady swarm takes to settle a panicked person (s), how long a person keeps walking after leaving the swarm (s), how much a person leans towards the way out while walking away, the Swarm wall's length limits and its share of the bar drain, how much faster Lead drains the bar, how many people it escorts at once and at what share of the walking speed; in smoke: how much of the swarm's radius people notice, how much further its glow reaches with Bright swarm and how close its followers come; how fast people walk out by themselves
   const BEE="#D9A514";
   const tune={radius:110,walk:95,drain:8,recharge:20,slow:8};  // pixels, pixels a second, % of the bar per second (x3)
+  /* a crowd is heavy for a droid: it is slow inside one, slower for each further person it is pressed against, and people only give way a little */
+  const squeeze=n=>n?Math.max(.06,SQUEEZE*Math.pow(.8,n-1)):1;
   const W=Ho.W||760,H=Ho.H||460,sk=Ho.sk,say=Ho.say,keys=Ho.keys,G=Ho.geo||{};let S=null,g=null,wallHeld=false;
   /* one person of a crowd. rnd gives numbers from 0 to 1 */
   const one=(x,y,rnd)=>({x,y,vx:0,vy:0,kx:0,ky:0,fx:0,fy:0,flee:0,led:0,ring:false,glow:false,sent:false,st:0,sw:0,sx:x,sy:y,jam:0,jx:0,jy:0,injured:false,panic:false,go:false,delay:0,side:1,hurt:false,calm:0,found:false,out:false,wa:rnd()*6.283,wt:rnd()});
@@ -5440,7 +5442,7 @@ window.BeeDroid=function(Ho){
     for(const q of S.people){ // people keep a little room between each other
       if(q===p||q.out)continue;const x=p.x-q.x,y=p.y-q.y,m=Math.hypot(x,y)||.01;
       if(m<PR*2+3){const f=(PR*2+3-m)*7;tx+=x/m*f;ty+=y/m*f}}
-    if(dist<R+PR+2&&S.hold!==p){const f=(R+PR+2-dist)*9;tx+=dx/dist*f;ty+=dy/dist*f}   // and step aside for a droid squeezing through
+    if(dist<R+PR+2&&S.hold!==p){const f=(R+PR+2-dist)*YIELD;tx+=dx/dist*f;ty+=dy/dist*f}   // and step aside for a droid squeezing through
     const k=Math.min(1,dt*8);p.vx+=(tx-p.vx)*k;p.vy+=(ty-p.vy)*k;
     const fade=Math.pow(.02,dt);p.kx*=fade;p.ky*=fade;
     for(const ax of ["x","y"]){const n={x:p.x,y:p.y};n[ax]+=((ax==="x"?p.vx+p.kx:p.vy+p.ky))*dt;
@@ -5472,10 +5474,10 @@ window.BeeDroid=function(Ho){
     }else{S.bar=Math.min(100,S.bar+(S.emptied?tune.slow:tune.recharge)*dt);if(S.bar>=100)S.emptied=false}
     if(Ho.walk)Ho.walk(want,dt,1,true);   // a host with walking rules of its own
     else{
-    const crowded=S.people.some(p=>!p.out&&!p.glow&&Math.hypot(p.x-d.x,p.y-d.y)<R+PR),sp=SPEED*(crowded?SQUEEZE:1);
+    const crowded=S.people.filter(p=>!p.out&&!p.glow&&Math.hypot(p.x-d.x,p.y-d.y)<R+PR).length,sp=SPEED*squeeze(crowded);
     for(const ax of ["x","y"]){let mv=want[ax]*sp*dt;if(!mv)continue;const nd={x:d.x,y:d.y};nd[ax]+=mv;const bn=S.bench;
       if(bn&&ax==="x"&&hit(box(nd,R),bn)&&!S.walls.some(w=>hit(box(nd,R),w))){ // walking into the bench pushes it along the wall, slowly
-        mv*=SQUEEZE;const nx=Math.max(90,Math.min(234,bn.x+mv)),was=shut();if(nx!==bn.x){bn.x=nx;d.x+=mv;S.started=true;if(shut()&&!was)say("The bench is across the unsafe exit. Nobody can leave that way now.","good")}continue}
+        mv*=.35;const nx=Math.max(90,Math.min(234,bn.x+mv)),was=shut();if(nx!==bn.x){bn.x=nx;d.x+=mv;S.started=true;if(shut()&&!was)say("The bench is across the unsafe exit. Nobody can leave that way now.","good")}continue}
       if(!walled(nd,R))d[ax]=nd[ax]}
     }
     if(S.on&&Ho.bee()&&S.lead&&sk("lead")){ // Lead escorts only a few walkers: the ones it already has, then the nearest to the swarm
@@ -5584,7 +5586,7 @@ window.BeeDroid=function(Ho){
     lb.hidden=!sk("lead");lb.textContent=S.lead?"Mode: Lead":"Mode: Herd";lb.classList.toggle("on",S.lead);
     wb.hidden=!sk("wall");wb.textContent=S.wall?"Take wall down":"Hold: draw wall";
   }
-  return {R:R,PR:PR,N:N,SPEED:SPEED,SQUEEZE:SQUEEZE,HONK:HONK,tune:tune,one:one,fields:fields,use:s=>{S=s},act:act,release:release,press:press,hive:hive,leadMode:leadMode,wallPress:wallPress,wallRelease:wallRelease,
+  return {R:R,PR:PR,N:N,SPEED:SPEED,SQUEEZE:SQUEEZE,squeeze:squeeze,HONK:HONK,tune:tune,one:one,fields:fields,use:s=>{S=s},act:act,release:release,press:press,hive:hive,leadMode:leadMode,wallPress:wallPress,wallRelease:wallRelease,
     drawFloor:drawFloor,drawThings:drawThings,drawSwarm:drawSwarm,drawWall:drawWall,drawPeople:drawPeople,drawDroid:drawDroid,bind:bind,ui:ui,busy:()=>!!(S&&(S.on||S.draft))};
 };
 
@@ -6247,7 +6249,7 @@ window.FishDroid=function(Ho){
     S.ch.forEach(c=>{if(c.k==="red"&&!c.vv.calm)o.push([c.vv.x,c.vv.y,VB])});if(!other)crowd().forEach(p=>o.push([p.x,p.y,PR]));return o}
   function roundsOut(){for(const q of rounds()){let dx=S.x-q[0],dy=S.y-q[1],d=Math.hypot(dx,dy),m=R+q[2];if(d<m){if(d<.001){dx=-S.face.x;dy=-S.face.y;d=1}const n={x:q[0]+dx/d*m,y:q[1]+dy/d*m};if(!solid(box(n))){S.x=n.x;S.y=n.y}else return false}}return true}
   // walking, one axis at a time, the way the droid rooms do it. A dragged object moves with Crab as one. With other ways on, any droid pushes what it walks into
-  function walk(want,dt,k){const sp=SPEED*(k||1)*(S.hold?T.crab.dragSpeed:1)*(other&&crowd().some(p=>Math.hypot(p.x-S.x,p.y-S.y)<R+PR)?M.bee.SQUEEZE:1);
+  function walk(want,dt,k){const sp=SPEED*(k||1)*(S.hold?T.crab.dragSpeed:1)*M.bee.squeeze(crowd().filter(p=>Math.hypot(p.x-S.x,p.y-S.y)<R+PR).length);
     const inside=rounds().some(q=>Math.hypot(S.x-q[0],S.y-q[1])<R+q[2]-1.5);   // something moved onto the droid: it may still walk out
     for(const ax of ["x","y"]){const mv=want[ax]*sp*dt;if(!mv)continue;const ox=S.x,oy=S.y,nd={x:S.x,y:S.y};nd[ax]+=mv;const nb=box(nd);
       if(S.hold){const o=S.hold.o,nx={x:nd.x+S.hold.off.x,y:nd.y+S.hold.off.y,w:o.w,h:o.h};if(solid(nb)||solid(nx,o))continue;S[ax]=nd[ax];o.x=nx.x;o.y=nx.y}
@@ -6334,6 +6336,8 @@ window.FishDroid=function(Ho){
   // one step of the active droid, when it is a module: lend it the droid's place and bar, let it act, and take them back
   function mod(k,want,dt){const st=S.st[k],m=M[k];S.dr.x=S.x;S.dr.y=S.y;st.face=S.face;st.bar=S.bars[k];st.started=S.started;st.t=S.t;
     S.inside=rounds().some(q=>Math.hypot(S.x-q[0],S.y-q[1])<R+q[2]-1.5);m.use(st);if(k==="crab"&&want.m)st.face={x:want.x,y:want.y};
+    // Crab walks by its own rules, so the crowd slows it here
+    if(k==="crab"){const f=M.bee.squeeze(crowd().filter(p=>Math.hypot(p.x-S.x,p.y-S.y)<R+PR).length);if(f<1)want={x:want.x*f,y:want.y*f,m:want.m}}
     m.act(dt,want);S.x=S.dr.x;S.y=S.dr.y;S.bars[k]=st.bar;S.face=st.face;if(m.busy())S.started=true;
     if(k==="orb")S.ch.forEach(c=>{if(c.k==="orb"&&c.crate&&S.objs.indexOf(c.crate)<0&&!c.alt)c.ab=true});
     S.objs.forEach(o=>{if(o.hitBy&&o.c&&!o.c.alt&&o.c.k!=="orb"){o.c.alt=true}})}
