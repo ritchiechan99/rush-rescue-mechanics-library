@@ -882,6 +882,17 @@ body.dragging,body.dragging *{cursor:grabbing!important;user-select:none}
 .fproto .cp-top{gap:10px 16px}
 #fishProtoTree{--st:#2F8FC4}
 
+.sproto .sp-party{display:inline-flex;gap:6px}
+.sproto .sp-party button{font:inherit;font-weight:800;font-size:13px;border:2px solid var(--line);background:var(--panel);color:var(--ink);border-radius:12px;padding:5px 10px 7px;cursor:pointer;display:grid;gap:3px;min-width:64px;text-align:left}
+.sproto .sp-party button kbd{font:800 10px/1 var(--fd,system-ui);opacity:.7}
+.sproto .sp-party button i{display:block;height:4px;border-radius:2px;background:rgba(0,0,0,.14);overflow:hidden}
+.sproto .sp-party button i b{display:block;height:100%;background:var(--c)}
+.sproto .sp-party button[aria-pressed="true"]{border-color:#22302B;background:#22302B;color:#fff}
+.sproto .sp-party button[aria-pressed="true"] i{background:rgba(255,255,255,.25)}
+.sproto .sp-party button .dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--c);margin-right:5px}
+.sproto .sp-seed{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.sproto .sp-seed input{font:inherit;font-weight:700;font-size:14px;letter-spacing:0;width:6.5em;padding:6px 8px;border:2px solid var(--line);border-radius:10px;background:var(--panel);color:var(--ink)}
+
 /* The mobile HUD over each playable lo-fi. Sizes are in --u, which is 1px when the room is 844px wide */
 .cp-stage{container-type:inline-size}
 /* It sits in a bar under the room at every width: these rooms are one fixed screen, so a HUD laid over them would hide the corners */
@@ -2270,7 +2281,7 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
 
         <section class="docsec cat" data-doc="cat-droids">
           <p class="src">Read from the GDD, Figma and the mission sheet on 23 Nov 2026</p>
-          <div class="lvwrap" data-prefix="droid"><nav class="lvdir" aria-label="Droid directory"><button type="button" class="lvb" data-lv="all" aria-current="true"><b>All droids</b><span>Overview</span></button><div class="lvg">Droids</div><button type="button" class="lvb" data-lv="red"><img class="lvhd" src="head-red.png" alt="" width="26" height="26" loading="lazy"><b>Red</b><span>Ability defined</span></button><button type="button" class="lvb" data-lv="crab"><img class="lvhd" src="head-crab.png" alt="" width="26" height="26" loading="lazy"><b>Crab</b><span>Ability defined</span></button><button type="button" class="lvb" data-lv="fish"><img class="lvhd" src="head-fish.png" alt="" width="26" height="26" loading="lazy"><b>Fish</b><span>Ability defined</span></button><button type="button" class="lvb" data-lv="cam"><img class="lvhd" src="head-cam.png" alt="" width="26" height="26" loading="lazy"><b>Cam</b><span>Ability defined</span></button><button type="button" class="lvb" data-lv="orb"><img class="lvhd" src="head-orb.png" alt="" width="26" height="26" loading="lazy"><b>Orb</b><span>Ability defined</span></button><button type="button" class="lvb" data-lv="bee"><img class="lvhd" src="head-bee.png" alt="" width="26" height="26" loading="lazy"><b>Bee</b><span>Ability defined</span></button><div class="lvg">Reference</div><button type="button" class="lvb" data-lv="party"><b>Party and switching</b></button><button type="button" class="lvb" data-lv="actions"><b>What every droid can do</b></button><button type="button" class="lvb" data-lv="skilltree"><b>Skill tree rules</b></button></nav><div class="lvmain"><section class="lvpanel on" data-lv="all"><header class="lvhead"><h2>All droids</h2></header><div class="droster"><div class="drhead"><span class="dteam">Meet the team</span><h3>The Patchbots</h3><p>Six droids on their way to becoming a fully recognized first responder team. Pick one to meet them.</p></div><div class="drgrid"><a class="drcard" href="#droid-red" style="--dc:#E2513C"><span class="dport sm has"><img src="droid-red.png" alt="" loading="lazy"></span><b>Red</b><span>The charismatic leader of the Patchbots</span><em>Calming aura</em></a><a class="drcard" href="#droid-crab" style="--dc:#EE8A2B"><span class="dport sm has"><img src="droid-crab.png" alt="" loading="lazy"></span><b>Crab</b><span>The dependable life(buoy) of the party</span><em>Grip</em></a><a class="drcard" href="#droid-fish" style="--dc:#2F8FC4"><span class="dport sm has"><img src="droid-fish.png" alt="" loading="lazy"></span><b>Fish</b><span>Cool, level-headed and shy</span><em>Water stream</em></a><a class="drcard" href="#droid-cam" style="--dc:#3FA796"><span class="dport sm has"><img src="droid-cam.png" alt="" loading="lazy"></span><b>Cam</b><span>The lovable star of the show</span><em>Highlight</em></a><a class="drcard" href="#droid-orb" style="--dc:#7B4FCF"><span class="dport sm has"><img src="droid-orb.png" alt="" loading="lazy"></span><b>Orb</b><span>A dreamer, with their round head often in the clouds</span><em>Charge</em></a><a class="drcard" href="#droid-bee" style="--dc:#D9A514"><span class="dport sm has"><img src="droid-bee.png" alt="" loading="lazy"></span><b>Bee</b><span>The no-nonsense go-getter of the group</span><em>Herd</em></a></div></div>
+          <div class="lvwrap" data-prefix="droid"><nav class="lvdir" aria-label="Droid directory"><button type="button" class="lvb" data-lv="all" aria-current="true"><b>All droids</b><span>Overview</span></button><div class="lvg">Droids</div><button type="button" class="lvb" data-lv="red"><img class="lvhd" src="head-red.png" alt="" width="26" height="26" loading="lazy"><b>Red</b><span>Ability defined</span></button><button type="button" class="lvb" data-lv="crab"><img class="lvhd" src="head-crab.png" alt="" width="26" height="26" loading="lazy"><b>Crab</b><span>Ability defined</span></button><button type="button" class="lvb" data-lv="fish"><img class="lvhd" src="head-fish.png" alt="" width="26" height="26" loading="lazy"><b>Fish</b><span>Ability defined</span></button><button type="button" class="lvb" data-lv="cam"><img class="lvhd" src="head-cam.png" alt="" width="26" height="26" loading="lazy"><b>Cam</b><span>Ability defined</span></button><button type="button" class="lvb" data-lv="orb"><img class="lvhd" src="head-orb.png" alt="" width="26" height="26" loading="lazy"><b>Orb</b><span>Ability defined</span></button><button type="button" class="lvb" data-lv="bee"><img class="lvhd" src="head-bee.png" alt="" width="26" height="26" loading="lazy"><b>Bee</b><span>Ability defined</span></button><div class="lvg">Reference</div><button type="button" class="lvb" data-lv="party"><b>Party and switching</b></button><button type="button" class="lvb" data-lv="actions"><b>What every droid can do</b></button><button type="button" class="lvb" data-lv="skilltree"><b>Skill tree rules</b></button><div class="lvg">Playable</div><button type="button" class="lvb" data-lv="squad"><b>Squad run</b><span>Four droids, random party</span></button></nav><div class="lvmain"><section class="lvpanel on" data-lv="all"><header class="lvhead"><h2>All droids</h2></header><div class="droster"><div class="drhead"><span class="dteam">Meet the team</span><h3>The Patchbots</h3><p>Six droids on their way to becoming a fully recognized first responder team. Pick one to meet them.</p></div><div class="drgrid"><a class="drcard" href="#droid-red" style="--dc:#E2513C"><span class="dport sm has"><img src="droid-red.png" alt="" loading="lazy"></span><b>Red</b><span>The charismatic leader of the Patchbots</span><em>Calming aura</em></a><a class="drcard" href="#droid-crab" style="--dc:#EE8A2B"><span class="dport sm has"><img src="droid-crab.png" alt="" loading="lazy"></span><b>Crab</b><span>The dependable life(buoy) of the party</span><em>Grip</em></a><a class="drcard" href="#droid-fish" style="--dc:#2F8FC4"><span class="dport sm has"><img src="droid-fish.png" alt="" loading="lazy"></span><b>Fish</b><span>Cool, level-headed and shy</span><em>Water stream</em></a><a class="drcard" href="#droid-cam" style="--dc:#3FA796"><span class="dport sm has"><img src="droid-cam.png" alt="" loading="lazy"></span><b>Cam</b><span>The lovable star of the show</span><em>Highlight</em></a><a class="drcard" href="#droid-orb" style="--dc:#7B4FCF"><span class="dport sm has"><img src="droid-orb.png" alt="" loading="lazy"></span><b>Orb</b><span>A dreamer, with their round head often in the clouds</span><em>Charge</em></a><a class="drcard" href="#droid-bee" style="--dc:#D9A514"><span class="dport sm has"><img src="droid-bee.png" alt="" loading="lazy"></span><b>Bee</b><span>The no-nonsense go-getter of the group</span><em>Herd</em></a></div></div>
           <div class="dplayer"><span class="dlab">The player</span><p>You are the player. You have the ability to swap between and control each of the Patchbots, and the responsibility to help them achieve their goal of becoming a fully recognized first responder team. They don’t know you exist, but they trust you to make their dreams come true.</p></div>
           <p class="lead">The game has six playable droids, each with one ability. All six are defined: Fish’s and Bee’s in the GDD, and Red’s, Cam’s, Crab’s and Orb’s by the decisions of 26 Nov 2026.</p>
           <div class="callout chg"><h3>Decided on 26 Nov 2026, not yet in the GDD</h3><ul><li><b>Red</b> has a calming aura that settles agitated victims around it.</li><li><b>Cam</b> sees clearer in low visibility, and its highlight shows victims with their type, interactables and key items. On 26 Nov anything beyond a wall was shown in infrared. In the playable lo-fi that is moved to the Infrared pulse upgrade, which is not confirmed.</li><li><b>Crab</b> grips light and medium objects: light ones are carried and medium ones are dragged.</li><li><b>Orb</b> makes an aimed charge that destroys heavy obstacles. Anything else in the way is knocked aside, and each destroyed obstacle counts as property damage.</li><li>Skill tree candidates are noted for Crab and Orb on their Skill tree tabs.</li><li>Victims now come in three types, with a hidden agitation meter. See <a href="#cat-victims">Victims</a>.</li></ul></div>
@@ -2749,6 +2760,61 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
           <section class="lvpanel" data-lv="party"><header class="lvhead"><h2>Party and switching</h2><p class="lvchips"><span class="lvchip">Reference</span><span class="lvchip">GDD 2.1.3, 3.4.2</span></p></header><div class="lvpane on" data-t="main"><p>Droids have no AI. The player controls one droid at a time and swaps between them instantly.</p>
           <div class="tw"><table class="camp def"><thead><tr><th scope="col">Rule</th><th scope="col">How it works</th></tr></thead><tbody><tr><th scope="row">Drafting</th><td>From the campaign map the player selects a stage, and a popup appears where they choose up to 4 droids to bring as their party.</td></tr><tr><th scope="row">Switching</th><td>During the mission the HUD lists the party, and tapping another droid swaps it in. There is no switch cooldown.</td></tr><tr><th scope="row">When it is blocked</th><td>During treatment minigames and while carrying a survivor.</td></tr><tr><th scope="row">Position</th><td>The new droid appears where the current droid is standing. Droids are never spread across the map.</td></tr><tr><th scope="row">Abilities</th><td>Switching turns off any active ability. Each droid keeps its own ability bar, which keeps recharging while that droid is out of play.</td></tr><tr><th scope="row">Health and effects</th><td>Each droid has its own health bar. Burning, slipping and stun effects stay with the droid that suffered them, and a burning droid keeps burning after it is switched out, until its burn timer runs out.</td></tr><tr><th scope="row">Droid down</th><td>When the droid being controlled reaches zero health, the game switches automatically to the next droid in the party. This continues until every droid in the party is down.</td></tr><tr><th scope="row">Why it matters</th><td>The skill is choosing the right droid for the moment, such as Fish for a spreading fire or Bee to move a crowd. The choice is made twice: when building the party and again in the field.</td></tr></tbody></table></div>
           <p>The full text is on the <a href="#droids">Droid rules</a> page.</p></div></section>
+          <section class="lvpanel" data-lv="squad"><header class="lvhead"><h2>Squad run</h2><p class="lvchips"><span class="lvchip">Playable lo-fi</span><span class="lvchip">Proposed on 27 Nov 2026</span></p></header><div class="lvpane on" data-t="main">
+<div class="cproto sproto" id="squadProto">
+  <p class="lead">A floor of four chambers, made from a seed. The seed picks four of the six droids at random, and each chamber’s doorway is blocked by something one of them answers. Switch droids to get through all four and reach the survivor. This is a flat sketch to try the idea, not the game’s look or physics.</p>
+  <div class="cp-top">
+    <div class="sp-party" id="spParty" role="group" aria-label="Party"></div>
+    <div class="cp-bar" aria-hidden="true"><span>Ability bar</span><i><b id="spBar"></b></i></div>
+    <div class="cp-time"><span>Time</span><b id="spTime">0.0s</b></div>
+    <div class="cp-time"><span>Cleared</span><b id="spDone">0/4</b></div>
+    <div class="cp-time"><span>Property damage</span><b id="spDmg">0</b></div>
+  </div>
+  <div class="cp-top cp-rooms">
+    <button type="button" class="cp-reset" id="spNew">New scenario</button>
+    <button type="button" class="cp-reset" id="spReset">Replay this one</button>
+    <label class="sp-seed"><span>Seed</span><input type="number" id="spSeed" min="1" max="999999" step="1" inputmode="numeric"></label>
+    <span class="cp-lab">Other ways through</span>
+    <div class="cp-seg" role="group" aria-label="Other ways through">
+      <button type="button" data-other="0" aria-pressed="true">Off: needs all four</button>
+      <button type="button" data-other="1" aria-pressed="false">On: slower without</button>
+    </div>
+  </div>
+  <div class="cp-stage">
+    <canvas id="spCanvas" width="760" height="460" tabindex="0" role="img" aria-label="A floor of four chambers in a row, split by walls with one doorway each. The droid starts on the left and a survivor waits on the right."></canvas>
+    <div class="rp-btns">
+      <button type="button" class="cp-grip" id="spAbil"><kbd>Q</kbd><span>Ability</span></button>
+      <button type="button" class="cp-grip" id="spAct"><kbd>E</kbd><span>Interact</span></button>
+    </div>
+  </div>
+  <p class="cp-msg" id="spMsg" aria-live="polite">Click the room, then move with the arrow keys or WASD. Keys 1 to 4 switch droids. Q is the active droid’s ability.</p>
+  <div class="cp-legend">
+    <span><i style="background:#F25C2A"></i>Fire: Fish</span>
+    <span><i style="background:#8C8F9C"></i>Heavy crate: Orb</span>
+    <span><i style="background:#E9A15B"></i>Rubble: Crab</span>
+    <span><i style="background:#F2B8C6;border-radius:50%"></i>Crowd: Bee</span>
+    <span><i style="background:#D9483B;border-radius:50%"></i>Agitated victim: Red</span>
+    <span><i style="background:#3B4A45"></i>Smoke and a locked shutter: Cam</span>
+    <span><i style="background:#4FB286;border-radius:50%"></i>Survivor</span>
+  </div>
+  <div class="cp-rules">
+    <h3>Rules in this room</h3>
+    <ul>
+      <li><b>The seed makes everything:</b> which four droids are in the party, which chamber each one answers, where each doorway is, and the details of each blocker. The same seed always gives the same scenario.</li>
+      <li><b>Switching</b> is instant and the new droid stands where the last one stood, as in the GDD. Switching turns off an ability that was on. Each droid keeps its own ability bar, which refills while it is not in use.</li>
+      <li><b>Fish:</b> a fire fills the doorway. Hold Q next to it to spray it out.</li>
+      <li><b>Orb:</b> a heavy crate fills the doorway. Line up with it and press Q to charge through it. It counts as property damage.</li>
+      <li><b>Crab:</b> rubble fills the doorway. Press Q next to it to grip a piece and put it aside, once for each piece.</li>
+      <li><b>Bee:</b> a crowd stands in the doorway. Press Q for the swarm, and people inside it walk away from Bee. Come at them from the side, so they have somewhere to go.</li>
+      <li><b>Red:</b> an agitated victim blocks the doorway. Press Q for the aura and stay close until they settle and step aside.</li>
+      <li><b>Cam:</b> the chamber is full of smoke and the shutter needs a key card that lies somewhere in it. Press Q for the highlight, which shows the card through the smoke.</li>
+      <li><b>Other ways through, off:</b> only the matching droid can clear each doorway, so the scenario needs all four.</li>
+      <li><b>Other ways through, on:</b> any droid can clear each doorway with the E button, only more slowly: carry the extinguisher to the fire, shove the crate aside, clear the rubble by hand, honk at the crowd, calm the victim by hand, or search the smoke for the card. This is the “always solvable” hazard rule.</li>
+      <li><span class="tbd">Asked for on 27 Nov 2026. Every blocker is a stand-in cut down from the droid’s own room to one input, and every number is a placeholder. “Off” is the default because the ask was a scenario that requires four droids. It goes against the rule that a normal droid can always solve a situation, which “On” follows. Which of the two the game uses for a squad scenario is open.</span></li>
+    </ul>
+  </div>
+</div>
+</div></section>
           <section class="lvpanel" data-lv="actions"><header class="lvhead"><h2>What every droid can do</h2><p class="lvchips"><span class="lvchip">Reference</span><span class="lvchip">GDD 3.1.4</span></p></header><div class="lvpane on" data-t="main"><p>Along with its own ability, every droid can do the following.</p>
           <div class="tw"><table class="camp def"><thead><tr><th scope="col">Interaction</th><th scope="col">What it does</th></tr></thead><tbody><tr><th scope="row">Tag</th><td>Survivors and hazards are tagged with a floating marker of their type once they come into the droid’s view. Tagging everything early lets the player plan, and counts towards the Thorough and Alert traits. Cam’s Tracker upgrade adds to this: what Cam’s highlight shows is tagged too.</td></tr><tr><th scope="row">Honk (proposed)</th><td>A weaker version of Bee’s ability that every droid has. NPCs in a small area around the droid move away from it. Players can clear crowds even without Bee in the party, and it counts towards the Purposeful trait.</td></tr><tr><th scope="row">Push</th><td>Moving into an obstacle pushes it, depending on its <a href="#obstacle-weights">weight</a>.</td></tr><tr><th scope="row">Carry</th><td>Droids pick up survivors to carry them to the ambulance, and pick up light obstacles and items. Droids can’t switch while carrying a survivor. The base rules for carrying a survivor are below.</td></tr><tr><th scope="row">Slide</th><td>On wet floors, a droid keeps moving in the direction it entered, faster but with less control. Hitting an obstacle while sliding can stun and damage it.</td></tr></tbody></table></div>
           <div class="callout chg"><h3>Carrying a survivor: base rules for every droid. Decided on 26 Nov 2026, not yet in the GDD</h3><p>Until now a survivor was simply carried. These rules are the base that a droid’s skill tree can then build on.</p><div class="tw"><table class="camp def"><thead><tr><th scope="col">Rule</th><th scope="col">What it means</th></tr></thead><tbody><tr><th scope="row">How they are moved depends on the victim</th><td>A calm victim who can walk is walked out with support, at near full speed. A victim who cannot walk or is unconscious is a full carry, which is slow.</td></tr><tr><th scope="row">Carrying has a cost</th><td>The droid is slower, and the victim’s vitality keeps dropping the whole way.</td></tr><tr><th scope="row">A rough ride hurts</th><td>Bumping into obstacles, or passing through a hazard or a crowd while carrying, jolts the victim and costs vitality.</td></tr><tr><th scope="row">Agitated victims cannot be carried</th><td>An <a href="#victim-agitated">agitated victim</a> has to be calm first. Trying to carry one makes them more agitated, and never fails the mission.</td></tr><tr><th scope="row">Putting down</th><td>A victim can be set down anywhere and picked up again. Their vitality only stops dropping at the ambulance or the triage tent.</td></tr></tbody></table></div><p class="tbd">Still to define: every number (how much slower, how much a jolt costs), whether being walked out with support is a victim state of its own beside unconscious, agitated and normal, and how these rules sit with the Soft Grip and Careful Carry example boons, which also change carrying. Red’s playable lo-fi has these rules in its Carry out situation. The other droids’ lo-fis do not have them yet.</p></div>
@@ -5795,6 +5861,195 @@ function protoLine(t,onChange){
   window.fishProto={state:()=>S,stick:(dx,dy)=>{stick=dx||dy?{id:-9,x:0,y:0,dx,dy}:null},step,reset,tune,targets,ray,tree,keys,foam,hold:(k,on)=>{held[k]=!!on},use:on=>{held.e=!!on},auto:on=>{auto=!!on},drop,reach,aim:a=>{S.aimA=a;S.aimMan=true},setMode:m=>click("data-mode",m),setRoom:r=>click("data-room",r)}; // for tests
 })();
 
+(function(){
+  const root=document.getElementById("squadProto");if(!root)return;
+  const cv=root.querySelector("#spCanvas"),g=cv.getContext("2d"),W=760,H=460,$=id=>root.querySelector("#"+id);
+  const DR={red:{n:"Red",c:"#FF8A75"},cam:{n:"Cam",c:"#6FD3C2"},crab:{n:"Crab",c:"#FFB066"},orb:{n:"Orb",c:"#B79BF2"},fish:{n:"Fish",c:"#7CC4EC"},bee:{n:"Bee",c:"#F2CB57"}};
+  const ALL=Object.keys(DR),WX=[152,304,456,608],WT=12,GAP=30,R=11,SPD=150;
+  const tune={spray:60,sprayCost:12,ext:22,charge:30,shove:6,grip:8,clear:2.5,swarm:14,swarmR:75,flee:70,honkR:48,honkCd:1.2,aura:50,auraCost:12,auraR:95,calm:18,hl:10,see:55,refill:7};
+  function rng(seed){let a=seed>>>0;return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+  let seed=1+Math.floor(Math.random()*999999),other=false,S=null,keys={},stick={x:0,y:0},qHeld=false,eHeld=false,qTap=false,eTap=false;
+  const msg=$("spMsg");function say(t,c){msg.textContent=t;msg.className="cp-msg"+(c?" "+c:"")}
+  function shuffle(a,r){for(let i=a.length-1;i>0;i--){const j=Math.floor(r()*(i+1));const t=a[i];a[i]=a[j];a[j]=t}return a}
+  function gen(sd){
+    seed=sd;const r=rng(sd),party=shuffle(ALL.slice(),r).slice(0,4),order=shuffle(party.slice(),r);
+    const far=gy=>gy<H/2?H-50-r()*70:50+r()*70;
+    const ch=order.map((k,i)=>{const x=WX[i],gy=110+Math.floor(r()*(H-220)),left=i?WX[i-1]+WT/2:8,c={k:k,i:i,x:x,gy:gy,left:left,done:false,ab:false,alt:false,p:0};
+      const spot=()=>({x:left+26+r()*(x-left-80),y:far(gy)});
+      if(k==="fish"){c.heat=100;c.max=100;c.ext=Object.assign(spot(),{held:false})}
+      if(k==="crab"){c.n=2+Math.floor(r()*3);c.left=c.n;c.toss=[]}
+      if(k==="bee"){c.ppl=[];const n=5+Math.floor(r()*4),pos=[];[-24,-8,8,24].forEach(dy=>pos.push([x-14,gy+dy]));[-8,8,-24,24].forEach(dy=>pos.push([x-31,gy+dy]));
+        for(let j=0;j<n;j++)c.ppl.push({x:pos[j][0],y:pos[j][1],ft:0,fx:0,fy:0,id:j})}
+      if(k==="red"){c.agit=100;c.v={x:x-18,y:gy,ty:gy}}
+      if(k==="cam"){c.card=Object.assign(spot(),{got:false});c.seen=false}
+      return c});
+    S={seed:sd,party:party,ch:ch,act:0,bars:{},x:44,y:H/2,fx:1,fy:0,t:0,started:false,win:false,dmg:0,item:null,swarm:false,aura:false,hl:false,spray:false,dash:null,honk:0,honkFx:0,sy:80+Math.floor(r()*(H-160))};
+    party.forEach(k=>S.bars[k]=100);
+    // start on the droid the first chamber does not need, so the first thing the player does is switch
+    S.act=Math.max(0,party.findIndex(k=>k!==ch[0].k));
+    $("spSeed").value=sd;buildParty();
+    say("Seed "+sd+". The party is "+party.map(k=>DR[k].n).join(", ")+". Chamber 1 is for "+DR[ch[0].k].n+".");draw();return S}
+  function buildParty(){const p=$("spParty");p.innerHTML="";S.party.forEach((k,i)=>{const b=document.createElement("button");b.type="button";b.style.setProperty("--c",DR[k].c);b.dataset.i=i;
+      b.innerHTML="<span><span class=\"dot\"></span>"+DR[k].n+" <kbd>"+(i+1)+"</kbd></span><i><b></b></i>";b.addEventListener("click",()=>{sw(i);cv.focus()});p.appendChild(b)})}
+  const A=()=>S.party[S.act],chOf=k=>S.ch.find(c=>c.k===k),cur=()=>S.ch.find(c=>!c.done);
+  function sw(i){if(!S||i<0||i>=S.party.length||i===S.act||S.dash)return;S.act=i;S.swarm=S.aura=S.hl=S.spray=false;say("Switched to "+DR[A()].n+".")}
+  function off(){S.swarm=S.aura=S.hl=S.spray=false}
+  // what blocks the way: wall pieces, doorway blockers, people
+  function rects(){const o=[];S.ch.forEach(c=>{o.push([c.x-WT/2,0,WT,c.gy-GAP],[c.x-WT/2,c.gy+GAP,WT,H-c.gy-GAP]);
+      if(!c.done&&(c.k==="fish"||c.k==="orb"||c.k==="crab"||c.k==="cam"))o.push([c.x-10,c.gy-GAP,20,GAP*2])});return o}
+  function circles(){const o=[];S.ch.forEach(c=>{if(c.k==="bee")c.ppl.forEach(p=>o.push([p.x,p.y,8]));if(c.k==="red")o.push(c.done?[c.v.x,c.v.y,9]:[c.v.x,c.v.y,30])});return o}
+  function collide(){
+    for(let n=0;n<2;n++){
+      rects().forEach(q=>{const cx=Math.max(q[0],Math.min(S.x,q[0]+q[2])),cy=Math.max(q[1],Math.min(S.y,q[1]+q[3]));let dx=S.x-cx,dy=S.y-cy,d=Math.hypot(dx,dy);
+        if(d<R){if(d<.001){dx=-1;dy=0;d=1}S.x=cx+dx/d*R;S.y=cy+dy/d*R}});
+      circles().forEach(q=>{let dx=S.x-q[0],dy=S.y-q[1],d=Math.hypot(dx,dy),m=R+q[2];if(d<m){if(d<.001){dx=-1;dy=0;d=1}S.x=q[0]+dx/d*m;S.y=q[1]+dy/d*m}})}
+    S.x=Math.max(8+R,Math.min(W-8-R,S.x));S.y=Math.max(8+R,Math.min(H-8-R,S.y))}
+  const near=c=>Math.hypot(S.x-(c.x-16),S.y-c.gy),side=c=>S.x<c.x;
+  function finish(c,how){if(c.done)return;c.done=true;const by=c.alt?"another way":DR[c.k].n+"’s ability";const nx=cur();
+    say("Chamber "+(c.i+1)+" is open, by "+by+"."+(nx?" Chamber "+(nx.i+1)+" is for "+DR[nx.k].n+".":" Reach the survivor."),"good")}
+  function people(dt){S.ch.forEach(c=>{if(c.k!=="bee")return;const minX=c.left+10,maxX=c.x-14,bee=S.swarm&&A()==="bee";
+      c.ppl.forEach(p=>{let vx=0,vy=0;const dx=p.x-S.x,dy=p.y-S.y,d=Math.hypot(dx,dy)||1;
+        if(bee&&d<tune.swarmR){vx=dx/d;vy=dy/d;c.ab=true}else if(p.ft>0){vx=p.fx;vy=p.fy;p.ft-=dt}
+        if(!vx&&!vy)return;let nx=p.x+vx*tune.flee*dt,ny=p.y+vy*tune.flee*dt;
+        if(nx>maxX||nx<minX){nx=Math.max(minX,Math.min(maxX,nx));if(Math.abs(vy)<.75)ny+=(dy||(p.id%2?1:-1))>0?tune.flee*dt*.8:-tune.flee*dt*.8}
+        p.x=nx;p.y=Math.max(18,Math.min(H-18,ny))});
+      for(let a=0;a<c.ppl.length;a++)for(let b=a+1;b<c.ppl.length;b++){const p=c.ppl[a],q=c.ppl[b];let dx=q.x-p.x,dy=q.y-p.y,d=Math.hypot(dx,dy);if(d<16&&d>.001){const m=(16-d)/2;dx/=d;dy/=d;p.x-=dx*m;p.y-=dy*m;q.x+=dx*m;q.y+=dy*m}}
+      c.ppl.forEach(p=>{p.x=Math.max(minX,Math.min(maxX,p.x));p.y=Math.max(18,Math.min(H-18,p.y))})})}
+  function ability(dt){const k=A(),c=chOf(k);let drain=false;
+    if(k==="fish"){S.spray=qHeld&&S.bars.fish>0;if(S.spray){drain=true;S.bars.fish-=tune.sprayCost*dt;S.started=true;
+        if(c&&!c.done&&side(c)&&near(c)<115){c.heat-=tune.spray*dt;c.ab=true;if(c.heat<=0)finish(c)}}
+      if(qTap&&S.bars.fish<=0)say("Fish’s bar is empty. It refills while it is not spraying.","bad")}
+    if(k==="orb"&&qTap){if(c&&!c.done&&side(c)&&near(c)<130&&Math.abs(S.y-c.gy)<GAP+4){if(S.bars.orb>=tune.charge){S.bars.orb-=tune.charge;S.dash={c:c};S.started=true}else say("Orb’s bar is too low for a charge.","bad")}
+      else say("Nothing heavy in Orb’s lane. Line up with the crate first.","bad")}
+    if(k==="crab"&&qTap){if(c&&!c.done&&side(c)&&near(c)<60){if(S.bars.crab>=tune.grip){S.bars.crab-=tune.grip;c.left--;c.ab=true;c.p=0;c.toss.push({x:c.x-30-c.toss.length*14,y:c.gy+(c.gy<H/2?52:-52)});S.started=true;if(c.left<=0)finish(c);else say("Crab put a piece aside. "+c.left+" left.")}else say("Crab’s bar is too low to grip.","bad")}
+      else say("Nothing in reach for Crab to grip.","bad")}
+    if(k==="bee"){if(qTap){S.swarm=!S.swarm&&S.bars.bee>0;S.started=true;say(S.swarm?"Swarm on. People inside it walk away from Bee.":"Swarm off.")}
+      if(S.swarm){drain=true;S.bars.bee-=tune.swarm*dt;if(S.bars.bee<=0){S.swarm=false;say("Bee’s bar is empty, so the swarm is off.","bad")}}}
+    if(k==="red"){if(qTap){S.aura=!S.aura&&S.bars.red>0;S.started=true;say(S.aura?"Aura on. Stay close to the victim.":"Aura off.")}
+      if(S.aura){drain=true;S.bars.red-=tune.auraCost*dt;if(S.bars.red<=0){S.aura=false;say("Red’s bar is empty, so the aura is off.","bad")}
+        else if(c&&!c.done&&Math.hypot(S.x-c.v.x,S.y-c.v.y)<tune.auraR){c.agit-=tune.aura*dt;c.ab=true;if(c.agit<=0)calmed(c)}}}
+    if(k==="cam"){if(qTap){S.hl=!S.hl&&S.bars.cam>0;S.started=true;say(S.hl?"Highlight on. It shows the key card through the smoke.":"Highlight off.")}
+      if(S.hl){drain=true;S.bars.cam-=tune.hl*dt;if(S.bars.cam<=0){S.hl=false;say("Cam’s bar is empty, so the highlight is off.","bad")}}}
+    S.party.forEach(p=>{if(!(p===k&&drain))S.bars[p]=Math.min(100,S.bars[p]+tune.refill*dt);S.bars[p]=Math.max(0,S.bars[p])})}
+  function calmed(c){c.v.ty=c.gy+(c.gy<H/2?64:-64);finish(c)}
+  // what the E button would do right now
+  function ctx(){const c=cur();if(!c)return null;
+    if(c.k==="fish"){if(!S.item&&Math.hypot(S.x-c.ext.x,S.y-c.ext.y)<30)return{l:"Pick up",k:"take",c:c};if(S.item==="ext"&&side(c)&&near(c)<70)return{l:"Hold: use extinguisher",k:"ext",c:c}}
+    if(c.k==="orb"&&side(c)&&near(c)<46)return{l:"Hold: shove aside",k:"shove",c:c};
+    if(c.k==="crab"&&side(c)&&near(c)<50)return{l:"Hold: clear by hand",k:"clear",c:c};
+    if(c.k==="bee"&&side(c)&&c.ppl.some(p=>Math.hypot(p.x-S.x,p.y-S.y)<tune.honkR))return{l:"Honk",k:"honk",c:c};
+    if(c.k==="red"&&Math.hypot(S.x-c.v.x,S.y-c.v.y)<52)return{l:"Hold: calm",k:"calm",c:c};
+    return null}
+  function interact(dt){const x=ctx();S.honk=Math.max(0,S.honk-dt);
+    if(!(eHeld||eTap)||!x)return;
+    if(!other){if(eTap)say("Other ways through are off. Only "+DR[x.c.k].n+" can clear this doorway.","bad");return}
+    const c=x.c;S.started=true;
+    if(x.k==="take"&&eTap){S.item="ext";c.ext.held=true;say("Picked up the fire extinguisher. Carry it to the fire and hold E.")}
+    if(x.k==="ext"&&eHeld){c.heat-=tune.ext*dt;c.alt=true;S.useFx=.15;if(c.heat<=0){S.item=null;finish(c)}}
+    if(x.k==="shove"&&eHeld){c.p+=dt/tune.shove;c.alt=true;if(c.p>=1)finish(c)}
+    if(x.k==="clear"&&eHeld){c.p+=dt/tune.clear;c.alt=true;if(c.p>=1){c.p=0;c.left--;c.toss.push({x:c.x-30-c.toss.length*14,y:c.gy+(c.gy<H/2?52:-52)});if(c.left<=0)finish(c)}}
+    if(x.k==="honk"&&eTap){if(S.honk>0)return;S.honk=tune.honkCd;S.honkFx=.35;c.alt=true;c.ppl.forEach(p=>{const dx=p.x-S.x,dy=p.y-S.y,d=Math.hypot(dx,dy)||1;if(d<tune.honkR){p.ft=.6;p.fx=dx/d;p.fy=dy/d}})}
+    if(x.k==="calm"&&eHeld){c.agit-=tune.calm*dt;c.alt=true;if(c.agit<=0)calmed(c)}}
+  function step(dt){if(!S)return;
+    for(let i=0;i<4;i++)if(keys[String(i+1)]){keys[String(i+1)]=false;sw(i)}
+    if(S.win){qTap=eTap=false;return}
+    if(S.started)S.t+=dt;
+    if(S.dash){const c=S.dash.c,tx=c.x-10-R,ty=c.gy,dx=tx-S.x,dy=ty-S.y,d=Math.hypot(dx,dy),st=520*dt;
+      if(d<=st){S.x=tx;S.y=ty;S.dash=null;S.dmg++;c.ab=true;S.boom=.3;finish(c)}else{S.x+=dx/d*st;S.y+=dy/d*st;S.fx=dx/d;S.fy=dy/d}}
+    else{let mx=(keys.arrowright||keys.d?1:0)-(keys.arrowleft||keys.a?1:0)+stick.x,my=(keys.arrowdown||keys.s?1:0)-(keys.arrowup||keys.w?1:0)+stick.y;const m=Math.hypot(mx,my);
+      if(m>.05){const q=Math.min(1,m);mx/=m;my/=m;S.fx=mx;S.fy=my;S.x+=mx*SPD*q*dt;S.y+=my*SPD*q*dt;S.started=true}
+      ability(dt);interact(dt)}
+    people(dt);collide();
+    S.ch.forEach(c=>{
+      if(c.k==="red"){c.v.y+=Math.max(-40*dt,Math.min(40*dt,c.v.ty-c.v.y))}
+      if(c.k==="cam"&&!c.done){const d=Math.hypot(S.x-c.card.x,S.y-c.card.y),vis=(S.hl&&A()==="cam")||(other&&d<tune.see);c.vis=vis;
+        if(!c.card.got&&vis&&d<20&&S.x>c.left&&S.x<c.x){c.card.got=true;if(S.hl&&A()==="cam")c.ab=true;else c.alt=true;say("Found the key card. Take it to the shutter.","good")}
+        if(c.card.got&&side(c)&&near(c)<34)finish(c)}
+      if(c.k==="bee"&&!c.done&&S.x>c.x+8)finish(c)});
+    S.honkFx=Math.max(0,(S.honkFx||0)-dt);S.boom=Math.max(0,(S.boom||0)-dt);S.useFx=Math.max(0,(S.useFx||0)-dt);
+    if(Math.hypot(S.x-(W-40),S.y-S.sy)<26&&!cur()){S.win=true;off();const ab=S.ch.filter(c=>!c.alt).length;
+      say("Reached the survivor in "+S.t.toFixed(1)+"s. "+ab+" of 4 doorways were cleared by the matching droid’s ability"+(S.dmg?", with "+S.dmg+" property damage":"")+".","good")}
+    qTap=eTap=false}
+  // ---------- drawing
+  function draw(){if(!S)return;const k=A();
+    g.fillStyle="#EDE7DA";g.fillRect(0,0,W,H);
+    S.ch.forEach(c=>{g.fillStyle=c.i%2?"#E6DFD0":"#EDE7DA";g.fillRect(c.left,8,c.x-c.left,H-16)});
+    // the smoke chamber
+    S.ch.forEach(c=>{if(c.k!=="cam")return;const inC=S.x>c.left&&S.x<c.x;
+      g.save();g.beginPath();g.rect(c.left,8,c.x-WT/2-c.left,H-16);g.clip();g.fillStyle=c.done?"rgba(59,74,69,.28)":"rgba(59,74,69,.82)";g.fillRect(c.left,8,c.x-c.left,H-16);
+      if(inC&&!c.done){const gr=g.createRadialGradient(S.x,S.y,10,S.x,S.y,tune.see+14);gr.addColorStop(0,"rgba(237,231,218,.95)");gr.addColorStop(1,"rgba(237,231,218,0)");g.fillStyle=gr;g.fillRect(S.x-90,S.y-90,180,180)}
+      g.restore();
+      if(!c.card.got&&(c.vis||c.done)){g.fillStyle="#FFE08A";g.strokeStyle="#22302B";g.lineWidth=2;g.beginPath();g.rect(c.card.x-8,c.card.y-5,16,10);g.fill();g.stroke();
+        if(S.hl&&k==="cam"){g.strokeStyle="#6FD3C2";g.lineWidth=3;g.beginPath();g.arc(c.card.x,c.card.y,15,0,7);g.stroke()}}});
+    // walls and what fills each doorway
+    S.ch.forEach(c=>{g.fillStyle="#22302B";g.fillRect(c.x-WT/2,0,WT,c.gy-GAP);g.fillRect(c.x-WT/2,c.gy+GAP,WT,H-c.gy-GAP);
+      const top=c.gy-GAP,d=DR[c.k];
+      if(!c.done){
+        if(c.k==="fish"){const f=Math.max(.25,c.heat/c.max);g.fillStyle="#F25C2A";for(let j=0;j<4;j++){const y=top+8+j*15,w=(11+3*Math.sin(S.t*9+j*2))*f+4;g.beginPath();g.arc(c.x,y,w,0,7);g.fill()}g.fillStyle="#FFC24A";for(let j=0;j<4;j++){g.beginPath();g.arc(c.x,top+8+j*15,5*f+1,0,7);g.fill()}}
+        if(c.k==="orb"){const sl=c.p*GAP*1.9*(c.gy<H/2?1:-1);g.fillStyle="#8C8F9C";g.strokeStyle="#22302B";g.lineWidth=2;g.beginPath();g.rect(c.x-13,top+3+sl,26,GAP*2-6);g.fill();g.stroke();g.beginPath();g.moveTo(c.x-13,top+3+sl);g.lineTo(c.x+13,top+GAP*2-3+sl);g.moveTo(c.x+13,top+3+sl);g.lineTo(c.x-13,top+GAP*2-3+sl);g.stroke()}
+        if(c.k==="crab"){for(let j=0;j<c.left;j++){const hh=(GAP*2-4)/c.n;g.fillStyle="#E9A15B";g.strokeStyle="#22302B";g.lineWidth=2;g.beginPath();g.rect(c.x-11,top+2+j*hh,22,hh-3);g.fill();g.stroke()}
+          if(c.p>0){g.fillStyle="#22302B";g.fillRect(c.x-22,top-9,44*c.p,5)}}
+        if(c.k==="cam"){g.fillStyle="#4A4F5C";g.fillRect(c.x-9,top,18,GAP*2);g.fillStyle="#FFE08A";g.fillRect(c.x-4,c.gy-6,8,12)}
+        if(c.k==="red"){g.fillStyle="rgba(217,72,59,.16)";g.beginPath();g.arc(c.v.x,c.v.y,30,0,7);g.fill()}
+        if((c.k==="orb"||c.k==="red"||c.k==="fish")&&c.alt&&c.k!=="fish"){const pr=c.k==="orb"?c.p:1-c.agit/100;g.fillStyle="#22302B";g.fillRect(c.x-40,top-9,44*Math.max(0,pr),5)}
+      }
+      if(c.k==="crab")c.toss.forEach(t=>{g.fillStyle="#E9A15B";g.strokeStyle="#22302B";g.lineWidth=2;g.beginPath();g.rect(t.x-8,t.y-7,16,14);g.fill();g.stroke()});
+      if(c.k==="fish"&&!c.ext.held){g.fillStyle="#D9483B";g.strokeStyle="#22302B";g.lineWidth=2;g.beginPath();g.rect(c.ext.x-5,c.ext.y-9,10,18);g.fill();g.stroke();g.fillStyle="#22302B";g.fillRect(c.ext.x-2,c.ext.y-13,4,4);
+        if(!other){g.globalAlpha=.55;g.fillStyle="#EDE7DA";g.fillRect(c.ext.x-8,c.ext.y-15,16,26);g.globalAlpha=1}}
+      if(c.k==="bee")c.ppl.forEach(p=>{g.fillStyle="#F2B8C6";g.strokeStyle="#22302B";g.lineWidth=1.5;g.beginPath();g.arc(p.x,p.y,8,0,7);g.fill();g.stroke()});
+      if(c.k==="red"){const ag=!c.done,j=ag?Math.sin(S.t*22)*2:0;g.fillStyle=ag?"#D9483B":"#F2B8C6";g.strokeStyle="#22302B";g.lineWidth=2;g.beginPath();g.arc(c.v.x+j,c.v.y,9,0,7);g.fill();g.stroke()}
+      // whose doorway it is
+      const ly=c.gy<70?c.gy+GAP+22:c.gy-GAP-(c.k==="crab"||c.k==="orb"?26:14);g.font="800 12px system-ui,sans-serif";const tx=(c.i+1)+" "+d.n+(c.done?" ✓":""),tw=g.measureText(tx).width+14;
+      g.fillStyle=c.done?"#C9D3CD":d.c;g.strokeStyle="#22302B";g.lineWidth=2;g.beginPath();g.rect(c.x-tw/2-24,ly-13,tw,18);g.fill();g.stroke();g.fillStyle="#22302B";g.textAlign="center";g.fillText(tx,c.x-24,ly)});
+    // the survivor
+    g.fillStyle="#4FB286";g.strokeStyle="#22302B";g.lineWidth=2;g.beginPath();g.arc(W-40,S.sy,11,0,7);g.fill();g.stroke();g.fillStyle="#22302B";g.font="800 11px system-ui,sans-serif";g.textAlign="center";g.fillText("Survivor",W-40,S.sy-18);
+    // ability effects
+    if(S.swarm&&k==="bee"){g.strokeStyle="#C99A12";g.lineWidth=2;g.setLineDash([5,5]);g.beginPath();g.arc(S.x,S.y,tune.swarmR,0,7);g.stroke();g.setLineDash([]);g.fillStyle="#C99A12";for(let j=0;j<10;j++){const a=S.t*3+j*.63,rr=tune.swarmR*(.45+.5*((j*37)%10)/10);g.beginPath();g.arc(S.x+Math.cos(a)*rr,S.y+Math.sin(a)*rr,2.2,0,7);g.fill()}}
+    if(S.aura&&k==="red"){g.fillStyle="rgba(255,138,117,.2)";g.strokeStyle="#FF8A75";g.lineWidth=2;g.beginPath();g.arc(S.x,S.y,tune.auraR,0,7);g.fill();g.stroke()}
+    if(S.hl&&k==="cam"){g.strokeStyle="#6FD3C2";g.lineWidth=2;g.setLineDash([3,6]);g.beginPath();g.arc(S.x,S.y,26+6*Math.sin(S.t*5),0,7);g.stroke();g.setLineDash([])}
+    if(S.spray&&k==="fish"){const c=chOf("fish"),hit=c&&!c.done&&side(c)&&near(c)<115,ex=hit?c.x-8:S.x+S.fx*90,ey=hit?c.gy:S.y+S.fy*90;g.strokeStyle="#7CC4EC";g.lineWidth=6;g.lineCap="round";g.beginPath();g.moveTo(S.x,S.y);g.lineTo(ex,ey);g.stroke();g.lineCap="butt"}
+    if(S.useFx>0){const c=chOf("fish");if(c){g.strokeStyle="#fff";g.lineWidth=5;g.lineCap="round";g.beginPath();g.moveTo(S.x,S.y);g.lineTo(c.x-8,c.gy);g.stroke();g.lineCap="butt"}}
+    if(S.honkFx>0){g.strokeStyle="#22302B";g.lineWidth=2;g.beginPath();g.arc(S.x,S.y,tune.honkR*(1-S.honkFx/.35),0,7);g.stroke()}
+    if(S.boom>0){g.fillStyle="rgba(140,143,156,"+S.boom*2+")";g.beginPath();g.arc(S.x+16,S.y,34*(1.2-S.boom),0,7);g.fill()}
+    // the droid
+    g.fillStyle=DR[k].c;g.strokeStyle="#22302B";g.lineWidth=2.5;g.beginPath();g.arc(S.x,S.y,R,0,7);g.fill();g.stroke();
+    g.fillStyle="#22302B";g.beginPath();g.arc(S.x+S.fx*6,S.y+S.fy*6,2.6,0,7);g.fill();
+    if(S.item==="ext"){g.fillStyle="#D9483B";g.strokeStyle="#22302B";g.lineWidth=1.5;g.beginPath();g.rect(S.x+8,S.y-16,7,13);g.fill();g.stroke()}
+    const cc=chOf("cam");if(cc&&cc.card.got&&!cc.done){g.fillStyle="#FFE08A";g.strokeStyle="#22302B";g.lineWidth=1.5;g.beginPath();g.rect(S.x-16,S.y-16,11,7);g.fill();g.stroke()}
+    hud()}
+  let lastHud="";
+  function hud(){const k=A(),d=DR[k],x=ctx();
+    const lab={fish:"Hold: spray",orb:"Charge",crab:"Grip",bee:"Swarm: "+(S.swarm?"on":"off"),red:"Aura: "+(S.aura?"on":"off"),cam:"Highlight: "+(S.hl?"on":"off")}[k];
+    const on=(k==="bee"&&S.swarm)||(k==="red"&&S.aura)||(k==="cam"&&S.hl)||(k==="fish"&&S.spray);
+    const sig=[k,lab,on,x&&x.l,other,S.ch.map(c=>c.done?1:0).join(""),S.dmg].join("|");
+    $("spBar").style.width=S.bars[k]+"%";$("spBar").style.background=d.c;$("spTime").textContent=S.t.toFixed(1)+"s";
+    root.querySelectorAll("#spParty button").forEach((b,i)=>{b.querySelector("i b").style.width=S.bars[S.party[i]]+"%"});
+    if(sig===lastHud)return;lastHud=sig;
+    const ab=$("spAbil"),ac=$("spAct");ab.querySelector("span").textContent=lab;ab.classList.toggle("on",!!on);
+    ac.querySelector("span").textContent=x?x.l:"Interact";ac.classList.toggle("lock",!x||!other);
+    $("spDone").textContent=S.ch.filter(c=>c.done).length+"/4";$("spDmg").textContent=S.dmg;
+    root.querySelectorAll("#spParty button").forEach((b,i)=>b.setAttribute("aria-pressed",i===S.act?"true":"false"));
+    const h=root.querySelector(".hud");if(h)h.style.setProperty("--hud",d.c)}
+  // ---------- input
+  cv.addEventListener("keydown",e=>{const k=e.key.toLowerCase();if(["arrowup","arrowdown","arrowleft","arrowright"," "].includes(k))e.preventDefault();
+    if(k==="q"){if(!qHeld)qTap=true;qHeld=true}else if(k==="e"){if(!eHeld)eTap=true;eHeld=true}else keys[k]=true});
+  cv.addEventListener("keyup",e=>{const k=e.key.toLowerCase();if(k==="q")qHeld=false;else if(k==="e")eHeld=false;else keys[k]=false});
+  cv.addEventListener("blur",()=>{keys={};qHeld=eHeld=false});
+  function hold(k,on){if(k==="q"){if(on&&!qHeld)qTap=true;qHeld=on}else{if(on&&!eHeld)eTap=true;eHeld=on}}
+  [["spAbil","q"],["spAct","e"]].forEach(([id,k])=>{const b=$(id);b.addEventListener("pointerdown",e=>{e.preventDefault();hold(k,true)});
+    ["pointerup","pointercancel","pointerleave"].forEach(ev=>b.addEventListener(ev,()=>hold(k,false)))});
+  $("spNew").addEventListener("click",()=>{gen(1+Math.floor(Math.random()*999999));cv.focus()});
+  $("spReset").addEventListener("click",()=>{gen(seed);cv.focus()});
+  $("spSeed").addEventListener("change",e=>{const v=Math.max(1,Math.min(999999,parseInt(e.target.value,10)||1));gen(v)});
+  root.querySelectorAll("[data-other]").forEach(b=>b.addEventListener("click",()=>{other=b.dataset.other==="1";root.querySelectorAll("[data-other]").forEach(o=>o.setAttribute("aria-pressed",o===b?"true":"false"));gen(seed);
+    say(other?"Other ways through are on: any droid can clear a doorway with E, only more slowly.":"Other ways through are off: each doorway needs its own droid.")}));
+  let raf=0,last=0,visible=false;
+  function frame(ts){raf=0;if(!visible)return;const dt=Math.min(.05,(ts-last)/1000||0);last=ts;step(dt);draw();raf=requestAnimationFrame(frame)}
+  new IntersectionObserver(es=>{visible=es[0].isIntersecting;if(visible&&!raf){last=performance.now();raf=requestAnimationFrame(frame)}}).observe(cv);
+  gen(seed);
+  window.squadProto={state:()=>S,gen:gen,step:step,draw:draw,tune:tune,sw:sw,hold:hold,ctx:ctx,get keys(){return keys},stick:(dx,dy)=>{const m=Math.hypot(dx,dy);stick=m<4?{x:0,y:0}:{x:dx/40,y:dy/40}},other:on=>{other=!!on;gen(seed)},seed:()=>seed};
+})();
+
 /* ===== The mobile HUD: one fixed layout, filled from each room's own buttons =====
    cfg: {color, bar, slots:[A,B,C,D ids or null], ctx, carry, chip, stick:(dx,dy)=>…} */
 window.protoHud=function(rootId,cfg){
@@ -5838,6 +6093,7 @@ window.protoHud=function(rootId,cfg){
   protoHud("crabProto",{color:"#FFB066",bar:"cpBar",slots:["cpGrip","cpAim","cpToss",null],stick:S("crabProto"),keys:K("crabProto")});
   protoHud("orbProto",{color:"#B79BF2",bar:"opBar",slots:["opGrip","opShield","opBrace",null],stick:S("orbProto"),keys:K("orbProto")});
   protoHud("fishProto",{color:"#7CC4EC",bar:"fpBar",slots:["fpSpray","fpFoam","fpBub","fpDel"],ctx:"fpUse",chip:"fpDrop",stick:S("fishProto"),keys:K("fishProto")});
+  protoHud("squadProto",{color:"#FFFFFF",bar:"spBar",slots:["spAbil",null,null,null],ctx:"spAct",stick:S("squadProto"),keys:K("squadProto")});
   protoHud("beeProto",{color:"#F2CB57",bar:"bpBar",slots:["bpBtn","bpHive","bpLead",null],stick:S("beeProto"),keys:K("beeProto")});
 })();
 fullReset();fillDocs();paintShell(false);fromHash();
