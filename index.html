@@ -2460,6 +2460,7 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
     <div class="cp-time"><span>Time</span><b id="fpTime">0.0s</b></div>
     <div class="cp-time"><span>Fires out</span><b id="fpOut">0/0</b></div>
     <div class="cp-time" id="fpHurtWrap" hidden><span>Victims hurt</span><b id="fpHurt">0</b></div>
+    <div class="cp-time"><span>Droid damage</span><b id="fpBurn">0</b></div>
     <button type="button" class="cp-reset" id="fpReset">Reset room</button>
   </div>
   <div class="cp-top cp-rooms">
@@ -2771,6 +2772,7 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
     <div class="cp-time"><span>Time</span><b id="spTime">0.0s</b></div>
     <div class="cp-time"><span>Cleared</span><b id="spDone">0/4</b></div>
     <div class="cp-time"><span>Property damage</span><b id="spDmg">0</b></div>
+    <div class="cp-time"><span>Droid damage</span><b id="spBurn">0</b></div>
   </div>
   <div class="cp-top cp-rooms">
     <button type="button" class="cp-reset" id="spNew">New scenario</button>
@@ -2816,6 +2818,7 @@ html,body{font-family:var(--fb);font-size:14px;line-height:1.4}
       <li><b>Cam:</b> the room is full of smoke, drawn as in Cam’s room: dark where nothing has been seen yet. The shutter needs a key card that lies somewhere in it. Press F for the highlight. T is the Tracker, Q the Infrared pulse and R Replay, once they are upgraded. Any droid can find the card by walking until it comes into view. Cam sees a little further.</li>
       <li><b>Clutter.</b> Boxes (light) and crates (medium) lie about: a row in front of most doorways, a ring around the extinguisher and the key card, a second row behind Crab’s crates, and some loose ones. Crab carries a box and drags a crate out of the way. Any other droid has to push them: a box at three quarters of walking speed, a crate at half, and slower for each further one in the line. They also stop Fish’s stream.</li>
       <li><b>Stumbling.</b> A droid that bumps into a box or a crate has a 10% chance to stumble and is off its feet for a moment. While it keeps pushing, the chance comes again every second. An object Crab is holding does not count.</li>
+      <li><b>Fire is a trigger, not a wall.</b> A droid can walk into a fire and through it, and takes damage for as long as it stands in one. The damage is counted above the floor.</li>
       <li><b>Fire spreads.</b> As in Fish’s room, a fire that is left burning spreads to the spot beside it every few seconds, once the droid has first moved.</li>
       <li><b>The party does not have to fit.</b> The four droids and the four doorways are picked separately, so a doorway may be for a droid that was not brought. Every doorway can still be passed by any droid, the way “another droid” can in that droid’s own room, only more slowly: walk into the crates to push them at half speed, or into the heavy crate to push it slowly. Carry the extinguisher to the fire and hold E. Squeeze through the crowd slowly, or honk with E. Hold E next to the victim to calm them by hand. Search the smoke for the card. Orb’s charge also knocks crates and people aside.</li>
       <li><span class="tbd">Asked for on 27 Nov 2026. What fills each doorway, the way the floor is cut up, the crowd leaving once it is through the doorway and a victim who steps aside when calm are stand-ins. In the smoke room only the key card is hidden by the smoke: crates, people and fires that happen to be in it still show. Asked for on 27 Nov and not built yet: doorways that chain like an escape room, for example a fire whose extinguisher is blocked by something Crab has to move.</span></li>
@@ -5724,7 +5727,7 @@ window.FishDroid=function(Ho){
   // the aim assist (radians, radians/s), heat an extinguisher takes off a second, heat a fire regains a second when left alone,
   // heat a fire loses a second inside a bubble, seconds a foam patch stays, seconds the ground stays wet after a deluge,
   // seconds before an ordinary fire spreads, seconds before a pile that is left flares up, heat the hydrant takes off a second, bar a deluge needs
-  const tune={water:8,foam:14,cool:80,len:220,slow:55,recharge:12,bubble:6,bubCost:25,relight:3,stun:1.5,charge:1.5,reach:420,push:90,fan:.6,toss:300};
+  const tune={water:8,foam:14,cool:80,len:220,slow:55,recharge:12,bubble:6,bubCost:25,relight:3,stun:1.5,charge:1.5,reach:420,push:90,fan:.6,toss:300,burn:20};   // burn: damage a second to a droid standing in a fire
   const ORDER=["smother","starve","deluge"],NAME={smother:"Smother",starve:"Starve",deluge:"Deluge"};
   const TYPE={plain:"Ordinary fire",oil:"Oil fire",elec:"Electrical fire",gas:"Gas fire",smoulder:"Smouldering pile"};
   const W=Ho.W||760,H=Ho.H||460,sk=Ho.sk,say=Ho.say,keys=Ho.keys,io=Ho.io,held={q:false,r:false,b:false,e:false};let S=null,g=null,drag=null;
@@ -5740,7 +5743,7 @@ window.FishDroid=function(Ho){
   const eff=f=>f.t==="elec"&&!live(f)?"plain":f.t;   // an electrical fire with its breaker off is an ordinary fire
   const burning=f=>f.heat>0,gone=f=>f.heat<=0&&!(f.t==="gas"&&swOn("valve"));
   const solid=f=>f.t==="smoulder"||(f.heat>0&&!(f.bub>0));   // too hot to pass, unless it is encased. A pile is an object either way
-  const walkBlocked=nd=>{const r=box(nd),d=S.droid;return S.walls.some(w=>hit(r,w))||S.fires.some(f=>solid(f)&&dist(nd,f)<f.r+R-4&&!(dist(d,f)<f.r+R-4))};
+  const walkBlocked=nd=>{const r=box(nd),d=S.droid;return S.walls.some(w=>hit(r,w))||S.fires.some(f=>f.t==="smoulder"&&dist(nd,f)<f.r+R-4&&!(dist(d,f)<f.r+R-4))};   // a fire does not block the way. A pile is an object, so it does
   /* a clear line from a point to a fire or a victim: only walls stop it */
   function los(a,b,br){const m=dist(a,b),n=Math.max(1,Math.ceil(m/6));for(let i=1;i<n;i++){const p={x:a.x+(b.x-a.x)*i/n,y:a.y+(b.y-a.y)*i/n};if(dist(p,b)<=(br||0))return true;if(S.walls.some(w=>inRect(p,w)))return false}return true}
   /* skill, Smother: a toggle between water and foam */
@@ -5910,7 +5913,10 @@ window.FishDroid=function(Ho){
     }
     if(!S.act)S.bar=Math.min(100,S.bar+tune.recharge*dt);
   }
-  function after(dt){fires(dt);hands(dt)}
+  /* a fire is a trigger, not a wall: a droid can walk into it, and is damaged for as long as it stands in one that is burning and not encased */
+  function burn(dt){const d=S.droid,was=S.inFire>0;if(S.inFire>0)S.inFire-=dt;
+    if(S.fires.some(f=>f.t!=="smoulder"&&f.heat>0&&!(f.bub>0)&&dist(d,f)<f.r+R-6)){S.burnt=(S.burnt||0)+tune.burn*dt;S.inFire=.25;if(!was)say("The droid is in the fire and is taking damage.","bad")}}
+  function after(dt){fires(dt);burn(dt);hands(dt)}
   function act(dt,want){before(dt);droid(dt,want);after(dt)}
   /* a room that is over: people who were pushed still slide to a stop */
   function settle(dt){shove(dt);if(S.wave){S.wave.t-=dt;if(S.wave.t<=0)S.wave=null}}
@@ -5978,6 +5984,7 @@ window.FishDroid=function(Ho){
     const fa=Math.atan2(S.face.y,S.face.x);g.fillStyle="#22302B";g.beginPath();g.arc(d.x+Math.cos(fa)*(R+4),d.y+Math.sin(fa)*(R+4),4,0,7);g.fill();
   }
   function drawHands(ctx){g=ctx;g.textAlign="center";const d=S.droid;
+    if(S.inFire>0){g.strokeStyle="#B3342B";g.lineWidth=4;g.beginPath();g.arc(d.x,d.y,R+5+Math.sin(performance.now()/40)*1.5,0,7);g.stroke()}
     const item=(it,x,y)=>ITEM(it,x,y);
     if(S.reach&&!S.done){const r=S.reach,t=r.f||r.s||r.it,rad=r.f?r.f.r+12:22;g.strokeStyle="#22302B";g.lineWidth=5;g.beginPath();g.arc(t.x,t.y,rad,0,7);g.stroke();g.strokeStyle="#fff";g.lineWidth=2.5;g.stroke()}
     if(S.carry)item(S.carry,d.x+16,d.y-18);
@@ -6102,7 +6109,7 @@ window.FishDroid=function(Ho){
     C.drawWorld(g);C.drawFx(g);C.drawDroid(g);C.drawHands(g);C.drawStatus(g);
     const b=el("fpBar");b.style.width=S.bar.toFixed(1)+"%";b.classList.toggle("low",S.bar<10);
     el("fpTime").textContent=S.t.toFixed(1)+"s";el("fpOut").textContent=S.fires.filter(gone).length+"/"+S.fires.length;
-    el("fpHurtWrap").hidden=!S.vics.length;el("fpHurt").textContent=S.hurt;
+    el("fpHurtWrap").hidden=!S.vics.length;el("fpHurt").textContent=S.hurt;el("fpBurn").textContent=Math.round(S.burnt||0);
     C.uiHands(ub,xb);C.ui(qb,fb,rb,db);
   }
 
@@ -6236,7 +6243,8 @@ window.FishDroid=function(Ho){
   const fires=()=>S.st.fish.fires.filter(f=>M.fish.solid(f));   // a fire that is burning and not encased
   const crowd=()=>S.st.bee.people.filter(p=>!p.out);
   // circles the droid cannot walk into: a burning fire, an agitated victim, and a crowd it cannot squeeze through
-  function rounds(){const o=fires().map(f=>[f.x,f.y,f.r-2]);S.ch.forEach(c=>{if(c.k==="red"&&!c.vv.calm)o.push([c.vv.x,c.vv.y,VB])});if(!other)crowd().forEach(p=>o.push([p.x,p.y,PR]));return o}
+  function rounds(){const o=[];   // a fire is not one of them: it is a trigger that damages the droid
+    S.ch.forEach(c=>{if(c.k==="red"&&!c.vv.calm)o.push([c.vv.x,c.vv.y,VB])});if(!other)crowd().forEach(p=>o.push([p.x,p.y,PR]));return o}
   function roundsOut(){for(const q of rounds()){let dx=S.x-q[0],dy=S.y-q[1],d=Math.hypot(dx,dy),m=R+q[2];if(d<m){if(d<.001){dx=-S.face.x;dy=-S.face.y;d=1}const n={x:q[0]+dx/d*m,y:q[1]+dy/d*m};if(!solid(box(n))){S.x=n.x;S.y=n.y}else return false}}return true}
   // walking, one axis at a time, the way the droid rooms do it. A dragged object moves with Crab as one. With other ways on, any droid pushes what it walks into
   function walk(want,dt,k){const sp=SPEED*(k||1)*(S.hold?T.crab.dragSpeed:1)*(other&&crowd().some(p=>Math.hypot(p.x-S.x,p.y-S.y)<R+PR)?M.bee.SQUEEZE:1);
@@ -6360,7 +6368,7 @@ window.FishDroid=function(Ho){
         say("Through doorway "+(c.i+1)+", by "+(c.alt||!c.ab?"another way":DR[c.k].n+"’s ability")+"."+(nx?" Doorway "+(nx.i+1)+" suits "+DR[nx.k].n+(S.party.indexOf(nx.k)<0?", who is not in the party.":"."):" Reach the survivor."),"good")}});
     S.pushing=Math.max(0,(S.pushing||0)-dt);
     if(Math.hypot(S.x-S.sv.x,S.y-S.sv.y)<R+16&&!cur()){S.win=true;off();const ab=S.ch.filter(c=>c.ab&&!c.alt).length;
-      say("Reached the survivor in "+S.t.toFixed(1)+"s. "+ab+" of 4 doorways were cleared by the matching droid’s ability"+(dmg()?", with "+dmg()+" property damage":"")+(S.knocked?" and "+S.knocked+" people knocked":"")+".","good")}
+      say("Reached the survivor in "+S.t.toFixed(1)+"s. "+ab+" of 4 doorways were cleared by the matching droid’s ability"+(dmg()?", with "+dmg()+" property damage":"")+(S.st.fish.burnt?", "+Math.round(S.st.fish.burnt)+" droid damage from fire":"")+(S.knocked?" and "+S.knocked+" people knocked":"")+".","good")}
     qTap=eTap=aTap=false}
   // ---------- drawing
   function draw(){if(!S)return;const k=A();
@@ -6412,6 +6420,7 @@ window.FishDroid=function(Ho){
     // a module labels its own unseen copies of the buttons. The real buttons show the active droid's copies
     const px=PX[k];if(px){M[k].use(S.st[k]);M[k].ui.apply(null,args(k));
       SLOT.forEach((b,i)=>{const p=px[i];b.hidden=!p||p.hidden;if(!p)return;if(b.innerHTML!==p.innerHTML)b.innerHTML=p.innerHTML;b.classList.toggle("on",p.classList.contains("on"));b.classList.toggle("lock",p.classList.contains("lock"));b.dataset.why=p.dataset.why||""})}
+    $("spBurn").textContent=Math.round(S.st.fish.burnt||0);
     $("spBar").style.width=S.bars[k]+"%";$("spBar").style.background=d.c;$("spTime").textContent=S.t.toFixed(1)+"s";
     root.querySelectorAll("#spParty button").forEach((b,i)=>{b.querySelector("i b").style.width=S.bars[S.party[i]]+"%"});
     if(sig===lastHud)return;lastHud=sig;
